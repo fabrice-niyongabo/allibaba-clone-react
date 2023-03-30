@@ -9,6 +9,7 @@ import categoryBanner from "../../../assets/images/static/banner.jpg";
 
 function Header() {
   const [categoriesHover, setCategoriesHover] = useState(false);
+  const [helpHover, setHelpHover] = useState(false);
   return (
     <div className="app-header">
       <div className="top-container">
@@ -63,7 +64,7 @@ function Header() {
               )}
             </span>
             {categoriesHover && (
-              <div className="categories-menu">
+              <div className="menu categories-menu">
                 <div className="row">
                   <div className="col-md-8">
                     <div className="row">
@@ -96,7 +97,33 @@ function Header() {
               </div>
             )}
           </li>
-          <li>Help & Community</li>
+          <li
+            onMouseOver={() => {
+              setHelpHover(true);
+            }}
+            onMouseLeave={() => {
+              setHelpHover(false);
+            }}
+          >
+            <span className={helpHover ? "text-orange" : ""}>
+              Help & Community{" "}
+              {helpHover ? (
+                <i className="bi bi-chevron-up" />
+              ) : (
+                <i className="bi bi-chevron-down" />
+              )}
+            </span>
+            {helpHover && (
+              <div className="menu ">
+                <ul>
+                  <li>For Buyers</li>
+                  <li>For New Users</li>
+                  <li>For Suppliers</li>
+                  <li>Support</li>
+                </ul>
+              </div>
+            )}
+          </li>
           <li>Electronics</li>
           <li>Start selling</li>
           <li>All Membership</li>
