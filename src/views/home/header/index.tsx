@@ -5,6 +5,7 @@ import userImage from "../../../assets/images/user.png";
 import downArrow from "../../../assets/images/downarrow.png";
 import walletImage from "../../../assets/images/wallet.png";
 import wishListImage from "../../../assets/images/orders.png";
+import categoryBanner from "../../../assets/images/static/banner.jpg";
 
 function Header() {
   const [categoriesHover, setCategoriesHover] = useState(false);
@@ -53,7 +54,7 @@ function Header() {
               setCategoriesHover(false);
             }}
           >
-            <span>
+            <span className={categoriesHover ? "text-orange" : ""}>
               Categories{" "}
               {categoriesHover ? (
                 <i className="bi bi-chevron-up" />
@@ -61,7 +62,39 @@ function Header() {
                 <i className="bi bi-chevron-down" />
               )}
             </span>
-            {categoriesHover && <div className="categories-menu"></div>}
+            {categoriesHover && (
+              <div className="categories-menu">
+                <div className="row">
+                  <div className="col-md-8">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <h3>Electronics</h3>
+                        <ul>
+                          <li>Batteries</li>
+                          <li>Headphones</li>
+                          <li>Watch</li>
+                          <li>Camera</li>
+                          <li>Laptop</li>
+                        </ul>
+                      </div>
+                      <div className="col-md-6">
+                        <h3>Electronics</h3>
+                        <ul>
+                          <li>Batteries</li>
+                          <li>Headphones</li>
+                          <li>Watch</li>
+                          <li>Camera</li>
+                          <li>Laptop</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <img src={categoryBanner} style={{ width: "100%" }} />
+                  </div>
+                </div>
+              </div>
+            )}
           </li>
           <li>Help & Community</li>
           <li>Electronics</li>
