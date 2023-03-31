@@ -1,0 +1,108 @@
+@import "variables";
+@import "mixins";
+
+.home-welcome {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  .w-container {
+    padding: 0;
+    border: 1px solid $border-color;
+    background-color: $white;
+    h3 {
+      font-size: 18px;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 0;
+      padding: 1rem;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        @include flexSpace;
+        position: relative;
+        list-style: none;
+        font-size: 14px;
+        padding: 1rem;
+        border-top: 1px solid $border-color;
+        span {
+          flex: 1;
+          display: inline-block;
+          padding: 0px 10px;
+        }
+      }
+    }
+    .category-menu {
+      position: absolute;
+      padding: 1rem;
+      background-color: $white;
+      border: 1px solid $border-color;
+      top: 0;
+      left: 100%;
+      z-index: 200;
+      width: 60vw;
+      transition: all ease 0.5s;
+      -webkit-transition: all ease 0.5s;
+      h3 {
+        font-size: 16px;
+        text-transform: uppercase;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 5px;
+        border-bottom: 1px solid $border-color;
+      }
+      ul li {
+        border: none;
+        padding: 5px 0px;
+        text-transform: capitalize;
+        &:hover {
+          color: $orange;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .slider-container {
+    padding: 0;
+    margin: 0;
+    .carousel,
+    .slider-wrapper.axis-horizontal,
+    .slider,
+    .slide,
+    div {
+      height: 100% !important;
+    }
+    img {
+      height: 100%;
+    }
+  }
+  .new-products {
+    padding: 1rem;
+    h3 {
+      color: $white;
+      background-color: $red;
+      padding: 0.5rem !important;
+      margin-bottom: 1rem;
+    }
+    ul li {
+      padding: 10px !important;
+      img {
+        width: 50px;
+      }
+      p {
+        margin: 0;
+        padding: 0;
+      }
+      span {
+        padding: 0px !important;
+      }
+      div {
+        &:first-child {
+          flex: 1;
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+}

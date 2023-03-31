@@ -5,7 +5,11 @@ import ProjectTables from "../../components/dashboard/ProjectTable";
 import TopCards from "../../components/dashboard/TopCards";
 
 const Dashboard = () => {
-  return <div>{/***Top Cards***/}</div>;
+  return (
+    <div>
+      <Feeds />
+    </div>
+  );
 };
 
 export default Dashboard;

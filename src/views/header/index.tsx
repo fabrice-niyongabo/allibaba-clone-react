@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "../../../assets/scss/header.scss";
+import "../../assets/scss/header.scss";
 
-import userImage from "../../../assets/images/user.png";
-import downArrow from "../../../assets/images/downarrow.png";
-import walletImage from "../../../assets/images/wallet.png";
-import wishListImage from "../../../assets/images/orders.png";
-import categoryBanner from "../../../assets/images/static/banner.jpg";
+import userImage from "../../assets/images/user.png";
+import downArrow from "../../assets/images/downarrow.png";
+import walletImage from "../../assets/images/wallet.png";
+import wishListImage from "../../assets/images/orders.png";
+import categoryBanner from "../../assets/images/static/banner.jpg";
 
 function Header() {
   const [categoriesHover, setCategoriesHover] = useState(false);
