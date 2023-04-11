@@ -3,6 +3,7 @@ import Header from "../header";
 import Welcome from "./welcome";
 import Cards from "./cards";
 import "../../assets/scss/home.scss";
+import Categories from "./categories";
 
 function Home() {
   return (
@@ -10,6 +11,7 @@ function Home() {
       <Header />
       <Welcome />
       <Cards />
+      <Categories />
     </div>
   );
 }
