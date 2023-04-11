@@ -6,6 +6,7 @@ import FullLayout from "./layouts/FullLayout";
 const Dashboard = lazy(() => import("./views/dashboard"));
 const Alerts = lazy(() => import("./views/ui/Alerts"));
 const Home = lazy(() => import("./views/home"));
+const LoginRegister = lazy(() => import("./views/login-register"));
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/login-register" element={<LoginRegister />} />
           {/* <Route
             exact
             path="/login"

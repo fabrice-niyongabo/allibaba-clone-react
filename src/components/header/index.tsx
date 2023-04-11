@@ -6,17 +6,22 @@ import downArrow from "../../assets/images/downarrow.png";
 import walletImage from "../../assets/images/wallet.png";
 import wishListImage from "../../assets/images/orders.png";
 import categoryBanner from "../../assets/images/static/banner.jpg";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Header() {
   const [categoriesHover, setCategoriesHover] = useState(false);
   const [helpHover, setHelpHover] = useState(false);
+  const navigate = useNavigate();
   return (
     <div className="app-header">
       <div className="top-container">
-        <img
-          src="https://demowpthemes.com/buy2alibaba/wp-content/themes/buy2alibaba/images/logo-head.png"
-          alt="Buy2alibaba"
-        />
+        <Link to="/">
+          <img
+            src="https://demowpthemes.com/buy2alibaba/wp-content/themes/buy2alibaba/images/logo-head.png"
+            alt="Buy2alibaba"
+          />
+        </Link>
         <div className="search-container">
           <select
             className="col-md-3"
@@ -31,7 +36,10 @@ function Header() {
           <button>Search</button>
         </div>
         <div className="icons-main-container">
-          <div className="icon-container">
+          <div
+            className="icon-container"
+            onClick={() => navigate("/login-register")}
+          >
             <img src={userImage} />
             <span>Sign In</span>
           </div>
