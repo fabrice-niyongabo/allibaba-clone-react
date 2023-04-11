@@ -1,0 +1,27 @@
+@import "variables";
+@import "mixins";
+
+.home-cards-container {
+  h3 {
+    color: $black;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 0px;
+    text-transform: capitalize;
+  }
+  .product-container {
+    @include flexCenter;
+    flex-direction: column;
+    img {
+      width: 80px;
+      height: 80px;
+      display: block;
+      margin-bottom: 10px;
+    }
+    span {
+      font-weight: 600;
+      color: $black;
+      font-size: 12px;
+    }
+  }
+}
