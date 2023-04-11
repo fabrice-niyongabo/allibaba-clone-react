@@ -4,6 +4,7 @@ import Welcome from "./welcome";
 import Cards from "./cards";
 import "../../assets/scss/home.scss";
 import Categories from "./categories";
+import JustForYou from "./just-for-you";
 
 function Home() {
   return (
@@ -12,6 +13,7 @@ function Home() {
       <Welcome />
       <Cards />
       <Categories />
+      <JustForYou />
     </div>
   );
 }
