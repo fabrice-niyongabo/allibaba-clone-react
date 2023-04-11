@@ -1,11 +1,12 @@
 import React from "react";
-import Header from "../header";
 import Welcome from "./welcome";
 import Cards from "./cards";
 import "../../assets/scss/home.scss";
 import Categories from "./categories";
 import JustForYou from "./just-for-you";
 import TopSelectedSupplier from "./top-selected-suppliers";
+import Footer from "../../components/footer";
+import Header from "../../components/header";
 
 function Home() {
   return (
@@ -16,6 +17,7 @@ function Home() {
       <Categories />
       <JustForYou />
       <TopSelectedSupplier />
+      <Footer />
     </div>
   );
 }

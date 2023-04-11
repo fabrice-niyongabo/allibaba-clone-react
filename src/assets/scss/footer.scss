@@ -1,0 +1,30 @@
+@import "variables";
+@import "mixins";
+
+footer {
+  background-color: $main-color;
+  padding: 2rem 0px;
+  h3 {
+    font-size: 16px;
+    color: $white;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    margin-top: 1rem;
+    li {
+      list-style: none;
+      font-size: 14px;
+      color: $white;
+      opacity: 0.8;
+    }
+  }
+  .copy {
+    border-top: 1px solid $border-color;
+    text-align: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    font-size: 12px;
+    color: $white;
+  }
+}
