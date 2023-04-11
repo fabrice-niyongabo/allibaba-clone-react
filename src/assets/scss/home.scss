@@ -95,3 +95,28 @@
     }
   }
 }
+
+.top-suppliers {
+  .main-container {
+    margin-top: 2rem;
+    .slider-item {
+      @include flexCenter;
+      flex-direction: column;
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        margin-bottom: 10px;
+        display: block;
+      }
+      span {
+        font-weight: 600;
+        font-size: 12px;
+        color: $black;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+}

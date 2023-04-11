@@ -5,6 +5,7 @@ import Cards from "./cards";
 import "../../assets/scss/home.scss";
 import Categories from "./categories";
 import JustForYou from "./just-for-you";
+import TopSelectedSupplier from "./top-selected-suppliers";
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
       <Cards />
       <Categories />
       <JustForYou />
+      <TopSelectedSupplier />
     </div>
   );
 }
