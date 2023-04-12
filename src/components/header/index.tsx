@@ -47,7 +47,10 @@ function Header() {
             <img src={wishListImage} />
             <span>Wishlist</span>
           </div>
-          <div className="icon-container">
+          <div
+            className="icon-container"
+            onClick={() => navigate("/start-selling")}
+          >
             <img src={walletImage} />
             <span>Start Selling</span>
           </div>
@@ -133,7 +136,7 @@ function Header() {
             )}
           </li>
           <li>Electronics</li>
-          <li>Start selling</li>
+          <li onClick={() => navigate("/start-selling")}>Start selling</li>
           <li>All Membership</li>
           <li>Shop</li>
           <li>Wish list</li>
