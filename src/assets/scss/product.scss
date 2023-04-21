@@ -1,0 +1,89 @@
+@import "variables";
+@import "mixins";
+.single-product-container {
+  background-color: $white;
+  padding: 2rem;
+  a {
+    text-decoration: none;
+  }
+  .categories {
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        list-style: none;
+        display: inline-block;
+        padding-right: 10px;
+        font-size: 12px;
+        span {
+          &:hover {
+            color: $orange;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .prices-container {
+    padding: 1rem 0;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    .price {
+      @include flexCenter;
+      flex-direction: column;
+      align-items: flex-start;
+      span {
+        font-size: 12px;
+      }
+      h3 {
+        font-size: 14px;
+      }
+    }
+  }
+  .contact-btn {
+    background-color: $orange;
+    font-size: 12px;
+    border: none;
+    text-align: center;
+    display: block;
+    padding: 5px 10px;
+    border-radius: 10px;
+    width: 100%;
+    color: $white;
+  }
+  .share-container {
+    div {
+      display: inline-block;
+      height: 40px;
+      width: 40px;
+      border-radius: 100%;
+      background-color: $orange;
+      margin-right: 10px;
+      i {
+        color: $white;
+        @include flexCenter;
+        margin-top: 12px;
+      }
+    }
+  }
+  .supplier-banner {
+    position: relative;
+    height: 100px;
+    img {
+      width: 100%;
+      height: 80px;
+    }
+    .supplier-profile {
+      position: absolute;
+      width: 100%;
+      bottom: 10px;
+      @include flexCenter;
+      img {
+        width: 70px;
+        height: 70px;
+        border-radius: 100%;
+        border: 3px solid $orange;
+      }
+    }
+  }
+}
