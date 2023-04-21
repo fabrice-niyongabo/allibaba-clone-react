@@ -86,4 +86,50 @@
       }
     }
   }
+  .related-products-container {
+    .carausel-custom-control {
+      background-color: rgba($color: #000000, $alpha: 0.5);
+      padding: 10px;
+      cursor: pointer;
+      color: $white;
+      &:hover {
+        color: $orange;
+      }
+    }
+    .slider-item {
+      img {
+        display: block;
+        width: 160px;
+        height: 160px;
+        border-radius: 10px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+      }
+      p {
+        display: -webkit-inline-box;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        line-height: 14px;
+        font-size: 14px;
+        color: #222;
+        min-height: 28px;
+        margin-bottom: 10px;
+      }
+      span {
+        display: block;
+        width: 100%;
+        line-height: 16px;
+        font-weight: bold;
+        font-size: 16px;
+        color: #333;
+        overflow: hidden;
+        word-wrap: normal;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding-right: 10px;
+      }
+    }
+  }
 }

@@ -5,6 +5,7 @@ import "../../assets/scss/product.scss";
 import { Col, Row } from "reactstrap";
 import ProductImages from "./product-images";
 import Supplier from "./supplier";
+import RelatedProducts from "./related-products";
 
 function SingleProduct() {
   return (
@@ -80,6 +81,11 @@ function SingleProduct() {
           </Col>
           <Col md={3}>
             <Supplier />
+          </Col>
+        </Row>
+        <Row className="mt-4">
+          <Col md={9}>
+            <RelatedProducts />
           </Col>
         </Row>
       </div>
