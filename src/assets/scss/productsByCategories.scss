@@ -1,0 +1,30 @@
+@import "variables";
+@import "mixins";
+
+.product-by-category-main-container {
+  .banner {
+    img {
+      width: 100%;
+      height: 220px;
+    }
+  }
+  .product-categories-main-container {
+    margin: 1rem 0px;
+    background-color: $white;
+    .slider-slide {
+      width: auto !important;
+    }
+    .category-item {
+      padding: 8px 20px;
+      box-sizing: border-box;
+      width: auto;
+      max-width: 300px;
+      cursor: pointer;
+      background-color: $white;
+      text-align: center;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}
