@@ -137,7 +137,7 @@ function Header() {
           </li>
           <li>Electronics</li>
           <li onClick={() => navigate("/start-selling")}>Start selling</li>
-          <li>All Membership</li>
+          <li onClick={() => navigate("/memberships")}>All Membership</li>
           <li>Shop</li>
           <li>Wish list</li>
         </ul>
