@@ -25,3 +25,16 @@ a {
   border-radius: 10px;
   margin-bottom: 20px;
 }
+.common-btn {
+  background-color: $orange;
+  font-size: 12px;
+  border: none;
+  text-align: center;
+  display: block;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: $white;
+  &:hover {
+    opacity: 0.6;
+  }
+}

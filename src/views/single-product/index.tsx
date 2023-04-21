@@ -6,6 +6,7 @@ import { Col, Row } from "reactstrap";
 import ProductImages from "./product-images";
 import Supplier from "./supplier";
 import RelatedProducts from "./related-products";
+import ProductTabs from "./product-tabs";
 
 function SingleProduct() {
   return (
@@ -89,6 +90,7 @@ function SingleProduct() {
           </Col>
         </Row>
       </div>
+      <ProductTabs />
       <Footer />
     </>
   );

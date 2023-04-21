@@ -50,6 +50,9 @@
     border-radius: 10px;
     width: 100%;
     color: $white;
+    &:hover {
+      opacity: 0.6;
+    }
   }
   .share-container {
     div {
@@ -129,6 +132,85 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         padding-right: 10px;
+      }
+    }
+  }
+}
+
+.single-product-tabs-container {
+  padding: 2rem;
+  .tab {
+    display: inline-block;
+    font-size: 14px;
+    padding: 12px 16px;
+    color: #666;
+    background-color: #fafafa;
+    max-width: 220px;
+    font-weight: 700;
+    font-size: 16px;
+    margin-right: 4px;
+    border: solid 1px #eee;
+    border-radius: 8px 8px 0 0;
+    &:hover {
+      color: $orange;
+      background-color: $white;
+      border: solid 1px $white;
+      cursor: pointer;
+    }
+  }
+  .tab.active {
+    color: $orange;
+    background-color: $white;
+    border: solid 1px $white;
+    cursor: pointer;
+  }
+  .tab-contents-main-container {
+    background-color: $white;
+    padding: 12px 16px;
+    .question {
+      margin-bottom: 10px;
+      p {
+        font-size: 14px;
+        font-weight: 700;
+        margin: 0;
+      }
+      span {
+        font-size: 12px;
+      }
+    }
+    .message-container {
+      margin-top: 10px;
+      background-color: $gray-100;
+      border-radius: 10px;
+      padding: 1rem;
+      h3 {
+        font-size: 16px;
+      }
+    }
+  }
+  .product-reviews-main-container {
+    h3 {
+      font-size: 16px;
+    }
+    .review {
+      @include flexSpace;
+      align-items: flex-start !important;
+      i {
+        font-size: 50px;
+      }
+      .contents {
+        flex: 1;
+        padding: 10px;
+        margin-left: 10px;
+        border: 1px solid $border-color;
+        span {
+          font-size: 12px;
+        }
+        p {
+          margin: 0;
+          margin-top: 10px;
+          font-size: 14px;
+        }
       }
     }
   }
