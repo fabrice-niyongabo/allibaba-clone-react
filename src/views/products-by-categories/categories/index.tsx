@@ -1,34 +1,117 @@
 //@ts-nocheck
 import React from "react";
-import Carousel from "nuka-carousel";
+import Slider from "react-slick";
+
+function CustomPrevArrow(props) {
+  const { className, onClick } = props;
+  return (
+    <div
+      className={className}
+      onClick={onClick}
+      style={{
+        background: "orange",
+        margin: 0,
+        left: 0,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      Prev
+    </div>
+  );
+}
+
+function CustomNextArrow(props) {
+  const { className, onClick } = props;
+  return (
+    <div
+      className={className}
+      onClick={onClick}
+      style={{
+        background: "orange",
+        margin: 0,
+        right: 0,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      Next
+    </div>
+  );
+}
 
 function Categories() {
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
+    infinite: true,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   return (
     <div className="product-categories-main-container">
-      <Carousel
-        autoplay={false}
-        wrapAround={true}
-        slidesToShow={6}
-        adaptiveHeight={true}
-        slidesToScroll={6}
-        renderBottomCenterControls={() => <></>}
-        renderCenterLeftControls={({ previousSlide }) => (
-          <div className="carausel-custom-control" onClick={previousSlide}>
-            <i className="bi bi-caret-left-fill"></i>
-          </div>
-        )}
-        renderCenterRightControls={({ nextSlide }) => (
-          <div className="carausel-custom-control" onClick={nextSlide}>
-            <i className="bi bi-caret-right-fill"></i>
-          </div>
-        )}
-      >
-        <div className="category-item">All</div>
-        <div className="category-item">Vehicle parts & Accessories</div>
-        <div className="category-item">Tools & Hardware</div>
-        <div className="category-item">Time Pieces, Jewley</div>
-        <div className="category-item">All</div>
-      </Carousel>
+      <Slider {...settings}>
+        <div className="category-item" style={{ width: 100 }}>
+          <div>All</div>
+        </div>
+        <div className="category-item">
+          <div>Vehicle parts & Accessories</div>
+        </div>
+        <div className="category-item">
+          <div>Tools & Hardware</div>
+        </div>
+        <div className="category-item">
+          <div>Time Pieces, Jewley</div>
+        </div>
+        <div className="category-item">
+          <div>Tools & Hardware</div>
+        </div>
+        <div className="category-item">
+          <div>Tools & Hardware</div>
+        </div>
+        <div className="category-item">
+          <div>Time Pieces, Jewley</div>
+        </div>
+        <div className="category-item">
+          <div>All</div>
+        </div>
+        <div className="category-item">
+          <div>Time Pieces, Jewley</div>
+        </div>
+        <div className="category-item">
+          <div>Time Pieces, Jewley</div>
+        </div>
+      </Slider>
     </div>
   );
 }

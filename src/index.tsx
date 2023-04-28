@@ -1,6 +1,8 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "./assets/scss/style.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";

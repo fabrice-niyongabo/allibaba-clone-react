@@ -4,6 +4,7 @@ import Footer from "../../components/footer";
 import Banner from "./banner";
 import Categories from "./categories";
 import "../../assets/scss/productsByCategories.scss";
+import Products from "./products";
 
 function ProductsByCategories() {
   return (
@@ -13,6 +14,7 @@ function ProductsByCategories() {
         <Banner />
         <div className="afriseller-container">
           <Categories />
+          <Products />
         </div>
       </div>
       <Footer />
