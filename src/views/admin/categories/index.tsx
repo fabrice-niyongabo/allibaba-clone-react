@@ -14,6 +14,7 @@ import MiniLoader from "../../../layouts/loader/MiniLoader";
 import Confirmation from "../../../components/controllers/confirmation";
 import FullPageLoader from "../../../components/full-page-loader";
 import { ICategory, TOAST_MESSAGE_TYPES } from "../../../interfaces";
+import SubCategories from "./sub-categories";
 
 const Categories = () => {
   const { token } = useSelector((state: RootState) => state.user);
@@ -28,7 +29,7 @@ const Categories = () => {
   const [selectedItem, setSelectedItem] = useState<ICategory | undefined>(
     undefined
   );
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [showSubCategories, setShowSubCategories] = useState<boolean>(false);
 
   const imageRef = useRef<HTMLInputElement>(null);
 
@@ -150,7 +151,15 @@ const Categories = () => {
                               Delete
                             </span>
                             &nbsp;|&nbsp;
-                            <span className="pointer">Sub Cats</span>
+                            <span
+                              className="pointer"
+                              onClick={() => {
+                                setSelectedItem(item);
+                                setShowSubCategories(true);
+                              }}
+                            >
+                              Sub Cats({item.subCategories.length})
+                            </span>
                           </td>
                         </tr>
                       ))}
@@ -211,6 +220,13 @@ const Categories = () => {
         showModal={showEdit}
         setShowModal={setShowEdit}
         fetchData={fetchCategories}
+      />
+      <SubCategories
+        selectedItem={selectedItem}
+        showModal={showSubCategories}
+        setShowModal={setShowSubCategories}
+        fetchData={fetchCategories}
+        categories={categories}
       />
       <FullPageLoader open={isSubmitting} />
     </div>

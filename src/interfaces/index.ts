@@ -30,4 +30,11 @@ export interface ICategory {
   id: number;
   name: string;
   image: string;
+  subCategories: ISubCategory[];
+}
+
+export interface ISubCategory {
+  id: number;
+  categoryId: number;
+  name: string;
 }

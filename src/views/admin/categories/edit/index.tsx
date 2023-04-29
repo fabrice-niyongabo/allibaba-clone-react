@@ -43,7 +43,7 @@ function Edit({
       .catch((error) => {
         setTimeout(() => {
           errorHandler(error);
-          setShowModal(false);
+          setIsSubmitting(false);
         }, 1000);
       });
   };

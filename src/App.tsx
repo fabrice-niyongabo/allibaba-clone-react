@@ -9,6 +9,7 @@ import UnProtectedRoute from "./components/controllers/un-protected-route";
 
 const Dashboard = lazy(() => import("./views/dashboard"));
 const Home = lazy(() => import("./views/home"));
+const Logout = lazy(() => import("./views/logout"));
 const LoginRegister = lazy(() => import("./views/login-register"));
 const Memberships = lazy(() => import("./views/memberships"));
 const StartSelling = lazy(() => import("./views/start-selling"));
@@ -27,6 +28,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/logout" element={<Logout />} />
           <Route exact path="/memberships" element={<Memberships />} />
           <Route exact path="/start-selling" element={<StartSelling />} />
           <Route exact path="/product" element={<SingleProduct />} />
