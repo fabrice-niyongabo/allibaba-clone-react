@@ -1,10 +1,55 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { Col, Row } from "reactstrap";
 import "../../assets/scss/login.scss";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { app } from "../../components/constants";
+import { errorHandler } from "../../components/helpers";
 
+interface IregisterState {
+  names: string;
+  email: string;
+  phone: number;
+  password: string;
+  confirmPassword: string;
+  apply: boolean;
+  terms: boolean;
+}
+const initialRegisterState: IregisterState = {
+  names: "",
+  email: "",
+  phone: "" as any,
+  confirmPassword: "",
+  password: "",
+  apply: false,
+  terms: false,
+};
 function LoginRegister() {
+  const [registerState, setRegisterState] = useState(initialRegisterState);
+  const registerChangeHandler = (e: any) => {
+    setRegisterState({ ...registerState, [e.target.name]: e.target.value });
+  };
+
+  const handleRegister = (e: any) => {
+    e.preventDefault();
+    if (registerState.password.length <= 4) {
+      toast.error("Password must be greater than 4 characters");
+      return;
+    }
+    if (registerState.password !== registerState.confirmPassword) {
+      toast.error("Passwords do no match");
+      return;
+    }
+
+    axios
+      .post(app.BACKEND_URL + "/users/register", { ...registerState })
+      .then((res) => {})
+      .catch((error) => {
+        errorHandler(error);
+      });
+  };
   return (
     <>
       <Header />
@@ -38,13 +83,30 @@ function LoginRegister() {
           <Col md={6} className="page-col">
             <div className="register-container">
               <h3>Create Account</h3>
-              <form>
+              <form onSubmit={handleRegister}>
                 <div className="form-group mb-3">
                   <label htmlFor="">Fullname</label>
                   <input
                     type="text"
                     className="form-control"
                     placeholder="Enter your name"
+                    name="names"
+                    onChange={registerChangeHandler}
+                    value={registerState.names}
+                    required
+                  />
+                </div>
+                <div className="form-group mb-3">
+                  <label htmlFor="">Phone Number</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Enter phone. Ex: 078........."
+                    pattern="07[8,2,3,9]{1}[0-9]{7}"
+                    title="Invalid Phone (MTN or Airtel-tigo phone number)"
+                    name="phone"
+                    onChange={registerChangeHandler}
+                    value={registerState.phone}
                     required
                   />
                 </div>
@@ -52,8 +114,11 @@ function LoginRegister() {
                   <label htmlFor="">Email Address</label>
                   <input
                     type="email"
+                    name="email"
                     className="form-control"
                     placeholder="Enter your email address"
+                    value={registerState.email}
+                    onChange={registerChangeHandler}
                     required
                   />
                 </div>
@@ -63,6 +128,9 @@ function LoginRegister() {
                     type="password"
                     className="form-control"
                     placeholder="Enter your password"
+                    name="password"
+                    value={registerState.password}
+                    onChange={registerChangeHandler}
                   />
                 </div>
                 <div className="form-group mb-3">
@@ -71,28 +139,56 @@ function LoginRegister() {
                     type="password"
                     className="form-control"
                     placeholder="Confirm password"
+                    name="confirmPassword"
+                    value={registerState.confirmPassword}
+                    onChange={registerChangeHandler}
                     required
                   />
                 </div>
                 <div className="form-group mb-3">
-                  <label htmlFor="">Trade Role: </label>&nbsp;&nbsp;
                   <div className="role">
-                    <input type="radio" name="role" required />
-                    <span>Buyer</span>
-                  </div>
-                  <div className="role">
-                    <input type="radio" name="role" required />
-                    <span>Seller</span>
-                  </div>
-                  <div className="role">
-                    <input type="radio" name="role" required />
-                    <span>Both</span>
+                    <input
+                      type="checkbox"
+                      checked={registerState.apply}
+                      onClick={() =>
+                        setRegisterState({
+                          ...registerState,
+                          apply: !registerState.apply,
+                        })
+                      }
+                    />
+                    <span
+                      onClick={() =>
+                        setRegisterState({
+                          ...registerState,
+                          apply: !registerState.apply,
+                        })
+                      }
+                    >
+                      App to become a seller
+                    </span>
                   </div>
                 </div>
                 <div className="form-group mb-3">
                   <div className="terms">
-                    <input type="checkbox" />
-                    <span>
+                    <input
+                      type="checkbox"
+                      checked={registerState.terms}
+                      onClick={() =>
+                        setRegisterState({
+                          ...registerState,
+                          terms: !registerState.terms,
+                        })
+                      }
+                    />
+                    <span
+                      onClick={() =>
+                        setRegisterState({
+                          ...registerState,
+                          terms: !registerState.terms,
+                        })
+                      }
+                    >
                       I agree to (a)Free Membership Agreement, (b) Terms of Use,
                       and (c) Privacy Policy. I agree to receive more
                       information from Afriseller.com about its products and

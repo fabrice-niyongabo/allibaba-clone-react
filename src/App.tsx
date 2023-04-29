@@ -2,6 +2,7 @@
 import React, { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import FullLayout from "./layouts/FullLayout";
+import { ToastContainer } from "react-toastify";
 
 const Dashboard = lazy(() => import("./views/dashboard"));
 const Alerts = lazy(() => import("./views/ui/Alerts"));
@@ -76,6 +77,7 @@ const App = () => {
           {/* <Route path="*" element={<NoMatch />} /> */}
         </Routes>
       </BrowserRouter>
+      <ToastContainer position="bottom-right" />
     </>
   );
 };
