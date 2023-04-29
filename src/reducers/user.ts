@@ -1,4 +1,4 @@
-import { IUser, IAction } from "../../interfaces";
+import { IUser, IAction } from "../interfaces";
 import {
   SET_USER_NAMES,
   SET_USER_EMAIL,
@@ -8,6 +8,7 @@ import {
   SET_USER_PHONE,
   SET_USER_ID,
   SET_USER_IMAGE,
+  SET_USER_SHOP_ID,
 } from "../actions/user";
 
 const initialState: IUser = {
@@ -38,6 +39,8 @@ const user = (state: IUser = initialState, action: IAction) => {
       return { ...state, role: action.payload as string };
     case SET_USER_TOKEN:
       return { ...state, token: action.payload as string };
+    case SET_USER_SHOP_ID:
+      return { ...state, shopId: action.payload as any };
     case RESET_USER:
       return initialState;
     default:

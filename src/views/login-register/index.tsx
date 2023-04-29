@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { Col, Row } from "reactstrap";
@@ -7,6 +7,20 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { app } from "../../components/constants";
 import { errorHandler, toastMessage } from "../../components/helpers";
+import FullPageLoader from "../../components/full-page-loader";
+import { IUser, TOAST_MESSAGE_TYPES, USER_ROLE_ENUM } from "../../interfaces";
+import { useDispatch } from "react-redux";
+import {
+  setUserEmail,
+  setUserId,
+  setUserImage,
+  setUserNames,
+  setUserPhone,
+  setUserRole,
+  setUserShopId,
+  setUserToken,
+} from "../../actions/user";
+import { useNavigate } from "react-router-dom";
 
 interface IregisterState {
   names: string;
@@ -26,8 +40,16 @@ const initialRegisterState: IregisterState = {
   apply: false,
   terms: false,
 };
+const initialLoginState = {
+  emailOrPhone: "",
+  password: "",
+};
 function LoginRegister() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [isLoading, setIsloading] = useState<boolean>(false);
   const [registerState, setRegisterState] = useState(initialRegisterState);
+  const [loginState, setLoginState] = useState(initialLoginState);
   const registerChangeHandler = (e: any) => {
     setRegisterState({ ...registerState, [e.target.name]: e.target.value });
   };
@@ -51,15 +73,59 @@ function LoginRegister() {
       toast.error("Please accept our terms of use");
       return;
     }
-
+    setIsloading(true);
     axios
       .post(app.BACKEND_URL + "/users/register", { ...registerState })
       .then((res) => {
-        console.log({ data: res.data });
-        toastMessage();
+        setRegisterState(initialRegisterState);
+        toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
+        setIsloading(false);
       })
       .catch((error) => {
         errorHandler(error);
+        setIsloading(false);
+      });
+  };
+
+  const handleLogin = (e: any) => {
+    e.preventDefault();
+    setIsloading(true);
+    axios
+      .post(app.BACKEND_URL + "/users/login", { ...loginState })
+      .then((res) => {
+        const {
+          userId,
+          email,
+          phone,
+          image,
+          isActive,
+          names,
+          role,
+          token,
+          shopId,
+        } = res.data.user as IUser;
+        dispatch(setUserId(userId));
+        dispatch(setUserEmail(email));
+        dispatch(setUserPhone(phone));
+        dispatch(setUserImage(image));
+        dispatch(setUserNames(names));
+        dispatch(setUserRole(role));
+        dispatch(setUserShopId(shopId));
+        dispatch(setUserToken(token));
+        toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
+        setIsloading(false);
+        if (role === USER_ROLE_ENUM.ADMIN) {
+          navigate("/dashboard/main");
+          return;
+        }
+        if (role === USER_ROLE_ENUM.CLIENT) {
+          navigate("/");
+          return;
+        }
+      })
+      .catch((error) => {
+        errorHandler(error);
+        setIsloading(false);
       });
   };
   return (
@@ -70,12 +136,20 @@ function LoginRegister() {
           <Col md={6} className="page-col">
             <div className="login-container">
               <h3>Login</h3>
-              <form>
+              <form onSubmit={handleLogin}>
                 <div className="form-group mb-3">
-                  <label htmlFor="">Email Address</label>
+                  <label htmlFor="">Email Address or phone number</label>
                   <input
+                    type="text"
                     className="form-control"
-                    placeholder="Enter your email address"
+                    placeholder="Enter your email address or phone number"
+                    value={loginState.emailOrPhone}
+                    onChange={(e) =>
+                      setLoginState({
+                        ...loginState,
+                        emailOrPhone: e.target.value,
+                      })
+                    }
                   />
                 </div>
                 <div className="form-group mb-3">
@@ -84,10 +158,19 @@ function LoginRegister() {
                     type="password"
                     className="form-control"
                     placeholder="Enter your password"
+                    value={loginState.password}
+                    onChange={(e) =>
+                      setLoginState({
+                        ...loginState,
+                        password: e.target.value,
+                      })
+                    }
                   />
                 </div>
                 <div className="btn-container">
-                  <button className="btn btn-primary">Login</button>
+                  <button type="submit" className="btn btn-primary">
+                    Login
+                  </button>
                 </div>
               </form>
             </div>
@@ -177,7 +260,7 @@ function LoginRegister() {
                         })
                       }
                     >
-                      App to become a seller
+                      Apply to become a seller
                     </span>
                   </div>
                 </div>
@@ -209,7 +292,9 @@ function LoginRegister() {
                   </div>
                 </div>
                 <div className="btn-container">
-                  <button className="btn btn-primary">Register</button>
+                  <button type="submit" className="btn btn-primary">
+                    Register
+                  </button>
                 </div>
               </form>
             </div>
@@ -217,6 +302,7 @@ function LoginRegister() {
         </Row>
       </div>
       <Footer />
+      <FullPageLoader open={isLoading} />
     </>
   );
 }

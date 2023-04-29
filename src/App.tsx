@@ -3,6 +3,8 @@ import React, { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import FullLayout from "./layouts/FullLayout";
 import { ToastContainer } from "react-toastify";
+import { ThemeProvider, createMuiTheme } from "@mui/material";
+import AdminProtectedRoute from "./components/controllers/admin-protected-route";
 
 const Dashboard = lazy(() => import("./views/dashboard"));
 const Alerts = lazy(() => import("./views/ui/Alerts"));
@@ -14,9 +16,13 @@ const SingleProduct = lazy(() => import("./views/single-product"));
 const ProductCategory = lazy(() => import("./views/products-by-categories"));
 const Shop = lazy(() => import("./views/shop"));
 
+const theme = createMuiTheme({
+  //   theme properties here
+});
+
 const App = () => {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -37,18 +43,18 @@ const App = () => {
           /> */}
           <Route
             exact
-            path="/dashboard"
+            path="/dashboard/main"
             element={
-              // <AdminProtectedRoute>
-              <div className="dark">
-                <FullLayout />
-              </div>
-              // </AdminProtectedRoute>
+              <AdminProtectedRoute>
+                <div className="dark">
+                  <FullLayout />
+                </div>
+              </AdminProtectedRoute>
             }
             children={
               <>
-                <Route path="/dashboard/" element={<Dashboard />} />
-                <Route path="/dashboard/all" exact element={<Alerts />} />
+                <Route path="/dashboard/main" element={<Dashboard />} />
+                <Route path="/dashboard/main/all" exact element={<Alerts />} />
                 {/* <Route
                 path="/dashboard/profile"
                 exact
@@ -78,7 +84,7 @@ const App = () => {
         </Routes>
       </BrowserRouter>
       <ToastContainer position="bottom-right" />
-    </>
+    </ThemeProvider>
   );
 };
 
