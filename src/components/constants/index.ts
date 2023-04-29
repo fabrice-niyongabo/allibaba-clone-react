@@ -1,5 +1,6 @@
 export const appColors = {
-  GREEN: "#13d22d",
+  // GREEN: "#13d22d",
+  GREEN: "#1d4511",
   LIGHT_BLACK: "#17161e",
   DARK_BLACK: "#121117",
   GRAY: "#f3f3f3",
@@ -11,6 +12,7 @@ export const appColors = {
 
 export const app = {
   PUBLIC_URL: process.env.PUBLIC_URL,
+  SOCKET_URL: process.env.REACT_APP_SOCKET_URL,
   BACKEND_URL: process.env.REACT_APP_BACKEND_URL,
-  FILE_URL: process.env.REACT_APP_BACKEND_FILE_URL,
+  FILE_URL: process.env.REACT_APP_FILE_URL,
 };

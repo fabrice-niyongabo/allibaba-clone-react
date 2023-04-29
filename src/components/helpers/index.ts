@@ -51,6 +51,13 @@ export const errorHandler = (error: any) => {
   handleAuthError(error);
 };
 
+export const setHeaders = (token: string) => {
+  return {
+    headers: {
+      token: token,
+    },
+  };
+};
 export const currencyFormatter = (num: any) => {
   if (
     isNaN(num) ||

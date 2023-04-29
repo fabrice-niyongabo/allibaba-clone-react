@@ -25,3 +25,9 @@ export interface IUser {
   isActive: boolean;
   token: string;
 }
+
+export interface ICategory {
+  id: number;
+  name: string;
+  image: string;
+}

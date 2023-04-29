@@ -5,9 +5,9 @@ import FullLayout from "./layouts/FullLayout";
 import { ToastContainer } from "react-toastify";
 import { ThemeProvider, createMuiTheme } from "@mui/material";
 import AdminProtectedRoute from "./components/controllers/admin-protected-route";
+import UnProtectedRoute from "./components/controllers/un-protected-route";
 
 const Dashboard = lazy(() => import("./views/dashboard"));
-const Alerts = lazy(() => import("./views/ui/Alerts"));
 const Home = lazy(() => import("./views/home"));
 const LoginRegister = lazy(() => import("./views/login-register"));
 const Memberships = lazy(() => import("./views/memberships"));
@@ -15,6 +15,7 @@ const StartSelling = lazy(() => import("./views/start-selling"));
 const SingleProduct = lazy(() => import("./views/single-product"));
 const ProductCategory = lazy(() => import("./views/products-by-categories"));
 const Shop = lazy(() => import("./views/shop"));
+const Categories = lazy(() => import("./views/admin/categories"));
 
 const theme = createMuiTheme({
   //   theme properties here
@@ -26,21 +27,20 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/login-register" element={<LoginRegister />} />
           <Route exact path="/memberships" element={<Memberships />} />
           <Route exact path="/start-selling" element={<StartSelling />} />
           <Route exact path="/product" element={<SingleProduct />} />
           <Route exact path="/product-category" element={<ProductCategory />} />
           <Route exact path="/shop" element={<Shop />} />
-          {/* <Route
+          <Route
             exact
-            path="/login"
+            path="/login-register"
             element={
               <UnProtectedRoute>
                 <LoginRegister />
               </UnProtectedRoute>
             }
-          /> */}
+          />
           <Route
             exact
             path="/dashboard/main"
@@ -53,14 +53,14 @@ const App = () => {
             }
             children={
               <>
-                <Route path="/dashboard/main" element={<Dashboard />} />
-                <Route path="/dashboard/main/all" exact element={<Alerts />} />
+                <Route path="/dashboard/main" exact element={<Dashboard />} />
+                <Route
+                  path="/dashboard/main/categories"
+                  exact
+                  element={<Categories />}
+                />
+
                 {/* <Route
-                path="/dashboard/profile"
-                exact
-                element={<AdminProfile />}
-              />
-              <Route
                 path="/dashboard/productscategories"
                 exact
                 element={<ProductCats />}
