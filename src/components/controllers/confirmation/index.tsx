@@ -8,7 +8,18 @@ import {
 } from "@mui/material";
 import React from "react";
 
-function Confirmation({ showAlert, setShowAlert, callback, title }) {
+interface IConfirmationProps {
+  showAlert: boolean;
+  setShowAlert: any;
+  callback: any;
+  title: string;
+}
+function Confirmation({
+  showAlert,
+  setShowAlert,
+  callback,
+  title,
+}: IConfirmationProps) {
   return (
     <div>
       <Dialog

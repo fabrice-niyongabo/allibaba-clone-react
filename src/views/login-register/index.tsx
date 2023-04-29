@@ -6,7 +6,7 @@ import "../../assets/scss/login.scss";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { app } from "../../components/constants";
-import { errorHandler } from "../../components/helpers";
+import { errorHandler, toastMessage } from "../../components/helpers";
 
 interface IregisterState {
   names: string;
@@ -34,6 +34,10 @@ function LoginRegister() {
 
   const handleRegister = (e: any) => {
     e.preventDefault();
+    if (!registerState.terms) {
+      toast.error("Please accept our terms of use");
+      return;
+    }
     if (registerState.password.length <= 4) {
       toast.error("Password must be greater than 4 characters");
       return;
@@ -43,9 +47,17 @@ function LoginRegister() {
       return;
     }
 
+    if (!registerState.terms) {
+      toast.error("Please accept our terms of use");
+      return;
+    }
+
     axios
       .post(app.BACKEND_URL + "/users/register", { ...registerState })
-      .then((res) => {})
+      .then((res) => {
+        console.log({ data: res.data });
+        toastMessage();
+      })
       .catch((error) => {
         errorHandler(error);
       });
