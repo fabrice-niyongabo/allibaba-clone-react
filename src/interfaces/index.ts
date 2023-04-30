@@ -66,3 +66,13 @@ export interface IMyshopReducer {
   isLoading: boolean;
   myShop: Ishop | undefined;
 }
+
+export interface ICategoriesReducer {
+  isLoading: boolean;
+  categories: ICategory[];
+}
+
+export enum PRICE_TYPE_ENUM {
+  SINGLE = "single",
+  MANY = "many",
+}

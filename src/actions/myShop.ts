@@ -20,7 +20,7 @@ export const setIsLoadingMyShop = (value: boolean): IAction => ({
   payload: value,
 });
 
-export const resetMyUser = () => ({ type: RESET_MY_SHOP });
+export const resetMyShop = () => ({ type: RESET_MY_SHOP });
 
 export const fetchMyShop = (): any => (dispatch: any, getState: any) => {
   const { user } = getState();

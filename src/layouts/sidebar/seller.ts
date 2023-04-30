@@ -21,12 +21,12 @@ export const sellerNavigation = [
   },
   {
     title: "Products",
-    href: "/badges",
+    href: "/dashboard/addproduct",
     icon: "bi bi-card-text",
   },
   {
     title: "Add New Product",
-    href: "/buttons",
+    href: "/dashboard/addproduct",
     icon: "bi bi-card-text",
   },
 ];
