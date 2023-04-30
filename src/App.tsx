@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import { ThemeProvider, createMuiTheme } from "@mui/material";
 import AdminProtectedRoute from "./components/controllers/admin-protected-route";
 import UnProtectedRoute from "./components/controllers/un-protected-route";
+import ProtectedRoute from "./components/controllers/protected-route";
 
 const Dashboard = lazy(() => import("./views/dashboard"));
 const Home = lazy(() => import("./views/home"));
@@ -17,6 +18,7 @@ const SingleProduct = lazy(() => import("./views/single-product"));
 const ProductCategory = lazy(() => import("./views/products-by-categories"));
 const Shop = lazy(() => import("./views/shop"));
 const Categories = lazy(() => import("./views/admin/categories"));
+const Apply = lazy(() => import("./views/apply"));
 
 const theme = createMuiTheme({
   //   theme properties here
@@ -41,6 +43,15 @@ const App = () => {
               <UnProtectedRoute>
                 <LoginRegister />
               </UnProtectedRoute>
+            }
+          />
+          <Route
+            exact
+            path="/apply"
+            element={
+              <ProtectedRoute>
+                <Apply />
+              </ProtectedRoute>
             }
           />
           <Route

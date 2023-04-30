@@ -9,6 +9,7 @@ export const SET_USER_ROLE = "SET_USER_ROLE";
 export const SET_USER_IMAGE = "SET_USER_IMAGE";
 export const SET_USER_ID = "SET_USER_ID";
 export const SET_USER_SHOP_ID = "SET_USER_SHOP_ID";
+export const SET_USER_APPLY = "SET_USER_APPLY";
 export const RESET_USER = "RESET_USER";
 
 interface IAction {
@@ -18,6 +19,10 @@ interface IAction {
 export const setUserNames = (names: string): IAction => ({
   type: SET_USER_NAMES,
   payload: names,
+});
+export const setUserApply = (value: boolean): IAction => ({
+  type: SET_USER_APPLY,
+  payload: value,
 });
 export const setUserImage = (image: string): IAction => ({
   type: SET_USER_IMAGE,

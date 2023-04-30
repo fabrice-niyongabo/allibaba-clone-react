@@ -23,6 +23,7 @@ export interface IUser {
   shopId: number | null;
   image: string;
   isActive: boolean;
+  apply: boolean;
   token: string;
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Navbar,
   Collapse,
@@ -17,6 +17,7 @@ import { ReactComponent as LogoWhite } from "../assets/images/logos/xtremelogowh
 import user1 from "../assets/images/users/user1.jpg";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = React.useState(false);
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
 
@@ -96,7 +97,9 @@ const Header = () => {
             <DropdownItem divider />
             <DropdownItem>My Balance</DropdownItem>
             <DropdownItem>Inbox</DropdownItem>
-            <DropdownItem>Logout</DropdownItem>
+            <DropdownItem onClick={() => navigate("/logout")}>
+              Logout
+            </DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </Collapse>

@@ -9,6 +9,7 @@ import {
   SET_USER_ID,
   SET_USER_IMAGE,
   SET_USER_SHOP_ID,
+  SET_USER_APPLY,
 } from "../actions/user";
 
 const initialState: IUser = {
@@ -21,6 +22,7 @@ const initialState: IUser = {
   userId: 0,
   shopId: null,
   isActive: true,
+  apply: false,
 };
 
 const user = (state: IUser = initialState, action: IAction) => {
@@ -41,6 +43,8 @@ const user = (state: IUser = initialState, action: IAction) => {
       return { ...state, token: action.payload as string };
     case SET_USER_SHOP_ID:
       return { ...state, shopId: action.payload as any };
+    case SET_USER_APPLY:
+      return { ...state, apply: action.payload as boolean };
     case RESET_USER:
       return initialState;
     default:

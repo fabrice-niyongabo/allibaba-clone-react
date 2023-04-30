@@ -14,6 +14,7 @@ const Logo = () => {
       >
         <img
           src={logo}
+          alt="logo"
           style={{
             width: 50,
             height: 50,

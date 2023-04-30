@@ -11,6 +11,7 @@ import FullPageLoader from "../../components/full-page-loader";
 import { IUser, TOAST_MESSAGE_TYPES, USER_ROLE_ENUM } from "../../interfaces";
 import { useDispatch } from "react-redux";
 import {
+  setUserApply,
   setUserEmail,
   setUserId,
   setUserImage,
@@ -77,7 +78,27 @@ function LoginRegister() {
     axios
       .post(app.BACKEND_URL + "/users/register", { ...registerState })
       .then((res) => {
+        const {
+          userId,
+          email,
+          phone,
+          image,
+          isActive,
+          names,
+          role,
+          token,
+          shopId,
+        } = res.data.user as IUser;
+        dispatch(setUserApply(registerState.apply));
         setRegisterState(initialRegisterState);
+        dispatch(setUserId(userId));
+        dispatch(setUserEmail(email));
+        dispatch(setUserPhone(phone));
+        dispatch(setUserImage(image));
+        dispatch(setUserNames(names));
+        dispatch(setUserShopId(shopId));
+        dispatch(setUserRole(role));
+        dispatch(setUserToken(token));
         toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
         setIsloading(false);
       })

@@ -1,0 +1,16 @@
+@import "variables";
+@import "mixins";
+
+.apply-main-container {
+  background-color: $white;
+  padding: 5rem;
+  input {
+    font-size: 12px !important;
+  }
+  .open-close-container {
+    @include flexSpace;
+    .form-group {
+      flex: 1;
+    }
+  }
+}

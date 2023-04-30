@@ -116,7 +116,7 @@ function SubCategories({
                     key={position}
                     style={{
                       display: "flex",
-                      alignItem: "center",
+                      alignItems: "center",
                       justifyContent: "space-between",
                       borderBottom: "1px solid #CCC",
                     }}
