@@ -24,6 +24,16 @@ export const handleAuthError = (error: any) => {
   }
 };
 
+export const returnErroMessage = (error: any) => {
+  if (error?.response?.data?.msg) {
+    return error.response.data.msg;
+  } else if (error.message) {
+    return error.message;
+  } else {
+    return error;
+  }
+};
+
 export const randomNumber = () => {
   const max = 99999;
   const min = 11111;

@@ -16,9 +16,9 @@ import {
   setHeaders,
   toastMessage,
 } from "../../components/helpers";
-import { TOAST_MESSAGE_TYPES } from "../../interfaces";
+import { IUser, TOAST_MESSAGE_TYPES } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
-import { setUserApply } from "../../actions/user";
+import { setUserApply, setUserRole, setUserShopId } from "../../actions/user";
 
 const initialState = {
   shopName: "",
@@ -33,7 +33,9 @@ const initialState = {
 function Apply() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { phone, token } = useSelector((state: RootState) => state.user);
+  const { phone, token, shopId } = useSelector(
+    (state: RootState) => state.user
+  );
   const [state, setState] = useState({ ...initialState, phone1: phone });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const changeHandler = (e: any) => {
@@ -62,6 +64,9 @@ function Apply() {
       )
       .then((res) => {
         setIsLoading(false);
+        const { role, shopId } = res.data.user as IUser;
+        dispatch(setUserRole(role));
+        dispatch(setUserShopId(shopId));
         toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
         navigate("/dashboard");
       })
@@ -72,6 +77,9 @@ function Apply() {
   };
 
   useEffect(() => {
+    if (shopId !== null) {
+      navigate("/dashboard");
+    }
     return () => {
       dispatch(setUserApply(false));
     };

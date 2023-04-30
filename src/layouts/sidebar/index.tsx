@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../reducers";
 import { USER_ROLE_ENUM } from "../../interfaces";
 import { adminNavigation } from "./admin";
+import { sellerNavigation } from "./seller";
 
 const Sidebar = () => {
   const { role } = useSelector((state: RootState) => state.user);
@@ -29,6 +30,22 @@ const Sidebar = () => {
         <Nav vertical className="sidebarNav">
           {role === USER_ROLE_ENUM.ADMIN &&
             adminNavigation.map((navi, index) => (
+              <NavItem key={index} className="sidenav-bg">
+                <Link
+                  to={navi.href}
+                  className={
+                    location.pathname === navi.href
+                      ? "text-primary nav-link py-3"
+                      : "nav-link text-secondary py-3"
+                  }
+                >
+                  <i className={navi.icon}></i>
+                  <span className="ms-3 d-inline-block">{navi.title}</span>
+                </Link>
+              </NavItem>
+            ))}
+          {role === USER_ROLE_ENUM.SELLER &&
+            sellerNavigation.map((navi, index) => (
               <NavItem key={index} className="sidenav-bg">
                 <Link
                   to={navi.href}

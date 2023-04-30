@@ -7,6 +7,9 @@ import { ThemeProvider, createMuiTheme } from "@mui/material";
 import AdminProtectedRoute from "./components/controllers/admin-protected-route";
 import UnProtectedRoute from "./components/controllers/un-protected-route";
 import ProtectedRoute from "./components/controllers/protected-route";
+import { useSelector } from "react-redux";
+import { RootState } from "./reducers";
+import { IUser, USER_ROLE_ENUM } from "./interfaces";
 
 const Dashboard = lazy(() => import("./views/admin/dashboard"));
 const Home = lazy(() => import("./views/home"));
@@ -20,11 +23,14 @@ const Shop = lazy(() => import("./views/shop"));
 const Categories = lazy(() => import("./views/admin/categories"));
 const Apply = lazy(() => import("./views/apply"));
 
+const MyShop = lazy(() => import("./views/seller/my-shop"));
+
 const theme = createMuiTheme({
   //   theme properties here
 });
 
 const App = () => {
+  const { role } = useSelector((state: RootState) => state.user as IUser);
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
@@ -91,6 +97,56 @@ const App = () => {
                 element={<DeliveryFees />}
               /> */}
               </>
+            }
+          />
+          <Route
+            exact
+            path="/dashboard/main"
+            element={
+              <AdminProtectedRoute>
+                <div className="dark">
+                  <FullLayout />
+                </div>
+              </AdminProtectedRoute>
+            }
+            children={
+              <>
+                <Route path="/dashboard/main" exact element={<Dashboard />} />
+                <Route
+                  path="/dashboard/main/categories"
+                  exact
+                  element={<Categories />}
+                />
+              </>
+            }
+          />
+          <Route
+            exact
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <div className="dark">
+                  <FullLayout />
+                </div>
+              </ProtectedRoute>
+            }
+            children={
+              role === USER_ROLE_ENUM.SELLER ? (
+                <>
+                  <Route path="/dashboard" exact element={<Dashboard />} />
+                  <Route path="/dashboard/myshop" exact element={<MyShop />} />
+                </>
+              ) : (
+                <>
+                  <Route path="/dashboard" exact element={<Dashboard />} />
+                  {/* for clients */}
+                  {/* <Route
+                  path="/dashboard/main/categories"
+                  exact
+                  element={<Categories />}
+                /> */}
+                </>
+              )
             }
           />
           {/* <Route path="*" element={<NoMatch />} /> */}
