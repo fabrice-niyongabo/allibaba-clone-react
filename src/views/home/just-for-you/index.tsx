@@ -9,7 +9,7 @@ function JustForYou() {
       <Row>
         <Col md={2}>
           <div className="product-container">
-            <img src={img1} />
+            <img alt="" src={img1} />
             <div className="prod-description">
               <p>Face Cleaning Solution</p>
               <p>2,000 RWF</p>
@@ -19,7 +19,7 @@ function JustForYou() {
         </Col>
         <Col md={2}>
           <div className="product-container">
-            <img src={img1} />
+            <img alt="" src={img1} />
             <div className="prod-description">
               <p>Face Cleaning Solution</p>
               <p>2,000 RWF</p>
@@ -29,7 +29,7 @@ function JustForYou() {
         </Col>
         <Col md={2}>
           <div className="product-container">
-            <img src={img1} />
+            <img alt="" src={img1} />
             <div className="prod-description">
               <p>Face Cleaning Solution</p>
               <p>2,000 RWF</p>
@@ -39,7 +39,7 @@ function JustForYou() {
         </Col>
         <Col md={2}>
           <div className="product-container">
-            <img src={img1} />
+            <img alt="" src={img1} />
             <div className="prod-description">
               <p>Face Cleaning Solution</p>
               <p>2,000 RWF</p>
@@ -49,7 +49,7 @@ function JustForYou() {
         </Col>
         <Col md={2}>
           <div className="product-container">
-            <img src={img1} />
+            <img alt="" src={img1} />
             <div className="prod-description">
               <p>Face Cleaning Solution</p>
               <p>2,000 RWF</p>
@@ -59,7 +59,7 @@ function JustForYou() {
         </Col>
         <Col md={2}>
           <div className="product-container">
-            <img src={img1} />
+            <img alt="" src={img1} />
             <div className="prod-description">
               <p>Face Cleaning Solution</p>
               <p>2,000 RWF</p>
@@ -69,7 +69,7 @@ function JustForYou() {
         </Col>
         <Col md={2}>
           <div className="product-container">
-            <img src={img1} />
+            <img alt="" src={img1} />
             <div className="prod-description">
               <p>Face Cleaning Solution</p>
               <p>2,000 RWF</p>
@@ -79,7 +79,7 @@ function JustForYou() {
         </Col>
         <Col md={2}>
           <div className="product-container">
-            <img src={img1} />
+            <img alt="" src={img1} />
             <div className="prod-description">
               <p>Face Cleaning Solution</p>
               <p>2,000 RWF</p>
@@ -89,7 +89,7 @@ function JustForYou() {
         </Col>
         <Col md={2}>
           <div className="product-container">
-            <img src={img1} />
+            <img alt="" src={img1} />
             <div className="prod-description">
               <p>Face Cleaning Solution</p>
               <p>2,000 RWF</p>
@@ -99,7 +99,7 @@ function JustForYou() {
         </Col>
         <Col md={2}>
           <div className="product-container">
-            <img src={img1} />
+            <img alt="" src={img1} />
             <div className="prod-description">
               <p>Face Cleaning Solution</p>
               <p>2,000 RWF</p>
@@ -109,7 +109,7 @@ function JustForYou() {
         </Col>
         <Col md={2}>
           <div className="product-container">
-            <img src={img1} />
+            <img alt="" src={img1} />
             <div className="prod-description">
               <p>Face Cleaning Solution</p>
               <p>2,000 RWF</p>
@@ -119,7 +119,7 @@ function JustForYou() {
         </Col>
         <Col md={2}>
           <div className="product-container">
-            <img src={img1} />
+            <img alt="" src={img1} />
             <div className="prod-description">
               <p>Face Cleaning Solution</p>
               <p>2,000 RWF</p>

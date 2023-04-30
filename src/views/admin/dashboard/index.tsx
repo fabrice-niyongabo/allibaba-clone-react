@@ -1,9 +1,9 @@
 import { Col, Row } from "reactstrap";
-import SalesChart from "../../components/dashboard/SalesChart";
-import Feeds from "../../components/dashboard/Feeds";
-import ProjectTables from "../../components/dashboard/ProjectTable";
-import TopCards from "../../components/dashboard/TopCards";
-import Blog from "../../components/dashboard/Blog";
+import SalesChart from "../../../components/dashboard/SalesChart";
+import Feeds from "../../../components/dashboard/Feeds";
+import ProjectTables from "../../../components/dashboard/ProjectTable";
+import TopCards from "../../../components/dashboard/TopCards";
+import Blog from "../../../components/dashboard/Blog";
 import bg1 from "../../assets/images/bg/bg1.jpg";
 import bg2 from "../../assets/images/bg/bg2.jpg";
 import bg3 from "../../assets/images/bg/bg3.jpg";

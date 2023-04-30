@@ -113,7 +113,7 @@ function Welcome() {
                   <span>200,000 RWF</span>
                 </div>
                 <div>
-                  <img src={cameraImage} />
+                  <img alt="" src={cameraImage} />
                 </div>
               </li>
               <li>
@@ -124,7 +124,7 @@ function Welcome() {
                   <span>200,000 RWF</span>
                 </div>
                 <div>
-                  <img src={cameraImage} />
+                  <img alt="" src={cameraImage} />
                 </div>
               </li>
               <li>
@@ -135,7 +135,7 @@ function Welcome() {
                   <span>200,000 RWF</span>
                 </div>
                 <div>
-                  <img src={cameraImage} />
+                  <img alt="" src={cameraImage} />
                 </div>
               </li>
               <li>
@@ -146,7 +146,7 @@ function Welcome() {
                   <span>200,000 RWF</span>
                 </div>
                 <div>
-                  <img src={cameraImage} />
+                  <img alt="" src={cameraImage} />
                 </div>
               </li>
               <li>
@@ -157,7 +157,7 @@ function Welcome() {
                   <span>200,000 RWF</span>
                 </div>
                 <div>
-                  <img src={cameraImage} />
+                  <img alt="" src={cameraImage} />
                 </div>
               </li>
             </ul>

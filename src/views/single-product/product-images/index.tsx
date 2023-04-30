@@ -9,13 +9,13 @@ function ProductImages() {
     <div>
       <Carousel infiniteLoop swipeable={true} dynamicHeight={true}>
         <div>
-          <img src={img1} />
+          <img alt="" src={img1} />
         </div>
         <div>
-          <img src={img2} />
+          <img alt="" src={img2} />
         </div>
         <div>
-          <img src={img3} />
+          <img alt="" src={img3} />
         </div>
       </Carousel>
     </div>

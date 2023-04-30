@@ -5,9 +5,9 @@ function Supplier() {
   return (
     <>
       <div className="supplier-banner">
-        <img src={img} alt="" />
+        <img alt="" src={img} alt="" />
         <div className="supplier-profile">
-          <img src={img} alt="" />
+          <img alt="" src={img} alt="" />
         </div>
       </div>
       <p>

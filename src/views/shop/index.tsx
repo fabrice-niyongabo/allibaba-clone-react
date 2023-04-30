@@ -14,11 +14,11 @@ function Shop() {
       <Header />
       <div className="afriseller-container my-3 shop-main-container">
         <div className="banner">
-          <img src={img1} className="banner-img" />
+          <img alt="" src={img1} className="banner-img" />
           <div className="details-container">
             <div className="details">
               <div className="cont">
-                <img src={img2} />
+                <img alt="" src={img2} />
                 <div>
                   <h3>Kigali shopping group</h3>
                   <p>Kigali - Rwanda</p>

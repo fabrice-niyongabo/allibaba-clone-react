@@ -10,42 +10,42 @@ function Categories() {
       <Row>
         <Col md={4} style={{ height: "100%" }}>
           <div className="icon">
-            <img src={img1} />
+            <img alt="" src={img1} />
           </div>
         </Col>
         <Col md={8}>
           <Row>
             <Col sm={6} md={3} className="product-container">
               <h3>Face Cleansing Solution</h3>
-              <img src={img2} />
+              <img alt="" src={img2} />
             </Col>
             <Col sm={6} md={3} className="product-container">
               <h3>Apple iphone 12</h3>
-              <img src={img2} />
+              <img alt="" src={img2} />
             </Col>
             <Col sm={6} md={3} className="product-container">
               <h3>Face Cleansing Solution</h3>
-              <img src={img2} />
+              <img alt="" src={img2} />
             </Col>
             <Col sm={6} md={3} className="product-container">
               <h3>Face Cleansing Solution</h3>
-              <img src={img2} />
+              <img alt="" src={img2} />
             </Col>
             <Col sm={6} md={3} className="product-container">
               <h3>Face Cleansing Solution</h3>
-              <img src={img2} />
+              <img alt="" src={img2} />
             </Col>
             <Col sm={6} md={3} className="product-container">
               <h3>Face Cleansing Solution</h3>
-              <img src={img2} />
+              <img alt="" src={img2} />
             </Col>
             <Col sm={6} md={3} className="product-container">
               <h3>Face Cleansing Solution</h3>
-              <img src={img2} />
+              <img alt="" src={img2} />
             </Col>
             <Col sm={6} md={3} className="product-container">
               <h3>Face Cleansing Solution</h3>
-              <img src={img2} />
+              <img alt="" src={img2} />
             </Col>
           </Row>
         </Col>

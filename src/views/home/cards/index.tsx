@@ -14,19 +14,19 @@ function Cards() {
             <Row>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={ring} />
+                  <img alt="" src={ring} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={dress} />
+                  <img alt="" src={dress} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={parfume} />
+                  <img alt="" src={parfume} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>
@@ -39,19 +39,19 @@ function Cards() {
             <Row>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={ring} />
+                  <img alt="" src={ring} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={dress} />
+                  <img alt="" src={dress} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={parfume} />
+                  <img alt="" src={parfume} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>
@@ -64,19 +64,19 @@ function Cards() {
             <Row>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={ring} />
+                  <img alt="" src={ring} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={dress} />
+                  <img alt="" src={dress} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={parfume} />
+                  <img alt="" src={parfume} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>
@@ -89,19 +89,19 @@ function Cards() {
             <Row>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={ring} />
+                  <img alt="" src={ring} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={dress} />
+                  <img alt="" src={dress} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={parfume} />
+                  <img alt="" src={parfume} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>
@@ -114,19 +114,19 @@ function Cards() {
             <Row>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={ring} />
+                  <img alt="" src={ring} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={dress} />
+                  <img alt="" src={dress} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={parfume} />
+                  <img alt="" src={parfume} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>
@@ -139,19 +139,19 @@ function Cards() {
             <Row>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={ring} />
+                  <img alt="" src={ring} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={dress} />
+                  <img alt="" src={dress} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>
               <Col sm={4}>
                 <div className="product-container">
-                  <img src={parfume} />
+                  <img alt="" src={parfume} />
                   <span>5,000 RWF</span>
                 </div>
               </Col>

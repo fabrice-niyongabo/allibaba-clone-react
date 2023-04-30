@@ -40,18 +40,18 @@ function Header() {
             className="icon-container"
             onClick={() => navigate("/login-register")}
           >
-            <img src={userImage} />
+            <img alt="" src={userImage} />
             <span>Sign In</span>
           </div>
           <div className="icon-container">
-            <img src={wishListImage} />
+            <img alt="" src={wishListImage} />
             <span>Wishlist</span>
           </div>
           <div
             className="icon-container"
             onClick={() => navigate("/start-selling")}
           >
-            <img src={walletImage} />
+            <img alt="" src={walletImage} />
             <span>Start Selling</span>
           </div>
         </div>
@@ -102,7 +102,11 @@ function Header() {
                     </div>
                   </div>
                   <div className="col-md-4">
-                    <img src={categoryBanner} style={{ width: "100%" }} />
+                    <img
+                      alt=""
+                      src={categoryBanner}
+                      style={{ width: "100%" }}
+                    />
                   </div>
                 </div>
               </div>

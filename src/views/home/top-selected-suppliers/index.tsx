@@ -22,35 +22,35 @@ function TopSelectedSupplier() {
           withoutControls={true}
         >
           <div className="slider-item">
-            <img src={img1} alt="" style={{ width: 100 }} />
+            <img alt="" src={img1} alt="" style={{ width: 100 }} />
             <span>Supplier Name</span>
           </div>
           <div className="slider-item">
-            <img src={img2} alt="" style={{ width: 100 }} />
+            <img alt="" src={img2} alt="" style={{ width: 100 }} />
             <span>Supplier Name</span>
           </div>
           <div className="slider-item">
-            <img src={img3} alt="" style={{ width: 100 }} />
+            <img alt="" src={img3} alt="" style={{ width: 100 }} />
             <span>Supplier Name</span>
           </div>
           <div className="slider-item">
-            <img src={img3} alt="" style={{ width: 100 }} />
+            <img alt="" src={img3} alt="" style={{ width: 100 }} />
             <span>Supplier Name</span>
           </div>
           <div className="slider-item">
-            <img src={img3} alt="" style={{ width: 100 }} />
+            <img alt="" src={img3} alt="" style={{ width: 100 }} />
             <span>Supplier Name</span>
           </div>
           <div className="slider-item">
-            <img src={img3} alt="" style={{ width: 100 }} />
+            <img alt="" src={img3} alt="" style={{ width: 100 }} />
             <span>Supplier Name</span>
           </div>
           <div className="slider-item">
-            <img src={img4} alt="" style={{ width: 100 }} />
+            <img alt="" src={img4} alt="" style={{ width: 100 }} />
             <span>Supplier Name</span>
           </div>
           <div className="slider-item">
-            <img src={img5} alt="" style={{ width: 100 }} />
+            <img alt="" src={img5} alt="" style={{ width: 100 }} />
             <span>Supplier Name</span>
           </div>
         </Carousel>

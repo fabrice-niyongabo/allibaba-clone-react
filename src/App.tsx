@@ -8,7 +8,7 @@ import AdminProtectedRoute from "./components/controllers/admin-protected-route"
 import UnProtectedRoute from "./components/controllers/un-protected-route";
 import ProtectedRoute from "./components/controllers/protected-route";
 
-const Dashboard = lazy(() => import("./views/dashboard"));
+const Dashboard = lazy(() => import("./views/admin/dashboard"));
 const Home = lazy(() => import("./views/home"));
 const Logout = lazy(() => import("./views/logout"));
 const LoginRegister = lazy(() => import("./views/login-register"));

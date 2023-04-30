@@ -50,7 +50,7 @@ function Products() {
           <Row>
             <Col md={3} sm={6} xs={6} className="mb-3">
               <div className="product-item">
-                <img src={image} />
+                <img alt="" src={image} />
                 <div className="description">
                   <span>
                     OEM 27 inch 4K gaming monitor 144Hz FreeSync HDR PC Monitor
@@ -61,7 +61,7 @@ function Products() {
             </Col>
             <Col md={3} sm={6} xs={6} className="mb-3">
               <div className="product-item">
-                <img src={image} />
+                <img alt="" src={image} />
                 <div className="description">
                   <span>
                     OEM 27 inch 4K gaming monitor 144Hz FreeSync HDR PC Monitor
@@ -72,7 +72,7 @@ function Products() {
             </Col>
             <Col md={3} sm={6} xs={6} className="mb-3">
               <div className="product-item">
-                <img src={image} />
+                <img alt="" src={image} />
                 <div className="description">
                   <span>
                     OEM 27 inch 4K gaming monitor 144Hz FreeSync HDR PC Monitor
@@ -83,7 +83,7 @@ function Products() {
             </Col>
             <Col md={3} sm={6} xs={6} className="mb-3">
               <div className="product-item">
-                <img src={image} />
+                <img alt="" src={image} />
                 <div className="description">
                   <span>
                     OEM 27 inch 4K gaming monitor 144Hz FreeSync HDR PC Monitor
@@ -94,7 +94,7 @@ function Products() {
             </Col>
             <Col md={3} sm={6} xs={6} className="mb-3">
               <div className="product-item">
-                <img src={image} />
+                <img alt="" src={image} />
                 <div className="description">
                   <span>
                     OEM 27 inch 4K gaming monitor 144Hz FreeSync HDR PC Monitor

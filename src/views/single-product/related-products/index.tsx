@@ -31,7 +31,7 @@ function RelatedProducts() {
         )}
       >
         <div className="slider-item">
-          <img src={img1} alt="" />
+          <img alt="" src={img1} alt="" />
           <p
             title="Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
             Home Use Foldable Riser Laptop Cooling Pads Laptop Stand"
@@ -42,7 +42,7 @@ function RelatedProducts() {
           <span title="22,000 rwf - 100,000 rwf">22,000 rwf - 100,000 rwf</span>
         </div>
         <div className="slider-item">
-          <img src={img2} alt="" />
+          <img alt="" src={img2} alt="" />
           <p
             title="Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
             Home Use Foldable Riser Laptop Cooling Pads Laptop Stand"
@@ -53,7 +53,7 @@ function RelatedProducts() {
           <span title="22,000 rwf - 100,000 rwf">22,000 rwf - 100,000 rwf</span>
         </div>
         <div className="slider-item">
-          <img src={img3} alt="" />
+          <img alt="" src={img3} alt="" />
           <p
             title="Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
             Home Use Foldable Riser Laptop Cooling Pads Laptop Stand"
@@ -64,7 +64,7 @@ function RelatedProducts() {
           <span title="22,000 rwf - 100,000 rwf">22,000 rwf - 100,000 rwf</span>
         </div>
         <div className="slider-item">
-          <img src={img4} alt="" />
+          <img alt="" src={img4} alt="" />
           <p
             title="Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
             Home Use Foldable Riser Laptop Cooling Pads Laptop Stand"
@@ -75,7 +75,7 @@ function RelatedProducts() {
           <span title="22,000 rwf - 100,000 rwf">22,000 rwf - 100,000 rwf</span>
         </div>
         <div className="slider-item">
-          <img src={img5} alt="" />
+          <img alt="" src={img5} alt="" />
           <p
             title="Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
             Home Use Foldable Riser Laptop Cooling Pads Laptop Stand"
@@ -86,7 +86,7 @@ function RelatedProducts() {
           <span title="22,000 rwf - 100,000 rwf">22,000 rwf - 100,000 rwf</span>
         </div>
         <div className="slider-item">
-          <img src={img4} alt="" />
+          <img alt="" src={img4} alt="" />
           <p
             title="Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
             Home Use Foldable Riser Laptop Cooling Pads Laptop Stand"
@@ -97,7 +97,7 @@ function RelatedProducts() {
           <span title="22,000 rwf - 100,000 rwf">22,000 rwf - 100,000 rwf</span>
         </div>
         <div className="slider-item">
-          <img src={img5} alt="" />
+          <img alt="" src={img5} alt="" />
           <p
             title="Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
             Home Use Foldable Riser Laptop Cooling Pads Laptop Stand"
