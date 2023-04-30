@@ -270,7 +270,31 @@ function MyShop() {
             <CardTitle tag="h6" className="border-bottom p-3 mb-0">
               Shop Banner
             </CardTitle>
-            <CardBody></CardBody>
+            <CardBody>
+              {myShop?.shopBanner.trim() === "" ? (
+                <div className="alert alert-warning">No image uploaded yet</div>
+              ) : (
+                <>
+                  {myShop && (
+                    <img
+                      alt=""
+                      src={app.FILE_URL + myShop?.shopBanner}
+                      style={{ width: "100%" }}
+                    />
+                  )}
+                </>
+              )}
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e: any) => {
+                  setSelectedImage(URL.createObjectURL(e.target.files[0]));
+                  setCropImageType("shopBanner");
+                  setShowModal(true);
+                }}
+                className="form-control"
+              />
+            </CardBody>
           </Card>
         </Col>
       </Row>

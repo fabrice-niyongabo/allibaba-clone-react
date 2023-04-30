@@ -30,6 +30,7 @@ const CropImage = ({
   const { token } = useSelector((state: RootState) => state.user);
   const [image, setImage] = useState<any>(undefined);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [mediaWidth, setMediaWidth] = useState<number>(400);
   const [crop, setCrop] = useState<Point>({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<any>();
@@ -53,8 +54,10 @@ const CropImage = ({
       const { file, url } = await getCroppedImg(image, croppedAreaPixels, 0);
       const formData = new FormData();
       formData.append("file", file, "cropped.jpeg");
+      const URL =
+        imageType === "shopImage" ? "/shops/shopimage" : "/shops/shopbanner";
       axios
-        .put(app.BACKEND_URL + "/shops/shopimage", formData, {
+        .put(app.BACKEND_URL + url, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
             token: token,
@@ -94,6 +97,9 @@ const CropImage = ({
           <div style={{ height: 300 }}>
             {image && (
               <Cropper
+                onMediaLoaded={(size) => {
+                  setMediaWidth(size.width);
+                }}
                 image={image}
                 crop={crop}
                 zoom={zoom}
@@ -105,7 +111,7 @@ const CropImage = ({
                 cropSize={
                   imageType === "shopImage"
                     ? { width: 320, height: 300 }
-                    : { width: 400, height: 150 }
+                    : { width: mediaWidth, height: 170 }
                 }
               />
             )}
