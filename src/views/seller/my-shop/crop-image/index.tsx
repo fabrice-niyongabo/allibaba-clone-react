@@ -57,7 +57,7 @@ const CropImage = ({
       const URL =
         imageType === "shopImage" ? "/shops/shopimage" : "/shops/shopbanner";
       axios
-        .put(app.BACKEND_URL + url, formData, {
+        .put(app.BACKEND_URL + URL, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
             token: token,
