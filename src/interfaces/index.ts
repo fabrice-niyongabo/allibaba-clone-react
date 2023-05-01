@@ -76,3 +76,31 @@ export enum PRICE_TYPE_ENUM {
   SINGLE = "single",
   MANY = "many",
 }
+
+export interface IProductPrice {
+  ppId: number;
+  shopId: number;
+  productId: number;
+  name: string;
+  amount: number;
+}
+
+export interface IProductImage {
+  id: number;
+  productId: number;
+  image: string;
+}
+
+export interface IProduct {
+  pId: number;
+  shopId: number;
+  categoryId: number;
+  subCategoryId: number;
+  name: string;
+  description: string;
+  priceType: PRICE_TYPE_ENUM;
+  singlePrice: number;
+  isActive: boolean;
+  images: IProductImage[];
+  prices: IProductPrice[];
+}

@@ -21,7 +21,7 @@ export const sellerNavigation = [
   },
   {
     title: "Products",
-    href: "/dashboard/addproduct",
+    href: "/dashboard/products",
     icon: "bi bi-card-text",
   },
   {
