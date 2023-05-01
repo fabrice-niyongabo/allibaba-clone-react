@@ -19,6 +19,7 @@ import {
 import { fetchCategories } from "../../../actions/categories";
 import Edit from "./edit";
 import Confirmation from "../../../components/controllers/confirmation";
+import Images from "./images";
 
 function Products() {
   const dispatch = useDispatch();
@@ -26,6 +27,8 @@ function Products() {
   const { categories } = useSelector((state: RootState) => state.categories);
   const [isLoading, setIsloading] = useState(false);
   const [products, setProducts] = useState<IProduct[]>([]);
+
+  const [viewImages, setViewImages] = useState(false);
 
   //
   const [showEdit, setShowEdit] = useState(false);
@@ -143,7 +146,13 @@ function Products() {
                         Delete
                       </span>
                       &nbsp;|&nbsp;
-                      <span className="pointer">
+                      <span
+                        className="pointer"
+                        onClick={() => {
+                          setSelectedItem(item);
+                          setViewImages(true);
+                        }}
+                      >
                         Images({item.images.length})
                       </span>
                     </td>
@@ -165,6 +174,11 @@ function Products() {
         showModal={showEdit}
         setShowModal={setShowEdit}
         fetchData={fetchProducts}
+      />
+      <Images
+        selectedItem={selectedItem}
+        showModal={viewImages}
+        setShowModal={setViewImages}
       />
     </div>
   );
