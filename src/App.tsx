@@ -26,6 +26,7 @@ const Apply = lazy(() => import("./views/apply"));
 const MyShop = lazy(() => import("./views/seller/my-shop"));
 const AddProduct = lazy(() => import("./views/seller/add-product"));
 const Products = lazy(() => import("./views/seller/products"));
+const AddProductImage = lazy(() => import("./views/seller/add-product-image"));
 
 const theme = createMuiTheme({
   //   theme properties here
@@ -128,6 +129,11 @@ const App = () => {
                     path="/dashboard/products"
                     exact
                     element={<Products />}
+                  />
+                  <Route
+                    path="/dashboard/product/:id"
+                    exact
+                    element={<AddProductImage />}
                   />
                 </>
               ) : (

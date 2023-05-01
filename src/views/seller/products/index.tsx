@@ -76,6 +76,17 @@ function Products() {
       });
   };
 
+  const fetchProductsSilent = () => {
+    axios
+      .get(app.BACKEND_URL + "/products/mine", setHeaders(token))
+      .then((res) => {
+        setProducts(res.data.products);
+      })
+      .catch((error) => {
+        errorHandler(error);
+      });
+  };
+
   const handleDelete = async () => {
     setIsloading(true);
     try {
@@ -179,6 +190,8 @@ function Products() {
         selectedItem={selectedItem}
         showModal={viewImages}
         setShowModal={setViewImages}
+        fetchData={fetchProductsSilent}
+        allProducts={products}
       />
     </div>
   );
