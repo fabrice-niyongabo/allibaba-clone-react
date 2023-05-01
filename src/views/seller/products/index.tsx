@@ -8,9 +8,14 @@ import {
   currencyFormatter,
   errorHandler,
   setHeaders,
+  toastMessage,
 } from "../../../components/helpers";
 import FullPageLoader from "../../../components/full-page-loader";
-import { IProduct, PRICE_TYPE_ENUM } from "../../../interfaces";
+import {
+  IProduct,
+  PRICE_TYPE_ENUM,
+  TOAST_MESSAGE_TYPES,
+} from "../../../interfaces";
 import { fetchCategories } from "../../../actions/categories";
 import Edit from "./edit";
 import Confirmation from "../../../components/controllers/confirmation";
@@ -68,8 +73,23 @@ function Products() {
       });
   };
 
-  const handleDelete = () => {};
-
+  const handleDelete = async () => {
+    setIsloading(true);
+    try {
+      setIsloading(false);
+      const res = await axios.delete(
+        app.BACKEND_URL + "/products/" + selectedItem?.pId,
+        setHeaders(token)
+      );
+      toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
+      setProducts(products.filter((item) => item.pId !== selectedItem?.pId));
+      setSelectedItem(undefined);
+      setIsloading(false);
+    } catch (error) {
+      errorHandler(error);
+      setIsloading(false);
+    }
+  };
   return (
     <div>
       <FullPageLoader open={isLoading} />
@@ -113,7 +133,15 @@ function Products() {
                         Edit
                       </span>
                       &nbsp;|&nbsp;
-                      <span className="text-danger pointer">Delete</span>
+                      <span
+                        className="text-danger pointer"
+                        onClick={() => {
+                          setSelectedItem(item);
+                          setShowAlert(true);
+                        }}
+                      >
+                        Delete
+                      </span>
                       &nbsp;|&nbsp;
                       <span className="pointer">
                         Images({item.images.length})
