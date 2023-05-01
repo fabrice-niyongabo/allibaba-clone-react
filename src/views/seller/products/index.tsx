@@ -20,6 +20,7 @@ import { fetchCategories } from "../../../actions/categories";
 import Edit from "./edit";
 import Confirmation from "../../../components/controllers/confirmation";
 import Images from "./images";
+import Prices from "./prices";
 
 function Products() {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ function Products() {
   const [products, setProducts] = useState<IProduct[]>([]);
 
   const [viewImages, setViewImages] = useState(false);
+  const [shopPrices, setShowPrices] = useState(false);
 
   //
   const [showEdit, setShowEdit] = useState(false);
@@ -132,9 +134,20 @@ function Products() {
                       {getSubCategoryName(item.categoryId, item.subCategoryId)}
                     </td>
                     <td>
-                      {item.priceType === PRICE_TYPE_ENUM.SINGLE &&
-                        currencyFormatter(item.singlePrice)}{" "}
-                      RWF
+                      {item.priceType === PRICE_TYPE_ENUM.SINGLE && (
+                        <>{currencyFormatter(item.singlePrice)} RWF</>
+                      )}
+                      {item.priceType === PRICE_TYPE_ENUM.MANY && (
+                        <span
+                          className="pointer text-primary"
+                          onClick={() => {
+                            setSelectedItem(item);
+                            setShowPrices(true);
+                          }}
+                        >
+                          View Prices
+                        </span>
+                      )}
                     </td>
                     <td>
                       <span
@@ -190,6 +203,13 @@ function Products() {
         selectedItem={selectedItem}
         showModal={viewImages}
         setShowModal={setViewImages}
+        fetchData={fetchProductsSilent}
+        allProducts={products}
+      />
+      <Prices
+        selectedItem={selectedItem}
+        showModal={shopPrices}
+        setShowModal={setShowPrices}
         fetchData={fetchProductsSilent}
         allProducts={products}
       />
