@@ -10,9 +10,9 @@ export const adminNavigation = [
     icon: "bi bi-layout-split",
   },
   {
-    title: "Alert",
-    href: "/alerts",
-    icon: "bi bi-bell",
+    title: "Home Categories",
+    href: "/dashboard/main/homecategories",
+    icon: "bi bi-card-text",
   },
   {
     title: "Badges",

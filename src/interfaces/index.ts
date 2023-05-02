@@ -34,6 +34,10 @@ export interface ICategory {
   image: string;
   banner: string;
   icon: string;
+  onCategoriesSection: boolean;
+  onHeaderSection: boolean;
+  onHome: boolean;
+  onHeaderNav: boolean;
   subCategories: ISubCategory[];
 }
 

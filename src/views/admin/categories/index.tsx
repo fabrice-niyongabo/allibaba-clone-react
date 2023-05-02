@@ -34,17 +34,15 @@ const Categories = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("icon", icon);
     setIsSubmitting(true);
     try {
       const res = await axios.post(
         app.BACKEND_URL + "/productcategories/",
-        formData,
+        { name, icon },
         setHeaders(token)
       );
       setName("");
+      setIcon("");
       setIsSubmitting(false);
       setCategories([{ ...res.data.category }, ...categories]);
       toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
