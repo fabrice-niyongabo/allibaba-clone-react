@@ -6,6 +6,10 @@
     position: relative;
     background-color: $white;
     height: 250px;
+    span {
+      display: block !important;
+      width: 100%;
+    }
     .banner-img {
       height: 200px;
       width: 100%;
@@ -20,6 +24,10 @@
         .cont {
           @include flexSpace;
           align-items: flex-end;
+          span {
+            display: inline-block !important;
+            width: auto !important;
+          }
           img {
             width: 120px;
             height: 120px;

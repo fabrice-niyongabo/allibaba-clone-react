@@ -57,7 +57,7 @@ const App = () => {
           <Route exact path="/start-selling" element={<StartSelling />} />
           <Route exact path="/product" element={<SingleProduct />} />
           <Route exact path="/product-category" element={<ProductCategory />} />
-          <Route exact path="/shop" element={<Shop />} />
+          <Route exact path="/shops/:id" element={<Shop />} />
           <Route
             exact
             path="/login-register"

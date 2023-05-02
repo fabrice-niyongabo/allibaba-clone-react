@@ -5,11 +5,7 @@ import { useSelector } from "react-redux";
 import { Col, NavItem, Row, Spinner } from "reactstrap";
 import { RootState } from "../../../../reducers";
 import { app } from "../../../../components/constants";
-import {
-  currencyFormatter,
-  errorHandler,
-  toastMessage,
-} from "../../../../components/helpers";
+import { currencyFormatter } from "../../../../components/helpers";
 import { IProduct, Ishop, PRICE_TYPE_ENUM } from "../../../../interfaces";
 import ReactHtmlParser from "react-html-parser";
 

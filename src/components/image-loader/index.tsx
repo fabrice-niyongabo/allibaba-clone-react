@@ -2,7 +2,7 @@ import React, { ImgHTMLAttributes } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface IImageLoaderProps {
-  src: string;
+  src: any;
   alt?: string;
   props?: ImgHTMLAttributes<HTMLImageElement>;
 }

@@ -6,8 +6,10 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../components/constants";
+import { useNavigate } from "react-router-dom";
 
 function TopSelectedSupplier() {
+  const navigate = useNavigate();
   const { shops } = useSelector((state: RootState) => state.shops);
   return (
     <div className="afriseller-container my-5 top-suppliers">
@@ -22,7 +24,11 @@ function TopSelectedSupplier() {
           withoutControls={true}
         >
           {shops.map((shop, position) => (
-            <div className="slider-item" key={position}>
+            <div
+              className="slider-item"
+              key={position}
+              onClick={() => navigate("/shops/" + shop.shopId)}
+            >
               <ImageLoader
                 src={app.FILE_URL + shop.shopImage}
                 alt={shop.shopName}
