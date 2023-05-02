@@ -11,12 +11,12 @@ export const sellerNavigation = [
   },
   {
     title: "Subscriptions",
-    href: "/alerts",
+    href: "/dashboard/subscriptions",
     icon: "bi bi-card-text",
   },
   {
     title: "Asked Questions",
-    href: "/alerts",
+    href: "/dashboard/askedquestions",
     icon: "bi bi-bell",
   },
   {
