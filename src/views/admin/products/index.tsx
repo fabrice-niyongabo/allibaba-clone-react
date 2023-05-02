@@ -90,7 +90,7 @@ function Products() {
                   <tr key={position}>
                     <td>
                       <img
-                        src={app.FILE_URL + item.images[0].image}
+                        src={app.FILE_URL + item.images[0]?.image}
                         alt=""
                         style={{ width: 80 }}
                       />

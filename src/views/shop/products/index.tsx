@@ -78,7 +78,7 @@ function Products(props: IProductsProps) {
                   onClick={() => openUrlInNewTab("/product/" + item.pId, false)}
                 >
                   <ImageLoader
-                    src={app.FILE_URL + item.images[0].image}
+                    src={app.FILE_URL + item.images[0]?.image}
                     alt={item.name}
                   />
                   <div className="description">

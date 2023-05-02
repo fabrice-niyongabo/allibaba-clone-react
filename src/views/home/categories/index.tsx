@@ -40,7 +40,7 @@ function Categories() {
                       >
                         <h3 title={item.name}>{item.name}</h3>
                         <ImageLoader
-                          src={app.FILE_URL + item.images[0].image}
+                          src={app.FILE_URL + item.images[0]?.image}
                         />
                       </Col>
                     ))}

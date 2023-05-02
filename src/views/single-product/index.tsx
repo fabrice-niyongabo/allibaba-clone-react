@@ -75,11 +75,20 @@ function SingleProduct() {
                   <span>Home</span>
                 </li>
                 <li>/</li>
-                <li onClick={() => navigate("/")}>
+                <li onClick={() => navigate("/category/" + product.categoryId)}>
                   <span>{getCategoryName(product.categoryId)}</span>
                 </li>
                 <li>/</li>
-                <li onClick={() => navigate("/")}>
+                <li
+                  onClick={() =>
+                    navigate(
+                      "/category/" +
+                        product.categoryId +
+                        "/" +
+                        product.subCategoryId
+                    )
+                  }
+                >
                   <span>
                     {getSubCategoryName(
                       product.categoryId,

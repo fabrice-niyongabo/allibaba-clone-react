@@ -24,7 +24,7 @@ function Cards() {
                     <div className="product-container">
                       <ImageLoader
                         alt={item.name}
-                        src={app.FILE_URL + item.images[0].image}
+                        src={app.FILE_URL + item.images[0]?.image}
                       />
                       {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
                         <span>{currencyFormatter(item.singlePrice)} RWF</span>
@@ -51,7 +51,7 @@ function Cards() {
                     <div className="product-container">
                       <ImageLoader
                         alt={item.name}
-                        src={app.FILE_URL + item.images[0].image}
+                        src={app.FILE_URL + item.images[0]?.image}
                       />
                       {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
                         <span>{currencyFormatter(item.singlePrice)} RWF</span>
@@ -78,7 +78,7 @@ function Cards() {
                     <div className="product-container">
                       <ImageLoader
                         alt={item.name}
-                        src={app.FILE_URL + item.images[0].image}
+                        src={app.FILE_URL + item.images[0]?.image}
                       />
                       {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
                         <span>{currencyFormatter(item.singlePrice)} RWF</span>
@@ -105,7 +105,7 @@ function Cards() {
                     <div className="product-container">
                       <ImageLoader
                         alt={item.name}
-                        src={app.FILE_URL + item.images[0].image}
+                        src={app.FILE_URL + item.images[0]?.image}
                       />
                       {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
                         <span>{currencyFormatter(item.singlePrice)} RWF</span>
@@ -132,7 +132,7 @@ function Cards() {
                     <div className="product-container">
                       <ImageLoader
                         alt={item.name}
-                        src={app.FILE_URL + item.images[0].image}
+                        src={app.FILE_URL + item.images[0]?.image}
                       />
                       {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
                         <span>{currencyFormatter(item.singlePrice)} RWF</span>
@@ -159,7 +159,7 @@ function Cards() {
                     <div className="product-container">
                       <ImageLoader
                         alt={item.name}
-                        src={app.FILE_URL + item.images[0].image}
+                        src={app.FILE_URL + item.images[0]?.image}
                       />
                       {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
                         <span>{currencyFormatter(item.singlePrice)} RWF</span>

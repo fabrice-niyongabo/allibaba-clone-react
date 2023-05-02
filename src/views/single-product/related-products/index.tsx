@@ -60,7 +60,10 @@ function RelatedProducts({ product }: IRelatedProductsProps) {
           >
             {relatedProducts.map((item, index) => (
               <div className="slider-item" key={index}>
-                <ImageLoader src={app.FILE_URL + item.images[0].image} />
+                <img
+                  src={app.FILE_URL + item.images[0]?.image}
+                  alt={item.name}
+                />
                 <p title={item.name}>{item.name}</p>
                 {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
                   <span title={`${currencyFormatter(item.singlePrice)} rwf`}>

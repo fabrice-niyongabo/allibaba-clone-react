@@ -27,7 +27,7 @@ function JustForYou() {
           <Col md={2} key={position}>
             <div className="product-container">
               <ImageLoader
-                src={app.FILE_URL + item.images[0].image}
+                src={app.FILE_URL + item.images[0]?.image}
                 alt={item.name}
               />
               <div className="prod-description">
