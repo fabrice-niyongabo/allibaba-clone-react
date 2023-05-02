@@ -11,44 +11,74 @@
     padding: 0px 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid $border-color;
-    .search-container {
-      @include flexSpace;
+    .search-main-container {
       flex: 1;
-      margin: 0px 5rem;
-      select {
-        border: 2px solid $orange;
-        font-size: 12px !important;
-        border-right: 1px solid #e6e6e6;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        outline: none;
-        margin: 0;
-        height: 42px;
-        padding: 0px 12px;
-        border-bottom-left-radius: 50px;
-        border-top-left-radius: 50px;
+      position: relative;
+      .search-container {
+        @include flexSpace;
+        margin: 0px 5rem;
+        select {
+          border: 2px solid $orange;
+          font-size: 12px !important;
+          border-right: 1px solid #e6e6e6;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          outline: none;
+          margin: 0;
+          height: 42px;
+          padding: 0px 12px;
+          border-bottom-left-radius: 50px;
+          border-top-left-radius: 50px;
+        }
+        input {
+          background: #fff;
+          border: 2px solid $orange;
+          border-left: 0;
+          width: 100%;
+          height: 42px;
+          padding: 0px 10px;
+          width: 100%;
+          font-size: 12px;
+          outline: none;
+        }
+        button {
+          background-color: $orange;
+          color: $white;
+          padding: 0px 12px;
+          border: 0;
+          height: 42px;
+          font-size: 12px;
+          border-top-right-radius: 50px;
+          border-bottom-right-radius: 50px;
+        }
       }
-      input {
-        background: #fff;
-        border: 2px solid $orange;
-        border-left: 0;
-        width: 100%;
-        height: 42px;
-        padding: 0px 10px;
-        width: 100%;
-        font-size: 12px;
-        outline: none;
-      }
-      button {
-        background-color: $orange;
-        color: $white;
-        padding: 0px 12px;
-        border: 0;
-        height: 42px;
-        font-size: 12px;
-        border-top-right-radius: 50px;
-        border-bottom-right-radius: 50px;
+      .search-sugestions {
+        transition: all 0.5s;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0px 5rem;
+        margin-top: 42px;
+        background-color: $white;
+        z-index: 3000;
+        border-radius: 8px;
+        ul {
+          margin: 0;
+          padding: 1rem;
+          li {
+            list-style: none;
+            padding: 10px;
+            border-bottom: 1px solid $border-color;
+            font-size: 12px;
+            &:hover {
+              background-color: $gray-100;
+              cursor: pointer;
+              color: $orange;
+            }
+          }
+        }
       }
     }
     .icons-main-container {

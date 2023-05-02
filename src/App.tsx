@@ -21,6 +21,7 @@ const StartSelling = lazy(() => import("./views/start-selling"));
 const SingleProduct = lazy(() => import("./views/single-product"));
 const ProductCategory = lazy(() => import("./views/products-by-categories"));
 const Shop = lazy(() => import("./views/shop"));
+const Search = lazy(() => import("./views/search"));
 
 const Categories = lazy(() => import("./views/admin/categories"));
 const CategoryImage = lazy(() => import("./views/admin/category-image"));
@@ -56,6 +57,11 @@ const App = () => {
           <Route exact path="/memberships" element={<Memberships />} />
           <Route exact path="/start-selling" element={<StartSelling />} />
           <Route exact path="/product/:id" element={<SingleProduct />} />
+          <Route
+            exact
+            path="/search/:searchType/:keyword"
+            element={<Search />}
+          />
           <Route
             exact
             path="/category/:categoryId"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../assets/scss/header.scss";
 
 import userImage from "../../assets/images/user.png";
@@ -10,17 +10,60 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../reducers";
-import { IUser, USER_ROLE_ENUM } from "../../interfaces";
+import { IProduct, IUser, Ishop, USER_ROLE_ENUM } from "../../interfaces";
 import { openUrlInNewTab } from "../helpers";
 
 function Header() {
   const { categories } = useSelector((state: RootState) => state.categories);
+  const { products } = useSelector((state: RootState) => state.products);
+  const { shops } = useSelector((state: RootState) => state.shops);
   const { role, token } = useSelector(
     (state: RootState) => state.user as IUser
   );
   const [categoriesHover, setCategoriesHover] = useState(false);
   const [helpHover, setHelpHover] = useState(false);
   const navigate = useNavigate();
+
+  const [searchCategory, setSearchCategory] = useState("products");
+  const [searchKeyword, setSearchKeyword] = useState("");
+
+  const [suggestions, setSuggestions] = useState<IProduct[]>([]);
+  const [shopSuggestions, setShopsSuggestions] = useState<Ishop[]>([]);
+
+  const [focused, setFocused] = useState<boolean>(false);
+
+  useEffect(() => {
+    let sub = true;
+    if (sub) {
+      if (searchKeyword.trim() !== "") {
+        if (searchCategory === "products") {
+          const sugge = products.filter((item) =>
+            item.name.toLowerCase().includes(searchKeyword.toLowerCase())
+          );
+          setSuggestions(sugge.slice(0, 5));
+        } else {
+          const sugge = shops.filter((item) =>
+            item.shopName.toLowerCase().includes(searchKeyword.toLowerCase())
+          );
+          setShopsSuggestions(sugge.slice(0, 5));
+        }
+      } else {
+        setSuggestions([]);
+        setShopsSuggestions([]);
+      }
+    }
+    return () => {
+      sub = false;
+    };
+  }, [products, searchKeyword, searchCategory]);
+
+  const handleSearch = () => {
+    if (searchKeyword.trim() === "") {
+      return;
+    }
+    navigate("/search/" + searchCategory + "/" + searchKeyword);
+  };
+
   return (
     <div className="app-header">
       <div className="top-container">
@@ -30,18 +73,74 @@ function Header() {
             alt="Buy2alibaba"
           />
         </Link>
-        <div className="search-container">
-          <select
-            className="col-md-3"
-            style={{
-              background: `url(${downArrow}) right / 16px no-repeat #fff`,
-            }}
-          >
-            <option value="products">Products</option>
-            <option value="seller">Seller</option>
-          </select>
-          <input type="text" placeholder="What are you looking for..." />
-          <button>Search</button>
+        <div className="search-main-container">
+          <div className="search-container">
+            <select
+              className="col-md-3"
+              style={{
+                background: `url(${downArrow}) right / 16px no-repeat #fff`,
+              }}
+              value={searchCategory}
+              onChange={(e) => setSearchCategory(e.target.value)}
+            >
+              <option value="products">Products</option>
+              <option value="seller">Seller</option>
+            </select>
+            <input
+              type="text"
+              value={searchKeyword}
+              onChange={(e) => setSearchKeyword(e.target.value)}
+              placeholder="What are you looking for..."
+              onFocus={() => setFocused(true)}
+              onBlur={() =>
+                setTimeout(() => {
+                  setFocused(false);
+                }, 500)
+              }
+            />
+            <button onClick={() => handleSearch()}>Search</button>
+          </div>
+          {searchCategory === "products" &&
+            suggestions.length > 0 &&
+            focused && (
+              <div className="search-sugestions">
+                <ul>
+                  {suggestions.map((item, index) => (
+                    <li
+                      onClick={() => {
+                        setSearchKeyword(item.name);
+                        navigate("/search/" + searchCategory + "/" + item.name);
+                        console.log("jjjj");
+                      }}
+                      key={index}
+                    >
+                      {item.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          {searchCategory === "seller" &&
+            shopSuggestions.length > 0 &&
+            focused && (
+              <div className="search-sugestions">
+                <ul>
+                  {shopSuggestions.map((item, index) => (
+                    <li
+                      onClick={() => {
+                        setSearchKeyword(item.shopName);
+                        navigate(
+                          "/search/" + searchCategory + "/" + item.shopName
+                        );
+                      }}
+                      key={index}
+                    >
+                      {item.shopName}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
         </div>
         <div className="icons-main-container">
           {token.trim() === "" ? (
