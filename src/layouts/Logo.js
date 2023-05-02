@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/logo2.png";
 import { appColors } from "../components/constants";
 
 const Logo = () => {
@@ -25,7 +25,7 @@ const Logo = () => {
             display: "inline-block",
             margin: 0,
             padding: 0,
-            color: appColors.GREEN,
+            color: appColors.ORANGE,
           }}
         >
           Afriseller

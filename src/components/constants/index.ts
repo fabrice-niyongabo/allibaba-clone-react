@@ -8,6 +8,7 @@ export const appColors = {
   RED: "#fc3839",
   WHITE: "#fff",
   TEXT_GRAY: "#676767",
+  ORANGE: "#ff6a00",
 };
 
 export const app = {

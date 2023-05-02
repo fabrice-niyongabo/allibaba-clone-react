@@ -17,6 +17,7 @@ import { ReactComponent as LogoWhite } from "../assets/images/logos/xtremelogowh
 import user1 from "../assets/images/users/user1.jpg";
 import Logo from "./Logo";
 import { useSelector } from "react-redux";
+import { appColors } from "../components/constants";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -33,7 +34,12 @@ const Header = () => {
     document.getElementById("sidebarArea").classList.toggle("showSidebar");
   };
   return (
-    <Navbar color="primary" dark expand="md">
+    <Navbar
+      color="primary"
+      dark
+      expand="md"
+      style={{ backgroundColor: `${appColors.ORANGE} !important` }}
+    >
       <div className="d-flex align-items-center">
         <NavbarBrand href="/" className="d-lg-none">
           {/* <LogoWhite /> */}

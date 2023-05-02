@@ -11,6 +11,22 @@
     padding: 0px 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid $border-color;
+
+    a {
+      text-decoration: none;
+    }
+    .logo-containter {
+      @include flexSpace;
+      img {
+        width: 35px;
+      }
+      span {
+        color: $orange;
+        font-size: 25px;
+        font-weight: 700;
+      }
+    }
+
     .search-main-container {
       flex: 1;
       position: relative;

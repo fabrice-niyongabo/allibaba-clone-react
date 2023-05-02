@@ -13,6 +13,8 @@ import { RootState } from "../../reducers";
 import { IProduct, IUser, Ishop, USER_ROLE_ENUM } from "../../interfaces";
 import { openUrlInNewTab } from "../helpers";
 
+import logo from "../../assets/images/logo2.png";
+
 function Header() {
   const { categories } = useSelector((state: RootState) => state.categories);
   const { products } = useSelector((state: RootState) => state.products);
@@ -68,10 +70,10 @@ function Header() {
     <div className="app-header">
       <div className="top-container">
         <Link to="/">
-          <img
-            src="https://demowpthemes.com/buy2alibaba/wp-content/themes/buy2alibaba/images/logo-head.png"
-            alt="Buy2alibaba"
-          />
+          <div className="logo-containter">
+            <img src={logo} alt="Afriseller" />
+            <span>Afriseller</span>
+          </div>
         </Link>
         <div className="search-main-container">
           <div className="search-container">
