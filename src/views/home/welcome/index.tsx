@@ -6,6 +6,7 @@ import Slider from "./slider";
 import cameraImage from "../../../assets/images/static/camera.png";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
+import { openUrlInNewTab } from "../../../components/helpers";
 
 function Welcome() {
   const [homeHover, setHomeHover] = useState(false);
@@ -45,10 +46,26 @@ function Welcome() {
                       <div className="row">
                         {categories.map((item, position) => (
                           <div className="col-md-4" key={position}>
-                            <h3>{item.name}</h3>
+                            <h3
+                              className="pointer"
+                              onClick={() =>
+                                openUrlInNewTab("/category/" + item.id)
+                              }
+                            >
+                              {item.name}
+                            </h3>
                             <ul>
                               {item.subCategories.map((it, position) => (
-                                <li key={position}>{it.name}</li>
+                                <li
+                                  key={position}
+                                  onClick={() =>
+                                    openUrlInNewTab(
+                                      "/category/" + item.id + "/" + it.id
+                                    )
+                                  }
+                                >
+                                  {it.name}
+                                </li>
                               ))}
                             </ul>
                           </div>

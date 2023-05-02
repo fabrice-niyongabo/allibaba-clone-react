@@ -6,7 +6,10 @@ import { RootState } from "../../../reducers";
 import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../components/constants";
 import { PRICE_TYPE_ENUM } from "../../../interfaces";
-import { currencyFormatter } from "../../../components/helpers";
+import {
+  currencyFormatter,
+  openUrlInNewTab,
+} from "../../../components/helpers";
 function Cards() {
   const { products } = useSelector((state: RootState) => state.products);
   return (
@@ -21,7 +24,12 @@ function Cards() {
                 .slice(0, 3)
                 .map((item, position) => (
                   <Col sm={4} key={position}>
-                    <div className="product-container">
+                    <div
+                      className="product-container pointer"
+                      onClick={() =>
+                        openUrlInNewTab("/category/" + item.categoryId)
+                      }
+                    >
                       <ImageLoader
                         alt={item.name}
                         src={app.FILE_URL + item.images[0]?.image}
@@ -48,7 +56,12 @@ function Cards() {
                 .slice(0, 3)
                 .map((item, position) => (
                   <Col sm={4} key={position}>
-                    <div className="product-container">
+                    <div
+                      className="product-container pointer"
+                      onClick={() =>
+                        openUrlInNewTab("/category/" + item.categoryId)
+                      }
+                    >
                       <ImageLoader
                         alt={item.name}
                         src={app.FILE_URL + item.images[0]?.image}
@@ -75,7 +88,12 @@ function Cards() {
                 .slice(0, 3)
                 .map((item, position) => (
                   <Col sm={4} key={position}>
-                    <div className="product-container">
+                    <div
+                      className="product-container pointer"
+                      onClick={() =>
+                        openUrlInNewTab("/category/" + item.categoryId)
+                      }
+                    >
                       <ImageLoader
                         alt={item.name}
                         src={app.FILE_URL + item.images[0]?.image}
@@ -102,7 +120,12 @@ function Cards() {
                 .slice(0, 3)
                 .map((item, position) => (
                   <Col sm={4} key={position}>
-                    <div className="product-container">
+                    <div
+                      className="product-container pointer"
+                      onClick={() =>
+                        openUrlInNewTab("/category/" + item.categoryId)
+                      }
+                    >
                       <ImageLoader
                         alt={item.name}
                         src={app.FILE_URL + item.images[0]?.image}
@@ -129,7 +152,12 @@ function Cards() {
                 .slice(0, 3)
                 .map((item, position) => (
                   <Col sm={4} key={position}>
-                    <div className="product-container">
+                    <div
+                      className="product-container pointer"
+                      onClick={() =>
+                        openUrlInNewTab("/category/" + item.categoryId)
+                      }
+                    >
                       <ImageLoader
                         alt={item.name}
                         src={app.FILE_URL + item.images[0]?.image}
@@ -156,7 +184,12 @@ function Cards() {
                 .slice(0, 3)
                 .map((item, position) => (
                   <Col sm={4} key={position}>
-                    <div className="product-container">
+                    <div
+                      className="product-container pointer"
+                      onClick={() =>
+                        openUrlInNewTab("/category/" + item.categoryId)
+                      }
+                    >
                       <ImageLoader
                         alt={item.name}
                         src={app.FILE_URL + item.images[0]?.image}

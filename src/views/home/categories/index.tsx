@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../components/constants";
+import { openUrlInNewTab } from "../../../components/helpers";
 function Categories() {
   const { products } = useSelector((state: RootState) => state.products);
   const { categories } = useSelector((state: RootState) => state.categories);
@@ -41,6 +42,11 @@ function Categories() {
                         <h3 title={item.name}>{item.name}</h3>
                         <ImageLoader
                           src={app.FILE_URL + item.images[0]?.image}
+                          props={{
+                            className: "pointer",
+                            onClick: () =>
+                              openUrlInNewTab("/product/" + item.pId),
+                          }}
                         />
                       </Col>
                     ))}
