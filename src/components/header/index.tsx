@@ -8,8 +8,15 @@ import wishListImage from "../../assets/images/orders.png";
 import categoryBanner from "../../assets/images/static/banner.jpg";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../reducers";
+import { IUser, USER_ROLE_ENUM } from "../../interfaces";
 
 function Header() {
+  const { categories } = useSelector((state: RootState) => state.categories);
+  const { role, token } = useSelector(
+    (state: RootState) => state.user as IUser
+  );
   const [categoriesHover, setCategoriesHover] = useState(false);
   const [helpHover, setHelpHover] = useState(false);
   const navigate = useNavigate();
@@ -36,24 +43,63 @@ function Header() {
           <button>Search</button>
         </div>
         <div className="icons-main-container">
-          <div
-            className="icon-container"
-            onClick={() => navigate("/login-register")}
-          >
-            <img alt="" src={userImage} />
-            <span>Sign In</span>
-          </div>
-          <div className="icon-container">
-            <img alt="" src={wishListImage} />
-            <span>Wishlist</span>
-          </div>
-          <div
-            className="icon-container"
-            onClick={() => navigate("/start-selling")}
-          >
-            <img alt="" src={walletImage} />
-            <span>Start Selling</span>
-          </div>
+          {token.trim() === "" ? (
+            <>
+              <div
+                className="icon-container"
+                onClick={() => navigate("/login-register")}
+              >
+                <img alt="" src={userImage} />
+                <span>Sign In</span>
+              </div>
+              <div className="icon-container">
+                <img alt="" src={wishListImage} />
+                <span>Wishlist</span>
+              </div>
+              <div
+                className="icon-container"
+                onClick={() => navigate("/start-selling")}
+              >
+                <img alt="" src={walletImage} />
+                <span>Start Selling</span>
+              </div>
+            </>
+          ) : (
+            <>
+              <div
+                className="icon-container"
+                onClick={() =>
+                  role === USER_ROLE_ENUM.ADMIN
+                    ? navigate("/dashboard/main")
+                    : navigate("/dashboard")
+                }
+              >
+                <i className="bi bi-speedometer2" style={{ fontSize: 20 }}></i>
+                <span>Dashboard</span>
+              </div>
+              <div className="icon-container">
+                <img alt="" src={wishListImage} />
+                <span>Wishlist</span>
+              </div>
+              {role === USER_ROLE_ENUM.SELLER ? (
+                <div
+                  className="icon-container"
+                  onClick={() => navigate("/start-selling")}
+                >
+                  <i className="bi bi-shop"></i>
+                  <span>My Shop</span>
+                </div>
+              ) : (
+                <div
+                  className="icon-container"
+                  onClick={() => navigate("/start-selling")}
+                >
+                  <img alt="" src={walletImage} />
+                  <span>Start Selling</span>
+                </div>
+              )}
+            </>
+          )}
         </div>
       </div>
       <div className="menu-container">
@@ -79,26 +125,18 @@ function Header() {
                 <div className="row">
                   <div className="col-md-8">
                     <div className="row">
-                      <div className="col-md-6">
-                        <h3>Electronics</h3>
-                        <ul>
-                          <li>Batteries</li>
-                          <li>Headphones</li>
-                          <li>Watch</li>
-                          <li>Camera</li>
-                          <li>Laptop</li>
-                        </ul>
-                      </div>
-                      <div className="col-md-6">
-                        <h3>Electronics</h3>
-                        <ul>
-                          <li>Batteries</li>
-                          <li>Headphones</li>
-                          <li>Watch</li>
-                          <li>Camera</li>
-                          <li>Laptop</li>
-                        </ul>
-                      </div>
+                      {categories
+                        .filter((item) => item.onHeaderSection)
+                        .map((item, position) => (
+                          <div className="col-md-6 mb-2" key={position}>
+                            <h3>{item.name}</h3>
+                            <ul>
+                              {item.subCategories.map((cat, position) => (
+                                <li key={position}>{cat.name}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
                     </div>
                   </div>
                   <div className="col-md-4">
@@ -140,9 +178,12 @@ function Header() {
             )}
           </li>
           <li>Electronics</li>
-          <li onClick={() => navigate("/start-selling")}>Start selling</li>
+          {role === USER_ROLE_ENUM.CLIENT ||
+            (token.trim() === "" && (
+              <li onClick={() => navigate("/start-selling")}>Start selling</li>
+            ))}
           <li onClick={() => navigate("/memberships")}>All Membership</li>
-          <li>Shop</li>
+          <li>Shops</li>
           <li>Wish list</li>
         </ul>
       </div>

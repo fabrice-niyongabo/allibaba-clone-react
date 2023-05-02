@@ -72,6 +72,7 @@
     ul {
       margin: 0px;
       padding: 0px;
+      position: relative;
       li {
         list-style: none;
         display: inline-block;
@@ -79,7 +80,6 @@
         padding: 1rem;
         text-transform: capitalize;
         cursor: pointer;
-        position: relative;
         // &:hover {
         //   color: $orange;
         // }
@@ -109,10 +109,9 @@
         }
       }
       .categories-menu {
-        width: 100vw;
         // box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
         left: 0;
-
+        right: 0 !important;
         h3 {
           text-transform: uppercase;
         }

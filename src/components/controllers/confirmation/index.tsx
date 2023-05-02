@@ -30,7 +30,7 @@ function Confirmation({
       >
         <DialogTitle id="alert-dialog-title">
           <i className="bi bi-exclamation-triangle text-danger" />
-          <span className="text-danger"> Comfirm Process</span>
+          <span className="text-danger">Confirmation</span>
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">

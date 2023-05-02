@@ -1,5 +1,5 @@
 //@ts-nocheck
-import React, { lazy } from "react";
+import React, { lazy, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import FullLayout from "./layouts/FullLayout";
 import { ToastContainer } from "react-toastify";
@@ -10,6 +10,7 @@ import ProtectedRoute from "./components/controllers/protected-route";
 import { useSelector } from "react-redux";
 import { RootState } from "./reducers";
 import { IUser, USER_ROLE_ENUM } from "./interfaces";
+import { useLoadBasicData } from "./components/helpers";
 
 const Dashboard = lazy(() => import("./views/admin/dashboard"));
 const Home = lazy(() => import("./views/home"));
@@ -38,7 +39,14 @@ const theme = createMuiTheme({
 });
 
 const App = () => {
+  const loadBasicData = useLoadBasicData();
   const { role } = useSelector((state: RootState) => state.user as IUser);
+  useEffect(() => {
+    loadBasicData();
+
+    return () => {};
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>

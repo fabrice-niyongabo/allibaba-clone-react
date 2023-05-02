@@ -4,15 +4,18 @@ import { Col, Container, Row } from "reactstrap";
 import Slider from "./slider";
 
 import cameraImage from "../../../assets/images/static/camera.png";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../reducers";
 
 function Welcome() {
   const [homeHover, setHomeHover] = useState(false);
+  const { categories } = useSelector((state: RootState) => state.categories);
   return (
     <div className="afriseller-container home-welcome">
       <Row>
         <Col md={3} style={{ paddingRight: 0 }}>
           <div className="w-container">
-            <h3>All categories</h3>
+            <h3>My Markets</h3>
             <ul>
               <li
                 onMouseOver={() => {
@@ -24,11 +27,12 @@ function Welcome() {
               >
                 <i
                   className={
-                    homeHover ? "bi bi-house text-orange" : "bi bi-house"
+                    homeHover ? "bi bi-list text-orange" : "bi bi-list"
                   }
+                  style={{ fontSize: 20 }}
                 />
                 <span className={homeHover ? "text-orange" : ""}>
-                  Home Appliance
+                  All Categories
                 </span>{" "}
                 {homeHover ? (
                   <i className="bi bi-chevron-right text-orange" />
@@ -38,61 +42,28 @@ function Welcome() {
                 {homeHover && (
                   <div className="category-menu">
                     <div className="row">
-                      <div className="col-md-4">
-                        <h3>Home Storage</h3>
-                        <ul>
-                          <li>Storage Boxes & Bins</li>
-                          <li>Laundry baskets</li>
-                          <li>Drawer organiser</li>
-                          <li>Make up organiser</li>
-                        </ul>
-                      </div>
-                      <div className="col-md-4">
-                        <h3>Home Storage</h3>
-                        <ul>
-                          <li>Storage Boxes & Bins</li>
-                          <li>Laundry baskets</li>
-                          <li>Drawer organiser</li>
-                          <li>Make up organiser</li>
-                        </ul>
-                      </div>
-                      <div className="col-md-4">
-                        <h3>Home Storage</h3>
-                        <ul>
-                          <li>Storage Boxes & Bins</li>
-                          <li>Laundry baskets</li>
-                          <li>Drawer organiser</li>
-                          <li>Make up organiser</li>
-                        </ul>
-                      </div>
+                      {categories.map((item, position) => (
+                        <div className="col-md-4" key={position}>
+                          <h3>{item.name}</h3>
+                          <ul>
+                            {item.subCategories.map((it, position) => (
+                              <li key={position}>{it.name}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 )}
               </li>
-              <li>
-                <i className="bi bi-bag" />
-                <span>Bags</span>
-              </li>
-              <li>
-                <i className="bi bi-bag" />
-                <span>Fashion Accessories</span>
-              </li>
-              <li>
-                <i className="bi bi-bag" />
-                <span>Gifts</span>
-              </li>
-              <li>
-                <i className="bi bi-bag" />
-                <span>Electronics</span>
-              </li>
-              <li>
-                <i className="bi bi-bag" />
-                <span>ecurity & Protection</span>
-              </li>
-              <li>
-                <i className="bi bi-bag" />
-                <span>Health</span>
-              </li>
+              {categories
+                .filter((item) => item.onCategoriesSection)
+                .map((item, position) => (
+                  <li key={position}>
+                    <i className={`bi ${item.icon}`} style={{ fontSize: 20 }} />
+                    <span>{item.name}</span>
+                  </li>
+                ))}
             </ul>
           </div>
         </Col>
