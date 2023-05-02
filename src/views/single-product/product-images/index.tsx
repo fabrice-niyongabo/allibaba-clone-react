@@ -1,25 +1,33 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 
-import img1 from "../../../assets/images/static/1.jpg";
-import img2 from "../../../assets/images/static/3.jpg";
-import img3 from "../../../assets/images/static/banner.jpg";
-function ProductImages() {
+import { IProduct } from "../../../interfaces";
+import { app } from "../../../components/constants";
+import { makeStyles } from "@mui/styles";
+interface IProductImagesProps {
+  product: IProduct;
+}
+function ProductImages(props: IProductImagesProps) {
+  const classes = useStyles();
   return (
     <div>
       <Carousel infiniteLoop swipeable={true} dynamicHeight={true}>
-        <div>
-          <img alt="" src={img1} />
-        </div>
-        <div>
-          <img alt="" src={img2} />
-        </div>
-        <div>
-          <img alt="" src={img3} />
-        </div>
+        {props.product.images.map((item, position) => (
+          <div key={position} className={classes.container}>
+            <img src={app.FILE_URL + item.image} alt={props.product.name} />
+          </div>
+        ))}
       </Carousel>
     </div>
   );
 }
 
 export default ProductImages;
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    "& span": {
+      display: "block !important",
+    },
+  },
+}));

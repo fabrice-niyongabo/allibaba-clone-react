@@ -7,108 +7,94 @@ import img2 from "../../../assets/images/static/2.jpg";
 import img3 from "../../../assets/images/static/3.jpg";
 import img4 from "../../../assets/images/static/2.jpg";
 import img5 from "../../../assets/images/static/electronics.jpg";
+import { IProduct, PRICE_TYPE_ENUM } from "../../../interfaces";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../reducers";
+import ImageLoader from "../../../components/image-loader";
+import { app } from "../../../components/constants";
+import { currencyFormatter } from "../../../components/helpers";
 
-function RelatedProducts() {
+interface IRelatedProductsProps {
+  product: IProduct;
+}
+function RelatedProducts({ product }: IRelatedProductsProps) {
+  const { products } = useSelector((state: RootState) => state.products);
+  const [relatedProducts, setRelatedProducts] = React.useState<IProduct[]>([]);
+  React.useEffect(() => {
+    let sub = true;
+    if (sub) {
+      try {
+        const prods = products.filter(
+          (item) =>
+            item.categoryId === product.categoryId && item.pId !== product.pId
+        );
+        setRelatedProducts(prods);
+      } catch (error) {}
+    }
+    return () => {
+      sub = false;
+    };
+  }, [product, products]);
   return (
-    <div className="related-products-container">
-      <h3 style={{ fontSize: 16 }}>You may also like</h3>
-      <Carousel
-        autoplay={false}
-        wrapAround={true}
-        slidesToShow={5}
-        adaptiveHeight={true}
-        slidesToScroll={5}
-        renderBottomCenterControls={() => <></>}
-        renderCenterLeftControls={({ previousSlide }) => (
-          <div className="carausel-custom-control" onClick={previousSlide}>
-            <i className="bi bi-caret-left-fill"></i>
-          </div>
-        )}
-        renderCenterRightControls={({ nextSlide }) => (
-          <div className="carausel-custom-control" onClick={nextSlide}>
-            <i className="bi bi-caret-right-fill"></i>
-          </div>
-        )}
-      >
-        <div className="slider-item">
-          <img alt="" src={img1} alt="" />
-          <p
-            title="Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
-            Home Use Foldable Riser Laptop Cooling Pads Laptop Stand"
+    <>
+      {relatedProducts.length > 0 && (
+        <div className="related-products-container">
+          <h3 style={{ fontSize: 16 }}>You may also like</h3>
+          <Carousel
+            autoplay={false}
+            wrapAround={true}
+            slidesToShow={5}
+            adaptiveHeight={true}
+            slidesToScroll={5}
+            renderBottomCenterControls={() => <></>}
+            renderCenterLeftControls={({ previousSlide }) => (
+              <div className="carausel-custom-control" onClick={previousSlide}>
+                <i className="bi bi-caret-left-fill"></i>
+              </div>
+            )}
+            renderCenterRightControls={({ nextSlide }) => (
+              <div className="carausel-custom-control" onClick={nextSlide}>
+                <i className="bi bi-caret-right-fill"></i>
+              </div>
+            )}
           >
-            Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
-            Home Use Foldable Riser Laptop Cooling Pads Laptop Stand
-          </p>
-          <span title="22,000 rwf - 100,000 rwf">22,000 rwf - 100,000 rwf</span>
+            {relatedProducts.map((item, index) => (
+              <div className="slider-item" key={index}>
+                <ImageLoader src={app.FILE_URL + item.images[0].image} />
+                <p title={item.name}>{item.name}</p>
+                {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
+                  <span title={`${currencyFormatter(item.singlePrice)} rwf`}>
+                    {currencyFormatter(item.singlePrice)} rwf
+                  </span>
+                ) : (
+                  <span
+                    title={`${currencyFormatter(item.prices[0].amount)} rwf ${
+                      item.prices.length - 1 > 0 &&
+                      " - " +
+                        currencyFormatter(
+                          item.prices[item.prices.length - 1].amount
+                        ) +
+                        " rwf"
+                    }  `}
+                  >
+                    {currencyFormatter(item.prices[0].amount)} rwf
+                    {item.prices.length - 1 > 0 && (
+                      <>
+                        -{" "}
+                        {currencyFormatter(
+                          item.prices[item.prices.length - 1].amount
+                        )}{" "}
+                        rwf
+                      </>
+                    )}
+                  </span>
+                )}
+              </div>
+            ))}
+          </Carousel>
         </div>
-        <div className="slider-item">
-          <img alt="" src={img2} alt="" />
-          <p
-            title="Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
-            Home Use Foldable Riser Laptop Cooling Pads Laptop Stand"
-          >
-            Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
-            Home Use Foldable Riser Laptop Cooling Pads Laptop Stand
-          </p>
-          <span title="22,000 rwf - 100,000 rwf">22,000 rwf - 100,000 rwf</span>
-        </div>
-        <div className="slider-item">
-          <img alt="" src={img3} alt="" />
-          <p
-            title="Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
-            Home Use Foldable Riser Laptop Cooling Pads Laptop Stand"
-          >
-            Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
-            Home Use Foldable Riser Laptop Cooling Pads Laptop Stand
-          </p>
-          <span title="22,000 rwf - 100,000 rwf">22,000 rwf - 100,000 rwf</span>
-        </div>
-        <div className="slider-item">
-          <img alt="" src={img4} alt="" />
-          <p
-            title="Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
-            Home Use Foldable Riser Laptop Cooling Pads Laptop Stand"
-          >
-            Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
-            Home Use Foldable Riser Laptop Cooling Pads Laptop Stand
-          </p>
-          <span title="22,000 rwf - 100,000 rwf">22,000 rwf - 100,000 rwf</span>
-        </div>
-        <div className="slider-item">
-          <img alt="" src={img5} alt="" />
-          <p
-            title="Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
-            Home Use Foldable Riser Laptop Cooling Pads Laptop Stand"
-          >
-            Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
-            Home Use Foldable Riser Laptop Cooling Pads Laptop Stand
-          </p>
-          <span title="22,000 rwf - 100,000 rwf">22,000 rwf - 100,000 rwf</span>
-        </div>
-        <div className="slider-item">
-          <img alt="" src={img4} alt="" />
-          <p
-            title="Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
-            Home Use Foldable Riser Laptop Cooling Pads Laptop Stand"
-          >
-            Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
-            Home Use Foldable Riser Laptop Cooling Pads Laptop Stand
-          </p>
-          <span title="22,000 rwf - 100,000 rwf">22,000 rwf - 100,000 rwf</span>
-        </div>
-        <div className="slider-item">
-          <img alt="" src={img5} alt="" />
-          <p
-            title="Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
-            Home Use Foldable Riser Laptop Cooling Pads Laptop Stand"
-          >
-            Aluminum alloy Angle Adjustable Two Fans Cooling Pad Stand Ergonomic
-            Home Use Foldable Riser Laptop Cooling Pads Laptop Stand
-          </p>
-          <span title="22,000 rwf - 100,000 rwf">22,000 rwf - 100,000 rwf</span>
-        </div>
-      </Carousel>
-    </div>
+      )}
+    </>
   );
 }
 

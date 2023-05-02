@@ -3,14 +3,17 @@ import { Col, Row } from "reactstrap";
 import Description from "./description";
 import Reviews from "./reviews";
 import Faq from "./faq";
+import { IProduct } from "../../../interfaces";
 
 enum PRODUCT_TABS_ENUM {
   PRODUCT_DESCRIPTION = "PRODUCT_DESCRIPTION",
   PRODUCT_FAQ = "PRODUCT_FAQ",
   PRODUCT_REVIEWS = "PRODUCT_REVIEWS",
 }
-
-function ProductTabs() {
+interface IProductTabs {
+  product: IProduct;
+}
+function ProductTabs({ product }: IProductTabs) {
   const [activeTab, setActiveTab] = useState<string>(
     PRODUCT_TABS_ENUM.PRODUCT_DESCRIPTION
   );
@@ -46,7 +49,7 @@ function ProductTabs() {
           </div>
           <div className="tab-contents-main-container">
             {activeTab === PRODUCT_TABS_ENUM.PRODUCT_DESCRIPTION && (
-              <Description />
+              <Description product={product} />
             )}
             {activeTab === PRODUCT_TABS_ENUM.PRODUCT_REVIEWS && <Reviews />}
             {activeTab === PRODUCT_TABS_ENUM.PRODUCT_FAQ && <Faq />}

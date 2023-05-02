@@ -91,7 +91,7 @@ function SingleProduct() {
             </div>
             <Row className="mt-4">
               <Col md={4}>
-                <ProductImages />
+                <ProductImages product={product} />
               </Col>
               <Col md={5}>
                 <p>{product.name}</p>
@@ -149,16 +149,16 @@ function SingleProduct() {
                 </div>
               </Col>
               <Col md={3}>
-                <Supplier />
+                <Supplier product={product} />
               </Col>
             </Row>
             <Row className="mt-4">
               <Col md={9}>
-                <RelatedProducts />
+                <RelatedProducts product={product} />
               </Col>
             </Row>
           </div>
-          <ProductTabs />
+          <ProductTabs product={product} />
         </>
       )}
       <Footer />
