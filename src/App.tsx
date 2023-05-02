@@ -55,7 +55,7 @@ const App = () => {
           <Route exact path="/logout" element={<Logout />} />
           <Route exact path="/memberships" element={<Memberships />} />
           <Route exact path="/start-selling" element={<StartSelling />} />
-          <Route exact path="/product" element={<SingleProduct />} />
+          <Route exact path="/product/:id" element={<SingleProduct />} />
           <Route exact path="/product-category" element={<ProductCategory />} />
           <Route exact path="/shops/:id" element={<Shop />} />
           <Route

@@ -7,7 +7,10 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../components/constants";
-import { currencyFormatter } from "../../../components/helpers";
+import {
+  currencyFormatter,
+  openUrlInNewTab,
+} from "../../../components/helpers";
 
 interface IProductsProps {
   shop: Ishop;
@@ -70,7 +73,10 @@ function Products(props: IProductsProps) {
           <Row>
             {productsToShow.map((item, index) => (
               <Col md={3} sm={6} xs={6} className="mb-3" key={index}>
-                <div className="product-item">
+                <div
+                  className="product-item pointer"
+                  onClick={() => openUrlInNewTab("/product/" + item.pId, false)}
+                >
                   <ImageLoader
                     src={app.FILE_URL + item.images[0].image}
                     alt={item.name}

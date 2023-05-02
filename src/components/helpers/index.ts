@@ -5,6 +5,7 @@ import { TOAST_MESSAGE_TYPES } from "../../interfaces";
 import { fetchCategories } from "../../actions/categories";
 import { fetchShops } from "../../actions/shops";
 import { fetchProducts } from "../../actions/products";
+import { app } from "../constants";
 
 //custom dispatcher hook
 export const useLoadBasicData = () => {
@@ -32,6 +33,11 @@ export const returnErroMessage = (error: any) => {
   } else {
     return error;
   }
+};
+
+export const openUrlInNewTab = (url: string, self: boolean = true) => {
+  const urlToUse = self ? app.PUBLIC_URL + url : url;
+  window.open(urlToUse, "_blank");
 };
 
 export const randomNumber = () => {
