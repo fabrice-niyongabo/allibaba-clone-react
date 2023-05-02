@@ -20,7 +20,10 @@ const StartSelling = lazy(() => import("./views/start-selling"));
 const SingleProduct = lazy(() => import("./views/single-product"));
 const ProductCategory = lazy(() => import("./views/products-by-categories"));
 const Shop = lazy(() => import("./views/shop"));
+
 const Categories = lazy(() => import("./views/admin/categories"));
+const CategoryImage = lazy(() => import("./views/admin/category-image"));
+
 const Apply = lazy(() => import("./views/apply"));
 
 const MyShop = lazy(() => import("./views/seller/my-shop"));
@@ -101,6 +104,11 @@ const App = () => {
                   path="/dashboard/main/categories"
                   exact
                   element={<Categories />}
+                />
+                <Route
+                  path="/dashboard/main/category/:id"
+                  exact
+                  element={<CategoryImage />}
                 />
               </>
             }

@@ -32,6 +32,8 @@ export interface ICategory {
   id: number;
   name: string;
   image: string;
+  banner: string;
+  icon: string;
   subCategories: ISubCategory[];
 }
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Card, CardBody, CardTitle, Col, Row, Spinner } from "reactstrap";
 import Edit from "./edit";
@@ -15,11 +15,12 @@ import Confirmation from "../../../components/controllers/confirmation";
 import FullPageLoader from "../../../components/full-page-loader";
 import { ICategory, TOAST_MESSAGE_TYPES } from "../../../interfaces";
 import SubCategories from "./sub-categories";
+import { Link } from "react-router-dom";
 
 const Categories = () => {
   const { token } = useSelector((state: RootState) => state.user);
-  const [image, setImage] = useState("");
   const [name, setName] = useState("");
+  const [icon, setIcon] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [categories, setCategories] = useState<ICategory[]>([]);
@@ -31,13 +32,11 @@ const Categories = () => {
   );
   const [showSubCategories, setShowSubCategories] = useState<boolean>(false);
 
-  const imageRef = useRef<HTMLInputElement>(null);
-
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("file", image);
     formData.append("name", name);
+    formData.append("icon", icon);
     setIsSubmitting(true);
     try {
       const res = await axios.post(
@@ -46,7 +45,6 @@ const Categories = () => {
         setHeaders(token)
       );
       setName("");
-      if (imageRef.current) imageRef.current.value = "";
       setIsSubmitting(false);
       setCategories([{ ...res.data.category }, ...categories]);
       toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
@@ -116,7 +114,9 @@ const Categories = () => {
                     <thead>
                       <th>#</th>
                       <th>Image</th>
-                      <th>Category Name</th>
+                      <th>Banner</th>
+                      <th>Name</th>
+                      <th>Icon</th>
                       <th className="text-center">Action</th>
                     </thead>
                     <tbody style={{ borderTopWidth: 0 }}>
@@ -129,7 +129,19 @@ const Categories = () => {
                               style={{ width: 100 }}
                             />
                           </td>
+                          <td>
+                            <img
+                              src={app.FILE_URL + item.banner}
+                              style={{ width: 100 }}
+                            />
+                          </td>
                           <td>{item.name}</td>
+                          <td>
+                            <i
+                              className={`bi ${item.icon}`}
+                              style={{ fontSize: 25 }}
+                            ></i>
+                          </td>
                           <td>
                             <span
                               className="text-primary pointer"
@@ -160,6 +172,15 @@ const Categories = () => {
                             >
                               Sub Cats({item.subCategories.length})
                             </span>
+                            &nbsp;|&nbsp;
+                            <Link
+                              target="_blank"
+                              to={`/dashboard/main/category/${item.id}`}
+                            >
+                              <span className="text-primary pointer">
+                                Images
+                              </span>
+                            </Link>
                           </td>
                         </tr>
                       ))}
@@ -189,15 +210,18 @@ const Categories = () => {
                   />
                 </div>
                 <div className="form-group my-2">
-                  <span>Banner Image</span>
                   <input
-                    type="file"
+                    type="text"
+                    placeholder="Enter icon name, ex: bi-house"
                     className="form-control"
                     required
+                    value={icon}
                     disabled={isSubmitting}
-                    onChange={(t: any) => setImage(t.target.files[0])}
-                    ref={imageRef}
+                    onChange={(e) => setIcon(e.target.value)}
                   />
+                  <a target="_blank" href="https://icons.getbootstrap.com/">
+                    <small>View icons list</small>
+                  </a>
                 </div>
                 <div>
                   <button className="btn btn-primary">

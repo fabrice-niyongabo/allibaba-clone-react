@@ -9,7 +9,7 @@ import { errorHandler, toastMessage } from "../../../../components/helpers";
 import { TOAST_MESSAGE_TYPES } from "../../../../interfaces";
 import FullPageLoader from "../../../../components/full-page-loader";
 
-const initilaState = { name: "" };
+const initilaState = { name: "", icon: "" };
 interface IEditProps {
   showModal: boolean;
   setShowModal: any;
@@ -76,6 +76,20 @@ function Edit({
                 value={state.name}
                 disabled={isSubmitting}
               />
+            </div>
+            <div className="form-group my-2">
+              <input
+                type="text"
+                placeholder="Enter icon name, ex: bi-house"
+                className="form-control"
+                required
+                value={state.icon}
+                disabled={isSubmitting}
+                onChange={(e) => setState({ ...state, icon: e.target.value })}
+              />
+              <a target="_blank" href="https://icons.getbootstrap.com/">
+                <small>View icons list</small>
+              </a>
             </div>
           </Modal.Body>
           <Modal.Footer>
