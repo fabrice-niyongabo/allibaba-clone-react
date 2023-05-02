@@ -124,7 +124,7 @@ function Products() {
                       <Check
                         callBack={handleChange}
                         pId={item.pId}
-                        column="onTopRated"
+                        column="onBeauty"
                         defaultValue={item.onBeauty}
                       />
                     </td>
