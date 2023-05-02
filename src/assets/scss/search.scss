@@ -1,0 +1,10 @@
+@import "variables";
+@import "mixins";
+
+.search-main-container {
+  .banner {
+    background-color: $orange;
+    padding: 1rem 0rem;
+    color: $white;
+  }
+}

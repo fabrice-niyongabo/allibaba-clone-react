@@ -6,7 +6,7 @@ const initialState: IshopsReducer = {
   shops: [],
 };
 
-const shopsReducer = (state: IshopsReducer = initialState, action: IAction) => {
+const shopsReducer = (state = initialState, action: IAction) => {
   switch (action.type) {
     case SET_SHOPS:
       return { ...state, shops: action.payload as Ishop[] };

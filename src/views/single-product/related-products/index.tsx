@@ -12,7 +12,10 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../components/constants";
-import { currencyFormatter } from "../../../components/helpers";
+import {
+  currencyFormatter,
+  openUrlInNewTab,
+} from "../../../components/helpers";
 
 interface IRelatedProductsProps {
   product: IProduct;
@@ -46,6 +49,7 @@ function RelatedProducts({ product }: IRelatedProductsProps) {
             slidesToShow={5}
             adaptiveHeight={true}
             slidesToScroll={5}
+            style={{ outline: "none" }}
             renderBottomCenterControls={() => <></>}
             renderCenterLeftControls={({ previousSlide }) => (
               <div className="carausel-custom-control" onClick={previousSlide}>
@@ -59,7 +63,11 @@ function RelatedProducts({ product }: IRelatedProductsProps) {
             )}
           >
             {relatedProducts.map((item, index) => (
-              <div className="slider-item" key={index}>
+              <div
+                className="slider-item"
+                key={index}
+                onClick={() => openUrlInNewTab("/product/" + item.pId)}
+              >
                 <img
                   src={app.FILE_URL + item.images[0]?.image}
                   alt={item.name}
