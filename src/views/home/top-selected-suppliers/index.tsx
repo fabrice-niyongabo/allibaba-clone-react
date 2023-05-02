@@ -29,10 +29,7 @@ function TopSelectedSupplier() {
               key={position}
               onClick={() => navigate("/shops/" + shop.shopId)}
             >
-              <ImageLoader
-                src={app.FILE_URL + shop.shopImage}
-                alt={shop.shopName}
-              />
+              <img src={app.FILE_URL + shop.shopImage} alt={shop.shopName} />
               <span>{shop.shopName}</span>
             </div>
           ))}
