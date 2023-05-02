@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../reducers";
 import { IUser, USER_ROLE_ENUM } from "../../interfaces";
+import { openUrlInNewTab } from "../helpers";
 
 function Header() {
   const { categories } = useSelector((state: RootState) => state.categories);
@@ -129,10 +130,26 @@ function Header() {
                         .filter((item) => item.onHeaderSection)
                         .map((item, position) => (
                           <div className="col-md-6 mb-2" key={position}>
-                            <h3>{item.name}</h3>
+                            <h3
+                              className="pointer"
+                              onClick={() =>
+                                openUrlInNewTab("/category/" + item.id)
+                              }
+                            >
+                              {item.name}
+                            </h3>
                             <ul>
                               {item.subCategories.map((cat, position) => (
-                                <li key={position}>{cat.name}</li>
+                                <li
+                                  key={position}
+                                  onClick={() =>
+                                    openUrlInNewTab(
+                                      "/category/" + item.id + "/" + cat.id
+                                    )
+                                  }
+                                >
+                                  {cat.name}
+                                </li>
                               ))}
                             </ul>
                           </div>
@@ -177,7 +194,16 @@ function Header() {
               </div>
             )}
           </li>
-          <li>Electronics</li>
+          {categories
+            .filter((item) => item.onHeaderNav)
+            .map((item, index) => (
+              <li
+                key={index}
+                onClick={() => openUrlInNewTab("/category/" + item.id)}
+              >
+                {item.name}
+              </li>
+            ))}
           {role === USER_ROLE_ENUM.CLIENT ||
             (token.trim() === "" && (
               <li onClick={() => navigate("/start-selling")}>Start selling</li>

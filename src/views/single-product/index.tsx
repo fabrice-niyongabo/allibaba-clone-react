@@ -68,7 +68,7 @@ function SingleProduct() {
         </div>
       ) : (
         <>
-          <div className="afriseller-container single-product-container">
+          <div className="afriseller-container single-product-container mt-3">
             <div className="categories">
               <ul>
                 <li onClick={() => navigate("/")}>
