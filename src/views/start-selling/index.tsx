@@ -4,8 +4,10 @@ import Footer from "../../components/footer";
 import "../../assets/scss/startSelling.scss";
 import banner from "../../assets/images/start-selling-banner.png";
 import { Col, Row } from "reactstrap";
+import { useNavigate } from "react-router-dom";
 
 function StartSelling() {
+  const navigate = useNavigate();
   return (
     <>
       <Header />
@@ -17,7 +19,7 @@ function StartSelling() {
           Millions of shoppers can’t wait to see <br />
           What you have in store
         </h2>
-        <button>
+        <button onClick={() => navigate("/apply")}>
           <i className="bi bi-shop"></i>
           <span>Open Your Shop</span>
         </button>
@@ -61,7 +63,7 @@ function StartSelling() {
           </Col>
         </Row>
         <div className="button-container">
-          <button>Open Your Shop</button>
+          <button onClick={() => navigate("/apply")}>Open Your Shop</button>
         </div>
       </div>
       <Footer />
