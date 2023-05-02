@@ -123,6 +123,34 @@ const HomeCategories = () => {
             </CardBody>
           </Card>
         </Col>
+        <Col md={6}>
+          <Card>
+            <CardTitle tag="h6" className="border-bottom p-3 mb-0">
+              Categories to be shown on home page
+            </CardTitle>
+            <CardBody className="">
+              <div className="table-responsive">
+                <table className="table table-bordered">
+                  <tbody style={{ borderTopWidth: 0 }}>
+                    {categoriesReducer.categories.map((item, position) => (
+                      <tr key={position}>
+                        <td>{item.name}</td>
+                        <td>
+                          <Check
+                            callBack={handleChange}
+                            id={item.id}
+                            column="onHome"
+                            defaultValue={item.onHome}
+                          />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </CardBody>
+          </Card>
+        </Col>
       </Row>
       <FullPageLoader open={isSubmitting} />
     </div>

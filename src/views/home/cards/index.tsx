@@ -1,10 +1,14 @@
 import React from "react";
 import { Col, Row } from "reactstrap";
 
-import ring from "../../../assets/images/static/3.jpg";
-import dress from "../../../assets/images/static/1.jpg";
-import parfume from "../../../assets/images/static/2.jpg";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../reducers";
+import ImageLoader from "../../../components/image-loader";
+import { app } from "../../../components/constants";
+import { PRICE_TYPE_ENUM } from "../../../interfaces";
+import { currencyFormatter } from "../../../components/helpers";
 function Cards() {
+  const { products } = useSelector((state: RootState) => state.products);
   return (
     <div className="afriseller-container home-cards-container">
       <Row>
@@ -12,24 +16,26 @@ function Cards() {
           <div className="afriseller-card">
             <h3>New Arrivals</h3>
             <Row>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={ring} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={dress} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={parfume} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
+              {products
+                .filter((item) => item.onNewArrivals)
+                .slice(0, 3)
+                .map((item, position) => (
+                  <Col sm={4} key={position}>
+                    <div className="product-container">
+                      <ImageLoader
+                        alt={item.name}
+                        src={app.FILE_URL + item.images[0].image}
+                      />
+                      {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
+                        <span>{currencyFormatter(item.singlePrice)} RWF</span>
+                      ) : (
+                        <span>
+                          {currencyFormatter(item.prices[0].amount)} RWF
+                        </span>
+                      )}
+                    </div>
+                  </Col>
+                ))}
             </Row>
           </div>
         </Col>
@@ -37,24 +43,26 @@ function Cards() {
           <div className="afriseller-card">
             <h3>Electronics Items</h3>
             <Row>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={ring} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={dress} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={parfume} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
+              {products
+                .filter((item) => item.onElectronics)
+                .slice(0, 3)
+                .map((item, position) => (
+                  <Col sm={4} key={position}>
+                    <div className="product-container">
+                      <ImageLoader
+                        alt={item.name}
+                        src={app.FILE_URL + item.images[0].image}
+                      />
+                      {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
+                        <span>{currencyFormatter(item.singlePrice)} RWF</span>
+                      ) : (
+                        <span>
+                          {currencyFormatter(item.prices[0].amount)} RWF
+                        </span>
+                      )}
+                    </div>
+                  </Col>
+                ))}
             </Row>
           </div>
         </Col>
@@ -62,24 +70,26 @@ function Cards() {
           <div className="afriseller-card">
             <h3>Top Rated Products</h3>
             <Row>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={ring} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={dress} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={parfume} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
+              {products
+                .filter((item) => item.onTopRated)
+                .slice(0, 3)
+                .map((item, position) => (
+                  <Col sm={4} key={position}>
+                    <div className="product-container">
+                      <ImageLoader
+                        alt={item.name}
+                        src={app.FILE_URL + item.images[0].image}
+                      />
+                      {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
+                        <span>{currencyFormatter(item.singlePrice)} RWF</span>
+                      ) : (
+                        <span>
+                          {currencyFormatter(item.prices[0].amount)} RWF
+                        </span>
+                      )}
+                    </div>
+                  </Col>
+                ))}
             </Row>
           </div>
         </Col>
@@ -87,24 +97,26 @@ function Cards() {
           <div className="afriseller-card">
             <h3>Beauty Products</h3>
             <Row>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={ring} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={dress} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={parfume} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
+              {products
+                .filter((item) => item.onBeauty)
+                .slice(0, 3)
+                .map((item, position) => (
+                  <Col sm={4} key={position}>
+                    <div className="product-container">
+                      <ImageLoader
+                        alt={item.name}
+                        src={app.FILE_URL + item.images[0].image}
+                      />
+                      {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
+                        <span>{currencyFormatter(item.singlePrice)} RWF</span>
+                      ) : (
+                        <span>
+                          {currencyFormatter(item.prices[0].amount)} RWF
+                        </span>
+                      )}
+                    </div>
+                  </Col>
+                ))}
             </Row>
           </div>
         </Col>
@@ -112,24 +124,26 @@ function Cards() {
           <div className="afriseller-card">
             <h3>Sale Products</h3>
             <Row>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={ring} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={dress} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={parfume} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
+              {products
+                .filter((item) => item.onSale)
+                .slice(0, 3)
+                .map((item, position) => (
+                  <Col sm={4} key={position}>
+                    <div className="product-container">
+                      <ImageLoader
+                        alt={item.name}
+                        src={app.FILE_URL + item.images[0].image}
+                      />
+                      {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
+                        <span>{currencyFormatter(item.singlePrice)} RWF</span>
+                      ) : (
+                        <span>
+                          {currencyFormatter(item.prices[0].amount)} RWF
+                        </span>
+                      )}
+                    </div>
+                  </Col>
+                ))}
             </Row>
           </div>
         </Col>
@@ -137,24 +151,26 @@ function Cards() {
           <div className="afriseller-card">
             <h3>Best Selling Products</h3>
             <Row>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={ring} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={dress} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
-              <Col sm={4}>
-                <div className="product-container">
-                  <img alt="" src={parfume} />
-                  <span>5,000 RWF</span>
-                </div>
-              </Col>
+              {products
+                .filter((item) => item.onBestSelling)
+                .slice(0, 3)
+                .map((item, position) => (
+                  <Col sm={4} key={position}>
+                    <div className="product-container">
+                      <ImageLoader
+                        alt={item.name}
+                        src={app.FILE_URL + item.images[0].image}
+                      />
+                      {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
+                        <span>{currencyFormatter(item.singlePrice)} RWF</span>
+                      ) : (
+                        <span>
+                          {currencyFormatter(item.prices[0].amount)} RWF
+                        </span>
+                      )}
+                    </div>
+                  </Col>
+                ))}
             </Row>
           </div>
         </Col>

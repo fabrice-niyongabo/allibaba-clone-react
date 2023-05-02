@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { TOAST_MESSAGE_TYPES } from "../../interfaces";
 import { fetchCategories } from "../../actions/categories";
 import { fetchShops } from "../../actions/shops";
+import { fetchProducts } from "../../actions/products";
 
 //custom dispatcher hook
 export const useLoadBasicData = () => {
@@ -11,6 +12,7 @@ export const useLoadBasicData = () => {
   return (payload: any) => {
     dispatch(fetchCategories());
     dispatch(fetchShops());
+    dispatch(fetchProducts());
   };
 };
 

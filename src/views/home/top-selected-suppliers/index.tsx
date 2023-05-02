@@ -2,13 +2,13 @@
 import React from "react";
 import Carousel from "nuka-carousel";
 
-import img1 from "../../../assets/images/static/1.jpg";
-import img2 from "../../../assets/images/static/2.jpg";
-import img3 from "../../../assets/images/static/3.jpg";
-import img4 from "../../../assets/images/static/2.jpg";
-import img5 from "../../../assets/images/static/electronics.jpg";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../reducers";
+import ImageLoader from "../../../components/image-loader";
+import { app } from "../../../components/constants";
 
 function TopSelectedSupplier() {
+  const { shops } = useSelector((state: RootState) => state.shops);
   return (
     <div className="afriseller-container my-5 top-suppliers">
       <h3>TOP SELECTED SUPPLIERS</h3>
@@ -21,38 +21,15 @@ function TopSelectedSupplier() {
           adaptiveHeight={true}
           withoutControls={true}
         >
-          <div className="slider-item">
-            <img alt="" src={img1} alt="" style={{ width: 100 }} />
-            <span>Supplier Name</span>
-          </div>
-          <div className="slider-item">
-            <img alt="" src={img2} alt="" style={{ width: 100 }} />
-            <span>Supplier Name</span>
-          </div>
-          <div className="slider-item">
-            <img alt="" src={img3} alt="" style={{ width: 100 }} />
-            <span>Supplier Name</span>
-          </div>
-          <div className="slider-item">
-            <img alt="" src={img3} alt="" style={{ width: 100 }} />
-            <span>Supplier Name</span>
-          </div>
-          <div className="slider-item">
-            <img alt="" src={img3} alt="" style={{ width: 100 }} />
-            <span>Supplier Name</span>
-          </div>
-          <div className="slider-item">
-            <img alt="" src={img3} alt="" style={{ width: 100 }} />
-            <span>Supplier Name</span>
-          </div>
-          <div className="slider-item">
-            <img alt="" src={img4} alt="" style={{ width: 100 }} />
-            <span>Supplier Name</span>
-          </div>
-          <div className="slider-item">
-            <img alt="" src={img5} alt="" style={{ width: 100 }} />
-            <span>Supplier Name</span>
-          </div>
+          {shops.map((shop, position) => (
+            <div className="slider-item" key={position}>
+              <ImageLoader
+                src={app.FILE_URL + shop.shopImage}
+                alt={shop.shopName}
+              />
+              <span>{shop.shopName}</span>
+            </div>
+          ))}
         </Carousel>
       </div>
     </div>

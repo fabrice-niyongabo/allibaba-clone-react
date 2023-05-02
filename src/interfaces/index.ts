@@ -78,6 +78,11 @@ export interface ICategoriesReducer {
   categories: ICategory[];
 }
 
+export interface IProductsReducer {
+  isLoading: boolean;
+  products: IProduct[];
+}
+
 export interface IshopsReducer {
   isLoading: boolean;
   shops: Ishop[];
