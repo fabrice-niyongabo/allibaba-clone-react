@@ -15,9 +15,9 @@ export const adminNavigation = [
     icon: "bi bi-card-text",
   },
   {
-    title: "Badges",
-    href: "/badges",
-    icon: "bi bi-patch-check",
+    title: "Products",
+    href: "/dashboard/main/products",
+    icon: "bi bi-card-text",
   },
   {
     title: "Buttons",

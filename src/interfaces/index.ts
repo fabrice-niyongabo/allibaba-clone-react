@@ -78,6 +78,11 @@ export interface ICategoriesReducer {
   categories: ICategory[];
 }
 
+export interface IshopsReducer {
+  isLoading: boolean;
+  shops: Ishop[];
+}
+
 export enum PRICE_TYPE_ENUM {
   SINGLE = "single",
   MANY = "many",
@@ -107,6 +112,12 @@ export interface IProduct {
   priceType: PRICE_TYPE_ENUM;
   singlePrice: number;
   isActive: boolean;
+  onNewArrivals: boolean;
+  onElectronics: boolean;
+  onTopRated: boolean;
+  onBeauty: boolean;
+  onSale: boolean;
+  onBestSelling: boolean;
   images: IProductImage[];
   prices: IProductPrice[];
 }
