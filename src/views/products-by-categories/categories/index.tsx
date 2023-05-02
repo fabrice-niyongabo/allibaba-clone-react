@@ -1,6 +1,10 @@
 //@ts-nocheck
 import React from "react";
+import { useSelector } from "react-redux";
 import Slider from "react-slick";
+import { RootState } from "../../../reducers";
+import { ICategory } from "../../../interfaces";
+import { useNavigate } from "react-router-dom";
 
 function CustomPrevArrow(props) {
   const { className, onClick } = props;
@@ -42,7 +46,13 @@ function CustomNextArrow(props) {
   );
 }
 
-function Categories() {
+interface ICategoriesProps {
+  category: ICategory;
+  subCategoryId: any;
+}
+function Categories({ category, subCategoryId }: ICategoriesProps) {
+  const navigate = useNavigate();
+  // const { categories } = useSelector((state: RootState) => state.categories);
   const settings = {
     dots: false,
     infinite: false,
@@ -51,7 +61,7 @@ function Categories() {
     slidesToScroll: 1,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
-    infinite: true,
+    // infinite: true,
     initialSlide: 0,
     responsive: [
       {
@@ -78,39 +88,32 @@ function Categories() {
       },
     ],
   };
+
   return (
     <div className="product-categories-main-container">
       <Slider {...settings}>
-        <div className="category-item" style={{ width: 100 }}>
+        <div
+          className={`category-item ${
+            subCategoryId === undefined || subCategoryId === "all"
+              ? "active"
+              : ""
+          }`}
+          style={{ width: 100 }}
+          onClick={() => navigate("/category/" + category.id + "/all")}
+        >
           <div>All</div>
         </div>
-        <div className="category-item">
-          <div>Vehicle parts & Accessories</div>
-        </div>
-        <div className="category-item">
-          <div>Tools & Hardware</div>
-        </div>
-        <div className="category-item">
-          <div>Time Pieces, Jewley</div>
-        </div>
-        <div className="category-item">
-          <div>Tools & Hardware</div>
-        </div>
-        <div className="category-item">
-          <div>Tools & Hardware</div>
-        </div>
-        <div className="category-item">
-          <div>Time Pieces, Jewley</div>
-        </div>
-        <div className="category-item">
-          <div>All</div>
-        </div>
-        <div className="category-item">
-          <div>Time Pieces, Jewley</div>
-        </div>
-        <div className="category-item">
-          <div>Time Pieces, Jewley</div>
-        </div>
+        {category.subCategories.map((item, index) => (
+          <div
+            key={index}
+            className={`category-item ${
+              Number(subCategoryId) === item.id ? "active" : ""
+            }`}
+            onClick={() => navigate("/category/" + category.id + "/" + item.id)}
+          >
+            <div>{item.name}</div>
+          </div>
+        ))}
       </Slider>
     </div>
   );

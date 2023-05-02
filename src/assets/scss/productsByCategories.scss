@@ -38,6 +38,12 @@
         padding: 10px;
         display: inline-block;
       }
+      &:hover {
+        color: $orange;
+      }
+    }
+    .category-item.active {
+      color: $orange;
     }
   }
 

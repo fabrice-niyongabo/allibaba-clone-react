@@ -88,7 +88,7 @@ function Products(props: IProductsProps) {
                         <>{currencyFormatter(item.singlePrice)} RWF</>
                       ) : (
                         <>
-                          {currencyFormatter(item.prices[0].amount)} RWF{" "}
+                          {currencyFormatter(item.prices[0]?.amount)} RWF{" "}
                           {item.prices.length - 1 > 0 && (
                             <>
                               -{" "}

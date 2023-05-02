@@ -30,7 +30,7 @@ function Cards() {
                         <span>{currencyFormatter(item.singlePrice)} RWF</span>
                       ) : (
                         <span>
-                          {currencyFormatter(item.prices[0].amount)} RWF
+                          {currencyFormatter(item.prices[0]?.amount)} RWF
                         </span>
                       )}
                     </div>
@@ -57,7 +57,7 @@ function Cards() {
                         <span>{currencyFormatter(item.singlePrice)} RWF</span>
                       ) : (
                         <span>
-                          {currencyFormatter(item.prices[0].amount)} RWF
+                          {currencyFormatter(item.prices[0]?.amount)} RWF
                         </span>
                       )}
                     </div>
@@ -84,7 +84,7 @@ function Cards() {
                         <span>{currencyFormatter(item.singlePrice)} RWF</span>
                       ) : (
                         <span>
-                          {currencyFormatter(item.prices[0].amount)} RWF
+                          {currencyFormatter(item.prices[0]?.amount)} RWF
                         </span>
                       )}
                     </div>
@@ -111,7 +111,7 @@ function Cards() {
                         <span>{currencyFormatter(item.singlePrice)} RWF</span>
                       ) : (
                         <span>
-                          {currencyFormatter(item.prices[0].amount)} RWF
+                          {currencyFormatter(item.prices[0]?.amount)} RWF
                         </span>
                       )}
                     </div>
@@ -138,7 +138,7 @@ function Cards() {
                         <span>{currencyFormatter(item.singlePrice)} RWF</span>
                       ) : (
                         <span>
-                          {currencyFormatter(item.prices[0].amount)} RWF
+                          {currencyFormatter(item.prices[0]?.amount)} RWF
                         </span>
                       )}
                     </div>
@@ -165,7 +165,7 @@ function Cards() {
                         <span>{currencyFormatter(item.singlePrice)} RWF</span>
                       ) : (
                         <span>
-                          {currencyFormatter(item.prices[0].amount)} RWF
+                          {currencyFormatter(item.prices[0]?.amount)} RWF
                         </span>
                       )}
                     </div>

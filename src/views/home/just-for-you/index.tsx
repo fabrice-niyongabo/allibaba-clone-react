@@ -35,7 +35,7 @@ function JustForYou() {
                 {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
                   <p>{currencyFormatter(item.singlePrice)} RWF</p>
                 ) : (
-                  <p>{currencyFormatter(item.prices[0].amount)} RWF</p>
+                  <p>{currencyFormatter(item.prices[0]?.amount)} RWF</p>
                 )}
 
                 <p>{getCategoryName(item.categoryId)}</p>

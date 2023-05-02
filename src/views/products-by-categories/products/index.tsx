@@ -1,111 +1,96 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Row } from "reactstrap";
 
 import image from "../../../assets/images/static/2.jpg";
+import { useSelector } from "react-redux";
+import { ICategory, IProduct, PRICE_TYPE_ENUM } from "../../../interfaces";
+import { RootState } from "../../../reducers";
+import MiniLoader from "../../../layouts/loader/MiniLoader";
+import ImageLoader from "../../../components/image-loader";
+import { app } from "../../../components/constants";
+import {
+  currencyFormatter,
+  openUrlInNewTab,
+} from "../../../components/helpers";
 
-function Products() {
+interface IProductsProps {
+  category: ICategory;
+  subCategoryId: any;
+}
+function Products({ category, subCategoryId }: IProductsProps) {
+  const { products, isLoading } = useSelector(
+    (state: RootState) => state.products
+  );
+
+  const [productsToShow, setProductsToShow] = useState<IProduct[]>([]);
+
+  useEffect(() => {
+    let sub = true;
+    if (sub) {
+      if (subCategoryId === "all" || subCategoryId === undefined) {
+        setProductsToShow(
+          products.filter((item) => item.categoryId === category.id)
+        );
+      } else {
+        setProductsToShow(
+          products.filter(
+            (item) =>
+              item.categoryId === category.id &&
+              item.subCategoryId === Number(subCategoryId)
+          )
+        );
+      }
+    }
+
+    return () => {
+      sub = false;
+    };
+  }, [category, subCategoryId, products]);
   return (
     <div>
+      {isLoading && products.length === 0 && <MiniLoader />}
+      {!isLoading && productsToShow.length === 0 && (
+        <div className="bg-white p-5 mb-5 mt-5">
+          <div className="alert alert-danger">
+            No products found within this category.
+          </div>
+        </div>
+      )}
       <Row>
-        <Col md={2} sm={6} xs={6} className="mb-3">
-          <div className="product-item">
-            <img alt="" src={image} />
-            <div className="description">
-              <span>
-                OEM 27 inch 4K gaming monitor 144Hz FreeSync HDR PC Monitor
-              </span>
-              <div className="price">5,000 RWF</div>
+        {productsToShow.map((item, index) => (
+          <Col md={2} sm={6} xs={6} className="mb-3 pointer" key={index}>
+            <div
+              className="product-item"
+              onClick={() => openUrlInNewTab("/product/" + item.pId)}
+            >
+              <ImageLoader
+                src={app.FILE_URL + item.images[0]?.image}
+                alt={item.name}
+              />
+              <div className="description">
+                <span title={item.name}>{item.name}</span>
+                <div className="price">
+                  {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
+                    <>{currencyFormatter(item.singlePrice)} RWF</>
+                  ) : (
+                    <>
+                      {currencyFormatter(item.prices[0]?.amount)} RWF
+                      {item.prices.length - 1 > 0 && (
+                        <>
+                          -{" "}
+                          {currencyFormatter(
+                            item.prices[item.prices.length - 1].amount
+                          )}{" "}
+                          RWF
+                        </>
+                      )}
+                    </>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
-        </Col>
-        <Col md={2} sm={6} xs={6} className="mb-3">
-          <div className="product-item">
-            <img alt="" src={image} />
-            <div className="description">
-              <span>
-                OEM 27 inch 4K gaming monitor 144Hz FreeSync HDR PC Monitor
-              </span>
-              <div className="price">5,000 RWF</div>
-            </div>
-          </div>
-        </Col>
-        <Col md={2} sm={6} xs={6} className="mb-3">
-          <div className="product-item">
-            <img alt="" src={image} />
-            <div className="description">
-              <span>
-                OEM 27 inch 4K gaming monitor 144Hz FreeSync HDR PC Monitor
-              </span>
-              <div className="price">5,000 RWF</div>
-            </div>
-          </div>
-        </Col>
-        <Col md={2} sm={6} xs={6} className="mb-3">
-          <div className="product-item">
-            <img alt="" src={image} />
-            <div className="description">
-              <span>
-                OEM 27 inch 4K gaming monitor 144Hz FreeSync HDR PC Monitor
-              </span>
-              <div className="price">5,000 RWF</div>
-            </div>
-          </div>
-        </Col>
-        <Col md={2} sm={6} xs={6} className="mb-3">
-          <div className="product-item">
-            <img alt="" src={image} />
-            <div className="description">
-              <span>
-                OEM 27 inch 4K gaming monitor 144Hz FreeSync HDR PC Monitor
-              </span>
-              <div className="price">5,000 RWF</div>
-            </div>
-          </div>
-        </Col>
-        <Col md={2} sm={6} xs={6} className="mb-3">
-          <div className="product-item">
-            <img alt="" src={image} />
-            <div className="description">
-              <span>
-                OEM 27 inch 4K gaming monitor 144Hz FreeSync HDR PC Monitor
-              </span>
-              <div className="price">5,000 RWF</div>
-            </div>
-          </div>
-        </Col>
-        <Col md={2} sm={6} xs={6} className="mb-3">
-          <div className="product-item">
-            <img alt="" src={image} />
-            <div className="description">
-              <span>
-                OEM 27 inch 4K gaming monitor 144Hz FreeSync HDR PC Monitor
-              </span>
-              <div className="price">5,000 RWF</div>
-            </div>
-          </div>
-        </Col>
-        <Col md={2} sm={6} xs={6} className="mb-3">
-          <div className="product-item">
-            <img alt="" src={image} />
-            <div className="description">
-              <span>
-                OEM 27 inch 4K gaming monitor 144Hz FreeSync HDR PC Monitor
-              </span>
-              <div className="price">5,000 RWF</div>
-            </div>
-          </div>
-        </Col>
-        <Col md={2} sm={6} xs={6} className="mb-3">
-          <div className="product-item">
-            <img alt="" src={image} />
-            <div className="description">
-              <span>
-                OEM 27 inch 4K gaming monitor 144Hz FreeSync HDR PC Monitor
-              </span>
-              <div className="price">5,000 RWF</div>
-            </div>
-          </div>
-        </Col>
+          </Col>
+        ))}
       </Row>
     </div>
   );

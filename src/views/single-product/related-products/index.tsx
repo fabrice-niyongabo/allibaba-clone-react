@@ -71,7 +71,7 @@ function RelatedProducts({ product }: IRelatedProductsProps) {
                   </span>
                 ) : (
                   <span
-                    title={`${currencyFormatter(item.prices[0].amount)} rwf ${
+                    title={`${currencyFormatter(item.prices[0]?.amount)} rwf ${
                       item.prices.length - 1 > 0 &&
                       " - " +
                         currencyFormatter(
@@ -80,7 +80,7 @@ function RelatedProducts({ product }: IRelatedProductsProps) {
                         " rwf"
                     }  `}
                   >
-                    {currencyFormatter(item.prices[0].amount)} rwf
+                    {currencyFormatter(item.prices[0]?.amount)} rwf
                     {item.prices.length - 1 > 0 && (
                       <>
                         -{" "}
