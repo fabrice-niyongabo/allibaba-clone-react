@@ -86,16 +86,27 @@
       margin-bottom: 1rem;
     }
     ul li {
+      @include flexSpace;
       padding: 10px !important;
       img {
         width: 50px;
+        display: block;
+        margin-left: auto;
       }
       p {
         margin: 0;
         padding: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 120px;
       }
       span {
         padding: 0px !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 120px;
       }
       div {
         &:first-child {

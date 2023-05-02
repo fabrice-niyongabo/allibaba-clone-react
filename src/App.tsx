@@ -27,6 +27,9 @@ const Categories = lazy(() => import("./views/admin/categories"));
 const CategoryImage = lazy(() => import("./views/admin/category-image"));
 const HomeCategories = lazy(() => import("./views/admin/home-categories"));
 const AdminProducts = lazy(() => import("./views/admin/products"));
+const AdminUsers = lazy(() => import("./views/admin/users"));
+const AdminShops = lazy(() => import("./views/admin/shops"));
+const AdminMemberships = lazy(() => import("./views/admin/memberships"));
 
 const Apply = lazy(() => import("./views/apply"));
 
@@ -144,6 +147,21 @@ const App = () => {
                   path="/dashboard/main/products"
                   exact
                   element={<AdminProducts />}
+                />
+                <Route
+                  path="/dashboard/main/users"
+                  exact
+                  element={<AdminUsers />}
+                />
+                <Route
+                  path="/dashboard/main/shops"
+                  exact
+                  element={<AdminShops />}
+                />
+                <Route
+                  path="/dashboard/main/memberships"
+                  exact
+                  element={<AdminMemberships />}
                 />
               </>
             }

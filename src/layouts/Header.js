@@ -15,11 +15,15 @@ import {
 } from "reactstrap";
 import { ReactComponent as LogoWhite } from "../assets/images/logos/xtremelogowhite.svg";
 import user1 from "../assets/images/users/user1.jpg";
+import Logo from "./Logo";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = React.useState(false);
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
+
+  const { role } = useSelector((state) => state.user);
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
   const Handletoggle = () => {
@@ -32,7 +36,8 @@ const Header = () => {
     <Navbar color="primary" dark expand="md">
       <div className="d-flex align-items-center">
         <NavbarBrand href="/" className="d-lg-none">
-          <LogoWhite />
+          {/* <LogoWhite /> */}
+          <Logo />
         </NavbarBrand>
         <Button
           color="primary"
@@ -60,26 +65,13 @@ const Header = () => {
       <Collapse navbar isOpen={isOpen}>
         <Nav className="me-auto" navbar>
           <NavItem>
-            <Link to="/starter" className="nav-link">
-              Starter
-            </Link>
+            <span
+              className="text-white"
+              style={{ textTransform: "capitalize" }}
+            >
+              Afriseller {role} dashboard
+            </span>
           </NavItem>
-          <NavItem>
-            <Link to="/about" className="nav-link">
-              About
-            </Link>
-          </NavItem>
-          <UncontrolledDropdown inNavbar nav>
-            <DropdownToggle caret nav>
-              DD Menu
-            </DropdownToggle>
-            <DropdownMenu end>
-              <DropdownItem>Option 1</DropdownItem>
-              <DropdownItem>Option 2</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Reset</DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown>
         </Nav>
         <Dropdown isOpen={dropdownOpen} toggle={toggle}>
           <DropdownToggle color="primary">
@@ -92,11 +84,9 @@ const Header = () => {
           </DropdownToggle>
           <DropdownMenu>
             <DropdownItem header>Info</DropdownItem>
-            <DropdownItem>My Account</DropdownItem>
             <DropdownItem>Edit Profile</DropdownItem>
             <DropdownItem divider />
-            <DropdownItem>My Balance</DropdownItem>
-            <DropdownItem>Inbox</DropdownItem>
+            {/* <DropdownItem>Inbox</DropdownItem> */}
             <DropdownItem onClick={() => navigate("/logout")}>
               Logout
             </DropdownItem>

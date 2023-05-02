@@ -47,7 +47,6 @@ const BlogData = [
 const Dashboard = () => {
   return (
     <div>
-      {/***Top Cards***/}
       <Row>
         <Col sm="6" lg="3">
           <TopCards
@@ -86,8 +85,8 @@ const Dashboard = () => {
           />
         </Col>
       </Row>
-      {/***Sales & Feed***/}
-      <Row>
+
+      {/* <Row>
         <Col sm="6" lg="6" xl="7" xxl="8">
           <SalesChart />
         </Col>
@@ -95,13 +94,13 @@ const Dashboard = () => {
           <Feeds />
         </Col>
       </Row>
-      {/***Table ***/}
+
       <Row>
         <Col lg="12">
           <ProjectTables />
         </Col>
       </Row>
-      {/***Blog Cards***/}
+
       <Row>
         {BlogData.map((blg, index) => (
           <Col sm="6" lg="6" xl="3" key={index}>
@@ -114,7 +113,7 @@ const Dashboard = () => {
             />
           </Col>
         ))}
-      </Row>
+      </Row> */}
     </div>
   );
 };

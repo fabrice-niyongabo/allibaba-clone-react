@@ -20,38 +20,18 @@ export const adminNavigation = [
     icon: "bi bi-card-text",
   },
   {
-    title: "Buttons",
-    href: "/buttons",
-    icon: "bi bi-hdd-stack",
-  },
-  {
-    title: "Cards",
-    href: "/cards",
+    title: "Users",
+    href: "/dashboard/main/users",
     icon: "bi bi-card-text",
   },
   {
-    title: "Grid",
-    href: "/grid",
-    icon: "bi bi-columns",
+    title: "Shops",
+    href: "/dashboard/main/shops",
+    icon: "bi bi-card-text",
   },
   {
-    title: "Table",
-    href: "/table",
-    icon: "bi bi-layout-split",
-  },
-  {
-    title: "Forms",
-    href: "/forms",
-    icon: "bi bi-textarea-resize",
-  },
-  {
-    title: "Breadcrumbs",
-    href: "/breadcrumbs",
-    icon: "bi bi-link",
-  },
-  {
-    title: "About",
-    href: "/about",
-    icon: "bi bi-people",
+    title: "Memberships",
+    href: "/dashboard/main/memberships",
+    icon: "bi bi-card-text",
   },
 ];

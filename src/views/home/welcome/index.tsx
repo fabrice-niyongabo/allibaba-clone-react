@@ -6,11 +6,18 @@ import Slider from "./slider";
 import cameraImage from "../../../assets/images/static/camera.png";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
-import { openUrlInNewTab } from "../../../components/helpers";
+import {
+  currencyFormatter,
+  openUrlInNewTab,
+} from "../../../components/helpers";
+import ImageLoader from "../../../components/image-loader";
+import { app } from "../../../components/constants";
+import { PRICE_TYPE_ENUM } from "../../../interfaces";
 
 function Welcome() {
   const [homeHover, setHomeHover] = useState(false);
   const { categories } = useSelector((state: RootState) => state.categories);
+  const { products } = useSelector((state: RootState) => state.products);
   return (
     <div className="afriseller-container home-welcome">
       <div style={{ backgroundColor: "#FFF" }}>
@@ -77,7 +84,11 @@ function Welcome() {
                 {categories
                   .filter((item) => item.onCategoriesSection)
                   .map((item, position) => (
-                    <li key={position}>
+                    <li
+                      key={position}
+                      className="pointer"
+                      onClick={() => openUrlInNewTab("/category/" + item.id)}
+                    >
                       <i
                         className={`bi ${item.icon}`}
                         style={{ fontSize: 20 }}
@@ -97,61 +108,53 @@ function Welcome() {
             <div className="w-container new-products">
               <h3>New Products</h3>
               <ul>
-                <li>
-                  <div>
-                    <p>
-                      <b>Nikon Camera</b>
-                    </p>
-                    <span>200,000 RWF</span>
-                  </div>
-                  <div>
-                    <img alt="" src={cameraImage} />
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <p>
-                      <b>Nikon Camera</b>
-                    </p>
-                    <span>200,000 RWF</span>
-                  </div>
-                  <div>
-                    <img alt="" src={cameraImage} />
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <p>
-                      <b>Nikon Camera</b>
-                    </p>
-                    <span>200,000 RWF</span>
-                  </div>
-                  <div>
-                    <img alt="" src={cameraImage} />
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <p>
-                      <b>Nikon Camera</b>
-                    </p>
-                    <span>200,000 RWF</span>
-                  </div>
-                  <div>
-                    <img alt="" src={cameraImage} />
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <p>
-                      <b>Nikon Camera</b>
-                    </p>
-                    <span>200,000 RWF</span>
-                  </div>
-                  <div>
-                    <img alt="" src={cameraImage} />
-                  </div>
-                </li>
+                {products.slice(0, 5).map((item, index) => (
+                  <li
+                    className="pointer"
+                    key={index}
+                    onClick={() => openUrlInNewTab("/product/" + item.pId)}
+                  >
+                    <div>
+                      <p>
+                        <b>{item.name}</b>
+                      </p>
+                      {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
+                        <span
+                          title={`${currencyFormatter(item.singlePrice)} rwf`}
+                        >
+                          {currencyFormatter(item.singlePrice)} rwf
+                        </span>
+                      ) : (
+                        <span
+                          title={`${currencyFormatter(
+                            item.prices[0]?.amount
+                          )} rwf ${
+                            item.prices.length - 1 > 0 &&
+                            " - " +
+                              currencyFormatter(
+                                item.prices[item.prices.length - 1].amount
+                              ) +
+                              " rwf"
+                          }  `}
+                        >
+                          {currencyFormatter(item.prices[0]?.amount)} rwf
+                          {item.prices.length - 1 > 0 && (
+                            <>
+                              -{" "}
+                              {currencyFormatter(
+                                item.prices[item.prices.length - 1].amount
+                              )}{" "}
+                              rwf
+                            </>
+                          )}
+                        </span>
+                      )}
+                    </div>
+                    <div>
+                      <ImageLoader src={app.FILE_URL + item.images[0]?.image} />
+                    </div>
+                  </li>
+                ))}
               </ul>
             </div>
           </Col>

@@ -9,6 +9,7 @@ const Logout = () => {
   useEffect(() => {
     dispatch(resetUser());
     navigate("/login-register");
+    localStorage.clear();
   }, []);
   return null;
 };

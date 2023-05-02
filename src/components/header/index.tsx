@@ -190,13 +190,15 @@ function Header() {
                   <span>My Shop</span>
                 </div>
               ) : (
-                <div
-                  className="icon-container"
-                  onClick={() => navigate("/start-selling")}
-                >
-                  <img alt="" src={walletImage} />
-                  <span>Start Selling</span>
-                </div>
+                role !== USER_ROLE_ENUM.ADMIN && (
+                  <div
+                    className="icon-container"
+                    onClick={() => navigate("/start-selling")}
+                  >
+                    <img alt="" src={walletImage} />
+                    <span>Start Selling</span>
+                  </div>
+                )
               )}
             </>
           )}
@@ -303,11 +305,10 @@ function Header() {
                 {item.name}
               </li>
             ))}
-          {role === USER_ROLE_ENUM.CLIENT ||
-            (token.trim() === "" && (
-              <li onClick={() => navigate("/start-selling")}>Start selling</li>
-            ))}
-          <li onClick={() => navigate("/memberships")}>All Membership</li>
+          {(role === USER_ROLE_ENUM.CLIENT || token.trim() === "") && (
+            <li onClick={() => navigate("/start-selling")}>Start selling</li>
+          )}
+          <li onClick={() => navigate("/memberships")}> All Membership</li>
           <li>Shops</li>
           <li>Wish list</li>
         </ul>
