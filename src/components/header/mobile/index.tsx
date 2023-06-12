@@ -21,6 +21,8 @@ function MobileHeader() {
 
   const [focused, setFocused] = useState<boolean>(false);
   const [showSearch, setShowSearch] = useState<boolean>(false);
+  const [showHelpMenu, setShowHelpMenu] = useState<boolean>(false);
+  const [showMenu, setShowMenu] = useState<boolean>(false);
 
   useEffect(() => {
     let sub = true;
@@ -58,7 +60,7 @@ function MobileHeader() {
     <>
       <div className="mobile-main-container">
         <div className="top-container">
-          <div>
+          <div onClick={() => setShowMenu(!showMenu)}>
             <i className="bi bi-list" style={{ fontSize: 25 }}></i>
           </div>
           <div className="logo-container">
@@ -155,8 +157,40 @@ function MobileHeader() {
       </div>
 
       {/* menus */}
-      <div className="mobile-menu">
-        <div className="menu-contents">hello</div>
+      <div
+        className={`mobile-menu ${
+          showMenu ? "show-mobile-menu" : "hide-mobile-menu"
+        }`}
+      >
+        <div className="menu-contents">
+          <div className="close-btn">
+            <div onClick={() => setShowMenu(!showMenu)}>
+              <i className="bi bi-x-lg" style={{ fontSize: 25 }} />
+            </div>
+          </div>
+          <ul>
+            <li>Home</li>
+            <li className="dropdown">
+              <div
+                className="menu"
+                onClick={() => setShowHelpMenu(!showHelpMenu)}
+              >
+                <p>Help&Community</p>
+                <i
+                  className={`bi bi-chevron-${showHelpMenu ? "up" : "down"}`}
+                />
+              </div>
+              <ul className={showHelpMenu ? "" : "d-none"}>
+                <li>For Buyers</li>
+                <li>For New Users</li>
+                <li>For Suppliers</li>
+                <li>Support</li>
+              </ul>
+            </li>
+            <li>Shops</li>
+            <li>Wishlist</li>
+          </ul>
+        </div>
       </div>
     </>
   );
