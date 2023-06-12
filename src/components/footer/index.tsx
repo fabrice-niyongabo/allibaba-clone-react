@@ -7,7 +7,7 @@ function Footer() {
     <footer>
       <div className="afriseller-container">
         <Row>
-          <Col md={4} sm={6} xs={12}>
+          <Col md={4} sm={6} xs={6}>
             <h3>Our Company</h3>
             <ul>
               <li>Home</li>
@@ -16,7 +16,7 @@ function Footer() {
               <li>Shop</li>
             </ul>
           </Col>
-          <Col md={4} sm={6} xs={12}>
+          <Col md={4} sm={6} xs={6}>
             <h3>Help</h3>
             <ul>
               <li>Terms and Conditions</li>
@@ -24,7 +24,7 @@ function Footer() {
               <li>Support</li>
             </ul>
           </Col>
-          <Col md={4} sm={6} xs={12}>
+          <Col md={4} sm={6} xs={6}>
             <h3>Sell</h3>
             <ul>
               <li>Supplier Memberships</li>
