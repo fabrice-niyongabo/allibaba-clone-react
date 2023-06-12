@@ -43,7 +43,7 @@ a {
   cursor: pointer;
 }
 
-@media (max-width: 764px) {
+@media #{$media-tablet} {
   .afriseller-container {
     margin-left: 1rem;
     margin-right: 1rem;
