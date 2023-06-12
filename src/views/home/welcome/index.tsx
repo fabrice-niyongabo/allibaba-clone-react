@@ -13,6 +13,7 @@ import {
 import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../components/constants";
 import { PRICE_TYPE_ENUM } from "../../../interfaces";
+import { isMobile } from "react-device-detect";
 
 function Welcome() {
   const [homeHover, setHomeHover] = useState(false);
@@ -22,7 +23,10 @@ function Welcome() {
     <div className="afriseller-container home-welcome">
       <div style={{ backgroundColor: "#FFF" }}>
         <Row>
-          <Col md={3} style={{ paddingRight: 0 }}>
+          <Col
+            md={3}
+            style={{ paddingRight: 0, display: isMobile ? "none" : "block" }}
+          >
             <div className="w-container">
               <h3>My Markets</h3>
               <ul>
@@ -99,12 +103,15 @@ function Welcome() {
               </ul>
             </div>
           </Col>
-          <Col md={6} className="m-0 p-0">
+          <Col md={6} className={!isMobile ? "m-0 p-0" : ""}>
             <div className="slider-container">
               <Slider />
             </div>
           </Col>
-          <Col md={3} style={{ paddingLeft: 0 }}>
+          <Col
+            md={3}
+            style={{ paddingLeft: 0, display: isMobile ? "none" : "block" }}
+          >
             <div className="w-container new-products">
               <h3>New Products</h3>
               <ul>

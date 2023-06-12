@@ -42,3 +42,10 @@ a {
 .pointer {
   cursor: pointer;
 }
+
+@media (max-width: 764px) {
+  .afriseller-container {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
