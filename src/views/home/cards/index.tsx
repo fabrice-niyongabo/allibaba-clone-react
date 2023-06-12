@@ -23,7 +23,7 @@ function Cards() {
                 .filter((item) => item.onNewArrivals)
                 .slice(0, 3)
                 .map((item, position) => (
-                  <Col sm={4} key={position}>
+                  <Col xs={4} sm={4} md={4} key={position}>
                     <div
                       className="product-container pointer"
                       onClick={() =>
@@ -55,7 +55,7 @@ function Cards() {
                 .filter((item) => item.onElectronics)
                 .slice(0, 3)
                 .map((item, position) => (
-                  <Col sm={4} key={position}>
+                  <Col xs={4} sm={4} md={4} key={position}>
                     <div
                       className="product-container pointer"
                       onClick={() =>
@@ -87,7 +87,7 @@ function Cards() {
                 .filter((item) => item.onTopRated)
                 .slice(0, 3)
                 .map((item, position) => (
-                  <Col sm={4} key={position}>
+                  <Col xs={4} sm={4} md={4} key={position}>
                     <div
                       className="product-container pointer"
                       onClick={() =>
@@ -119,7 +119,7 @@ function Cards() {
                 .filter((item) => item.onBeauty)
                 .slice(0, 3)
                 .map((item, position) => (
-                  <Col sm={4} key={position}>
+                  <Col xs={4} sm={4} md={4} key={position}>
                     <div
                       className="product-container pointer"
                       onClick={() =>
@@ -151,7 +151,7 @@ function Cards() {
                 .filter((item) => item.onSale)
                 .slice(0, 3)
                 .map((item, position) => (
-                  <Col sm={4} key={position}>
+                  <Col xs={4} sm={4} md={4} key={position}>
                     <div
                       className="product-container pointer"
                       onClick={() =>
@@ -183,7 +183,7 @@ function Cards() {
                 .filter((item) => item.onBestSelling)
                 .slice(0, 3)
                 .map((item, position) => (
-                  <Col sm={4} key={position}>
+                  <Col xs={4} sm={4} md={4} key={position}>
                     <div
                       className="product-container pointer"
                       onClick={() =>
