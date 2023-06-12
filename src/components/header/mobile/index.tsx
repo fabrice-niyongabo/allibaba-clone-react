@@ -18,6 +18,9 @@ function MobileHeader() {
   const navigate = useNavigate();
   return (
     <div className="mobile-main-container">
+      <div>
+        <i className="bi bi-list" style={{ fontSize: 20 }}></i>
+      </div>
       <div className="top-container">
         <Link to="/">
           <div className="logo-containter">
@@ -93,67 +96,7 @@ function MobileHeader() {
               </div>
             )}
         </div> */}
-        <div className="icons-main-container">
-          {token.trim() === "" ? (
-            <>
-              <div
-                className="icon-container"
-                onClick={() => navigate("/login-register")}
-              >
-                <img alt="" src={userImage} />
-                <span>Sign In</span>
-              </div>
-              <div className="icon-container">
-                <img alt="" src={wishListImage} />
-                <span>Wishlist</span>
-              </div>
-              <div
-                className="icon-container"
-                onClick={() => navigate("/start-selling")}
-              >
-                <img alt="" src={walletImage} />
-                <span>Start Selling</span>
-              </div>
-            </>
-          ) : (
-            <>
-              <div
-                className="icon-container"
-                onClick={() =>
-                  role === USER_ROLE_ENUM.ADMIN
-                    ? navigate("/dashboard/main")
-                    : navigate("/dashboard")
-                }
-              >
-                <i className="bi bi-speedometer2" style={{ fontSize: 20 }}></i>
-                <span>Dashboard</span>
-              </div>
-              <div className="icon-container">
-                <img alt="" src={wishListImage} />
-                <span>Wishlist</span>
-              </div>
-              {role === USER_ROLE_ENUM.SELLER ? (
-                <div
-                  className="icon-container"
-                  onClick={() => navigate("/start-selling")}
-                >
-                  <i className="bi bi-shop"></i>
-                  <span>My Shop</span>
-                </div>
-              ) : (
-                role !== USER_ROLE_ENUM.ADMIN && (
-                  <div
-                    className="icon-container"
-                    onClick={() => navigate("/start-selling")}
-                  >
-                    <img alt="" src={walletImage} />
-                    <span>Start Selling</span>
-                  </div>
-                )
-              )}
-            </>
-          )}
-        </div>
+        <div className="icons-main-container"></div>
       </div>
     </div>
   );
