@@ -36,6 +36,11 @@
       height: 350px;
       object-fit: cover;
     }
+    @media #{$media-mobile} {
+      img {
+        height: auto;
+      }
+    }
   }
   .product-container {
     background-color: $white;
