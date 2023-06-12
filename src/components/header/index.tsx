@@ -74,7 +74,6 @@ function Header() {
         <MobileHeader />
       ) : (
         <>
-          {" "}
           <div className="top-container">
             <Link to="/">
               <div className="logo-containter">
