@@ -34,6 +34,7 @@ function Categories() {
                     .slice(0, 8)
                     .map((item, index) => (
                       <Col
+                        xs={6}
                         sm={6}
                         md={3}
                         className="product-container"
