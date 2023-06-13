@@ -56,6 +56,7 @@ function Edit({
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [variations, setVariations] = useState<IVariation[]>([]);
+  const [defaultVariations, setDefaultVariations] = useState<IVariation[]>([]);
   const [unsavedVariations, setUnsavedVariations] = useState<
     VARITION_TYPES_ENUM[]
   >([]);
@@ -69,6 +70,13 @@ function Edit({
     const description = draftToHtml(
       convertToRaw(state.description.getCurrentContent())
     );
+    if (unsavedVariations.length > 0) {
+      toastMessage(
+        TOAST_MESSAGE_TYPES.ERROR,
+        `Please save changes for ${unsavedVariations[0]} variation or uncheck it to remove it from the list.`
+      );
+      return;
+    }
     const singlePrice =
       state.priceType === PRICE_TYPE_ENUM.MANY ? 0.0 : state.singlePrice;
     setIsSubmitting(true);
@@ -79,6 +87,7 @@ function Edit({
           ...state,
           description,
           singlePrice,
+          variations: JSON.stringify(variations),
         },
         setHeaders(token)
       )
@@ -108,6 +117,7 @@ function Edit({
       setState({ ...selectedItem, description: editorState } as any);
       if (selectedItem.variations !== null) {
         setVariations(selectedItem.variations);
+        setDefaultVariations(selectedItem.variations);
       }
     }
   }, [showModal]);
@@ -293,6 +303,7 @@ function Edit({
                 <Variation
                   type={VARITION_TYPES_ENUM.COLOR}
                   variations={variations}
+                  defaultVariations={defaultVariations}
                   setVariations={setVariations}
                   setUnsavedVariations={setUnsavedVariations}
                   unsavedVariations={unsavedVariations}
@@ -300,6 +311,7 @@ function Edit({
                 <Variation
                   type={VARITION_TYPES_ENUM.FLAVOR}
                   variations={variations}
+                  defaultVariations={defaultVariations}
                   setVariations={setVariations}
                   setUnsavedVariations={setUnsavedVariations}
                   unsavedVariations={unsavedVariations}
@@ -307,6 +319,7 @@ function Edit({
                 <Variation
                   type={VARITION_TYPES_ENUM.PATTERN}
                   variations={variations}
+                  defaultVariations={defaultVariations}
                   setVariations={setVariations}
                   setUnsavedVariations={setUnsavedVariations}
                   unsavedVariations={unsavedVariations}
@@ -314,6 +327,7 @@ function Edit({
                 <Variation
                   type={VARITION_TYPES_ENUM.SCENT_NAME}
                   variations={variations}
+                  defaultVariations={defaultVariations}
                   setVariations={setVariations}
                   setUnsavedVariations={setUnsavedVariations}
                   unsavedVariations={unsavedVariations}
@@ -321,6 +335,7 @@ function Edit({
                 <Variation
                   type={VARITION_TYPES_ENUM.SIZE}
                   variations={variations}
+                  defaultVariations={defaultVariations}
                   setVariations={setVariations}
                   setUnsavedVariations={setUnsavedVariations}
                   unsavedVariations={unsavedVariations}

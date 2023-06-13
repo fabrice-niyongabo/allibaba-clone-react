@@ -7,6 +7,7 @@ interface IVariationProps {
   setVariations: any;
   setUnsavedVariations: any;
   unsavedVariations: VARITION_TYPES_ENUM[];
+  defaultVariations: IVariation[];
 }
 
 interface IVariationInputProps {
@@ -45,6 +46,7 @@ function Variation({
   setVariations,
   setUnsavedVariations,
   unsavedVariations,
+  defaultVariations,
 }: IVariationProps) {
   const [isChecked, setIsChecked] = useState(false);
   const [values, setValues] = useState<string[]>([]); // Array to store dynamically added input values
@@ -137,7 +139,7 @@ function Variation({
       setInputValues(inputVs);
       setValues(values);
     }
-  }, [type]);
+  }, [defaultVariations]);
 
   return (
     <div className="col-md-4  mb-3">
