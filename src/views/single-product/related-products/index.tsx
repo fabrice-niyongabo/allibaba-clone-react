@@ -16,6 +16,7 @@ import {
   currencyFormatter,
   openUrlInNewTab,
 } from "../../../components/helpers";
+import { isMobile } from "react-device-detect";
 
 interface IRelatedProductsProps {
   product: IProduct;
@@ -46,9 +47,9 @@ function RelatedProducts({ product }: IRelatedProductsProps) {
           <Carousel
             autoplay={false}
             wrapAround={true}
-            slidesToShow={5}
+            slidesToShow={isMobile ? 1 : 5}
             adaptiveHeight={true}
-            slidesToScroll={5}
+            slidesToScroll={isMobile ? 1 : 5}
             style={{ outline: "none" }}
             renderBottomCenterControls={() => <></>}
             renderCenterLeftControls={({ previousSlide }) => (
