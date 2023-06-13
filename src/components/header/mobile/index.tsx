@@ -189,7 +189,6 @@ function MobileHeader() {
               </ul>
             </li>
             <li>Shops</li>
-            <li>Wishlist</li>
             {token.trim() === "" ? (
               <>
                 <li onClick={() => navigate("/login-register")}>Sign In</li>
