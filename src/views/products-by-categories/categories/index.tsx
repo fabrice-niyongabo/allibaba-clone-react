@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import { RootState } from "../../../reducers";
 import { ICategory } from "../../../interfaces";
 import { useNavigate } from "react-router-dom";
+import { isMobile } from "react-device-detect";
 
 function CustomPrevArrow(props) {
   const { className, onClick } = props;
@@ -57,7 +58,7 @@ function Categories({ category, subCategoryId }: ICategoriesProps) {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: isMobile ? 2 : 5,
     slidesToScroll: 1,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
