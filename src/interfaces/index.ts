@@ -58,6 +58,7 @@ export interface Ishop {
   address: string;
   open: string;
   close: string;
+  country: string;
   shopImage: string;
   shopBanner: string;
   isVerified: boolean;
