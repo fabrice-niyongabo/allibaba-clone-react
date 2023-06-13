@@ -8,7 +8,7 @@ import wishListImage from "../../assets/images/orders.png";
 import categoryBanner from "../../assets/images/static/banner.jpg";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../reducers";
 import { IProduct, IUser, Ishop, USER_ROLE_ENUM } from "../../interfaces";
 import { openUrlInNewTab } from "../helpers";
@@ -17,8 +17,11 @@ import logo from "../../assets/images/logo2.png";
 import { isMobile } from "react-device-detect";
 import MobileHeader from "./mobile";
 import countries from "../constants/countries.json";
+import { setCountry } from "../../actions/app";
 
 function Header() {
+  const dispatch = useDispatch();
+  const { country } = useSelector((state: RootState) => state.app);
   const { categories } = useSelector((state: RootState) => state.categories);
   const { products } = useSelector((state: RootState) => state.products);
   const { shops } = useSelector((state: RootState) => state.shops);
@@ -67,6 +70,11 @@ function Header() {
       return;
     }
     navigate("/search/" + searchCategory + "/" + searchKeyword);
+  };
+
+  const handleCountryChange = (val: string) => {
+    dispatch(setCountry(val));
+    window.location.reload();
   };
 
   return (
@@ -159,7 +167,10 @@ function Header() {
               >
                 <div className="location">
                   <i className="bi bi-geo-alt-fill" />
-                  <select>
+                  <select
+                    value={country}
+                    onChange={(e) => handleCountryChange(e.target.value)}
+                  >
                     {countries.map((item, index) => (
                       <option key={index} value={item.name}>
                         {item.name}

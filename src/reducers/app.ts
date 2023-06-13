@@ -2,7 +2,7 @@ import { IAction, IAppReducer, ICategory } from "../interfaces";
 import { RESET_APP, SET_COUNTRY } from "../actions/app";
 
 const initialState: IAppReducer = {
-  country: "Rwanda",
+  country: "RWANDA",
 };
 
 const user = (
