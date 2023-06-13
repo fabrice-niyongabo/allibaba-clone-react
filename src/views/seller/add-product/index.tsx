@@ -32,7 +32,6 @@ const initialState = {
   singlePrice: "",
   productId: "",
   brandName: "",
-  variation: [],
 };
 function AddProduct() {
   const dispatch = useDispatch();
@@ -268,29 +267,32 @@ function AddProduct() {
               </div>
             </div>
             <div className="form-group mb-3">
-              <label htmlFor="">Variation</label>
+              <label htmlFor="">
+                <b>Variation</b>
+              </label>
               <div className="row">
-                <div className="col-md-4">
-                  <input
-                    type="checkbox"
-                    onClick={() => setState({ ...state, variation: [] })}
-                  />{" "}
-                  None
-                </div>
-                <div className="col-md-4">
-                  <input type="checkbox" /> {VARITION_TYPES_ENUM.COLOR}
-                </div>
-                <div className="col-md-4">
-                  <input type="checkbox" /> {VARITION_TYPES_ENUM.FLAVOR}
-                </div>
-                <div className="col-md-4">
-                  <input type="checkbox" /> {VARITION_TYPES_ENUM.PATTERN}
-                </div>
-                <div className="col-md-4">
-                  <input type="checkbox" /> {VARITION_TYPES_ENUM.SCENT_NAME}
-                </div>
                 <Variation
                   type={VARITION_TYPES_ENUM.COLOR}
+                  variations={variations}
+                  setVariations={setVariations}
+                />
+                <Variation
+                  type={VARITION_TYPES_ENUM.FLAVOR}
+                  variations={variations}
+                  setVariations={setVariations}
+                />
+                <Variation
+                  type={VARITION_TYPES_ENUM.PATTERN}
+                  variations={variations}
+                  setVariations={setVariations}
+                />
+                <Variation
+                  type={VARITION_TYPES_ENUM.SCENT_NAME}
+                  variations={variations}
+                  setVariations={setVariations}
+                />
+                <Variation
+                  type={VARITION_TYPES_ENUM.SIZE}
                   variations={variations}
                   setVariations={setVariations}
                 />

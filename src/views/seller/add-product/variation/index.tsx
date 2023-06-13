@@ -76,7 +76,7 @@ function Variation({ type, variations, setVariations }: IVariationProps) {
   };
 
   return (
-    <div className="col-md-4">
+    <div className="col-md-4  mb-3">
       <div className="variation-header">
         <div>
           <input type="checkbox" onClick={() => handleVariationToggle()} />{" "}
