@@ -20,9 +20,12 @@ import { IUser, TOAST_MESSAGE_TYPES } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
 import { setUserApply, setUserRole, setUserShopId } from "../../actions/user";
 
+import countries from "../../components/constants/countries.json";
+
 const initialState = {
   shopName: "",
   description: EditorState.createEmpty(),
+  country: "",
   phone1: "",
   phone2: "",
   phone3: "",
@@ -30,6 +33,7 @@ const initialState = {
   open: "",
   close: "",
 };
+
 function Apply() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -136,6 +140,20 @@ function Apply() {
                 ],
               }}
             />
+          </div>
+          <div className="form-group mb-3">
+            <label htmlFor="">Country*</label>
+            <select
+              className="form-control"
+              onChange={(e) => setState({ ...state, country: e.target.value })}
+            >
+              <option value="">Choose country</option>
+              {countries.map((item, index) => (
+                <option key={index} value={item.name}>
+                  {item.name} ({item.code})
+                </option>
+              ))}
+            </select>
           </div>
           <div className="form-group mb-3">
             <label htmlFor="">Shop Address*</label>
