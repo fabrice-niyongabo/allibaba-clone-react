@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../../assets/scss/header.scss";
 
 import userImage from "../../assets/images/user.png";
@@ -16,6 +16,7 @@ import { openUrlInNewTab } from "../helpers";
 import logo from "../../assets/images/logo2.png";
 import { isMobile } from "react-device-detect";
 import MobileHeader from "./mobile";
+import countries from "../constants/countries.json";
 
 function Header() {
   const { categories } = useSelector((state: RootState) => state.categories);
@@ -152,6 +153,21 @@ function Header() {
                 )}
             </div>
             <div className="icons-main-container">
+              <div
+                className="icon-container"
+                onClick={() => navigate("/login-register")}
+              >
+                <div className="location">
+                  <i className="bi bi-geo-alt-fill" />
+                  <select>
+                    {countries.map((item, index) => (
+                      <option key={index} value={item.name}>
+                        {item.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
               {token.trim() === "" ? (
                 <>
                   <div

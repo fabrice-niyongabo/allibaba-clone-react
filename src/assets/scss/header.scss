@@ -273,6 +273,16 @@
     }
     .icons-main-container {
       @include flexSpace;
+      .location {
+        @include flexCenter;
+        flex-direction: row;
+        select {
+          width: auto;
+          max-width: 100px;
+          border: none;
+          outline: none;
+        }
+      }
     }
     .icon-container {
       @include flexCenter;
