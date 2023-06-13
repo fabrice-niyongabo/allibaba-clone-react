@@ -43,6 +43,14 @@ a {
   cursor: pointer;
 }
 
+.table > :not(:first-child) {
+  border-top: none;
+}
+
+table thead {
+  text-transform: uppercase;
+}
+
 @media #{$media-tablet} {
   .afriseller-container {
     margin-left: 1rem;
