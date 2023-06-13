@@ -5,9 +5,17 @@ interface IVariationProps {
   type: VARITION_TYPES_ENUM;
   variations: IVariation[];
   setVariations: any;
+  setUnsavedVariations: any;
+  unsavedVariations: VARITION_TYPES_ENUM[];
 }
 
-function Variation({ type, variations, setVariations }: IVariationProps) {
+function Variation({
+  type,
+  variations,
+  setVariations,
+  setUnsavedVariations,
+  unsavedVariations,
+}: IVariationProps) {
   const [isChecked, setIsChecked] = useState(false);
   const [values, setValues] = useState<string[]>([]); // Array to store dynamically added input values
   const [inputValues, setInputValues] = useState<string[]>([]);
@@ -31,6 +39,7 @@ function Variation({ type, variations, setVariations }: IVariationProps) {
       setValues(values.filter((id) => id !== inputId)); // Remove the input ID from the values array
       setInputValues(newState);
       setIsSaved(false);
+      addToUnSavedVariation();
     }
   };
 
@@ -47,6 +56,7 @@ function Variation({ type, variations, setVariations }: IVariationProps) {
     newState[index] = value;
     setInputValues(newState);
     setIsSaved(false);
+    addToUnSavedVariation();
   };
 
   const handleVariationToggle = () => {
@@ -63,6 +73,13 @@ function Variation({ type, variations, setVariations }: IVariationProps) {
     }
   };
 
+  const addToUnSavedVariation = () => {
+    const exists = unsavedVariations.find((item) => item === type);
+    if (!exists) {
+      setUnsavedVariations([...unsavedVariations, type]);
+    }
+  };
+
   const handleSave = () => {
     const newSate = variations;
     const index = newSate.findIndex((item) => item.type === type);
@@ -72,6 +89,7 @@ function Variation({ type, variations, setVariations }: IVariationProps) {
       newSate.push({ type: type, values: inputValues });
     }
     setVariations(newSate);
+    setUnsavedVariations(unsavedVariations.filter((item) => item !== type));
     setIsSaved(true);
   };
 

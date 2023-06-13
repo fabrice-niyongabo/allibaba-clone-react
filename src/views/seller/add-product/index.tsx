@@ -42,6 +42,9 @@ function AddProduct() {
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [variations, setVariations] = useState<IVariation[]>([]);
+  const [unsavedVariations, setUnsavedVariations] = useState<
+    VARITION_TYPES_ENUM[]
+  >([]);
 
   const changeHandler = (e: any) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -78,6 +81,14 @@ function AddProduct() {
       return;
     }
 
+    if (unsavedVariations.length > 0) {
+      toastMessage(
+        TOAST_MESSAGE_TYPES.INFO,
+        `Please save changes for ${unsavedVariations[0]} variation`
+      );
+      return;
+    }
+
     const singlePrice =
       state.priceType === PRICE_TYPE_ENUM.MANY ? 0.0 : state.singlePrice;
 
@@ -85,7 +96,12 @@ function AddProduct() {
     axios
       .post(
         app.BACKEND_URL + "/products",
-        { ...state, description, singlePrice },
+        {
+          ...state,
+          description,
+          singlePrice,
+          variations: JSON.stringify(variations),
+        },
         setHeaders(token)
       )
       .then((res) => {
@@ -275,26 +291,36 @@ function AddProduct() {
                   type={VARITION_TYPES_ENUM.COLOR}
                   variations={variations}
                   setVariations={setVariations}
+                  setUnsavedVariations={setUnsavedVariations}
+                  unsavedVariations={unsavedVariations}
                 />
                 <Variation
                   type={VARITION_TYPES_ENUM.FLAVOR}
                   variations={variations}
                   setVariations={setVariations}
+                  setUnsavedVariations={setUnsavedVariations}
+                  unsavedVariations={unsavedVariations}
                 />
                 <Variation
                   type={VARITION_TYPES_ENUM.PATTERN}
                   variations={variations}
                   setVariations={setVariations}
+                  setUnsavedVariations={setUnsavedVariations}
+                  unsavedVariations={unsavedVariations}
                 />
                 <Variation
                   type={VARITION_TYPES_ENUM.SCENT_NAME}
                   variations={variations}
                   setVariations={setVariations}
+                  setUnsavedVariations={setUnsavedVariations}
+                  unsavedVariations={unsavedVariations}
                 />
                 <Variation
                   type={VARITION_TYPES_ENUM.SIZE}
                   variations={variations}
                   setVariations={setVariations}
+                  setUnsavedVariations={setUnsavedVariations}
+                  unsavedVariations={unsavedVariations}
                 />
               </div>
             </div>
