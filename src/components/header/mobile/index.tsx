@@ -12,6 +12,7 @@ function MobileHeader() {
   const navigate = useNavigate();
   const { products } = useSelector((state: RootState) => state.products);
   const { shops } = useSelector((state: RootState) => state.shops);
+  const { token } = useSelector((state: RootState) => state.user);
 
   const [searchCategory, setSearchCategory] = useState("products");
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -169,7 +170,7 @@ function MobileHeader() {
             </div>
           </div>
           <ul>
-            <li>Home</li>
+            <li onClick={() => navigate("/")}>Home</li>
             <li className="dropdown">
               <div
                 className="menu"
@@ -189,6 +190,16 @@ function MobileHeader() {
             </li>
             <li>Shops</li>
             <li>Wishlist</li>
+            {token.trim() === "" ? (
+              <>
+                <li onClick={() => navigate("/start-selling")}>
+                  start-selling
+                </li>
+                <li onClick={() => navigate("/login-register")}>Sign in</li>
+              </>
+            ) : (
+              <></>
+            )}
           </ul>
         </div>
       </div>
