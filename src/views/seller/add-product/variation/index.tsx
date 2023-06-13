@@ -7,6 +7,7 @@ interface IVariationProps {
   setVariations: any;
   setUnsavedVariations: any;
   unsavedVariations: VARITION_TYPES_ENUM[];
+  resetAllVariations: boolean;
 }
 
 function Variation({
@@ -15,6 +16,7 @@ function Variation({
   setVariations,
   setUnsavedVariations,
   unsavedVariations,
+  resetAllVariations,
 }: IVariationProps) {
   const [isChecked, setIsChecked] = useState(false);
   const [values, setValues] = useState<string[]>([]); // Array to store dynamically added input values
@@ -93,11 +95,27 @@ function Variation({
     setIsSaved(true);
   };
 
+  useEffect(() => {
+    if (resetAllVariations) {
+      setIsChecked(false);
+      setVariations(variations.filter((item) => item.type !== type));
+      values.map((item) => {
+        handleRemoveFromDom(Number(item.split("-")[1]));
+      });
+      setValues([]);
+      setInputValues([]);
+    }
+  }, [resetAllVariations]);
+
   return (
     <div className="col-md-4  mb-3">
       <div className="variation-header">
         <div>
-          <input type="checkbox" onClick={() => handleVariationToggle()} />{" "}
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onClick={() => handleVariationToggle()}
+          />{" "}
           {type}
         </div>
         {isChecked && (

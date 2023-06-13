@@ -45,6 +45,7 @@ function AddProduct() {
   const [unsavedVariations, setUnsavedVariations] = useState<
     VARITION_TYPES_ENUM[]
   >([]);
+  const [resetAllVariations, setResetAllVariations] = useState(false);
 
   const changeHandler = (e: any) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -83,8 +84,8 @@ function AddProduct() {
 
     if (unsavedVariations.length > 0) {
       toastMessage(
-        TOAST_MESSAGE_TYPES.INFO,
-        `Please save changes for ${unsavedVariations[0]} variation`
+        TOAST_MESSAGE_TYPES.ERROR,
+        `Please save changes for ${unsavedVariations[0]} variation or uncheck it to remove it from the list.`
       );
       return;
     }
@@ -107,6 +108,10 @@ function AddProduct() {
       .then((res) => {
         setIsSubmitting(false);
         setState(initialState);
+        setResetAllVariations(true);
+        setTimeout(() => {
+          setResetAllVariations(false);
+        }, 500);
         toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
       })
       .catch((error) => {
@@ -293,6 +298,7 @@ function AddProduct() {
                   setVariations={setVariations}
                   setUnsavedVariations={setUnsavedVariations}
                   unsavedVariations={unsavedVariations}
+                  resetAllVariations={resetAllVariations}
                 />
                 <Variation
                   type={VARITION_TYPES_ENUM.FLAVOR}
@@ -300,6 +306,7 @@ function AddProduct() {
                   setVariations={setVariations}
                   setUnsavedVariations={setUnsavedVariations}
                   unsavedVariations={unsavedVariations}
+                  resetAllVariations={resetAllVariations}
                 />
                 <Variation
                   type={VARITION_TYPES_ENUM.PATTERN}
@@ -307,6 +314,7 @@ function AddProduct() {
                   setVariations={setVariations}
                   setUnsavedVariations={setUnsavedVariations}
                   unsavedVariations={unsavedVariations}
+                  resetAllVariations={resetAllVariations}
                 />
                 <Variation
                   type={VARITION_TYPES_ENUM.SCENT_NAME}
@@ -314,6 +322,7 @@ function AddProduct() {
                   setVariations={setVariations}
                   setUnsavedVariations={setUnsavedVariations}
                   unsavedVariations={unsavedVariations}
+                  resetAllVariations={resetAllVariations}
                 />
                 <Variation
                   type={VARITION_TYPES_ENUM.SIZE}
@@ -321,6 +330,7 @@ function AddProduct() {
                   setVariations={setVariations}
                   setUnsavedVariations={setUnsavedVariations}
                   unsavedVariations={unsavedVariations}
+                  resetAllVariations={resetAllVariations}
                 />
               </div>
             </div>
