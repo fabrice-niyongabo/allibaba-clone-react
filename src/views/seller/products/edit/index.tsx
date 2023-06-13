@@ -38,7 +38,7 @@ const initilaState = {
 interface IEditProps {
   showModal: boolean;
   setShowModal: any;
-  selectedItem: IProduct;
+  selectedItem: IProduct | undefined;
   fetchData: any;
 }
 function Edit({
@@ -106,7 +106,7 @@ function Edit({
   };
 
   useEffect(() => {
-    if (showModal) {
+    if (showModal && selectedItem) {
       const blocksFromHtml = htmlToDraft(selectedItem?.description);
       const { contentBlocks, entityMap } = blocksFromHtml;
       const contentState = ContentState.createFromBlockArray(
