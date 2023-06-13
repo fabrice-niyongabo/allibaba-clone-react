@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
-import { IProduct, Ishop } from "../../../interfaces";
+import { IProduct, Ishop, USER_ROLE_ENUM } from "../../../interfaces";
 
 import logo from "../../../assets/images/logo2.png";
 
@@ -12,7 +12,7 @@ function MobileHeader() {
   const navigate = useNavigate();
   const { products } = useSelector((state: RootState) => state.products);
   const { shops } = useSelector((state: RootState) => state.shops);
-  const { token } = useSelector((state: RootState) => state.user);
+  const { token, role } = useSelector((state: RootState) => state.user);
 
   const [searchCategory, setSearchCategory] = useState("products");
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -192,13 +192,34 @@ function MobileHeader() {
             <li>Wishlist</li>
             {token.trim() === "" ? (
               <>
+                <li onClick={() => navigate("/login-register")}>Sign In</li>
+                <li>Wishlist</li>
                 <li onClick={() => navigate("/start-selling")}>
-                  start-selling
+                  Start Selling
                 </li>
-                <li onClick={() => navigate("/login-register")}>Sign in</li>
               </>
             ) : (
-              <></>
+              <>
+                <li
+                  onClick={() =>
+                    role === USER_ROLE_ENUM.ADMIN
+                      ? navigate("/dashboard/main")
+                      : navigate("/dashboard")
+                  }
+                >
+                  Dashboard
+                </li>
+                <li>Wishlist</li>
+                {role === USER_ROLE_ENUM.SELLER ? (
+                  <li onClick={() => navigate("/start-selling")}>My Shop</li>
+                ) : (
+                  role !== USER_ROLE_ENUM.ADMIN && (
+                    <li onClick={() => navigate("/start-selling")}>
+                      Start Selling
+                    </li>
+                  )
+                )}
+              </>
             )}
           </ul>
         </div>
