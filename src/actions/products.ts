@@ -1,5 +1,5 @@
 import axios from "axios";
-import { app } from "../components/constants";
+import * as constants from "../components/constants";
 import { IProduct } from "../interfaces";
 import { errorHandler } from "../components/helpers";
 
@@ -23,10 +23,12 @@ export const setIsLoadingProducts = (value: boolean): IAction => ({
 export const resetProducts = () => ({ type: RESET_PRODUCTS });
 
 export const fetchProducts = (): any => (dispatch: any, getState: any) => {
-  const { user } = getState();
+  const { appReducer } = getState();
   dispatch(setIsLoadingProducts(true));
   axios
-    .get(app.BACKEND_URL + "/products")
+    .get(constants.app.BACKEND_URL + "/products", {
+      params: { country: appReducer.country },
+    })
     .then((res) => {
       dispatch(setProducts(res.data.products));
       dispatch(setIsLoadingProducts(false));

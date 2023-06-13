@@ -17,11 +17,11 @@ import logo from "../../assets/images/logo2.png";
 import { isMobile } from "react-device-detect";
 import MobileHeader from "./mobile";
 import countries from "../constants/countries.json";
-import { setCountry } from "../../actions/app";
+import { setCountry } from "../../actions/appReducer";
 
 function Header() {
   const dispatch = useDispatch();
-  const { country } = useSelector((state: RootState) => state.app);
+  const { country } = useSelector((state: RootState) => state.appReducer);
   const { categories } = useSelector((state: RootState) => state.categories);
   const { products } = useSelector((state: RootState) => state.products);
   const { shops } = useSelector((state: RootState) => state.shops);
@@ -161,10 +161,7 @@ function Header() {
                 )}
             </div>
             <div className="icons-main-container">
-              <div
-                className="icon-container"
-                onClick={() => navigate("/login-register")}
-              >
+              <div className="icon-container">
                 <div className="location">
                   <i className="bi bi-geo-alt-fill" />
                   <select

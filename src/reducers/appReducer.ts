@@ -1,5 +1,5 @@
 import { IAction, IAppReducer, ICategory } from "../interfaces";
-import { RESET_APP, SET_COUNTRY } from "../actions/app";
+import { RESET_APP, SET_COUNTRY } from "../actions/appReducer";
 
 const initialState: IAppReducer = {
   country: "RWANDA",
