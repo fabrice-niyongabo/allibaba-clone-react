@@ -5,7 +5,9 @@ interface IDescriptionProps {
   product: IProduct;
 }
 function Description({ product }: IDescriptionProps) {
-  return <div>{HtmlParser(product.description)}</div>;
+  return (
+    <div className="common-description">{HtmlParser(product.description)}</div>
+  );
 }
 
 export default Description;

@@ -51,6 +51,12 @@ table thead {
   text-transform: uppercase;
 }
 
+.common-description {
+  img {
+    max-width: 100%;
+  }
+}
+
 @media #{$media-tablet} {
   .afriseller-container {
     margin-left: 1rem;
