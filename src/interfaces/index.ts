@@ -78,6 +78,9 @@ export interface ICategoriesReducer {
   isLoading: boolean;
   categories: ICategory[];
 }
+export interface IAppReducer {
+  country: string;
+}
 
 export interface IProductsReducer {
   isLoading: boolean;
