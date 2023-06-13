@@ -128,7 +128,7 @@ export interface IProduct {
   prices: IProductPrice[];
   brandName: string | null;
   productId: string | null;
-  variations: IVariation[];
+  variations: IVariation[] | null;
 }
 
 export enum VARITION_TYPES_ENUM {

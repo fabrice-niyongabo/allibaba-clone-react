@@ -24,6 +24,8 @@ const initilaState = {
   description: EditorState.createEmpty(),
   priceType: "",
   singlePrice: "",
+  productId: "",
+  brandName: "",
 };
 interface IEditProps {
   showModal: boolean;
@@ -239,6 +241,34 @@ function Edit({
                 />
               </div>
             )}
+            <div className="row">
+              <div className="col-md-6">
+                <div className="form-group mb-3">
+                  <label htmlFor="">Product ID (optional)</label>
+                  <input
+                    type="text"
+                    name="productId"
+                    className="form-control"
+                    value={state.productId}
+                    onChange={changeHandler}
+                    placeholder="Enter product ID"
+                  />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="form-group mb-3">
+                  <label htmlFor="">Brand Name (optional)</label>
+                  <input
+                    type="text"
+                    name="brandName"
+                    className="form-control"
+                    value={state.brandName}
+                    onChange={changeHandler}
+                    placeholder="Enter product brand name"
+                  />
+                </div>
+              </div>
+            </div>
           </Modal.Body>
           <Modal.Footer>
             <button className="btn btn-primary">
