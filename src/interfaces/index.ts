@@ -126,6 +126,9 @@ export interface IProduct {
   onBestSelling: boolean;
   images: IProductImage[];
   prices: IProductPrice[];
+  brandName: string | null;
+  productId: string | null;
+  variations: IVariation[];
 }
 
 export enum VARITION_TYPES_ENUM {
