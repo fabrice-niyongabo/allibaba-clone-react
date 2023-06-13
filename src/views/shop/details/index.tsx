@@ -29,7 +29,9 @@ function Details({ shop }: IDetailsProps) {
         </div>
       </div>
       {activeTab === DETAILS_ENUM.ABOUT && (
-        <div className="tab-details">{ReactHtmlParser(shop.description)}</div>
+        <div className="tab-details common-description">
+          {ReactHtmlParser(shop.description)}
+        </div>
       )}
       {activeTab === DETAILS_ENUM.CONTACT && (
         <div className="tab-details">
