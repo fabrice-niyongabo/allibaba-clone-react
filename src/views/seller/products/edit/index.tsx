@@ -10,12 +10,20 @@ import {
   setHeaders,
   toastMessage,
 } from "../../../../components/helpers";
-import { PRICE_TYPE_ENUM, TOAST_MESSAGE_TYPES } from "../../../../interfaces";
+import {
+  IProduct,
+  IVariation,
+  PRICE_TYPE_ENUM,
+  TOAST_MESSAGE_TYPES,
+  VARITION_TYPES_ENUM,
+} from "../../../../interfaces";
 import FullPageLoader from "../../../../components/full-page-loader";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 import { ContentState, EditorState, convertToRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
+import "../../../../assets/scss/addProduct.scss";
+import Variation from "./variation";
 
 const initilaState = {
   subCategoryId: "",
@@ -30,7 +38,7 @@ const initilaState = {
 interface IEditProps {
   showModal: boolean;
   setShowModal: any;
-  selectedItem: any;
+  selectedItem: IProduct;
   fetchData: any;
 }
 function Edit({
@@ -46,6 +54,11 @@ function Edit({
 
   const [state, setState] = useState(initilaState);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [variations, setVariations] = useState<IVariation[]>([]);
+  const [unsavedVariations, setUnsavedVariations] = useState<
+    VARITION_TYPES_ENUM[]
+  >([]);
 
   const changeHandler = (e: any) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -92,7 +105,10 @@ function Edit({
         entityMap
       );
       const editorState = EditorState.createWithContent(contentState);
-      setState({ ...selectedItem, description: editorState });
+      setState({ ...selectedItem, description: editorState } as any);
+      if (selectedItem.variations !== null) {
+        setVariations(selectedItem.variations);
+      }
     }
   }, [showModal]);
   return (
@@ -267,6 +283,48 @@ function Edit({
                     placeholder="Enter product brand name"
                   />
                 </div>
+              </div>
+            </div>
+            <div className="form-group mb-3">
+              <label htmlFor="">
+                <b>Variation</b>
+              </label>
+              <div className="row">
+                <Variation
+                  type={VARITION_TYPES_ENUM.COLOR}
+                  variations={variations}
+                  setVariations={setVariations}
+                  setUnsavedVariations={setUnsavedVariations}
+                  unsavedVariations={unsavedVariations}
+                />
+                <Variation
+                  type={VARITION_TYPES_ENUM.FLAVOR}
+                  variations={variations}
+                  setVariations={setVariations}
+                  setUnsavedVariations={setUnsavedVariations}
+                  unsavedVariations={unsavedVariations}
+                />
+                <Variation
+                  type={VARITION_TYPES_ENUM.PATTERN}
+                  variations={variations}
+                  setVariations={setVariations}
+                  setUnsavedVariations={setUnsavedVariations}
+                  unsavedVariations={unsavedVariations}
+                />
+                <Variation
+                  type={VARITION_TYPES_ENUM.SCENT_NAME}
+                  variations={variations}
+                  setVariations={setVariations}
+                  setUnsavedVariations={setUnsavedVariations}
+                  unsavedVariations={unsavedVariations}
+                />
+                <Variation
+                  type={VARITION_TYPES_ENUM.SIZE}
+                  variations={variations}
+                  setVariations={setVariations}
+                  setUnsavedVariations={setUnsavedVariations}
+                  unsavedVariations={unsavedVariations}
+                />
               </div>
             </div>
           </Modal.Body>
