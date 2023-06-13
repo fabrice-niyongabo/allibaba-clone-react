@@ -15,6 +15,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import FullPageLoader from "../../../components/full-page-loader";
 import { Editor } from "react-draft-wysiwyg";
+import { isValidPhoneNumber } from "react-phone-number-input/input";
+import PhoneInput from "react-phone-number-input";
 import {
   fetchMyShop,
   setIsLoadingMyShop,
@@ -72,6 +74,20 @@ function MyShop() {
         TOAST_MESSAGE_TYPES.INFO,
         "Shop description can not be less that 10 characters please!"
       );
+      return;
+    }
+
+    if (!isValidPhoneNumber(state.phone1)) {
+      toastMessage(TOAST_MESSAGE_TYPES.ERROR, "Phone number 1, is invalid.");
+      return;
+    }
+
+    if (state.phone2.trim() !== "" && !isValidPhoneNumber(state.phone2)) {
+      toastMessage(TOAST_MESSAGE_TYPES.ERROR, "Phone number 2, is invalid.");
+      return;
+    }
+    if (state.phone3.trim() !== "" && !isValidPhoneNumber(state.phone3)) {
+      toastMessage(TOAST_MESSAGE_TYPES.ERROR, "Phone number 2, is invalid.");
       return;
     }
 
@@ -163,42 +179,65 @@ function MyShop() {
                 </div>
                 <div className="form-group mb-3">
                   <label htmlFor="">Phone Number*</label>
-                  <input
-                    type="text"
-                    placeholder="Line 1. Ex: 07...."
-                    className="form-control"
-                    name="phone1"
-                    pattern="07[8,2,3,9]{1}[0-9]{7}"
-                    title="Invalid Phone (MTN or Airtel-tigo phone number)"
+                  <PhoneInput
+                    placeholder="Enter phone number"
                     value={state.phone1}
-                    onChange={changeHandler}
-                    required
+                    onChange={(e) => {
+                      setState({ ...state, phone1: e as any });
+                    }}
+                    defaultCountry="RW"
+                    error={
+                      state.phone1
+                        ? isValidPhoneNumber(state.phone1)
+                          ? undefined
+                          : "Invalid phone number"
+                        : "Phone number required"
+                    }
+                    numberInputProps={{
+                      className: "form-control",
+                    }}
                   />
                 </div>
                 <div className="form-group mb-3">
                   <label htmlFor="">Phone Number (2)</label>
-                  <input
-                    type="text"
-                    placeholder="Line 2. Ex: 07...."
-                    className="form-control"
-                    name="phone2"
-                    pattern="07[8,2,3,9]{1}[0-9]{7}"
-                    title="Invalid Phone (MTN or Airtel-tigo phone number)"
+                  <PhoneInput
+                    placeholder="Enter phone number"
                     value={state.phone2}
-                    onChange={changeHandler}
+                    onChange={(e) => {
+                      setState({ ...state, phone2: e as any });
+                    }}
+                    defaultCountry="RW"
+                    error={
+                      state.phone2
+                        ? isValidPhoneNumber(state.phone2)
+                          ? undefined
+                          : "Invalid phone number"
+                        : "Phone number required"
+                    }
+                    numberInputProps={{
+                      className: "form-control",
+                    }}
                   />
                 </div>
                 <div className="form-group mb-3">
                   <label htmlFor="">Phone Number (3)</label>
-                  <input
-                    type="text"
-                    placeholder="Line 3. Ex: 07...."
-                    className="form-control"
-                    name="phone3"
-                    pattern="07[8,2,3,9]{1}[0-9]{7}"
-                    title="Invalid Phone (MTN or Airtel-tigo phone number)"
+                  <PhoneInput
+                    placeholder="Enter phone number"
                     value={state.phone3}
-                    onChange={changeHandler}
+                    onChange={(e) => {
+                      setState({ ...state, phone3: e as any });
+                    }}
+                    defaultCountry="RW"
+                    error={
+                      state.phone3
+                        ? isValidPhoneNumber(state.phone3)
+                          ? undefined
+                          : "Invalid phone number"
+                        : "Phone number required"
+                    }
+                    numberInputProps={{
+                      className: "form-control",
+                    }}
                   />
                 </div>
                 <div className="open-close-container mb-3">
