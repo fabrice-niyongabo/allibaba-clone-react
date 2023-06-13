@@ -91,9 +91,9 @@ const App = () => {
             exact
             path="/apply"
             element={
-              <ProtectedRoute>
-                <Apply />
-              </ProtectedRoute>
+              // <ProtectedRoute>
+              <Apply />
+              // </ProtectedRoute>
             }
           />
           <Route

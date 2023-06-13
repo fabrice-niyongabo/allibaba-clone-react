@@ -10,7 +10,6 @@ import { RootState } from "../../reducers";
 import axios from "axios";
 import { app } from "../../components/constants";
 import draftToHtml from "draftjs-to-html";
-import htmlToDraft from "html-to-draftjs";
 import {
   errorHandler,
   setHeaders,
@@ -21,6 +20,8 @@ import { useNavigate } from "react-router-dom";
 import { setUserApply, setUserRole, setUserShopId } from "../../actions/user";
 
 import countries from "../../components/constants/countries.json";
+import { isValidPhoneNumber } from "react-phone-number-input/input";
+import PhoneInput from "react-phone-number-input";
 
 const initialState = {
   shopName: "",
@@ -169,42 +170,65 @@ function Apply() {
           </div>
           <div className="form-group mb-3">
             <label htmlFor="">Phone Number*</label>
-            <input
-              type="text"
-              placeholder="Line 1. Ex: 07...."
-              className="form-control"
-              name="phone1"
-              pattern="07[8,2,3,9]{1}[0-9]{7}"
-              title="Invalid Phone (MTN or Airtel-tigo phone number)"
+            <PhoneInput
+              placeholder="Enter phone number"
               value={state.phone1}
-              onChange={changeHandler}
-              required
+              onChange={(e) => {
+                setState({ ...state, phone1: e as any });
+              }}
+              defaultCountry="RW"
+              error={
+                state.phone1
+                  ? isValidPhoneNumber(state.phone1)
+                    ? undefined
+                    : "Invalid phone number"
+                  : "Phone number required"
+              }
+              numberInputProps={{
+                className: "form-control",
+              }}
             />
           </div>
           <div className="form-group mb-3">
             <label htmlFor="">Phone Number (2)</label>
-            <input
-              type="text"
-              placeholder="Line 2. Ex: 07...."
-              className="form-control"
-              name="phone2"
-              pattern="07[8,2,3,9]{1}[0-9]{7}"
-              title="Invalid Phone (MTN or Airtel-tigo phone number)"
+            <PhoneInput
+              placeholder="Enter phone number"
               value={state.phone2}
-              onChange={changeHandler}
+              onChange={(e) => {
+                setState({ ...state, phone2: e as any });
+              }}
+              defaultCountry="RW"
+              error={
+                state.phone2
+                  ? isValidPhoneNumber(state.phone2)
+                    ? undefined
+                    : "Invalid phone number"
+                  : "Phone number required"
+              }
+              numberInputProps={{
+                className: "form-control",
+              }}
             />
           </div>
           <div className="form-group mb-3">
             <label htmlFor="">Phone Number (3)</label>
-            <input
-              type="text"
-              placeholder="Line 3. Ex: 07...."
-              className="form-control"
-              name="phone3"
-              pattern="07[8,2,3,9]{1}[0-9]{7}"
-              title="Invalid Phone (MTN or Airtel-tigo phone number)"
+            <PhoneInput
+              placeholder="Enter phone number"
               value={state.phone3}
-              onChange={changeHandler}
+              onChange={(e) => {
+                setState({ ...state, phone3: e as any });
+              }}
+              defaultCountry="RW"
+              error={
+                state.phone3
+                  ? isValidPhoneNumber(state.phone3)
+                    ? undefined
+                    : "Invalid phone number"
+                  : "Phone number required"
+              }
+              numberInputProps={{
+                className: "form-control",
+              }}
             />
           </div>
           <div className="open-close-container mb-3">
