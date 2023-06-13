@@ -52,11 +52,26 @@ function Apply() {
     const description = draftToHtml(
       convertToRaw(state.description.getCurrentContent())
     );
+
     if (description.length < 10) {
       toastMessage(
         TOAST_MESSAGE_TYPES.INFO,
         "Shop description can not be less that 10 characters please!"
       );
+      return;
+    }
+
+    if (!isValidPhoneNumber(state.phone1)) {
+      toastMessage(TOAST_MESSAGE_TYPES.ERROR, "Phone number 1, is invalid.");
+      return;
+    }
+
+    if (state.phone2.trim() !== "" && !isValidPhoneNumber(state.phone2)) {
+      toastMessage(TOAST_MESSAGE_TYPES.ERROR, "Phone number 2, is invalid.");
+      return;
+    }
+    if (state.phone3.trim() !== "" && !isValidPhoneNumber(state.phone3)) {
+      toastMessage(TOAST_MESSAGE_TYPES.ERROR, "Phone number 2, is invalid.");
       return;
     }
 
