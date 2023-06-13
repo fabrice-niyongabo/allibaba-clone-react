@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useRef } from "react";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { Col, Row } from "reactstrap";
@@ -10,6 +10,9 @@ import { errorHandler, toastMessage } from "../../components/helpers";
 import FullPageLoader from "../../components/full-page-loader";
 import { IUser, TOAST_MESSAGE_TYPES, USER_ROLE_ENUM } from "../../interfaces";
 import { useDispatch } from "react-redux";
+import PhoneInput from "react-phone-number-input";
+import { isValidPhoneNumber } from "react-phone-number-input/input";
+
 import {
   setUserApply,
   setUserEmail,
@@ -26,7 +29,7 @@ import { useNavigate } from "react-router-dom";
 interface IregisterState {
   names: string;
   email: string;
-  phone: number;
+  phone: string;
   password: string;
   confirmPassword: string;
   apply: boolean;
@@ -51,12 +54,21 @@ function LoginRegister() {
   const [isLoading, setIsloading] = useState<boolean>(false);
   const [registerState, setRegisterState] = useState(initialRegisterState);
   const [loginState, setLoginState] = useState(initialLoginState);
+  const phoneNumberRef = useRef<HTMLInputElement>();
   const registerChangeHandler = (e: any) => {
     setRegisterState({ ...registerState, [e.target.name]: e.target.value });
   };
 
   const handleRegister = (e: any) => {
     e.preventDefault();
+
+    if (!isValidPhoneNumber(registerState.phone)) {
+      toast.error(
+        "Invalid phone number, please register with valid phone number"
+      );
+      phoneNumberRef.current && phoneNumberRef.current.focus();
+      return;
+    }
     if (!registerState.terms) {
       toast.error("Please accept our terms of use");
       return;
@@ -214,16 +226,24 @@ function LoginRegister() {
                 </div>
                 <div className="form-group mb-3">
                   <label htmlFor="">Phone Number</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter phone. Ex: 078........."
-                    pattern="07[8,2,3,9]{1}[0-9]{7}"
-                    title="Invalid Phone (MTN or Airtel-tigo phone number)"
-                    name="phone"
-                    onChange={registerChangeHandler}
+                  <PhoneInput
+                    placeholder="Enter phone number"
                     value={registerState.phone}
-                    required
+                    onChange={(e) => {
+                      setRegisterState({ ...registerState, phone: e as any });
+                    }}
+                    defaultCountry="RW"
+                    error={
+                      registerState.phone
+                        ? isValidPhoneNumber(registerState.phone)
+                          ? undefined
+                          : "Invalid phone number"
+                        : "Phone number required"
+                    }
+                    numberInputProps={{
+                      className: "form-control",
+                      ref: phoneNumberRef,
+                    }}
                   />
                 </div>
                 <div className="form-group mb-3">
