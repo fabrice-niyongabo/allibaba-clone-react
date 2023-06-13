@@ -1,0 +1,15 @@
+@import "variables";
+@import "mixins";
+
+.variation-header {
+  @include flexSpace;
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 5px;
+}
+.variation-option-value {
+  @include flexSpace;
+  margin-top: 10px;
+  button {
+    margin-left: 10px;
+  }
+}

@@ -7,7 +7,13 @@ import FullPageLoader from "../../../components/full-page-loader";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import { Editor } from "react-draft-wysiwyg";
-import { PRICE_TYPE_ENUM, TOAST_MESSAGE_TYPES } from "../../../interfaces";
+import "../../../assets/scss/addProduct.scss";
+import {
+  IVariation,
+  PRICE_TYPE_ENUM,
+  TOAST_MESSAGE_TYPES,
+  VARITION_TYPES_ENUM,
+} from "../../../interfaces";
 import {
   errorHandler,
   setHeaders,
@@ -15,6 +21,7 @@ import {
 } from "../../../components/helpers";
 import axios from "axios";
 import { app } from "../../../components/constants";
+import Variation from "./variation";
 
 const initialState = {
   subCategoryId: "",
@@ -23,6 +30,9 @@ const initialState = {
   description: EditorState.createEmpty(),
   priceType: "",
   singlePrice: "",
+  productId: "",
+  brandName: "",
+  variation: [],
 };
 function AddProduct() {
   const dispatch = useDispatch();
@@ -32,6 +42,7 @@ function AddProduct() {
     (state: RootState) => state.categories
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [variations, setVariations] = useState<IVariation[]>([]);
 
   const changeHandler = (e: any) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -228,6 +239,64 @@ function AddProduct() {
                 />
               </div>
             )}
+            <div className="row">
+              <div className="col-md-6">
+                <div className="form-group mb-3">
+                  <label htmlFor="">Product ID (optional)</label>
+                  <input
+                    type="text"
+                    name="productId"
+                    className="form-control"
+                    value={state.productId}
+                    onChange={changeHandler}
+                    placeholder="Enter product ID"
+                  />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="form-group mb-3">
+                  <label htmlFor="">Brand Name (optional)</label>
+                  <input
+                    type="text"
+                    name="brandName"
+                    className="form-control"
+                    value={state.brandName}
+                    onChange={changeHandler}
+                    placeholder="Enter product brand name"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="form-group mb-3">
+              <label htmlFor="">Variation</label>
+              <div className="row">
+                <div className="col-md-4">
+                  <input
+                    type="checkbox"
+                    onClick={() => setState({ ...state, variation: [] })}
+                  />{" "}
+                  None
+                </div>
+                <div className="col-md-4">
+                  <input type="checkbox" /> {VARITION_TYPES_ENUM.COLOR}
+                </div>
+                <div className="col-md-4">
+                  <input type="checkbox" /> {VARITION_TYPES_ENUM.FLAVOR}
+                </div>
+                <div className="col-md-4">
+                  <input type="checkbox" /> {VARITION_TYPES_ENUM.PATTERN}
+                </div>
+                <div className="col-md-4">
+                  <input type="checkbox" /> {VARITION_TYPES_ENUM.SCENT_NAME}
+                </div>
+                <Variation
+                  type={VARITION_TYPES_ENUM.COLOR}
+                  variations={variations}
+                  setVariations={setVariations}
+                />
+              </div>
+            </div>
+
             <button type="submit" className="common-btn">
               Save product
             </button>

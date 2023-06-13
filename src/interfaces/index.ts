@@ -127,3 +127,16 @@ export interface IProduct {
   images: IProductImage[];
   prices: IProductPrice[];
 }
+
+export enum VARITION_TYPES_ENUM {
+  empty = "",
+  SCENT_NAME = "Scent Name",
+  COLOR = "Color",
+  PATTERN = "Pattern",
+  FLAVOR = "Flavor",
+  SIZE = "Size",
+}
+export interface IVariation {
+  type: VARITION_TYPES_ENUM;
+  values: string[];
+}
