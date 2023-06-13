@@ -7,6 +7,7 @@ import { RootState } from "../../../reducers";
 import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../components/constants";
 import { useNavigate } from "react-router-dom";
+import { isMobile } from "react-device-detect";
 
 function TopSelectedSupplier() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ function TopSelectedSupplier() {
           autoplay={true}
           autoplayInterval={5000}
           wrapAround={true}
-          slidesToShow={6}
+          slidesToShow={isMobile ? 2 : 6}
           adaptiveHeight={true}
           withoutControls={true}
         >
