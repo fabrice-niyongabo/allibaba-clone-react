@@ -296,7 +296,7 @@ function AddProduct() {
                 />
               </div>
             </div>
-
+            <hr />
             <button type="submit" className="common-btn">
               Save product
             </button>

@@ -113,7 +113,11 @@ function Variation({ type, variations, setVariations }: IVariationProps) {
             </div>
           ))}
           {!isSaved && (
-            <button type="button" onClick={() => handleSave()}>
+            <button
+              type="button"
+              className="common-btn mt-3"
+              onClick={() => handleSave()}
+            >
               Save {type} changes
             </button>
           )}
