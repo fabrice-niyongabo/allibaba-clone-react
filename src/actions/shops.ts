@@ -23,10 +23,12 @@ export const setIsLoadingShops = (value: boolean): IAction => ({
 export const resetShops = () => ({ type: RESET_SHOPS });
 
 export const fetchShops = (): any => (dispatch: any, getState: any) => {
-  const { user } = getState();
+  const { appReducer } = getState();
   dispatch(setIsLoadingShops(true));
   axios
-    .get(app.BACKEND_URL + "/shops")
+    .get(app.BACKEND_URL + "/shops", {
+      params: { country: appReducer.country },
+    })
     .then((res) => {
       dispatch(setShops(res.data.shops));
       dispatch(setIsLoadingShops(false));
