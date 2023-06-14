@@ -11,7 +11,7 @@ function LoginRegister() {
       <div className="afriseller-container my-5 membership-main-container">
         <div className="contents-container">
           <Row>
-            <Col md={3}>
+            <Col md={3} className="mb-4">
               <div className="plan-contents">
                 <h3>Free</h3>
                 <div className="price">
@@ -24,7 +24,7 @@ function LoginRegister() {
                 <button>Buy Now</button>
               </div>
             </Col>
-            <Col md={3}>
+            <Col md={3} className="mb-4">
               <div className="plan-contents">
                 <h3>Gold</h3>
                 <div className="price">
@@ -37,7 +37,7 @@ function LoginRegister() {
                 <button>Buy Now</button>
               </div>
             </Col>
-            <Col md={3}>
+            <Col md={3} className="mb-4">
               <div className="plan-contents">
                 <h3>Silver</h3>
                 <div className="price">
@@ -50,7 +50,7 @@ function LoginRegister() {
                 <button>Buy Now</button>
               </div>
             </Col>
-            <Col md={3}>
+            <Col md={3} className="mb-4">
               <div className="plan-contents">
                 <h3>Platinum</h3>
                 <div className="price">
