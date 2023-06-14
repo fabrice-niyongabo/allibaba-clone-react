@@ -2,14 +2,18 @@ import { useState, useEffect } from "react";
 import downArrow from "../../../assets/images/downarrow.png";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import { IProduct, Ishop, USER_ROLE_ENUM } from "../../../interfaces";
+import countries from "../../constants/countries.json";
 
 import logo from "../../../assets/images/logo2.png";
+import { setCountry } from "../../../actions/appReducer";
 
 function MobileHeader() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { country } = useSelector((state: RootState) => state.appReducer);
   const { products } = useSelector((state: RootState) => state.products);
   const { shops } = useSelector((state: RootState) => state.shops);
   const { token, role } = useSelector((state: RootState) => state.user);
@@ -55,6 +59,11 @@ function MobileHeader() {
       return;
     }
     navigate("/search/" + searchCategory + "/" + searchKeyword);
+  };
+
+  const handleCountryChange = (val: string) => {
+    dispatch(setCountry(val));
+    window.location.reload();
   };
 
   return (
@@ -155,6 +164,19 @@ function MobileHeader() {
               )}
           </div>
         )}
+        <div className="location">
+          <i className="bi bi-geo-alt-fill" />
+          <select
+            value={country}
+            onChange={(e) => handleCountryChange(e.target.value)}
+          >
+            {countries.map((item, index) => (
+              <option key={index} value={item.name}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       {/* menus */}

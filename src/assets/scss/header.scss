@@ -32,6 +32,15 @@
         }
       }
     }
+    .location {
+      @include flexCenter;
+      padding: 5px 1rem;
+      select {
+        max-width: 100px;
+        outline: none;
+        border: none;
+      }
+    }
     .search-main-container {
       flex: 1;
       position: relative;
