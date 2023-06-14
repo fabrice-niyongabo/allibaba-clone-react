@@ -103,7 +103,13 @@ function SingleProduct() {
                 <ProductImages product={product} />
               </Col>
               <Col md={5}>
-                <p>{product.name}</p>
+                <p>
+                  {product.brandName !== null &&
+                    product.brandName.trim() !== "" && (
+                      <>{product.brandName}-</>
+                    )}
+                  {product.name} {product.productId}
+                </p>
                 <div className="prices-container">
                   <Row>
                     {product.priceType === PRICE_TYPE_ENUM.SINGLE ? (
@@ -115,7 +121,7 @@ function SingleProduct() {
                       </Col>
                     ) : (
                       product.prices.map((item, index) => (
-                        <Col md={4} key={index}>
+                        <Col xs={6} md={4} key={index}>
                           <div className="price">
                             <span>{item.name}</span>
                             <h3>{currencyFormatter(item.amount)} RWF</h3>
@@ -124,6 +130,28 @@ function SingleProduct() {
                       ))
                     )}
                   </Row>
+                  {product.variations && product.variations.length > 0 && (
+                    <div
+                      style={{ borderTop: "1px solid #CCC", paddingTop: 10 }}
+                    >
+                      <Row>
+                        {product.variations.map((item, index) => (
+                          <Col xs={6} md={4} key={index}>
+                            <div className="price">
+                              <h3>{item.type}</h3>
+                              {item.values.map((item, index) => (
+                                <div key={index}>
+                                  <span style={{ textTransform: "uppercase" }}>
+                                    {item}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          </Col>
+                        ))}
+                      </Row>
+                    </div>
+                  )}
                 </div>
                 <p style={{ margin: 0, marginTop: 10 }}>Share this product:</p>
                 <div className="share-container">
