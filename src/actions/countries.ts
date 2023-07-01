@@ -21,8 +21,7 @@ export const setIsLoadingCountries = (value: boolean): IAction => ({
 
 export const resetCountries = () => ({ type: RESET_COUNTRIES });
 
-export const fetchCountries = (): any => (dispatch: any, getState: any) => {
-  const { user } = getState();
+export const fetchCountries = (): any => (dispatch: any) => {
   dispatch(setIsLoadingCountries(true));
   axios
     .get(app.BACKEND_URL + "/countries")

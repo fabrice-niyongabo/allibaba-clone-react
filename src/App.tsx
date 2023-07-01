@@ -30,6 +30,7 @@ const AdminProducts = lazy(() => import("./views/admin/products"));
 const AdminUsers = lazy(() => import("./views/admin/users"));
 const AdminShops = lazy(() => import("./views/admin/shops"));
 const AdminMemberships = lazy(() => import("./views/admin/memberships"));
+const Countries = lazy(() => import("./views/admin/countries"));
 
 const Apply = lazy(() => import("./views/apply"));
 
@@ -164,6 +165,11 @@ const App = () => {
                   path="/dashboard/main/memberships"
                   exact
                   element={<AdminMemberships />}
+                />
+                <Route
+                  path="/dashboard/main/countries"
+                  exact
+                  element={<Countries />}
                 />
               </>
             }
