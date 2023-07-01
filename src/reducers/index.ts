@@ -5,6 +5,7 @@ import categories from "./categories";
 import shops from "./shops";
 import products from "./products";
 import appReducer from "./appReducer";
+import countries from "./countries";
 const rootReducer = combineReducers({
   user,
   myShop,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   shops,
   products,
   appReducer,
+  countries,
 });
 
 export default rootReducer;

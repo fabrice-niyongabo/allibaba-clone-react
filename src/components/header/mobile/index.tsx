@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import { IProduct, Ishop, USER_ROLE_ENUM } from "../../../interfaces";
-import countries from "../../constants/countries.json";
 
 import logo from "../../../assets/images/logo2.png";
 import { setCountry } from "../../../actions/appReducer";
@@ -13,6 +12,7 @@ import { setCountry } from "../../../actions/appReducer";
 function MobileHeader() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { countries } = useSelector((state: RootState) => state.countries);
   const { country } = useSelector((state: RootState) => state.appReducer);
   const { products } = useSelector((state: RootState) => state.products);
   const { shops } = useSelector((state: RootState) => state.shops);

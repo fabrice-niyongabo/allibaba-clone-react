@@ -16,11 +16,11 @@ import { openUrlInNewTab } from "../helpers";
 import logo from "../../assets/images/logo2.png";
 import { isMobile } from "react-device-detect";
 import MobileHeader from "./mobile";
-import countries from "../constants/countries.json";
 import { setCountry } from "../../actions/appReducer";
 
 function Header() {
   const dispatch = useDispatch();
+  const { countries } = useSelector((state: RootState) => state.countries);
   const { country } = useSelector((state: RootState) => state.appReducer);
   const { categories } = useSelector((state: RootState) => state.categories);
   const { products } = useSelector((state: RootState) => state.products);

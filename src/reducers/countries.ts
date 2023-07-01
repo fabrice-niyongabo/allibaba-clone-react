@@ -10,7 +10,7 @@ const initialState: ICountriesReducer = {
   countries: [],
 };
 
-const user = (
+const countries = (
   state: ICountriesReducer = initialState,
   action: IAction
 ): ICountriesReducer => {
@@ -26,4 +26,4 @@ const user = (
   }
 };
 
-export default user;
+export default countries;

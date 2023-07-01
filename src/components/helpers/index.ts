@@ -6,6 +6,7 @@ import { fetchCategories } from "../../actions/categories";
 import { fetchShops } from "../../actions/shops";
 import { fetchProducts } from "../../actions/products";
 import { app } from "../constants";
+import { fetchCountries } from "../../actions/countries";
 
 //custom dispatcher hook
 export const useLoadBasicData = () => {
@@ -14,6 +15,7 @@ export const useLoadBasicData = () => {
     dispatch(fetchCategories());
     dispatch(fetchShops());
     dispatch(fetchProducts());
+    dispatch(fetchCountries());
   };
 };
 
