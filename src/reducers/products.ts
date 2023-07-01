@@ -10,12 +10,15 @@ const initialState: IProductsReducer = {
   products: [],
 };
 
-const user = (state: IProductsReducer = initialState, action: IAction) => {
+const user = (
+  state: IProductsReducer = initialState,
+  action: IAction
+): IProductsReducer => {
   switch (action.type) {
     case SET_PRODUCTS:
-      return { ...state, products: action.payload as IProduct[] };
+      return { ...state, products: action.payload };
     case SET_IS_LOADING_PRODUCTS:
-      return { ...state, isLoading: action.payload as boolean };
+      return { ...state, isLoading: action.payload };
     case RESET_PRODUCTS:
       return initialState;
     default:

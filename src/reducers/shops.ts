@@ -6,12 +6,12 @@ const initialState: IshopsReducer = {
   shops: [],
 };
 
-const shopsReducer = (state = initialState, action: IAction) => {
+const shopsReducer = (state = initialState, action: IAction): IshopsReducer => {
   switch (action.type) {
     case SET_SHOPS:
-      return { ...state, shops: action.payload as Ishop[] };
+      return { ...state, shops: action.payload };
     case SET_IS_LOADING_SHOPS:
-      return { ...state, isLoading: action.payload as boolean };
+      return { ...state, isLoading: action.payload };
     case RESET_SHOPS:
       return initialState;
     default:

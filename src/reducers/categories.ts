@@ -10,12 +10,15 @@ const initialState: ICategoriesReducer = {
   categories: [],
 };
 
-const user = (state: ICategoriesReducer = initialState, action: IAction) => {
+const user = (
+  state: ICategoriesReducer = initialState,
+  action: IAction
+): ICategoriesReducer => {
   switch (action.type) {
     case SET_CATEGORIES:
-      return { ...state, categories: action.payload as ICategory[] };
+      return { ...state, categories: action.payload };
     case SET_IS_LOADING_CATEGORIES:
-      return { ...state, isLoading: action.payload as boolean };
+      return { ...state, isLoading: action.payload };
     case RESET_CATEGORIES:
       return initialState;
     default:

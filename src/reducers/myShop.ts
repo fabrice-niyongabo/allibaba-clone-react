@@ -10,12 +10,15 @@ const initialState: IMyshopReducer = {
   myShop: undefined,
 };
 
-const user = (state: IMyshopReducer = initialState, action: IAction) => {
+const user = (
+  state: IMyshopReducer = initialState,
+  action: IAction
+): IMyshopReducer => {
   switch (action.type) {
     case SET_MY_SHOP:
-      return { ...state, myShop: action.payload as Ishop };
+      return { ...state, myShop: action.payload };
     case SET_IS_LOADING_MY_SHOP:
-      return { ...state, isLoading: action.payload as boolean };
+      return { ...state, isLoading: action.payload };
     case RESET_MY_SHOP:
       return initialState;
     default:
