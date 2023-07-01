@@ -41,6 +41,12 @@ export interface ICategory {
   subCategories: ISubCategory[];
 }
 
+export interface ICountry {
+  id: number;
+  name: string;
+  isActive: boolean;
+}
+
 export interface ISubCategory {
   id: number;
   categoryId: number;
@@ -77,6 +83,10 @@ export interface IMyshopReducer {
 export interface ICategoriesReducer {
   isLoading: boolean;
   categories: ICategory[];
+}
+export interface ICountriesReducer {
+  isLoading: boolean;
+  countries: ICountry[];
 }
 export interface IAppReducer {
   country: string;
