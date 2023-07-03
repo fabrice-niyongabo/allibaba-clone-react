@@ -142,6 +142,7 @@ export interface IProduct {
   brandName: string | null;
   productId: string | null;
   variations: IVariation[] | null;
+  currency: string;
 }
 
 export enum VARITION_TYPES_ENUM {

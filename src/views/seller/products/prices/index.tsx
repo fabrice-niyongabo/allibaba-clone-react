@@ -4,7 +4,6 @@ import { Modal } from "react-bootstrap";
 import { Col, Row } from "reactstrap";
 import {
   IProduct,
-  IProductImage,
   IProductPrice,
   TOAST_MESSAGE_TYPES,
 } from "../../../../interfaces";
@@ -195,7 +194,7 @@ function Prices({
                                 type="text"
                                 name="name"
                                 className="form-control"
-                                placeholder="Title  ex: mironko or kg"
+                                placeholder="Title  ex: 1-100"
                                 value={editState.name}
                                 onChange={(e) =>
                                   setEditState({
@@ -215,7 +214,7 @@ function Prices({
                                 type="number"
                                 name="amount"
                                 className="form-control"
-                                placeholder="Amount"
+                                placeholder={`Amount in ${selectedItem?.currency}`}
                                 value={editState.amount}
                                 onChange={(e) =>
                                   setEditState({
@@ -226,6 +225,8 @@ function Prices({
                                 required
                               />
                             ) : (
+                              product.currency +
+                              " " +
                               currencyFormatter(item.amount)
                             )}
                           </td>
@@ -310,7 +311,7 @@ function Prices({
                     type="number"
                     name="amount"
                     className="form-control"
-                    placeholder="Amount"
+                    placeholder={`Amount in ${product?.currency}`}
                     value={state.amount}
                     onChange={changeHandler}
                     required
