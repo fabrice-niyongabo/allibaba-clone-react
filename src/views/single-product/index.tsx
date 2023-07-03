@@ -116,7 +116,10 @@ function SingleProduct() {
                       <Col md={4}>
                         <div className="price">
                           <span>Unit Price:</span>
-                          <h3>{currencyFormatter(product.singlePrice)} RWF</h3>
+                          <h3>
+                            {product.currency}{" "}
+                            {currencyFormatter(product.singlePrice)}
+                          </h3>
                         </div>
                       </Col>
                     ) : (
@@ -124,7 +127,10 @@ function SingleProduct() {
                         <Col xs={6} md={4} key={index}>
                           <div className="price">
                             <span>{item.name}</span>
-                            <h3>{currencyFormatter(item.amount)} RWF</h3>
+                            <h3>
+                              {product.currency}{" "}
+                              {currencyFormatter(item.amount)}
+                            </h3>
                           </div>
                         </Col>
                       ))

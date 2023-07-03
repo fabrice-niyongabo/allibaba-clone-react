@@ -85,17 +85,17 @@ function Products(props: IProductsProps) {
                     <span title={item.name}>{item.name}</span>
                     <div className="price">
                       {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
-                        <>{currencyFormatter(item.singlePrice)} RWF</>
+                        <>{currencyFormatter(item.singlePrice)} </>
                       ) : (
                         <>
-                          {currencyFormatter(item.prices[0]?.amount)} RWF{" "}
+                          {item.currency}{" "}
+                          {currencyFormatter(item.prices[0]?.amount)}
                           {item.prices.length - 1 > 0 && (
                             <>
                               -{" "}
                               {currencyFormatter(
                                 item.prices[item.prices.length - 1].amount
-                              )}{" "}
-                              RWF
+                              )}
                             </>
                           )}
                         </>

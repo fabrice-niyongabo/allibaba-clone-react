@@ -35,10 +35,13 @@ function Cards() {
                         src={app.FILE_URL + item.images[0]?.image}
                       />
                       {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
-                        <span>{currencyFormatter(item.singlePrice)} RWF</span>
+                        <span>
+                          {item.currency} {currencyFormatter(item.singlePrice)}
+                        </span>
                       ) : (
                         <span>
-                          {currencyFormatter(item.prices[0]?.amount)} RWF
+                          {item.currency}{" "}
+                          {currencyFormatter(item.prices[0]?.amount)}
                         </span>
                       )}
                     </div>
@@ -67,10 +70,13 @@ function Cards() {
                         src={app.FILE_URL + item.images[0]?.image}
                       />
                       {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
-                        <span>{currencyFormatter(item.singlePrice)} RWF</span>
+                        <span>
+                          {item.currency} {currencyFormatter(item.singlePrice)}
+                        </span>
                       ) : (
                         <span>
-                          {currencyFormatter(item.prices[0]?.amount)} RWF
+                          {item.currency}{" "}
+                          {currencyFormatter(item.prices[0]?.amount)}
                         </span>
                       )}
                     </div>
@@ -99,10 +105,13 @@ function Cards() {
                         src={app.FILE_URL + item.images[0]?.image}
                       />
                       {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
-                        <span>{currencyFormatter(item.singlePrice)} RWF</span>
+                        <span>
+                          {item.currency} {currencyFormatter(item.singlePrice)}
+                        </span>
                       ) : (
                         <span>
-                          {currencyFormatter(item.prices[0]?.amount)} RWF
+                          {item.currency}{" "}
+                          {currencyFormatter(item.prices[0]?.amount)}
                         </span>
                       )}
                     </div>
@@ -131,10 +140,13 @@ function Cards() {
                         src={app.FILE_URL + item.images[0]?.image}
                       />
                       {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
-                        <span>{currencyFormatter(item.singlePrice)} RWF</span>
+                        <span>
+                          {item.currency} {currencyFormatter(item.singlePrice)}
+                        </span>
                       ) : (
                         <span>
-                          {currencyFormatter(item.prices[0]?.amount)} RWF
+                          {item.currency}{" "}
+                          {currencyFormatter(item.prices[0]?.amount)}
                         </span>
                       )}
                     </div>
@@ -163,10 +175,13 @@ function Cards() {
                         src={app.FILE_URL + item.images[0]?.image}
                       />
                       {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
-                        <span>{currencyFormatter(item.singlePrice)} RWF</span>
+                        <span>
+                          {item.currency} {currencyFormatter(item.singlePrice)}
+                        </span>
                       ) : (
                         <span>
-                          {currencyFormatter(item.prices[0]?.amount)} RWF
+                          {item.currency}{" "}
+                          {currencyFormatter(item.prices[0]?.amount)}
                         </span>
                       )}
                     </div>
@@ -195,10 +210,13 @@ function Cards() {
                         src={app.FILE_URL + item.images[0]?.image}
                       />
                       {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
-                        <span>{currencyFormatter(item.singlePrice)} RWF</span>
+                        <span>
+                          {item.currency} {currencyFormatter(item.singlePrice)}
+                        </span>
                       ) : (
                         <span>
-                          {currencyFormatter(item.prices[0]?.amount)} RWF
+                          {item.currency}{" "}
+                          {currencyFormatter(item.prices[0]?.amount)}
                         </span>
                       )}
                     </div>

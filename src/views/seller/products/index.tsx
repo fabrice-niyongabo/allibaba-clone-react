@@ -135,7 +135,7 @@ function Products() {
                     </td>
                     <td>
                       {item.priceType === PRICE_TYPE_ENUM.SINGLE && (
-                        <>{currencyFormatter(item.singlePrice)} RWF</>
+                        <>{currencyFormatter(item.singlePrice)} </>
                       )}
                       {item.priceType === PRICE_TYPE_ENUM.MANY && (
                         <span

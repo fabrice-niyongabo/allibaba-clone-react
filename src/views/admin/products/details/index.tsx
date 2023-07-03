@@ -1,15 +1,13 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { Col, NavItem, Row, Spinner } from "reactstrap";
+import { Col, Row } from "reactstrap";
 import { RootState } from "../../../../reducers";
 import { app } from "../../../../components/constants";
 import { currencyFormatter } from "../../../../components/helpers";
 import { IProduct, Ishop, PRICE_TYPE_ENUM } from "../../../../interfaces";
 import ReactHtmlParser from "react-html-parser";
 
-const initilaState = { name: "", icon: "" };
 interface IEditProps {
   showModal: boolean;
   setShowModal: any;
@@ -47,7 +45,10 @@ function Details({ showModal, setShowModal, selectedItem }: IEditProps) {
           </div>
           <h3>Pricing</h3>
           {selectedItem?.priceType === PRICE_TYPE_ENUM.SINGLE && (
-            <>{currencyFormatter(selectedItem.singlePrice)} RWF</>
+            <>
+              {selectedItem.currency}{" "}
+              {currencyFormatter(selectedItem.singlePrice)}
+            </>
           )}
           {selectedItem?.priceType === PRICE_TYPE_ENUM.MANY && (
             <>
@@ -56,7 +57,9 @@ function Details({ showModal, setShowModal, selectedItem }: IEditProps) {
                   {selectedItem.prices.map((item, position) => (
                     <tr key={position}>
                       <td>{item.name}</td>
-                      <td>{currencyFormatter(item.amount)} RWF</td>
+                      <td>
+                        {selectedItem.currency} {currencyFormatter(item.amount)}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

@@ -1,7 +1,5 @@
-import React from "react";
 import { Col, Row } from "reactstrap";
 
-import img1 from "../../../assets/images/static/3.jpg";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import ImageLoader from "../../../components/image-loader";
@@ -39,9 +37,13 @@ function JustForYou() {
               <div className="prod-description">
                 <p>{item.name}</p>
                 {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
-                  <p>{currencyFormatter(item.singlePrice)} RWF</p>
+                  <p>
+                    {item.currency} {currencyFormatter(item.singlePrice)}
+                  </p>
                 ) : (
-                  <p>{currencyFormatter(item.prices[0]?.amount)} RWF</p>
+                  <p>
+                    {item.currency} {currencyFormatter(item.prices[0]?.amount)}
+                  </p>
                 )}
 
                 <p>{getCategoryName(item.categoryId)}</p>
