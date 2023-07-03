@@ -28,7 +28,7 @@ const initialState = {
   categoryId: "",
   name: "",
   description: EditorState.createEmpty(),
-  priceType: "",
+  priceType: PRICE_TYPE_ENUM.MANY,
   singlePrice: "",
   productId: "",
   brandName: "",
@@ -225,40 +225,6 @@ function AddProduct() {
                 }}
               />
             </div>
-            <div className="form-group mb-3">
-              <label htmlFor="">Price type</label> <br />
-              <input
-                type="radio"
-                name="priceType"
-                value={PRICE_TYPE_ENUM.SINGLE}
-                checked={state.priceType === PRICE_TYPE_ENUM.SINGLE}
-                onChange={changeHandler}
-                required
-              />{" "}
-              Single
-              <input
-                type="radio"
-                name="priceType"
-                value={PRICE_TYPE_ENUM.MANY}
-                checked={state.priceType === PRICE_TYPE_ENUM.MANY}
-                onChange={changeHandler}
-                required
-              />{" "}
-              Many
-            </div>
-            {state.priceType === PRICE_TYPE_ENUM.SINGLE && (
-              <div className="form-group mb-3">
-                <label htmlFor="">Price per unit</label>
-                <input
-                  type="input"
-                  name="singlePrice"
-                  value={state.singlePrice}
-                  onChange={changeHandler}
-                  className="form-control"
-                  required={state.priceType === PRICE_TYPE_ENUM.SINGLE}
-                />
-              </div>
-            )}
             <div className="row">
               <div className="col-md-6">
                 <div className="form-group mb-3">
