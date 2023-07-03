@@ -194,7 +194,7 @@ function Prices({
                                 type="text"
                                 name="name"
                                 className="form-control"
-                                placeholder="Title  ex: 1-100"
+                                placeholder="Title  ex: 1-100 pc"
                                 value={editState.name}
                                 onChange={(e) =>
                                   setEditState({
@@ -300,7 +300,7 @@ function Prices({
                     type="text"
                     name="name"
                     className="form-control"
-                    placeholder="Title  ex: 1-100"
+                    placeholder="Title  ex: 1-100 pc"
                     value={state.name}
                     onChange={changeHandler}
                     required
