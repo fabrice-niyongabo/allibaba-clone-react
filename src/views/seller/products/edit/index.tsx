@@ -24,6 +24,7 @@ import { ContentState, EditorState, convertToRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import "../../../../assets/scss/addProduct.scss";
 import Variation from "./variation";
+import { currencies } from "currencies.json";
 
 const initilaState = {
   subCategoryId: "",
@@ -34,6 +35,7 @@ const initilaState = {
   singlePrice: "",
   productId: "",
   brandName: "",
+  currency: "",
 };
 interface IEditProps {
   showModal: boolean;
@@ -138,13 +140,13 @@ function Edit({
         <form onSubmit={handleSubmit}>
           <Modal.Body>
             <Row>
-              <Col md={6}>
+              <Col md={4}>
                 <div className="form-group mb-3">
                   <label htmlFor="">Category</label>
                   <select
                     name="categoryId"
                     value={state.categoryId}
-                    className="form-control"
+                    className="form-select"
                     onChange={(e) =>
                       setState({
                         ...state,
@@ -163,14 +165,14 @@ function Edit({
                   </select>
                 </div>
               </Col>
-              <Col md={6}>
+              <Col md={4}>
                 <div className="form-group mb-3">
                   <label htmlFor="">Sub Category</label>
                   <select
                     name="subCategoryId"
                     value={state.subCategoryId}
                     onChange={changeHandler}
-                    className="form-control"
+                    className="form-select"
                     required
                   >
                     <option value="">Choose subcategory</option>
@@ -186,6 +188,25 @@ function Edit({
                             {item.name}
                           </option>
                         ))}
+                  </select>
+                </div>
+              </Col>
+              <Col md={4}>
+                <div className="form-group mb-3">
+                  <label htmlFor="">Currency</label>
+                  <select
+                    name="currency"
+                    value={state.currency}
+                    onChange={changeHandler}
+                    className="form-select"
+                    required
+                  >
+                    <option value="">Choose currency</option>
+                    {currencies.map((item, position) => (
+                      <option value={item.code} key={position}>
+                        {item.code}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </Col>
