@@ -127,31 +127,32 @@ function Welcome() {
                       </p>
                       {item.priceType === PRICE_TYPE_ENUM.SINGLE ? (
                         <span
-                          title={`${currencyFormatter(item.singlePrice)} rwf`}
+                          title={`${item.currency} ${currencyFormatter(
+                            item.singlePrice
+                          )}`}
                         >
-                          {currencyFormatter(item.singlePrice)} rwf
+                          {item.currency} {currencyFormatter(item.singlePrice)}
                         </span>
                       ) : (
                         <span
-                          title={`${currencyFormatter(
+                          title={`${item.currency} ${currencyFormatter(
                             item.prices[0]?.amount
-                          )} rwf ${
+                          )} ${
                             item.prices.length - 1 > 0 &&
                             " - " +
                               currencyFormatter(
                                 item.prices[item.prices.length - 1].amount
-                              ) +
-                              " rwf"
+                              )
                           }  `}
                         >
-                          {currencyFormatter(item.prices[0]?.amount)} rwf
+                          {item.currency}{" "}
+                          {currencyFormatter(item.prices[0]?.amount)}
                           {item.prices.length - 1 > 0 && (
                             <>
                               -{" "}
                               {currencyFormatter(
                                 item.prices[item.prices.length - 1].amount
-                              )}{" "}
-                              rwf
+                              )}
                             </>
                           )}
                         </span>
