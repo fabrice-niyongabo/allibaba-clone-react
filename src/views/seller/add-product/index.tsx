@@ -22,6 +22,7 @@ import {
 import axios from "axios";
 import { app } from "../../../components/constants";
 import Variation from "./variation";
+import { currencies } from "currencies.json";
 
 const initialState = {
   subCategoryId: "",
@@ -32,6 +33,7 @@ const initialState = {
   singlePrice: "",
   productId: "",
   brandName: "",
+  currency: "",
 };
 function AddProduct() {
   const dispatch = useDispatch();
@@ -129,13 +131,13 @@ function AddProduct() {
         <CardBody>
           <form onSubmit={handleSubmit}>
             <Row>
-              <Col md={6}>
+              <Col md={4}>
                 <div className="form-group mb-3">
                   <label htmlFor="">Category</label>
                   <select
                     name="categoryId"
                     value={state.categoryId}
-                    className="form-control"
+                    className="form-select"
                     onChange={(e) =>
                       setState({
                         ...state,
@@ -154,14 +156,14 @@ function AddProduct() {
                   </select>
                 </div>
               </Col>
-              <Col md={6}>
+              <Col md={4}>
                 <div className="form-group mb-3">
                   <label htmlFor="">Sub Category</label>
                   <select
                     name="subCategoryId"
                     value={state.subCategoryId}
                     onChange={changeHandler}
-                    className="form-control"
+                    className="form-select"
                     required
                   >
                     <option value="">Choose subcategory</option>
@@ -177,6 +179,25 @@ function AddProduct() {
                             {item.name}
                           </option>
                         ))}
+                  </select>
+                </div>
+              </Col>
+              <Col md={4}>
+                <div className="form-group mb-3">
+                  <label htmlFor="">Currency</label>
+                  <select
+                    name="currency"
+                    value={state.currency}
+                    onChange={changeHandler}
+                    className="form-select"
+                    required
+                  >
+                    <option value="">Choose Currency</option>
+                    {currencies.map((item, position) => (
+                      <option value={item.code} key={position}>
+                        {item.code}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </Col>
