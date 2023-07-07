@@ -22,7 +22,8 @@ export const useLoadBasicData = () => {
 export const handleAuthError = (error: any) => {
   if (error?.response?.status === 401) {
     //@ts-ignore
-    window.location = "/logout";
+    window.location =
+      "/logout?redirect=" + window.location.pathname.replace("/", "");
     //@ts-ignore
   }
 };

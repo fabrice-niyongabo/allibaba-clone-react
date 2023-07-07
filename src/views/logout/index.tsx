@@ -8,7 +8,13 @@ const Logout = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(resetUser());
-    navigate("/login-register");
+    const url = new URL(window.location.href);
+    const pathValue = url.searchParams.get("redirect");
+    if (pathValue && pathValue.trim().length > 1) {
+      navigate(`login-register?redirect=${pathValue}`);
+    } else {
+      navigate("/login-register");
+    }
     localStorage.clear();
   }, []);
   return null;
