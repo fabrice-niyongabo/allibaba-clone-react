@@ -4,14 +4,14 @@ import { useSelector } from "react-redux";
 import { Card, CardBody, CardTitle, Col, Row, Spinner } from "reactstrap";
 import Edit from "./edit";
 import { RootState } from "../../../reducers";
-import { app } from "../../../components/constants";
+import { app } from "../../../constants";
 import {
   errorHandler,
   setHeaders,
   toastMessage,
 } from "../../../components/helpers";
 import MiniLoader from "../../../layouts/loader/MiniLoader";
-import Confirmation from "../../../components/controllers/confirmation";
+import Confirmation from "../../../controllers/confirmation";
 import FullPageLoader from "../../../components/full-page-loader";
 import { ICategory, TOAST_MESSAGE_TYPES } from "../../../interfaces";
 import SubCategories from "./sub-categories";

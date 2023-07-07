@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import { useNavigate } from "react-router-dom";
 import ImageLoader from "../../../components/image-loader";
-import { app } from "../../../components/constants";
+import { app } from "../../../constants";
 
 interface ISupplierProps {
   product: IProduct;

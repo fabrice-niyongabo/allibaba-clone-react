@@ -3,7 +3,7 @@ import React from "react";
 import banner from "../../../assets/images/static/banner3.png";
 import { ICategory } from "../../../interfaces";
 import ImageLoader from "../../../components/image-loader";
-import { app } from "../../../components/constants";
+import { app } from "../../../constants";
 import { makeStyles } from "@mui/styles";
 
 interface IBannerProps {

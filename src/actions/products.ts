@@ -1,5 +1,5 @@
 import axios from "axios";
-import * as constants from "../components/constants";
+import * as constants from "constants";
 import { IProduct } from "../interfaces";
 import { errorHandler } from "../components/helpers";
 

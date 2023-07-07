@@ -4,7 +4,7 @@ import { Card, CardBody, CardTitle } from "reactstrap";
 import { adminfetchAllShops } from "../../../actions/shops";
 import axios from "axios";
 import { RootState } from "../../../reducers";
-import { app } from "../../../components/constants";
+import { app } from "../../../constants";
 import {
   errorHandler,
   setHeaders,

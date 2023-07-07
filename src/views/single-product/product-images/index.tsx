@@ -2,7 +2,7 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel";
 
 import { IProduct } from "../../../interfaces";
-import { app } from "../../../components/constants";
+import { app } from "../../../constants";
 import { makeStyles } from "@mui/styles";
 interface IProductImagesProps {
   product: IProduct;

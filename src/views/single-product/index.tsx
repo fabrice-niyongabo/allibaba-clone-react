@@ -19,7 +19,7 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
 } from "react-share";
-import { app } from "../../components/constants";
+import { app } from "../../constants";
 
 function SingleProduct() {
   const { id } = useParams();

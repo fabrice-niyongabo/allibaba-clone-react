@@ -10,7 +10,7 @@ import {
 } from "../../../components/helpers";
 import { IUser, TOAST_MESSAGE_TYPES } from "../../../interfaces";
 import axios from "axios";
-import { app } from "../../../components/constants";
+import { app } from "../../../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import FullPageLoader from "../../../components/full-page-loader";

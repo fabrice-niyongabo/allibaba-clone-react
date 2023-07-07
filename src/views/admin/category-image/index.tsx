@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import FullPageLoader from "../../../components/full-page-loader";
 import axios from "axios";
-import { app } from "../../../components/constants";
+import { app } from "../../../constants";
 import { useParams } from "react-router-dom";
 import { errorHandler, setHeaders } from "../../../components/helpers";
 import CropImage from "./crop-image";

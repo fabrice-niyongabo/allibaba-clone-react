@@ -7,7 +7,7 @@ import { ICategory, IProduct, PRICE_TYPE_ENUM } from "../../../interfaces";
 import { RootState } from "../../../reducers";
 import MiniLoader from "../../../layouts/loader/MiniLoader";
 import ImageLoader from "../../../components/image-loader";
-import { app } from "../../../components/constants";
+import { app } from "../../../constants";
 import {
   currencyFormatter,
   openUrlInNewTab,

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { app } from "../components/constants";
+import { app } from "constants";
 import { ICountry } from "../interfaces";
 
 export const SET_COUNTRIES = "SET_COUNTRIES";

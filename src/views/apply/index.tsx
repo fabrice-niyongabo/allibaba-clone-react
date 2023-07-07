@@ -8,7 +8,7 @@ import { EditorState, convertToRaw } from "draft-js";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../reducers";
 import axios from "axios";
-import { app } from "../../components/constants";
+import { app } from "../../constants";
 import draftToHtml from "draftjs-to-html";
 import {
   errorHandler,
@@ -19,7 +19,7 @@ import { IUser, TOAST_MESSAGE_TYPES } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
 import { setUserApply, setUserRole, setUserShopId } from "../../actions/user";
 
-import countries from "../../components/constants/countries.json";
+import countries from "../../components/../constants/countries.json";
 import { isValidPhoneNumber } from "react-phone-number-input/input";
 import PhoneInput from "react-phone-number-input";
 

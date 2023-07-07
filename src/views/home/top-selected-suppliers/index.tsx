@@ -5,7 +5,7 @@ import Carousel from "nuka-carousel";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import ImageLoader from "../../../components/image-loader";
-import { app } from "../../../components/constants";
+import { app } from "../../../constants";
 import { useNavigate } from "react-router-dom";
 import { isMobile } from "react-device-detect";
 

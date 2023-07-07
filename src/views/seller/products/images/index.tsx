@@ -7,9 +7,9 @@ import {
   IProductImage,
   TOAST_MESSAGE_TYPES,
 } from "../../../../interfaces";
-import { app } from "../../../../components/constants";
+import { app } from "../../../../constants";
 import { Link } from "react-router-dom";
-import Confirmation from "../../../../components/controllers/confirmation";
+import Confirmation from "../../../../controllers/confirmation";
 import FullPageLoader from "../../../../components/full-page-loader";
 import {
   errorHandler,

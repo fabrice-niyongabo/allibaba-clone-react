@@ -13,7 +13,7 @@ import { Ishop } from "../../interfaces";
 import { useParams } from "react-router-dom";
 import MiniLoader from "../../layouts/loader/MiniLoader";
 import ImageLoader from "../../components/image-loader";
-import { app } from "../../components/constants";
+import { app } from "../../constants";
 
 function Shop() {
   const { id } = useParams();

@@ -3,7 +3,7 @@ import { Col, Row } from "reactstrap";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import ImageLoader from "../../../components/image-loader";
-import { app } from "../../../components/constants";
+import { app } from "../../../constants";
 import {
   currencyFormatter,
   openUrlInNewTab,

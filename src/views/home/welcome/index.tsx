@@ -11,7 +11,7 @@ import {
   openUrlInNewTab,
 } from "../../../components/helpers";
 import ImageLoader from "../../../components/image-loader";
-import { app } from "../../../components/constants";
+import { app } from "../../../constants";
 import { PRICE_TYPE_ENUM } from "../../../interfaces";
 import { isMobile } from "react-device-detect";
 

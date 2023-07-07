@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, CardBody, CardTitle, Col, Row, Spinner } from "reactstrap";
 import { RootState } from "../../../reducers";
-import { app } from "../../../components/constants";
+import { app } from "../../../constants";
 import {
   errorHandler,
   setHeaders,

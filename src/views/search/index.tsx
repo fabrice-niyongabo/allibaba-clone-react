@@ -7,7 +7,7 @@ import FullPageLoader from "../../components/full-page-loader";
 import "../../assets/scss/search.scss";
 import { useParams } from "react-router-dom";
 import ImageLoader from "../../components/image-loader";
-import { app } from "../../components/constants";
+import { app } from "../../constants";
 import { currencyFormatter, openUrlInNewTab } from "../../components/helpers";
 import { PRICE_TYPE_ENUM } from "../../interfaces";
 import { Col, Row } from "reactstrap";

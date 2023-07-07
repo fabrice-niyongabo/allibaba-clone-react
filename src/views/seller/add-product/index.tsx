@@ -20,7 +20,7 @@ import {
   toastMessage,
 } from "../../../components/helpers";
 import axios from "axios";
-import { app } from "../../../components/constants";
+import { app } from "../../../constants";
 import Variation from "./variation";
 import { currencies } from "currencies.json";
 

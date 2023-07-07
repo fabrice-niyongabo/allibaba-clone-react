@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Card, CardBody, CardTitle } from "reactstrap";
 import { RootState } from "../../../reducers";
 import axios from "axios";
-import { app } from "../../../components/constants";
+import { app } from "../../../constants";
 import {
   currencyFormatter,
   errorHandler,
@@ -18,7 +18,7 @@ import {
 } from "../../../interfaces";
 import { fetchCategories } from "../../../actions/categories";
 import Edit from "./edit";
-import Confirmation from "../../../components/controllers/confirmation";
+import Confirmation from "../../../controllers/confirmation";
 import Images from "./images";
 import Prices from "./prices";
 

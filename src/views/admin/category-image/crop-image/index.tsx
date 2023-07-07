@@ -7,7 +7,7 @@ import { Modal } from "react-bootstrap";
 import { Spinner } from "reactstrap";
 import getCroppedImg from "./utils/cropImage";
 import axios from "axios";
-import { app } from "../../../../components/constants";
+import { app } from "../../../../constants";
 import { errorHandler, toastMessage } from "../../../../components/helpers";
 import { TOAST_MESSAGE_TYPES } from "../../../../interfaces";
 import { useSelector } from "react-redux";

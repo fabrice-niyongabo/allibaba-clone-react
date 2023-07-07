@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Card, CardBody, CardTitle, Col, Row } from "reactstrap";
 import { RootState } from "../../../reducers";
-import { app } from "../../../components/constants";
+import { app } from "../../../constants";
 import {
   errorHandler,
   setHeaders,
@@ -11,7 +11,7 @@ import {
 } from "../../../components/helpers";
 import FullPageLoader from "../../../components/full-page-loader";
 import { ICountry, TOAST_MESSAGE_TYPES } from "../../../interfaces";
-import CountriesList from "../../../components/constants/countries.json";
+import CountriesList from "../../../components/../constants/countries.json";
 import { Switch } from "@mui/material";
 
 interface ICountryItemProps {

@@ -4,7 +4,7 @@ import { Modal } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Col, Row, Spinner } from "reactstrap";
 import { RootState } from "../../../../reducers";
-import { app } from "../../../../components/constants";
+import { app } from "../../../../constants";
 import {
   errorHandler,
   setHeaders,
@@ -16,7 +16,7 @@ import {
   TOAST_MESSAGE_TYPES,
 } from "../../../../interfaces";
 import FullPageLoader from "../../../../components/full-page-loader";
-import Confirmation from "../../../../components/controllers/confirmation";
+import Confirmation from "../../../../controllers/confirmation";
 
 const initilaState = { name: "" };
 interface ISubCategoriesProps {

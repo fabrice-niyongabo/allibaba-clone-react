@@ -6,7 +6,7 @@ import img2 from "../../../assets/images/static/1.jpg";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import ImageLoader from "../../../components/image-loader";
-import { app } from "../../../components/constants";
+import { app } from "../../../constants";
 import { openUrlInNewTab } from "../../../components/helpers";
 function Categories() {
   const { products } = useSelector((state: RootState) => state.products);
