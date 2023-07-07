@@ -20,6 +20,7 @@ import {
   WhatsappShareButton,
 } from "react-share";
 import { app } from "../../constants";
+import ShippingEstimations from "./shipping-estimations";
 
 function SingleProduct() {
   const { id } = useParams();
@@ -99,105 +100,113 @@ function SingleProduct() {
               </ul>
             </div>
             <Row className="mt-4">
-              <Col md={4}>
-                <ProductImages product={product} />
-              </Col>
-              <Col md={5}>
-                <p>
-                  {product.brandName !== null &&
-                    product.brandName.trim() !== "" && (
-                      <>{product.brandName}-</>
-                    )}
-                  {product.name} {product.productId}
-                </p>
-                <div className="prices-container">
-                  <Row>
-                    {product.priceType === PRICE_TYPE_ENUM.SINGLE ? (
-                      <Col md={4}>
-                        <div className="price">
-                          <span>Unit Price:</span>
-                          <h3>
-                            {product.currency}{" "}
-                            {currencyFormatter(product.singlePrice)}
-                          </h3>
-                        </div>
-                      </Col>
-                    ) : (
-                      product.prices.map((item, index) => (
-                        <Col xs={6} md={4} key={index}>
-                          <div className="price">
-                            <span>{item.name}</span>
-                            <h3>
-                              {product.currency}{" "}
-                              {currencyFormatter(item.amount)}
-                            </h3>
-                          </div>
-                        </Col>
-                      ))
-                    )}
-                  </Row>
-                  {product.variations && product.variations.length > 0 && (
-                    <div
-                      style={{ borderTop: "1px solid #CCC", paddingTop: 10 }}
-                    >
+              <Col md={9}>
+                <Row>
+                  <Col md={4}>
+                    <ProductImages product={product} />
+                  </Col>
+                  <Col md={5}>
+                    <p>
+                      {product.brandName !== null &&
+                        product.brandName.trim() !== "" && (
+                          <>{product.brandName}-</>
+                        )}
+                      {product.name} {product.productId}
+                    </p>
+                    <div className="prices-container">
                       <Row>
-                        {product.variations.map((item, index) => (
-                          <Col xs={6} md={4} key={index}>
+                        {product.priceType === PRICE_TYPE_ENUM.SINGLE ? (
+                          <Col md={4}>
                             <div className="price">
-                              <h3>{item.type}</h3>
-                              {item.values.map((item, index) => (
-                                <div key={index}>
-                                  <span style={{ textTransform: "uppercase" }}>
-                                    {item}
-                                  </span>
-                                </div>
-                              ))}
+                              <span>Unit Price:</span>
+                              <h3>
+                                {product.currency}{" "}
+                                {currencyFormatter(product.singlePrice)}
+                              </h3>
                             </div>
                           </Col>
-                        ))}
+                        ) : (
+                          product.prices.map((item, index) => (
+                            <Col xs={6} md={4} key={index}>
+                              <div className="price">
+                                <span>{item.name}</span>
+                                <h3>
+                                  {product.currency}{" "}
+                                  {currencyFormatter(item.amount)}
+                                </h3>
+                              </div>
+                            </Col>
+                          ))
+                        )}
                       </Row>
+                      {product.variations && product.variations.length > 0 && (
+                        <div
+                          style={{
+                            borderTop: "1px solid #CCC",
+                            paddingTop: 10,
+                          }}
+                        >
+                          <Row>
+                            {product.variations.map((item, index) => (
+                              <Col xs={6} md={4} key={index}>
+                                <div className="price">
+                                  <h3>{item.type}</h3>
+                                  {item.values.map((item, index) => (
+                                    <div key={index}>
+                                      <span
+                                        style={{ textTransform: "uppercase" }}
+                                      >
+                                        {item}
+                                      </span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </Col>
+                            ))}
+                          </Row>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-                <p style={{ margin: 0, marginTop: 10 }}>Share this product:</p>
-                <div className="share-container">
-                  <FacebookShareButton
-                    url={app.PUBLIC_URL + "/product/" + product.pId}
-                  >
-                    <div>
-                      <i className="bi bi-facebook"></i>
+                    <p style={{ margin: 0, marginTop: 10 }}>
+                      Share this product:
+                    </p>
+                    <div className="share-container">
+                      <FacebookShareButton
+                        url={app.PUBLIC_URL + "/product/" + product.pId}
+                      >
+                        <div>
+                          <i className="bi bi-facebook"></i>
+                        </div>
+                      </FacebookShareButton>
+                      <TwitterShareButton
+                        url={app.PUBLIC_URL + "/product/" + product.pId}
+                      >
+                        <div>
+                          <i className="bi bi-twitter"></i>
+                        </div>
+                      </TwitterShareButton>
+                      <WhatsappShareButton
+                        url={app.PUBLIC_URL + "/product/" + product.pId}
+                      >
+                        <div>
+                          <i className="bi bi-whatsapp"></i>
+                        </div>
+                      </WhatsappShareButton>
+                      <TelegramShareButton
+                        url={app.PUBLIC_URL + "/product/" + product.pId}
+                      >
+                        <div>
+                          <i className="bi bi-telegram"></i>
+                        </div>
+                      </TelegramShareButton>
                     </div>
-                  </FacebookShareButton>
-                  <TwitterShareButton
-                    url={app.PUBLIC_URL + "/product/" + product.pId}
-                  >
-                    <div>
-                      <i className="bi bi-twitter"></i>
-                    </div>
-                  </TwitterShareButton>
-                  <WhatsappShareButton
-                    url={app.PUBLIC_URL + "/product/" + product.pId}
-                  >
-                    <div>
-                      <i className="bi bi-whatsapp"></i>
-                    </div>
-                  </WhatsappShareButton>
-                  <TelegramShareButton
-                    url={app.PUBLIC_URL + "/product/" + product.pId}
-                  >
-                    <div>
-                      <i className="bi bi-telegram"></i>
-                    </div>
-                  </TelegramShareButton>
-                </div>
+                  </Col>
+                </Row>
+                <RelatedProducts product={product} />
               </Col>
               <Col md={3}>
                 <Supplier product={product} />
-              </Col>
-            </Row>
-            <Row className="mt-4">
-              <Col md={9}>
-                <RelatedProducts product={product} />
+                <ShippingEstimations product={product} />
               </Col>
             </Row>
           </div>
