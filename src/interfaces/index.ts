@@ -95,6 +95,12 @@ export interface ICategoriesReducer {
   isLoading: boolean;
   categories: ICategory[];
 }
+
+export interface IShippingEstimationsReducer {
+  isLoading: boolean;
+  supplierId: number;
+  estimaitons: IShippingEstimation[];
+}
 export interface ICountriesReducer {
   isLoading: boolean;
   countries: ICountry[];
