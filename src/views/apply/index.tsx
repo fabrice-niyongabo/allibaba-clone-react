@@ -10,11 +10,7 @@ import { RootState } from "../../reducers";
 import axios from "axios";
 import { app } from "../../constants";
 import draftToHtml from "draftjs-to-html";
-import {
-  errorHandler,
-  setHeaders,
-  toastMessage,
-} from "../../components/helpers";
+import { errorHandler, setHeaders, toastMessage } from "../../helpers";
 import { IUser, TOAST_MESSAGE_TYPES } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
 import { setUserApply, setUserRole, setUserShopId } from "../../actions/user";

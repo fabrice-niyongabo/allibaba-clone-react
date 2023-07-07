@@ -12,7 +12,7 @@ import FullPageLoader from "../../../components/full-page-loader";
 import axios from "axios";
 import { app } from "../../../constants";
 import { useParams } from "react-router-dom";
-import { errorHandler, setHeaders } from "../../../components/helpers";
+import { errorHandler, setHeaders } from "../../../helpers";
 import CropImage from "./crop-image";
 
 function CategoryImages() {

@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../reducers";
 import { IProduct, IUser, Ishop, USER_ROLE_ENUM } from "../../interfaces";
-import { openUrlInNewTab } from "../helpers";
+import { openUrlInNewTab } from "../../helpers";
 
 import logo from "../../assets/images/logo2.png";
 import { isMobile } from "react-device-detect";

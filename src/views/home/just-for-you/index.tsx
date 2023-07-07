@@ -4,10 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../constants";
-import {
-  currencyFormatter,
-  openUrlInNewTab,
-} from "../../../components/helpers";
+import { currencyFormatter, openUrlInNewTab } from "../../../helpers";
 import { PRICE_TYPE_ENUM } from "../../../interfaces";
 function JustForYou() {
   const { products } = useSelector((state: RootState) => state.products);

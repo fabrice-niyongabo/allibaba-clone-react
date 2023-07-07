@@ -1,7 +1,7 @@
 import axios from "axios";
-import { app } from "constants";
+import { app } from "../constants";
 import { ICategory, Ishop } from "../interfaces";
-import { errorHandler, setHeaders } from "../components/helpers";
+import { errorHandler, setHeaders } from "../helpers";
 
 export const SET_CATEGORIES = "SET_CATEGORIES";
 export const SET_IS_LOADING_CATEGORIES = "SET_IS_LOADING_CATEGORIES";

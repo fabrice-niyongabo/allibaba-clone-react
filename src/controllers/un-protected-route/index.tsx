@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { IUser, USER_ROLE_ENUM } from "../../../interfaces";
-import { RootState } from "../../../reducers";
+import { IUser, USER_ROLE_ENUM } from "../../interfaces";
+import { RootState } from "../../reducers";
 
 const UnProtectedRoute = ({ children }: { children: ReactNode }) => {
   const { token, role, apply, shopId } = useSelector(

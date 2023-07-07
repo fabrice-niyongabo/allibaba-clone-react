@@ -9,7 +9,7 @@ import {
   errorHandler,
   setHeaders,
   toastMessage,
-} from "../../../components/helpers";
+} from "../../../helpers";
 import FullPageLoader from "../../../components/full-page-loader";
 import {
   IProduct,

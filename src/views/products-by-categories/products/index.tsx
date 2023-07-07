@@ -8,10 +8,7 @@ import { RootState } from "../../../reducers";
 import MiniLoader from "../../../layouts/loader/MiniLoader";
 import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../constants";
-import {
-  currencyFormatter,
-  openUrlInNewTab,
-} from "../../../components/helpers";
+import { currencyFormatter, openUrlInNewTab } from "../../../helpers";
 
 interface IProductsProps {
   category: ICategory;

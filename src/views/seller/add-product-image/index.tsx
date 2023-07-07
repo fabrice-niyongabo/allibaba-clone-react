@@ -8,7 +8,7 @@ import CropImage from "./crop-image";
 import axios from "axios";
 import { app } from "../../../constants";
 import { useParams } from "react-router-dom";
-import { errorHandler, setHeaders } from "../../../components/helpers";
+import { errorHandler, setHeaders } from "../../../helpers";
 
 function AddProductImage() {
   const dispatch = useDispatch();

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Col, Row } from "reactstrap";
 import { RootState } from "../../../../reducers";
 import { app } from "../../../../constants";
-import { currencyFormatter } from "../../../../components/helpers";
+import { currencyFormatter } from "../../../../helpers";
 import { IProduct, Ishop, PRICE_TYPE_ENUM } from "../../../../interfaces";
 import ReactHtmlParser from "react-html-parser";
 

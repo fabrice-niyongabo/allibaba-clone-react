@@ -3,11 +3,7 @@ import { Card, CardBody, CardTitle, Col, Row } from "reactstrap";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 import { ContentState, EditorState, convertToRaw } from "draft-js";
-import {
-  errorHandler,
-  setHeaders,
-  toastMessage,
-} from "../../../components/helpers";
+import { errorHandler, setHeaders, toastMessage } from "../../../helpers";
 import { IUser, TOAST_MESSAGE_TYPES } from "../../../interfaces";
 import axios from "axios";
 import { app } from "../../../constants";

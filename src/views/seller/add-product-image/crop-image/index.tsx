@@ -8,7 +8,7 @@ import { Spinner } from "reactstrap";
 import getCroppedImg from "./utils/cropImage";
 import axios from "axios";
 import { app } from "../../../../constants";
-import { errorHandler, toastMessage } from "../../../../components/helpers";
+import { errorHandler, toastMessage } from "../../../../helpers";
 import { TOAST_MESSAGE_TYPES } from "../../../../interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../reducers";

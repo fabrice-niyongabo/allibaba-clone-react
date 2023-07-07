@@ -8,7 +8,6 @@ import {
   TOAST_MESSAGE_TYPES,
 } from "../../../../interfaces";
 import { app } from "../../../../constants";
-import { Link } from "react-router-dom";
 import Confirmation from "../../../../controllers/confirmation";
 import FullPageLoader from "../../../../components/full-page-loader";
 import {
@@ -16,7 +15,7 @@ import {
   errorHandler,
   setHeaders,
   toastMessage,
-} from "../../../../components/helpers";
+} from "../../../../helpers";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../reducers";
 

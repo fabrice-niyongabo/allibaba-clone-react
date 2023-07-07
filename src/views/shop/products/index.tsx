@@ -7,10 +7,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../constants";
-import {
-  currencyFormatter,
-  openUrlInNewTab,
-} from "../../../components/helpers";
+import { currencyFormatter, openUrlInNewTab } from "../../../helpers";
 
 interface IProductsProps {
   shop: Ishop;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { app } from "constants";
+import { app } from "../constants";
 
 export const SET_USER_NAMES = "SET_USER_NAMES";
 export const SET_USER_EMAIL = "SET_USER_EMAIL";

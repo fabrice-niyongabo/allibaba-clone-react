@@ -12,7 +12,7 @@ import { IProduct, PRICE_TYPE_ENUM } from "../../interfaces";
 import { useNavigate, useParams } from "react-router-dom";
 import { RootState } from "../../reducers";
 import MiniLoader from "../../layouts/loader/MiniLoader";
-import { currencyFormatter } from "../../components/helpers";
+import { currencyFormatter } from "../../helpers";
 import {
   FacebookShareButton,
   TelegramShareButton,

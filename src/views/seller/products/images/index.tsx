@@ -11,11 +11,7 @@ import { app } from "../../../../constants";
 import { Link } from "react-router-dom";
 import Confirmation from "../../../../controllers/confirmation";
 import FullPageLoader from "../../../../components/full-page-loader";
-import {
-  errorHandler,
-  setHeaders,
-  toastMessage,
-} from "../../../../components/helpers";
+import { errorHandler, setHeaders, toastMessage } from "../../../../helpers";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../reducers";
 

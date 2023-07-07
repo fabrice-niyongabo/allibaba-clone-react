@@ -17,7 +17,7 @@ import { ReactComponent as LogoWhite } from "../assets/images/logos/xtremelogowh
 import user1 from "../assets/images/users/user1.jpg";
 import Logo from "./Logo";
 import { useSelector } from "react-redux";
-import { appColors } from "constants";
+import { appColors } from "../constants";
 
 const Header = () => {
   const navigate = useNavigate();

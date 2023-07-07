@@ -5,11 +5,7 @@ import { adminfetchAllShops } from "../../../actions/shops";
 import axios from "axios";
 import { RootState } from "../../../reducers";
 import { app } from "../../../constants";
-import {
-  errorHandler,
-  setHeaders,
-  toastMessage,
-} from "../../../components/helpers";
+import { errorHandler, setHeaders, toastMessage } from "../../../helpers";
 import FullPageLoader from "../../../components/full-page-loader";
 import { IProduct, TOAST_MESSAGE_TYPES } from "../../../interfaces";
 import Check from "./check";

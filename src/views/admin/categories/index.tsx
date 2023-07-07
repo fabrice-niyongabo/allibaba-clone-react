@@ -5,11 +5,7 @@ import { Card, CardBody, CardTitle, Col, Row, Spinner } from "reactstrap";
 import Edit from "./edit";
 import { RootState } from "../../../reducers";
 import { app } from "../../../constants";
-import {
-  errorHandler,
-  setHeaders,
-  toastMessage,
-} from "../../../components/helpers";
+import { errorHandler, setHeaders, toastMessage } from "../../../helpers";
 import MiniLoader from "../../../layouts/loader/MiniLoader";
 import Confirmation from "../../../controllers/confirmation";
 import FullPageLoader from "../../../components/full-page-loader";

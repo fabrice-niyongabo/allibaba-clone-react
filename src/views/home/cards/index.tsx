@@ -6,10 +6,7 @@ import { RootState } from "../../../reducers";
 import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../constants";
 import { PRICE_TYPE_ENUM } from "../../../interfaces";
-import {
-  currencyFormatter,
-  openUrlInNewTab,
-} from "../../../components/helpers";
+import { currencyFormatter, openUrlInNewTab } from "../../../helpers";
 function Cards() {
   const { products } = useSelector((state: RootState) => state.products);
   return (

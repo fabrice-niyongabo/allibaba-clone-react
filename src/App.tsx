@@ -10,7 +10,7 @@ import ProtectedRoute from "./controllers/protected-route";
 import { useSelector } from "react-redux";
 import { RootState } from "./reducers";
 import { IUser, USER_ROLE_ENUM } from "./interfaces";
-import { useLoadBasicData } from "./components/helpers";
+import { useLoadBasicData } from "./helpers";
 
 const Dashboard = lazy(() => import("./views/admin/dashboard"));
 const Home = lazy(() => import("./views/home"));

@@ -1,7 +1,7 @@
 import axios from "axios";
-import * as constants from "constants";
+import * as constants from "../constants";
 import { IProduct } from "../interfaces";
-import { errorHandler } from "../components/helpers";
+import { errorHandler } from "../helpers";
 
 export const SET_PRODUCTS = "SET_PRODUCTS";
 export const SET_IS_LOADING_PRODUCTS = "SET_IS_LOADING_PRODUCTS";

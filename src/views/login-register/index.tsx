@@ -6,7 +6,7 @@ import "../../assets/scss/login.scss";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { app } from "../../constants";
-import { errorHandler, toastMessage } from "../../components/helpers";
+import { errorHandler, toastMessage } from "../../helpers";
 import FullPageLoader from "../../components/full-page-loader";
 import { IUser, TOAST_MESSAGE_TYPES, USER_ROLE_ENUM } from "../../interfaces";
 import { useDispatch } from "react-redux";

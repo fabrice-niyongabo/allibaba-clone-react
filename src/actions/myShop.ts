@@ -1,7 +1,7 @@
 import axios from "axios";
-import { app } from "constants";
+import { app } from "../constants";
 import { Ishop } from "../interfaces";
-import { errorHandler, setHeaders } from "../components/helpers";
+import { errorHandler, setHeaders } from "../helpers";
 
 export const SET_MY_SHOP = "SET_MY_SHOP";
 export const SET_IS_LOADING_MY_SHOP = "SET_IS_LOADING_MY_SHOP";

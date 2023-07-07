@@ -6,10 +6,7 @@ import Slider from "./slider";
 import cameraImage from "../../../assets/images/static/camera.png";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
-import {
-  currencyFormatter,
-  openUrlInNewTab,
-} from "../../../components/helpers";
+import { currencyFormatter, openUrlInNewTab } from "../../../helpers";
 import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../constants";
 import { PRICE_TYPE_ENUM } from "../../../interfaces";

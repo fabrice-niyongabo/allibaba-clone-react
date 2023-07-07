@@ -14,11 +14,7 @@ import {
   TOAST_MESSAGE_TYPES,
   VARITION_TYPES_ENUM,
 } from "../../../interfaces";
-import {
-  errorHandler,
-  setHeaders,
-  toastMessage,
-} from "../../../components/helpers";
+import { errorHandler, setHeaders, toastMessage } from "../../../helpers";
 import axios from "axios";
 import { app } from "../../../constants";
 import Variation from "./variation";

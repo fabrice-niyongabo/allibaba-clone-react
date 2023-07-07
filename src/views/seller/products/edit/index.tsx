@@ -5,11 +5,7 @@ import { useSelector } from "react-redux";
 import { Col, Row, Spinner } from "reactstrap";
 import { RootState } from "../../../../reducers";
 import { app } from "../../../../constants";
-import {
-  errorHandler,
-  setHeaders,
-  toastMessage,
-} from "../../../../components/helpers";
+import { errorHandler, setHeaders, toastMessage } from "../../../../helpers";
 import {
   IProduct,
   IVariation,
