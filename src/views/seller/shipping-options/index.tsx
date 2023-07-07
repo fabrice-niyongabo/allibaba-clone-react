@@ -86,11 +86,15 @@ function ShippingOptions() {
     setIsloading(true);
     axios
       .post(
-        app.BACKEND_URL + "estimation/",
+        app.BACKEND_URL + "/estimation/",
         { ...state, fromCountry: myShop?.country },
         setHeaders(token)
       )
-      .then((res) => {})
+      .then((res) => {
+        setIsloading(false);
+        toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
+        setEstimations(res.data.estimations);
+      })
       .catch((error) => {
         setIsloading(false);
         errorHandler(error);
