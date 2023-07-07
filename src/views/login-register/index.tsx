@@ -147,6 +147,13 @@ function LoginRegister() {
         dispatch(setUserToken(token));
         toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
         setIsloading(false);
+
+        const url = new URL(window.location.href);
+        const pathValue = url.searchParams.get("redirect");
+        if (pathValue && pathValue.trim().length > 1) {
+          navigate(`/${pathValue}`);
+          return;
+        }
         if (role === USER_ROLE_ENUM.ADMIN) {
           navigate("/dashboard/main");
           return;
