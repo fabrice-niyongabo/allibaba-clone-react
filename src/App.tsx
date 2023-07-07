@@ -34,12 +34,14 @@ const Countries = lazy(() => import("./views/admin/countries"));
 
 const Apply = lazy(() => import("./views/apply"));
 
+//seller
 const MyShop = lazy(() => import("./views/seller/my-shop"));
 const AddProduct = lazy(() => import("./views/seller/add-product"));
 const Products = lazy(() => import("./views/seller/products"));
 const AddProductImage = lazy(() => import("./views/seller/add-product-image"));
 const Subscriptions = lazy(() => import("./views/seller/subscriptions"));
 const AskedQuestions = lazy(() => import("./views/seller/asked-questions"));
+const ShippingOptions = lazy(() => import("./views/seller/shipping-options"));
 
 const theme = createMuiTheme({
   //   theme properties here
@@ -198,6 +200,11 @@ const App = () => {
                     path="/dashboard/products"
                     exact
                     element={<Products />}
+                  />
+                  <Route
+                    path="/dashboard/shipping"
+                    exact
+                    element={<ShippingOptions />}
                   />
                   <Route
                     path="/dashboard/product/:id"

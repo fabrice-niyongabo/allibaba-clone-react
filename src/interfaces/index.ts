@@ -28,6 +28,16 @@ export interface IUser {
   token: string;
 }
 
+export interface IShippingEstimation {
+  id: number;
+  userId: number;
+  shopId: number;
+  fromCountry: string;
+  toCountry: string;
+  amount: number;
+  currency: string;
+}
+
 export interface ICategory {
   id: number;
   name: string;

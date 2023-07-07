@@ -29,4 +29,9 @@ export const sellerNavigation = [
     href: "/dashboard/addproduct",
     icon: "bi bi-card-text",
   },
+  {
+    title: "Shipping Estimation",
+    href: "/dashboard/shipping",
+    icon: "bi bi-card-text",
+  },
 ];
