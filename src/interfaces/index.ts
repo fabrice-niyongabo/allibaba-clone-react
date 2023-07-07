@@ -34,7 +34,8 @@ export interface IShippingEstimation {
   shopId: number;
   fromCountry: string;
   toCountry: string;
-  amount: number;
+  minAmount: number;
+  maxAmount: number;
   currency: string;
 }
 

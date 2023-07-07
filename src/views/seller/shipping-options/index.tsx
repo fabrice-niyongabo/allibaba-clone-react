@@ -93,7 +93,7 @@ function ShippingOptions() {
       .then((res) => {
         setIsloading(false);
         toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
-        setEstimations(res.data.estimations);
+        setEstimations([...estimations, res.data.estimation]);
       })
       .catch((error) => {
         setIsloading(false);
@@ -114,25 +114,24 @@ function ShippingOptions() {
                 <table className="table table-bordered">
                   <thead>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>SubCategory</th>
-                    <th>Price</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Min Amount</th>
+                    <th>Max Amount</th>
                     <th className="text-center">Action</th>
                   </thead>
                   <tbody style={{ borderTopWidth: 0 }}>
-                    {/* {products.map((item, position) => (
+                    {estimations.map((item, position) => (
                       <tr key={position}>
-                        <td>{item.pId}</td>
-                        <td>{item.name}</td>
-                        <td>{getCategoryName(item.categoryId)}</td>
+                        <td>{position + 1}</td>
+                        <td>{item.fromCountry}</td>
+                        <td>{item.toCountry}</td>
                         <td>
-                          {getSubCategoryName(
-                            item.categoryId,
-                            item.subCategoryId
-                          )}
+                          {currencyFormatter(item.minAmount)} {item.currency}
                         </td>
-                        <td></td>
+                        <td>
+                          {currencyFormatter(item.maxAmount)} {item.currency}
+                        </td>
                         <td>
                           <span
                             className="text-primary pointer"
@@ -155,7 +154,7 @@ function ShippingOptions() {
                           </span>
                         </td>
                       </tr>
-                    ))} */}
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -246,14 +245,14 @@ function ShippingOptions() {
         showAlert={showAlert}
         setShowAlert={setShowAlert}
         callback={handleDelete}
-        title="Do you want to delete this product?"
+        title="Do you want to delete this estimation?"
       />
-      {/* <Edit
+      <Edit
         selectedItem={selectedItem}
         showModal={showEdit}
         setShowModal={setShowEdit}
-        fetchData={fetchProducts}
-      /> */}
+        fetchData={fetchEstimations}
+      />
     </div>
   );
 }

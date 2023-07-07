@@ -8,35 +8,29 @@ import { app } from "../../../../constants";
 import { errorHandler, setHeaders, toastMessage } from "../../../../helpers";
 import {
   IProduct,
+  IShippingEstimation,
   IVariation,
   PRICE_TYPE_ENUM,
   TOAST_MESSAGE_TYPES,
   VARITION_TYPES_ENUM,
 } from "../../../../interfaces";
 import FullPageLoader from "../../../../components/full-page-loader";
-import draftToHtml from "draftjs-to-html";
-import htmlToDraft from "html-to-draftjs";
-import { ContentState, EditorState, convertToRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import "../../../../assets/scss/addProduct.scss";
-import Variation from "./variation";
 import { currencies } from "currencies.json";
+import countries from "../../../../constants/countries.json";
 
 const initilaState = {
-  subCategoryId: "",
-  categoryId: "",
-  name: "",
-  description: EditorState.createEmpty(),
-  priceType: PRICE_TYPE_ENUM.MANY,
-  singlePrice: "",
-  productId: "",
-  brandName: "",
+  fromCountry: "",
+  toCountry: "",
+  minAmount: "",
+  maxAmount: "",
   currency: "",
 };
 interface IEditProps {
   showModal: boolean;
   setShowModal: any;
-  selectedItem: IProduct | undefined;
+  selectedItem: IShippingEstimation | undefined;
   fetchData: any;
 }
 function Edit({
@@ -45,9 +39,6 @@ function Edit({
   selectedItem,
   fetchData,
 }: IEditProps) {
-  const { categories, isLoading } = useSelector(
-    (state: RootState) => state.categories
-  );
   const { token } = useSelector((state: RootState) => state.user);
 
   const [state, setState] = useState(initilaState);
@@ -65,28 +56,12 @@ function Edit({
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const description = draftToHtml(
-      convertToRaw(state.description.getCurrentContent())
-    );
-    if (unsavedVariations.length > 0) {
-      toastMessage(
-        TOAST_MESSAGE_TYPES.ERROR,
-        `Please save changes for ${unsavedVariations[0]} variation or uncheck it to remove it from the list.`
-      );
-      return;
-    }
-    const singlePrice =
-      state.priceType === PRICE_TYPE_ENUM.MANY ? 0.0 : state.singlePrice;
-    setIsSubmitting(true);
+
     axios
       .put(
-        app.BACKEND_URL + "/products/",
+        app.BACKEND_URL + "/estimation/",
         {
           ...state,
-          description,
-          singlePrice,
-          priceType: PRICE_TYPE_ENUM.MANY,
-          variations: JSON.stringify(variations),
         },
         setHeaders(token)
       )
@@ -106,18 +81,7 @@ function Edit({
 
   useEffect(() => {
     if (showModal && selectedItem) {
-      const blocksFromHtml = htmlToDraft(selectedItem?.description);
-      const { contentBlocks, entityMap } = blocksFromHtml;
-      const contentState = ContentState.createFromBlockArray(
-        contentBlocks,
-        entityMap
-      );
-      const editorState = EditorState.createWithContent(contentState);
-      setState({ ...selectedItem, description: editorState } as any);
-      if (selectedItem.variations !== null) {
-        setVariations(selectedItem.variations);
-        setDefaultVariations(selectedItem.variations);
-      }
+      setState({ ...selectedItem } as any);
     }
   }, [showModal]);
   return (
@@ -135,196 +99,69 @@ function Edit({
         </Modal.Header>
         <form onSubmit={handleSubmit}>
           <Modal.Body>
-            <Row>
-              <Col md={4}>
-                <div className="form-group mb-3">
-                  <label htmlFor="">Category</label>
-                  <select
-                    name="categoryId"
-                    value={state.categoryId}
-                    className="form-select"
-                    onChange={(e) =>
-                      setState({
-                        ...state,
-                        categoryId: e.target.value,
-                        subCategoryId: "",
-                      })
-                    }
-                    required
-                  >
-                    <option value="">Choose category</option>
-                    {categories.map((item, position) => (
-                      <option value={item.id} key={position}>
-                        {item.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </Col>
-              <Col md={4}>
-                <div className="form-group mb-3">
-                  <label htmlFor="">Sub Category</label>
-                  <select
-                    name="subCategoryId"
-                    value={state.subCategoryId}
-                    onChange={changeHandler}
-                    className="form-select"
-                    required
-                  >
-                    <option value="">Choose subcategory</option>
-                    {categories.filter(
-                      (item) => item.id === Number(state.categoryId)
-                    ).length > 0 &&
-                      categories
-                        .filter(
-                          (item) => item.id === Number(state.categoryId)
-                        )[0]
-                        .subCategories.map((item, position) => (
-                          <option value={item.id} key={position}>
-                            {item.name}
-                          </option>
-                        ))}
-                  </select>
-                </div>
-              </Col>
-              <Col md={4}>
-                <div className="form-group mb-3">
-                  <label htmlFor="">Currency</label>
-                  <select
-                    name="currency"
-                    value={state.currency}
-                    onChange={changeHandler}
-                    className="form-select"
-                    required
-                  >
-                    <option value="">Choose currency</option>
-                    {currencies.map((item, position) => (
-                      <option value={item.code} key={position}>
-                        {item.code}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </Col>
-            </Row>
             <div className="form-group mb-3">
-              <label htmlFor="">Product Name</label>
+              <label htmlFor="">From</label>
               <input
-                name="name"
-                value={state.name}
-                onChange={changeHandler}
-                placeholder="Enter product name"
                 className="form-control"
+                disabled
+                value={state.fromCountry}
+              />
+            </div>
+            <div className="form-group mb-3">
+              <label htmlFor="">To (destination)</label>
+              <select
+                className="form-select"
+                value={state.toCountry}
+                onChange={changeHandler}
+                name="toCountry"
                 required
+              >
+                <option value="">Choose Destination</option>
+                {countries.map((item, index) => (
+                  <option key={index} value={item.name}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="form-group mb-3">
+              <label htmlFor="">Minimum Amount</label>
+              <input
+                type="number"
+                className="form-control"
+                value={state.minAmount}
+                onChange={changeHandler}
+                name="minAmount"
+                placeholder="Enter minimum amount"
               />
             </div>
             <div className="form-group mb-3">
-              <label htmlFor="">Product Description</label>
-              <Editor
-                editorState={state.description}
-                toolbarClassName="toolbarClassName"
-                wrapperClassName="wrapperClassName"
-                editorClassName="editorClassName"
-                onEditorStateChange={(editorState) =>
-                  setState({ ...state, description: editorState })
-                }
-                editorStyle={{
-                  border: "1px solid #CCC",
-                  padding: "10px",
-                  fontSize: 12,
-                }}
-                toolbar={{
-                  options: [
-                    "inline",
-                    "blockType",
-                    "fontFamily",
-                    "list",
-                    "textAlign",
-                    "colorPicker",
-                    "link",
-                    "embedded",
-                    "emoji",
-                    "image",
-                    "remove",
-                    "history",
-                  ],
-                }}
+              <label htmlFor="">Maximum Amount</label>
+              <input
+                type="number"
+                className="form-control"
+                value={state.maxAmount}
+                onChange={changeHandler}
+                name="maxAmount"
+                placeholder="Enter maximum amount"
               />
             </div>
-            <div className="row">
-              <div className="col-md-6">
-                <div className="form-group mb-3">
-                  <label htmlFor="">Product ID (optional)</label>
-                  <input
-                    type="text"
-                    name="productId"
-                    className="form-control"
-                    value={state.productId}
-                    onChange={changeHandler}
-                    placeholder="Enter product ID"
-                  />
-                </div>
-              </div>
-              <div className="col-md-6">
-                <div className="form-group mb-3">
-                  <label htmlFor="">Brand Name (optional)</label>
-                  <input
-                    type="text"
-                    name="brandName"
-                    className="form-control"
-                    value={state.brandName}
-                    onChange={changeHandler}
-                    placeholder="Enter product brand name"
-                  />
-                </div>
-              </div>
-            </div>
             <div className="form-group mb-3">
-              <label htmlFor="">
-                <b>Variation</b>
-              </label>
-              <div className="row">
-                <Variation
-                  type={VARITION_TYPES_ENUM.COLOR}
-                  variations={variations}
-                  defaultVariations={defaultVariations}
-                  setVariations={setVariations}
-                  setUnsavedVariations={setUnsavedVariations}
-                  unsavedVariations={unsavedVariations}
-                />
-                <Variation
-                  type={VARITION_TYPES_ENUM.FLAVOR}
-                  variations={variations}
-                  defaultVariations={defaultVariations}
-                  setVariations={setVariations}
-                  setUnsavedVariations={setUnsavedVariations}
-                  unsavedVariations={unsavedVariations}
-                />
-                <Variation
-                  type={VARITION_TYPES_ENUM.PATTERN}
-                  variations={variations}
-                  defaultVariations={defaultVariations}
-                  setVariations={setVariations}
-                  setUnsavedVariations={setUnsavedVariations}
-                  unsavedVariations={unsavedVariations}
-                />
-                <Variation
-                  type={VARITION_TYPES_ENUM.SCENT_NAME}
-                  variations={variations}
-                  defaultVariations={defaultVariations}
-                  setVariations={setVariations}
-                  setUnsavedVariations={setUnsavedVariations}
-                  unsavedVariations={unsavedVariations}
-                />
-                <Variation
-                  type={VARITION_TYPES_ENUM.SIZE}
-                  variations={variations}
-                  defaultVariations={defaultVariations}
-                  setVariations={setVariations}
-                  setUnsavedVariations={setUnsavedVariations}
-                  unsavedVariations={unsavedVariations}
-                />
-              </div>
+              <label htmlFor="">Currency</label>
+              <select
+                className="form-select"
+                value={state.currency}
+                onChange={changeHandler}
+                name="currency"
+                required
+              >
+                <option value="">Choose Currency</option>
+                {currencies.map((item, index) => (
+                  <option key={index} value={item.code}>
+                    {item.code}
+                  </option>
+                ))}
+              </select>
             </div>
           </Modal.Body>
           <Modal.Footer>
