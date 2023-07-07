@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Card, CardBody, CardTitle, Col, Row } from "reactstrap";
 import { RootState } from "../../../reducers";
 import axios from "axios";
@@ -11,80 +11,52 @@ import {
   toastMessage,
 } from "../../../helpers";
 import FullPageLoader from "../../../components/full-page-loader";
-import {
-  IProduct,
-  PRICE_TYPE_ENUM,
-  TOAST_MESSAGE_TYPES,
-} from "../../../interfaces";
-import { fetchCategories } from "../../../actions/categories";
+import { IShippingEstimation, TOAST_MESSAGE_TYPES } from "../../../interfaces";
 import Edit from "./edit";
 import Confirmation from "../../../controllers/confirmation";
-import Images from "./images";
-import Prices from "./prices";
+import countries from "../../../constants/countries.json";
+import { currencies } from "currencies.json";
 
+const initialState = {
+  toCountry: "",
+  minAmount: "",
+  maxAmount: "",
+  currency: "",
+};
 function ShippingOptions() {
-  const dispatch = useDispatch();
-  const { token } = useSelector((state: RootState) => state.user);
-  const { categories } = useSelector((state: RootState) => state.categories);
+  const { token, userId } = useSelector((state: RootState) => state.user);
   const [isLoading, setIsloading] = useState(false);
-  const [products, setProducts] = useState<IProduct[]>([]);
+  const [estimations, setEstimations] = useState<IShippingEstimation[]>([]);
+  const [state, setState] = useState(initialState);
 
-  const [viewImages, setViewImages] = useState(false);
-  const [shopPrices, setShowPrices] = useState(false);
+  const { myShop } = useSelector((state: RootState) => state.myShop);
 
   //
   const [showEdit, setShowEdit] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<IProduct | undefined>(
-    undefined
-  );
+  const [selectedItem, setSelectedItem] = useState<
+    IShippingEstimation | undefined
+  >(undefined);
   //
 
-  const getCategoryName = (id: number) => {
-    const cat = categories.find((item) => item.id === id);
-    if (cat) {
-      return cat.name;
-    }
-    return "-";
-  };
-
-  const getSubCategoryName = (id: number, subcatId: number) => {
-    const cat = categories.find((item) => item.id === id);
-    if (cat) {
-      const subCat = cat.subCategories.find((item) => item.id === subcatId);
-      if (subCat) {
-        return subCat.name;
-      }
-    }
-    return "-";
+  const changeHandler = (e: any) => {
+    setState({ ...state, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
-    fetchProducts();
-    dispatch(fetchCategories());
+    fetchEstimations();
   }, []);
 
-  const fetchProducts = () => {
+  const fetchEstimations = () => {
     setIsloading(true);
     axios
-      .get(app.BACKEND_URL + "/products/mine", setHeaders(token))
+      .get(app.BACKEND_URL + "/estimation/" + userId)
       .then((res) => {
         setIsloading(false);
-        setProducts(res.data.products);
+        setEstimations(res.data.estimations);
       })
       .catch((error) => {
         setIsloading(false);
-        errorHandler(error);
-      });
-  };
-
-  const fetchProductsSilent = () => {
-    axios
-      .get(app.BACKEND_URL + "/products/mine", setHeaders(token))
-      .then((res) => {
-        setProducts(res.data.products);
-      })
-      .catch((error) => {
         errorHandler(error);
       });
   };
@@ -94,17 +66,35 @@ function ShippingOptions() {
     try {
       setIsloading(false);
       const res = await axios.delete(
-        app.BACKEND_URL + "/products/" + selectedItem?.pId,
+        app.BACKEND_URL + "/estimation/" + selectedItem?.id,
         setHeaders(token)
       );
       toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
-      setProducts(products.filter((item) => item.pId !== selectedItem?.pId));
+      setEstimations(
+        estimations.filter((item) => item.id !== selectedItem?.id)
+      );
       setSelectedItem(undefined);
       setIsloading(false);
     } catch (error) {
       errorHandler(error);
       setIsloading(false);
     }
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    setIsloading(true);
+    axios
+      .post(
+        app.BACKEND_URL + "estimation/",
+        { ...state, fromCountry: myShop?.country },
+        setHeaders(token)
+      )
+      .then((res) => {})
+      .catch((error) => {
+        setIsloading(false);
+        errorHandler(error);
+      });
   };
   return (
     <div>
@@ -127,7 +117,7 @@ function ShippingOptions() {
                     <th className="text-center">Action</th>
                   </thead>
                   <tbody style={{ borderTopWidth: 0 }}>
-                    {products.map((item, position) => (
+                    {/* {products.map((item, position) => (
                       <tr key={position}>
                         <td>{item.pId}</td>
                         <td>{item.name}</td>
@@ -138,22 +128,7 @@ function ShippingOptions() {
                             item.subCategoryId
                           )}
                         </td>
-                        <td>
-                          {item.priceType === PRICE_TYPE_ENUM.SINGLE && (
-                            <>{currencyFormatter(item.singlePrice)} </>
-                          )}
-                          {item.priceType === PRICE_TYPE_ENUM.MANY && (
-                            <span
-                              className="pointer text-primary"
-                              onClick={() => {
-                                setSelectedItem(item);
-                                setShowPrices(true);
-                              }}
-                            >
-                              View Prices
-                            </span>
-                          )}
-                        </td>
+                        <td></td>
                         <td>
                           <span
                             className="text-primary pointer"
@@ -174,19 +149,9 @@ function ShippingOptions() {
                           >
                             Delete
                           </span>
-                          &nbsp;|&nbsp;
-                          <span
-                            className="pointer"
-                            onClick={() => {
-                              setSelectedItem(item);
-                              setViewImages(true);
-                            }}
-                          >
-                            Images({item.images.length})
-                          </span>
                         </td>
                       </tr>
-                    ))}
+                    ))} */}
                   </tbody>
                 </table>
               </div>
@@ -198,7 +163,77 @@ function ShippingOptions() {
             <CardTitle tag="h6" className="border-bottom p-3 mb-0">
               Add estimation
             </CardTitle>
-            <CardBody></CardBody>
+            <CardBody>
+              <form onSubmit={handleSubmit}>
+                <div className="form-group mb-3">
+                  <label htmlFor="">From</label>
+                  <input
+                    className="form-control"
+                    disabled
+                    value={myShop?.country}
+                  />
+                </div>
+                <div className="form-group mb-3">
+                  <label htmlFor="">To (destination)</label>
+                  <select
+                    className="form-select"
+                    value={state.toCountry}
+                    onChange={changeHandler}
+                    name="toCountry"
+                    required
+                  >
+                    <option value="">Choose Destination</option>
+                    {countries.map((item, index) => (
+                      <option key={index} value={item.name}>
+                        {item.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="form-group mb-3">
+                  <label htmlFor="">Minimum Amount</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    value={state.minAmount}
+                    onChange={changeHandler}
+                    name="minAmount"
+                    placeholder="Enter minimum amount"
+                  />
+                </div>
+                <div className="form-group mb-3">
+                  <label htmlFor="">Maximum Amount</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    value={state.maxAmount}
+                    onChange={changeHandler}
+                    name="maxAmount"
+                    placeholder="Enter maximum amount"
+                  />
+                </div>
+                <div className="form-group mb-3">
+                  <label htmlFor="">Currency</label>
+                  <select
+                    className="form-select"
+                    value={state.currency}
+                    onChange={changeHandler}
+                    name="currency"
+                    required
+                  >
+                    <option value="">Choose Currency</option>
+                    {currencies.map((item, index) => (
+                      <option key={index} value={item.code}>
+                        {item.code}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <button type="submit" className="btn btn-primary">
+                  Save
+                </button>
+              </form>
+            </CardBody>
           </Card>
         </Col>
       </Row>
@@ -209,12 +244,12 @@ function ShippingOptions() {
         callback={handleDelete}
         title="Do you want to delete this product?"
       />
-      <Edit
+      {/* <Edit
         selectedItem={selectedItem}
         showModal={showEdit}
         setShowModal={setShowEdit}
         fetchData={fetchProducts}
-      />
+      /> */}
     </div>
   );
 }

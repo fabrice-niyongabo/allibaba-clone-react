@@ -1,4 +1,4 @@
-import { IUser, IAction, IMyshopReducer, Ishop } from "../interfaces";
+import { IUser, IAction, IMyshopReducer } from "../interfaces";
 import {
   SET_MY_SHOP,
   SET_IS_LOADING_MY_SHOP,
