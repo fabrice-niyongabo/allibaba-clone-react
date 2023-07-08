@@ -12,7 +12,7 @@ const initialState: IShippingEstimationsReducer = {
   supplierId: 0,
 };
 
-const user = (
+const estimations = (
   state: IShippingEstimationsReducer = initialState,
   action: IAction
 ): IShippingEstimationsReducer => {
@@ -30,4 +30,4 @@ const user = (
   }
 };
 
-export default user;
+export default estimations;
