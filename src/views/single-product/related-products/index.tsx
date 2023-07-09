@@ -2,15 +2,9 @@
 import React from "react";
 import Carousel from "nuka-carousel";
 
-import img1 from "../../../assets/images/static/1.jpg";
-import img2 from "../../../assets/images/static/2.jpg";
-import img3 from "../../../assets/images/static/3.jpg";
-import img4 from "../../../assets/images/static/2.jpg";
-import img5 from "../../../assets/images/static/electronics.jpg";
 import { IProduct, PRICE_TYPE_ENUM } from "../../../interfaces";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
-import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../constants";
 import { currencyFormatter, openUrlInNewTab } from "../../../helpers";
 import { isMobile } from "react-device-detect";
