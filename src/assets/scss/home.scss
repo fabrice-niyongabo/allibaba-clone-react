@@ -108,6 +108,11 @@
       }
     }
   }
+  @media #{$media-mobile} {
+    .lazy-load-image-background.blur.lazy-load-image-loaded {
+      width: 100% !important;
+    }
+  }
 }
 
 .top-suppliers {
@@ -185,6 +190,7 @@
     }
   }
   @media #{$media-mobile} {
+    margin-top: 1rem;
     img {
       height: auto;
     }

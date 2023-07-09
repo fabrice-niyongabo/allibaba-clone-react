@@ -19,7 +19,7 @@ function Products({ categoryId }: IProps) {
       <Carousel
         autoplay={false}
         wrapAround={true}
-        slidesToShow={isMobile ? 1 : 5}
+        slidesToShow={isMobile ? 2 : 5}
         adaptiveHeight={true}
         slidesToScroll={isMobile ? 1 : 2}
         style={{ outline: "none" }}
