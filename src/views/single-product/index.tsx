@@ -105,7 +105,7 @@ function SingleProduct() {
                   <Col md={4}>
                     <ProductImages product={product} />
                   </Col>
-                  <Col md={5}>
+                  <Col md={8}>
                     <p>
                       {product.brandName !== null &&
                         product.brandName.trim() !== "" && (
@@ -166,6 +166,9 @@ function SingleProduct() {
                           </Row>
                         </div>
                       )}
+                    </div>
+                    <div className="mt-2">
+                      <button className="common-btn">Add to wishlist</button>
                     </div>
                     <p style={{ margin: 0, marginTop: 10 }}>
                       Share this product:
