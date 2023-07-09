@@ -8,11 +8,15 @@ import Supplier from "./supplier";
 import RelatedProducts from "./related-products";
 import ProductTabs from "./product-tabs";
 import { useSelector } from "react-redux";
-import { IProduct, PRICE_TYPE_ENUM } from "../../interfaces";
+import {
+  IProduct,
+  PRICE_TYPE_ENUM,
+  TOAST_MESSAGE_TYPES,
+} from "../../interfaces";
 import { useNavigate, useParams } from "react-router-dom";
 import { RootState } from "../../reducers";
 import MiniLoader from "../../layouts/loader/MiniLoader";
-import { currencyFormatter } from "../../helpers";
+import { currencyFormatter, toastMessage } from "../../helpers";
 import {
   FacebookShareButton,
   TelegramShareButton,
@@ -25,6 +29,7 @@ import ShippingEstimations from "./shipping-estimations";
 function SingleProduct() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { token } = useSelector((state: RootState) => state.user);
   const { products } = useSelector((state: RootState) => state.products);
   const { categories } = useSelector((state: RootState) => state.categories);
   const [product, setProduct] = useState<IProduct | undefined>(undefined);
@@ -57,6 +62,15 @@ function SingleProduct() {
       }
     }
     return "-";
+  };
+
+  const handleAddToWishList = () => {
+    if (token.trim() === "") {
+      toastMessage(TOAST_MESSAGE_TYPES.INFO, "You must be logged in first");
+      navigate(
+        "/login-register?redirect=" + window.location.pathname.replace("/", "")
+      );
+    }
   };
 
   return (
@@ -168,7 +182,12 @@ function SingleProduct() {
                       )}
                     </div>
                     <div className="mt-2">
-                      <button className="common-btn">Add to wishlist</button>
+                      <button
+                        className="common-btn"
+                        onClick={() => handleAddToWishList()}
+                      >
+                        Add to wishlist
+                      </button>
                     </div>
                     <p style={{ margin: 0, marginTop: 10 }}>
                       Share this product:
