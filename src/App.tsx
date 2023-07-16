@@ -43,6 +43,9 @@ const Subscriptions = lazy(() => import("./views/seller/subscriptions"));
 const AskedQuestions = lazy(() => import("./views/seller/asked-questions"));
 const ShippingOptions = lazy(() => import("./views/seller/shipping-options"));
 
+//
+const Profile = lazy(() => import("./views/profile"));
+
 const theme = createMuiTheme({
   //   theme properties here
 });
@@ -139,6 +142,11 @@ const App = () => {
                   element={<Categories />}
                 />
                 <Route
+                  path="/dashboard/main/profile"
+                  exact
+                  element={<Profile />}
+                />
+                <Route
                   path="/dashboard/main/category/:id"
                   exact
                   element={<CategoryImage />}
@@ -192,6 +200,11 @@ const App = () => {
                   <Route path="/dashboard" exact element={<Dashboard />} />
                   <Route path="/dashboard/myshop" exact element={<MyShop />} />
                   <Route
+                    path="/dashboard/profile"
+                    exact
+                    element={<Profile />}
+                  />
+                  <Route
                     path="/dashboard/addproduct"
                     exact
                     element={<AddProduct />}
@@ -225,6 +238,11 @@ const App = () => {
               ) : (
                 <>
                   <Route path="/dashboard" exact element={<Dashboard />} />
+                  <Route
+                    path="/dashboard/profile"
+                    exact
+                    element={<Profile />}
+                  />
                   {/* for clients */}
                   {/* <Route
                   path="/dashboard/main/categories"
