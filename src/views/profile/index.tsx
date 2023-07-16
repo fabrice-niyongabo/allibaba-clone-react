@@ -100,7 +100,7 @@ const Profile = () => {
                   <label htmlFor="">Names</label>
                   <input
                     type="text"
-                    placeholder="Category Name"
+                    placeholder="Full name"
                     className="form-control"
                     value={state.names}
                     onChange={(e) => {
@@ -134,7 +134,7 @@ const Profile = () => {
                   <label htmlFor="">Email</label>
                   <input
                     type="email"
-                    placeholder="Category Name"
+                    placeholder="Email address"
                     className="form-control"
                     value={state.email}
                     onChange={(e) => {
@@ -166,6 +166,9 @@ const Profile = () => {
                     placeholder="Current Password"
                     className="form-control"
                     value={pwdState.oldPassword}
+                    onChange={(e) =>
+                      setPwdState({ ...pwdState, oldPassword: e.target.value })
+                    }
                     required
                   />
                 </div>
@@ -176,6 +179,9 @@ const Profile = () => {
                     placeholder="New Password"
                     className="form-control"
                     value={pwdState.newPassword}
+                    onChange={(e) =>
+                      setPwdState({ ...pwdState, newPassword: e.target.value })
+                    }
                     required
                   />
                 </div>
@@ -186,6 +192,9 @@ const Profile = () => {
                     placeholder="Confirm New Password"
                     className="form-control"
                     value={pwdState.newPassword2}
+                    onChange={(e) =>
+                      setPwdState({ ...pwdState, newPassword2: e.target.value })
+                    }
                     required
                   />
                 </div>
