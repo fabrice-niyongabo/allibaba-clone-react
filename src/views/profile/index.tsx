@@ -37,6 +37,15 @@ const Profile = () => {
   );
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    try {
+      if (!isValidPhoneNumber(state.phone)) {
+        toastMessage(TOAST_MESSAGE_TYPES.ERROR, "Phone number, is invalid.");
+        return;
+      }
+    } catch (error) {
+      toastMessage(TOAST_MESSAGE_TYPES.ERROR, "Phone number, is invalid.");
+      return;
+    }
     setIsLoading(true);
     try {
       const res = await axios.put(
@@ -78,6 +87,12 @@ const Profile = () => {
     }
   };
 
+  const handlePhoneChange = (e: string) => {
+    try {
+      setState({ ...state, phone: e });
+    } catch (error) {}
+  };
+
   useEffect(() => {
     setState({
       email,
@@ -114,9 +129,7 @@ const Profile = () => {
                   <PhoneInput
                     placeholder="Enter phone number"
                     value={state.phone}
-                    onChange={(e) => {
-                      setState({ ...state, phone: e as any });
-                    }}
+                    onChange={handlePhoneChange}
                     defaultCountry="RW"
                     error={
                       state.phone
