@@ -8,17 +8,20 @@ const UnProtectedRoute = ({ children }: { children: ReactNode }) => {
   const { token, role, apply, shopId } = useSelector(
     (state: RootState) => state.user as IUser
   );
-  console.log({ token, role, apply, shopId });
-  return !token || token.trim() === "" ? (
-    children
-  ) : role === USER_ROLE_ENUM.ADMIN ? (
-    <Navigate to="/dashboard/main" />
-  ) : (
+  return (
     <>
-      {shopId === null && apply === true ? (
-        <Navigate to="/apply" />
+      {!token || token.trim() === "" ? (
+        children
+      ) : role === USER_ROLE_ENUM.ADMIN ? (
+        <Navigate to="/dashboard/main" />
       ) : (
-        <Navigate to="/dashboard" />
+        <>
+          {shopId === null && apply === true ? (
+            <Navigate to="/apply" />
+          ) : (
+            <Navigate to="/dashboard" />
+          )}
+        </>
       )}
     </>
   );

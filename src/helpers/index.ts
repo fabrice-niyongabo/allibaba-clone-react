@@ -9,7 +9,7 @@ import { app } from "../constants";
 import { fetchCountries } from "../actions/countries";
 
 //custom dispatcher hook
-export const useLoadBasicData = () => {
+export const useLoadBasicData = (): any => {
   const dispatch = useDispatch();
   return (payload: any) => {
     dispatch(fetchCategories());

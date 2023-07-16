@@ -11,10 +11,14 @@ const AdminProtectedRoute = ({ children }: IAdminProtectedRouteProps) => {
   const { token, role } = useSelector(
     (state: RootState) => state.user
   ) as IUser;
-  return token && token.trim() !== "" && role === "admin" ? (
-    children
-  ) : (
-    <Navigate to="/" />
+  return (
+    <>
+      {token && token.trim() !== "" && role === "admin" ? (
+        children
+      ) : (
+        <Navigate to="/" />
+      )}
+    </>
   );
 };
 

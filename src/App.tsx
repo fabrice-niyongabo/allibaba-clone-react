@@ -1,5 +1,4 @@
-//@ts-nocheck
-import React, { lazy, useEffect } from "react";
+import { lazy, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import FullLayout from "./layouts/FullLayout";
 import { ToastContainer } from "react-toastify";
@@ -33,6 +32,7 @@ const AdminMemberships = lazy(() => import("./views/admin/memberships"));
 const Countries = lazy(() => import("./views/admin/countries"));
 
 const Apply = lazy(() => import("./views/apply"));
+const WishList = lazy(() => import("./views/wishlist"));
 
 //seller
 const MyShop = lazy(() => import("./views/seller/my-shop"));
@@ -63,29 +63,19 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/logout" element={<Logout />} />
-          <Route exact path="/memberships" element={<Memberships />} />
-          <Route exact path="/start-selling" element={<StartSelling />} />
-          <Route exact path="/product/:id" element={<SingleProduct />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/memberships" element={<Memberships />} />
+          <Route path="/start-selling" element={<StartSelling />} />
+          <Route path="/product/:id" element={<SingleProduct />} />
+          <Route path="/search/:searchType/:keyword" element={<Search />} />
+          <Route path="/category/:categoryId" element={<ProductCategory />} />
           <Route
-            exact
-            path="/search/:searchType/:keyword"
-            element={<Search />}
-          />
-          <Route
-            exact
-            path="/category/:categoryId"
-            element={<ProductCategory />}
-          />
-          <Route
-            exact
             path="/category/:categoryId/:subCategoryId"
             element={<ProductCategory />}
           />
-          <Route exact path="/shops/:id" element={<Shop />} />
+          <Route path="/shops/:id" element={<Shop />} />
           <Route
-            exact
             path="/login-register"
             element={
               <UnProtectedRoute>
@@ -94,7 +84,6 @@ const App = () => {
             }
           />
           <Route
-            exact
             path="/apply"
             element={
               <ProtectedRoute>
@@ -103,7 +92,6 @@ const App = () => {
             }
           />
           <Route
-            exact
             path="/dashboard/main"
             element={
               <AdminProtectedRoute>
@@ -114,17 +102,15 @@ const App = () => {
             }
             children={
               <>
-                <Route path="/dashboard/main" exact element={<Dashboard />} />
+                <Route path="/dashboard/main" element={<Dashboard />} />
                 <Route
                   path="/dashboard/main/categories"
-                  exact
                   element={<Categories />}
                 />
               </>
             }
           />
           <Route
-            exact
             path="/dashboard/main"
             element={
               <AdminProtectedRoute>
@@ -135,57 +121,38 @@ const App = () => {
             }
             children={
               <>
-                <Route path="/dashboard/main" exact element={<Dashboard />} />
+                <Route path="/dashboard/main" element={<Dashboard />} />
                 <Route
                   path="/dashboard/main/categories"
-                  exact
                   element={<Categories />}
                 />
-                <Route
-                  path="/dashboard/main/profile"
-                  exact
-                  element={<Profile />}
-                />
+                <Route path="/dashboard/main/profile" element={<Profile />} />
                 <Route
                   path="/dashboard/main/category/:id"
-                  exact
                   element={<CategoryImage />}
                 />
                 <Route
                   path="/dashboard/main/homecategories"
-                  exact
                   element={<HomeCategories />}
                 />
                 <Route
                   path="/dashboard/main/products"
-                  exact
                   element={<AdminProducts />}
                 />
-                <Route
-                  path="/dashboard/main/users"
-                  exact
-                  element={<AdminUsers />}
-                />
-                <Route
-                  path="/dashboard/main/shops"
-                  exact
-                  element={<AdminShops />}
-                />
+                <Route path="/dashboard/main/users" element={<AdminUsers />} />
+                <Route path="/dashboard/main/shops" element={<AdminShops />} />
                 <Route
                   path="/dashboard/main/memberships"
-                  exact
                   element={<AdminMemberships />}
                 />
                 <Route
                   path="/dashboard/main/countries"
-                  exact
                   element={<Countries />}
                 />
               </>
             }
           />
           <Route
-            exact
             path="/dashboard"
             element={
               <ProtectedRoute>
@@ -197,58 +164,36 @@ const App = () => {
             children={
               role === USER_ROLE_ENUM.SELLER ? (
                 <>
-                  <Route path="/dashboard" exact element={<Dashboard />} />
-                  <Route path="/dashboard/myshop" exact element={<MyShop />} />
-                  <Route
-                    path="/dashboard/profile"
-                    exact
-                    element={<Profile />}
-                  />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/dashboard/myshop" element={<MyShop />} />
+                  <Route path="/dashboard/profile" element={<Profile />} />
                   <Route
                     path="/dashboard/addproduct"
-                    exact
                     element={<AddProduct />}
                   />
-                  <Route
-                    path="/dashboard/products"
-                    exact
-                    element={<Products />}
-                  />
+                  <Route path="/dashboard/products" element={<Products />} />
                   <Route
                     path="/dashboard/shipping"
-                    exact
                     element={<ShippingOptions />}
                   />
                   <Route
                     path="/dashboard/product/:id"
-                    exact
                     element={<AddProductImage />}
                   />
                   <Route
                     path="/dashboard/subscriptions"
-                    exact
                     element={<Subscriptions />}
                   />
                   <Route
                     path="/dashboard/askedquestions"
-                    exact
                     element={<AskedQuestions />}
                   />
                 </>
               ) : (
                 <>
-                  <Route path="/dashboard" exact element={<Dashboard />} />
-                  <Route
-                    path="/dashboard/profile"
-                    exact
-                    element={<Profile />}
-                  />
-                  {/* for clients */}
-                  {/* <Route
-                  path="/dashboard/main/categories"
-                  exact
-                  element={<Categories />}
-                /> */}
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/dashboard/profile" element={<Profile />} />
+                  <Route path="/dashboard/wishlist" element={<WishList />} />
                 </>
               )
             }
