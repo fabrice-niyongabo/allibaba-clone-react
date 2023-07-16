@@ -18,6 +18,7 @@ import user1 from "../assets/images/users/user1.jpg";
 import Logo from "./Logo";
 import { useSelector } from "react-redux";
 import { appColors } from "../constants";
+import { USER_ROLE_ENUM } from "../interfaces";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -32,6 +33,14 @@ const Header = () => {
   };
   const showMobilemenu = () => {
     document.getElementById("sidebarArea").classList.toggle("showSidebar");
+  };
+
+  const handleProfileClick = () => {
+    if (role === USER_ROLE_ENUM.ADMIN) {
+      navigate("/dashboard/main/profile");
+    } else {
+      navigate("/dashboard/profile");
+    }
   };
   return (
     <Navbar
@@ -89,10 +98,11 @@ const Header = () => {
             ></img>
           </DropdownToggle>
           <DropdownMenu>
-            <DropdownItem header>Info</DropdownItem>
-            <DropdownItem>Edit Profile</DropdownItem>
+            <DropdownItem header>My Profile</DropdownItem>
+            <DropdownItem onClick={() => handleProfileClick()}>
+              View Profile
+            </DropdownItem>
             <DropdownItem divider />
-            {/* <DropdownItem>Inbox</DropdownItem> */}
             <DropdownItem onClick={() => navigate("/logout")}>
               Logout
             </DropdownItem>
