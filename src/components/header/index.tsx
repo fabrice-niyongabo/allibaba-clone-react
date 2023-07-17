@@ -185,7 +185,10 @@ function Header() {
                     <img alt="" src={userImage} />
                     <span>Sign In</span>
                   </div>
-                  <div className="icon-container">
+                  <div
+                    className="icon-container"
+                    onClick={() => navigate("/dashboard/wishlist")}
+                  >
                     <img alt="" src={wishListImage} />
                     <span>Wishlist</span>
                   </div>
@@ -213,7 +216,10 @@ function Header() {
                     ></i>
                     <span>Dashboard</span>
                   </div>
-                  <div className="icon-container">
+                  <div
+                    className="icon-container"
+                    onClick={() => navigate("/dashboard/wishlist")}
+                  >
                     <img alt="" src={wishListImage} />
                     <span>Wishlist</span>
                   </div>

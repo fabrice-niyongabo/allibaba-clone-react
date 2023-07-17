@@ -214,7 +214,9 @@ function MobileHeader() {
             {token.trim() === "" ? (
               <>
                 <li onClick={() => navigate("/login-register")}>Sign In</li>
-                <li>Wishlist</li>
+                <li onClick={() => navigate("/dashboard/wishlist")}>
+                  Wishlist
+                </li>
                 <li onClick={() => navigate("/start-selling")}>
                   Start Selling
                 </li>
