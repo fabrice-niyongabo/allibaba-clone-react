@@ -354,7 +354,7 @@ function Header() {
               )}
               <li onClick={() => navigate("/memberships")}> All Membership</li>
               <li>Shops</li>
-              <li>Wish list</li>
+              <li onClick={() => navigate("/dashboard/wishlist")}>Wishlist</li>
             </ul>
           </div>
         </>
