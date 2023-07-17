@@ -96,6 +96,11 @@ export interface ICategoriesReducer {
   categories: ICategory[];
 }
 
+export interface IWishlistReducer {
+  isLoading: boolean;
+  list: IProduct[];
+}
+
 export interface IShippingEstimationsReducer {
   isLoading: boolean;
   supplierId: number;
