@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Col, Row } from "reactstrap";
 
 import image from "../../../assets/images/static/2.jpg";

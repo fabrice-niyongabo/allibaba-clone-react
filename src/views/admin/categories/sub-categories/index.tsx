@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Col, Row, Spinner } from "reactstrap";

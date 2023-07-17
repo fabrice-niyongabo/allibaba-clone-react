@@ -1,4 +1,4 @@
-import React, { ImgHTMLAttributes } from "react";
+import { ImgHTMLAttributes } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface IImageLoaderProps {

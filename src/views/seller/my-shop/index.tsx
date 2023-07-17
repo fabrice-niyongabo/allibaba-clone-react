@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardBody, CardTitle, Col, Row } from "reactstrap";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";

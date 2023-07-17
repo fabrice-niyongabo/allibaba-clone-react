@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardBody, CardTitle, Col, Row } from "reactstrap";
 import { IProduct, IUser, TOAST_MESSAGE_TYPES } from "../../../interfaces";
 import { useDispatch, useSelector } from "react-redux";

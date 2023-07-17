@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardBody, CardTitle, Col, Row } from "reactstrap";
 const Users = () => {
   return (

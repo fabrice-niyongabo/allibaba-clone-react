@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, CardBody, CardTitle, Col, Row } from "reactstrap";
 import { fetchCategories } from "../../../actions/categories";

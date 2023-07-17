@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import "../../assets/scss/product.scss";
@@ -16,7 +16,12 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import { RootState } from "../../reducers";
 import MiniLoader from "../../layouts/loader/MiniLoader";
-import { currencyFormatter, toastMessage } from "../../helpers";
+import {
+  currencyFormatter,
+  errorHandler,
+  setHeaders,
+  toastMessage,
+} from "../../helpers";
 import {
   FacebookShareButton,
   TelegramShareButton,
@@ -25,6 +30,8 @@ import {
 } from "react-share";
 import { app } from "../../constants";
 import ShippingEstimations from "./shipping-estimations";
+import axios from "axios";
+import FullPageLoader from "../../components/full-page-loader";
 
 function SingleProduct() {
   const { id } = useParams();
@@ -33,6 +40,7 @@ function SingleProduct() {
   const { products } = useSelector((state: RootState) => state.products);
   const { categories } = useSelector((state: RootState) => state.categories);
   const [product, setProduct] = useState<IProduct | undefined>(undefined);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     let sub = true;
@@ -70,6 +78,22 @@ function SingleProduct() {
       navigate(
         "/login-register?redirect=" + window.location.pathname.replace("/", "")
       );
+    } else {
+      setIsLoading(true);
+      axios
+        .post(
+          app.BACKEND_URL + "/wishlist",
+          { productId: product?.pId },
+          setHeaders(token)
+        )
+        .then((res) => {
+          setIsLoading(false);
+          toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          errorHandler(error);
+        });
     }
   };
 
@@ -236,6 +260,7 @@ function SingleProduct() {
         </>
       )}
       <Footer />
+      <FullPageLoader open={isLoading} />
     </>
   );
 }
