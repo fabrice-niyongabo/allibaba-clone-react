@@ -7,6 +7,7 @@ import Loader from "../../layouts/loader/Loader";
 import ImageLoader from "../../components/image-loader";
 import { app } from "../../constants";
 import "../../assets/scss/wishlist.scss";
+import { Link } from "react-router-dom";
 
 const WishList = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,9 @@ const WishList = () => {
               {list.map((item, index) => (
                 <Col md={3} key={index}>
                   <div className="wishlist-card-item shadow">
-                    <ImageLoader src={app.FILE_URL + item.images[0]?.image} />
+                    <Link to={"/product/" + item.pId}>
+                      <ImageLoader src={app.FILE_URL + item.images[0]?.image} />
+                    </Link>
                     <p>{item.name}</p>
                   </div>
                 </Col>
