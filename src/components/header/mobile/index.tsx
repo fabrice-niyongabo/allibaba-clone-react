@@ -232,7 +232,9 @@ function MobileHeader() {
                 >
                   Dashboard
                 </li>
-                <li>Wishlist</li>
+                <li onClick={() => navigate("/dashboard/wishlist")}>
+                  Wishlist
+                </li>
                 {role === USER_ROLE_ENUM.SELLER ? (
                   <li onClick={() => navigate("/start-selling")}>My Shop</li>
                 ) : (
