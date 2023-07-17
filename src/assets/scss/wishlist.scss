@@ -1,0 +1,28 @@
+@import "variables";
+@import "mixins";
+
+.wishlist-card-item {
+  padding: 10px;
+  border-radius: 10px;
+  .lazy-load-image-background.blur.lazy-load-image-loaded {
+    width: 100%;
+  }
+  img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  p {
+    margin: 0;
+    margin-top: 10px;
+    font-weight: 500;
+
+    display: -webkit-inline-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    line-height: 14px;
+    min-height: 28px;
+    font-size: 12px;
+  }
+}
