@@ -32,6 +32,7 @@ import { app } from "../../constants";
 import ShippingEstimations from "./shipping-estimations";
 import axios from "axios";
 import FullPageLoader from "../../components/full-page-loader";
+import Book from "./book";
 
 function SingleProduct() {
   const { id } = useParams();
@@ -41,6 +42,7 @@ function SingleProduct() {
   const { categories } = useSelector((state: RootState) => state.categories);
   const [product, setProduct] = useState<IProduct | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(false);
+  const [showBookModal, setShowBookModal] = useState(false);
 
   useEffect(() => {
     let sub = true;
@@ -94,6 +96,17 @@ function SingleProduct() {
           setIsLoading(false);
           errorHandler(error);
         });
+    }
+  };
+
+  const handleBook = () => {
+    if (token.trim() === "") {
+      toastMessage(TOAST_MESSAGE_TYPES.INFO, "You must be logged in first");
+      navigate(
+        "/login-register?redirect=" + window.location.pathname.replace("/", "")
+      );
+    } else {
+      setShowBookModal(true);
     }
   };
 
@@ -216,7 +229,7 @@ function SingleProduct() {
                       <button
                         style={{ marginLeft: 10 }}
                         className="common-btn"
-                        onClick={() => handleAddToWishList()}
+                        onClick={() => handleBook()}
                       >
                         Book Now
                       </button>
@@ -269,6 +282,7 @@ function SingleProduct() {
       )}
       <Footer />
       <FullPageLoader open={isLoading} />
+      <Book showModal={showBookModal} setShowModal={setShowBookModal} />
     </>
   );
 }
