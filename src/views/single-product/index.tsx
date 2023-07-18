@@ -212,6 +212,14 @@ function SingleProduct() {
                       >
                         Add to wishlist
                       </button>
+
+                      <button
+                        style={{ marginLeft: 10 }}
+                        className="common-btn"
+                        onClick={() => handleAddToWishList()}
+                      >
+                        Book Now
+                      </button>
                     </div>
                     <p style={{ margin: 0, marginTop: 10 }}>
                       Share this product:
