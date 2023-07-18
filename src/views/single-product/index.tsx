@@ -282,7 +282,11 @@ function SingleProduct() {
       )}
       <Footer />
       <FullPageLoader open={isLoading} />
-      <Book showModal={showBookModal} setShowModal={setShowBookModal} />
+      <Book
+        showModal={showBookModal}
+        setShowModal={setShowBookModal}
+        product={product}
+      />
     </>
   );
 }
