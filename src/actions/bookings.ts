@@ -1,6 +1,7 @@
 import axios from "axios";
 import { app } from "../constants";
-import { ICountry } from "../interfaces";
+import { IBooking } from "../interfaces";
+import { setHeaders } from "../helpers";
 
 export const SET_BOOKINGS = "SET_BOOKINGS";
 export const SET_IS_LOADING_BOOKINGS = "SET_IS_LOADING_BOOKINGS";
@@ -10,26 +11,30 @@ interface IAction {
   type: string;
   payload: any;
 }
-export const setCountries = (countries: ICountry[]): IAction => ({
+export const setBooking = (data: IBooking[]): IAction => ({
   type: SET_BOOKINGS,
-  payload: countries,
+  payload: data,
 });
-export const setIsLoadingCountries = (value: boolean): IAction => ({
+export const setIsLoadingBooking = (value: boolean): IAction => ({
   type: SET_IS_LOADING_BOOKINGS,
   payload: value,
 });
 
-export const resetCountries = () => ({ type: RESET_BOOKINGS });
+export const resetBooking = () => ({ type: RESET_BOOKINGS });
 
-export const fetchCountries = (): any => (dispatch: any) => {
-  dispatch(setIsLoadingCountries(true));
+export const fetchBooking = (): any => (dispatch: any, getState: any) => {
+  const { user } = getState();
+  if (user.token.trim() === "") {
+    return;
+  }
+  dispatch(setIsLoadingBooking(true));
   axios
-    .get(app.BACKEND_URL + "/countries")
+    .get(app.BACKEND_URL + "/booking", setHeaders(user.token))
     .then((res) => {
-      dispatch(setCountries(res.data.countries));
-      dispatch(setIsLoadingCountries(false));
+      dispatch(setBooking(res.data.booking));
+      dispatch(setIsLoadingBooking(false));
     })
     .catch((error) => {
-      dispatch(setIsLoadingCountries(false));
+      dispatch(setIsLoadingBooking(false));
     });
 };

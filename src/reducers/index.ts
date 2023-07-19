@@ -8,6 +8,7 @@ import appReducer from "./appReducer";
 import countries from "./countries";
 import estimations from "./shippingEstimations";
 import wishlist from "./wishlist";
+import bookings from "./bookings";
 const rootReducer = combineReducers({
   user,
   myShop,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   countries,
   estimations,
   wishlist,
+  bookings,
 });
 
 export default rootReducer;

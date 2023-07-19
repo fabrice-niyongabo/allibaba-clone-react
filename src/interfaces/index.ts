@@ -130,6 +130,11 @@ export interface IAppReducer {
   country: string;
 }
 
+export interface IBookingsReducer {
+  isLoading: boolean;
+  bookings: IBooking[];
+}
+
 export interface IProductsReducer {
   isLoading: boolean;
   products: IProduct[];
