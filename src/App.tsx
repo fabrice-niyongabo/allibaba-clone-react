@@ -170,6 +170,7 @@ const App = () => {
                   <Route path="/dashboard/myshop" element={<MyShop />} />
                   <Route path="/dashboard/profile" element={<Profile />} />
                   <Route path="/dashboard/booking" element={<Bookings />} />
+                  <Route path="/dashboard/wishlist" element={<WishList />} />
                   <Route
                     path="/dashboard/addproduct"
                     element={<AddProduct />}

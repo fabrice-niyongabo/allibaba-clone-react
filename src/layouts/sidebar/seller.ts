@@ -10,6 +10,11 @@ export const sellerNavigation = [
     icon: "bi bi-layout-split",
   },
   {
+    title: "My Wishlist",
+    href: "/dashboard/wishlist",
+    icon: "bi bi-layout-split",
+  },
+  {
     title: "Subscriptions",
     href: "/dashboard/subscriptions",
     icon: "bi bi-card-text",
