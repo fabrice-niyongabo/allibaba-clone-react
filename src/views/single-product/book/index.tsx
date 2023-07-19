@@ -25,7 +25,6 @@ const initialState = {
   shippingCountry: "",
   from: "",
   to: "",
-  confirm: false,
 };
 const Book = ({ showModal, setShowModal, product }: IProps) => {
   const dispatch = useDispatch();
