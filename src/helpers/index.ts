@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import Axios from "axios";
 import { toast } from "react-toastify";
 import { TOAST_MESSAGE_TYPES } from "../interfaces";
 import { fetchCategories } from "../actions/categories";
@@ -7,6 +6,7 @@ import { fetchShops } from "../actions/shops";
 import { fetchProducts } from "../actions/products";
 import { app } from "../constants";
 import { fetchCountries } from "../actions/countries";
+import { fetchBooking } from "../actions/bookings";
 
 //custom dispatcher hook
 export const useLoadBasicData = (): any => {
@@ -16,6 +16,7 @@ export const useLoadBasicData = (): any => {
     dispatch(fetchShops());
     dispatch(fetchProducts());
     dispatch(fetchCountries());
+    dispatch(fetchBooking());
   };
 };
 
