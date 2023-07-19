@@ -66,7 +66,7 @@ const WishList = () => {
                     </Link>
                     <p>{item.name}</p>
                     <button
-                      className="common-btn"
+                      className="common-btn d-block"
                       onClick={() => {
                         setSelectedItem(item);
                         setShowAlert(true);

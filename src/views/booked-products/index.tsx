@@ -8,12 +8,13 @@ import ImageLoader from "../../components/image-loader";
 import { app } from "../../constants";
 import "../../assets/scss/wishlist.scss";
 import { Link } from "react-router-dom";
-import { IProduct, TOAST_MESSAGE_TYPES } from "../../interfaces";
+import { IBooking, IProduct, TOAST_MESSAGE_TYPES } from "../../interfaces";
 import Confirmation from "../../controllers/confirmation";
 import FullPageLoader from "../../components/full-page-loader";
 import axios from "axios";
 import { errorHandler, setHeaders, toastMessage } from "../../helpers";
 import { fetchBooking } from "../../actions/bookings";
+import ViewProduct from "./view-product";
 
 const BookedProducts = () => {
   const dispatch = useDispatch();
@@ -22,29 +23,10 @@ const BookedProducts = () => {
     (state: RootState) => state.bookings
   );
   const [isSubmiting, setIsSubmiting] = useState<boolean>(false);
-  const [selectedItem, setSelectedItem] = useState<IProduct | undefined>(
+  const [selectedItem, setSelectedItem] = useState<IBooking | undefined>(
     undefined
   );
-  const [showAlert, setShowAlert] = useState<boolean>(false);
-
-  const handleDelete = () => {
-    setIsSubmiting(true);
-
-    axios
-      .delete(
-        app.BACKEND_URL + "/wishlist/" + selectedItem?.pId,
-        setHeaders(token)
-      )
-      .then((res) => {
-        setIsSubmiting(false);
-        toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
-        dispatch(fetchWishlist());
-      })
-      .catch((error) => {
-        setIsSubmiting(false);
-        errorHandler(error);
-      });
-  };
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   useEffect(() => {
     dispatch(fetchBooking());
@@ -74,10 +56,10 @@ const BookedProducts = () => {
                     </Link>
                     <p>{item.product?.name}</p>
                     <button
-                      className="common-btn"
+                      className="common-btn d-block"
                       onClick={() => {
-                        // setSelectedItem(item);
-                        setShowAlert(true);
+                        setSelectedItem(item);
+                        setShowModal(true);
                       }}
                     >
                       <i className="bi bi-eye"></i> View More
@@ -89,13 +71,13 @@ const BookedProducts = () => {
           )}
         </CardBody>
       </Card>
-      <Confirmation
-        title={`Do you want to remove ${selectedItem?.name} from your wishlist?`}
-        callback={handleDelete}
-        setShowAlert={setShowAlert}
-        showAlert={showAlert}
-      />
-      <FullPageLoader open={isSubmiting} />
+      {showModal && (
+        <ViewProduct
+          showModal={showModal}
+          setShowModal={setShowModal}
+          booked={selectedItem}
+        />
+      )}
     </div>
   );
 };
