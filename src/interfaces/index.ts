@@ -75,6 +75,22 @@ export interface IBooking {
   updatedAt: string;
 }
 
+export interface IBookingForSupplier {
+  id: number;
+  userId: number;
+  productId: number;
+  quantity: number;
+  description: string;
+  product: IProduct | undefined;
+  from: string;
+  to: string;
+  shippingCountry: string;
+  status: STATUS_ENUM;
+  createdAt: string;
+  updatedAt: string;
+  user: IUser;
+}
+
 export interface ISubCategory {
   id: number;
   categoryId: number;

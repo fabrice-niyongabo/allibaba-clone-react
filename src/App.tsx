@@ -43,6 +43,7 @@ const AddProductImage = lazy(() => import("./views/seller/add-product-image"));
 const Subscriptions = lazy(() => import("./views/seller/subscriptions"));
 const AskedQuestions = lazy(() => import("./views/seller/asked-questions"));
 const ShippingOptions = lazy(() => import("./views/seller/shipping-options"));
+const Bookings = lazy(() => import("./views/seller/bookings"));
 
 //
 const Profile = lazy(() => import("./views/profile"));
@@ -168,6 +169,7 @@ const App = () => {
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/dashboard/myshop" element={<MyShop />} />
                   <Route path="/dashboard/profile" element={<Profile />} />
+                  <Route path="/dashboard/booking" element={<Bookings />} />
                   <Route
                     path="/dashboard/addproduct"
                     element={<AddProduct />}

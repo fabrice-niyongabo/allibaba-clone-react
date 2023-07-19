@@ -34,4 +34,9 @@ export const sellerNavigation = [
     href: "/dashboard/shipping",
     icon: "bi bi-card-text",
   },
+  {
+    title: "Booked Products",
+    href: "/dashboard/booking",
+    icon: "bi bi-card-text",
+  },
 ];
