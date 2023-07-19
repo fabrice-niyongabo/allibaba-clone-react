@@ -39,10 +39,12 @@ function SingleProduct() {
   const navigate = useNavigate();
   const { token } = useSelector((state: RootState) => state.user);
   const { products } = useSelector((state: RootState) => state.products);
+  const { bookings } = useSelector((state: RootState) => state.bookings);
   const { categories } = useSelector((state: RootState) => state.categories);
   const [product, setProduct] = useState<IProduct | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(false);
   const [showBookModal, setShowBookModal] = useState(false);
+  const [isProductBooked, setIsProductBooked] = useState<boolean>(false);
 
   useEffect(() => {
     let sub = true;
@@ -62,6 +64,13 @@ function SingleProduct() {
     }
     return " ";
   };
+
+  useEffect(() => {
+    const exists = bookings.find((item) => item.productId === product?.pId);
+    if (exists) {
+      setIsProductBooked(true);
+    }
+  }, [bookings, product]);
 
   const getSubCategoryName = (id: number, subcatId: number) => {
     const cat = categories.find((item) => item.id === id);
@@ -227,7 +236,13 @@ function SingleProduct() {
                       </button>
 
                       <button
-                        style={{ marginLeft: 10 }}
+                        disabled={isProductBooked}
+                        title={isProductBooked ? "Already booked!" : "Book Now"}
+                        style={{
+                          marginLeft: 10,
+                          cursor: isProductBooked ? "not-allowed" : "pointer",
+                          opacity: isProductBooked ? 0.5 : 1,
+                        }}
                         className="common-btn"
                         onClick={() => handleBook()}
                       >
