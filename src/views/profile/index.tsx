@@ -53,6 +53,7 @@ const Profile = () => {
         state,
         setHeaders(token)
       );
+      setIsLoading(false);
       toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
     } catch (error) {
       errorHandler(error);
@@ -80,6 +81,7 @@ const Profile = () => {
         pwdState,
         setHeaders(token)
       );
+      setIsLoading(false);
       toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
     } catch (error) {
       errorHandler(error);
