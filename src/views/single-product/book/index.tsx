@@ -144,7 +144,7 @@ const Book = ({ showModal, setShowModal, product }: IProps) => {
             <div className="form-group mb-3">
               <label htmlFor="">Shipping country</label>
               <select
-                className="form-control"
+                className="form-select"
                 required
                 onChange={(e) =>
                   setState({ ...state, shippingCountry: e.target.value })
