@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import { fetchBooking } from "../../../actions/bookings";
 import FullPageLoader from "../../../components/full-page-loader";
+import countries from "../../../constants/countries.json";
 
 interface IProps {
   showModal: boolean;
@@ -21,6 +22,7 @@ interface IProps {
 const initialState = {
   quantity: "",
   description: EditorState.createEmpty(),
+  shippingCountry: "",
   from: "",
   to: "",
   confirm: false,
@@ -138,6 +140,23 @@ const Book = ({ showModal, setShowModal, product }: IProps) => {
                   ],
                 }}
               />
+            </div>
+            <div className="form-group mb-3">
+              <label htmlFor="">Shipping country</label>
+              <select
+                className="form-control"
+                required
+                onChange={(e) =>
+                  setState({ ...state, shippingCountry: e.target.value })
+                }
+              >
+                <option value="">Choose country</option>
+                {countries.map((item, index) => (
+                  <option value={item.name} key={index}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="form-group mb-3">
               <label htmlFor="">

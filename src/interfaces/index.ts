@@ -69,6 +69,7 @@ export interface IBooking {
   product: IProduct | undefined;
   from: string;
   to: string;
+  shippingCountry: string;
   status: STATUS_ENUM;
   createdAt: string;
   updatedAt: string;
