@@ -58,6 +58,22 @@ export interface ICountry {
   isActive: boolean;
 }
 
+export type STATUS_ENUM = "PENDING" | "APPROVED" | "REJECTED";
+
+export interface IBooking {
+  id: number;
+  userId: number;
+  productId: number;
+  quantity: number;
+  description: string;
+  product: IProduct | undefined;
+  from: string;
+  to: string;
+  status: STATUS_ENUM;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface ISubCategory {
   id: number;
   categoryId: number;
