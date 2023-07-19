@@ -36,7 +36,7 @@ const BookedProducts = () => {
     <div>
       <Card>
         <CardTitle tag="h6" className="border-bottom p-3 mb-0">
-          My Wishlist
+          Booked Products
         </CardTitle>
         <CardBody>
           {isLoading && bookings.length === 0 ? (

@@ -33,6 +33,12 @@ function ViewProduct({ setShowModal, showModal, booked }: Iprops) {
                 </tr>
                 <tr>
                   <td>
+                    <b>Shipping Country</b>
+                  </td>
+                  <td>{booked?.shippingCountry}</td>
+                </tr>
+                <tr>
+                  <td>
                     <b>Shipping date range</b>
                   </td>
                   <td>
