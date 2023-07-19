@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Card, CardBody, CardTitle, Col, Row } from "reactstrap";
 
-import "../../assets/scss/wishlist.scss";
+import "../../../assets/scss/wishlist.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ViewProduct from "./view-product";
