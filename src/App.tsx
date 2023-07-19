@@ -33,6 +33,7 @@ const Countries = lazy(() => import("./views/admin/countries"));
 
 const Apply = lazy(() => import("./views/apply"));
 const WishList = lazy(() => import("./views/wishlist"));
+const BookedProducts = lazy(() => import("./views/booked-products"));
 
 //seller
 const MyShop = lazy(() => import("./views/seller/my-shop"));
@@ -194,6 +195,10 @@ const App = () => {
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/dashboard/profile" element={<Profile />} />
                   <Route path="/dashboard/wishlist" element={<WishList />} />
+                  <Route
+                    path="/dashboard/booking"
+                    element={<BookedProducts />}
+                  />
                 </>
               )
             }
