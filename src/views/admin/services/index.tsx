@@ -11,12 +11,15 @@ import Confirmation from "../../../controllers/confirmation";
 import FullPageLoader from "../../../components/full-page-loader";
 import { Link } from "react-router-dom";
 import { Iservice } from "../../../interfaces";
+import AddService from "./add-service";
 
 const Services = () => {
   const { token } = useSelector((state: RootState) => state.user);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [services, setServices] = useState<Iservice[]>([]);
+
+  const [addService, setAddService] = useState<boolean>(false);
 
   const [showEdit, setShowEdit] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -69,7 +72,18 @@ const Services = () => {
     <div>
       <Card>
         <CardTitle tag="h6" className="border-bottom p-3 mb-0">
-          Afriseller services
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <span>Afriseller services</span>
+            <button className="common-btn" onClick={() => setAddService(true)}>
+              <i className="bi bi-plus"></i> Add New
+            </button>
+          </div>
         </CardTitle>
         <CardBody className="">
           {isLoading ? (
@@ -139,6 +153,11 @@ const Services = () => {
         selectedItem={selectedItem}
         showModal={showEdit}
         setShowModal={setShowEdit}
+        fetchData={fetchServices}
+      />
+      <AddService
+        showModal={addService}
+        setShowModal={setAddService}
         fetchData={fetchServices}
       />
       <FullPageLoader open={isSubmitting} />
