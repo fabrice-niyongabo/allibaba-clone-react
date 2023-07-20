@@ -62,6 +62,17 @@ export interface Iservice {
   isActive: boolean;
 }
 
+export interface IRequestedService {
+  id: number;
+  serviceId: number;
+  userId: number;
+  price: number;
+  currency: string;
+  description: string;
+  service: Iservice;
+  status: VERIFICATION_ENUM;
+}
+
 export interface ICountry {
   id: number;
   name: string;
@@ -69,6 +80,12 @@ export interface ICountry {
 }
 
 export type STATUS_ENUM = "PENDING" | "APPROVED" | "REJECTED";
+
+export type VERIFICATION_ENUM =
+  | "UNDER_REVIEW"
+  | "REJECTED"
+  | "VERIFIED"
+  | "APPROVED";
 
 export interface IBooking {
   id: number;

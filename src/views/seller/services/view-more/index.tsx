@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { Col, Row } from "reactstrap";
+import { Col, Row, Spinner } from "reactstrap";
 import { RootState } from "../../../../reducers";
 import { app } from "../../../../constants";
 import { errorHandler, setHeaders, toastMessage } from "../../../../helpers";
@@ -11,13 +11,10 @@ import FullPageLoader from "../../../../components/full-page-loader";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw } from "draft-js";
 import ImageLoader from "../../../../components/image-loader";
+import draftToHtml from "draftjs-to-html";
 
 const initilaState = {
-  name: "",
   description: EditorState.createEmpty(),
-  price: "",
-  image: "",
-  currency: "",
 };
 interface IEditProps {
   showModal: boolean;
@@ -29,33 +26,39 @@ function ViewMore({ showModal, setShowModal, selectedItem }: IEditProps) {
 
   const [state, setState] = useState(initilaState);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const imageRef = useRef(null);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    // setIsSubmitting(true);
-    // const formData = new FormData();
-    // formData.append("file", state.image);
-    // formData.append("name", state.name);
-    // formData.append("description", state.description);
-    // formData.append("price", state.price);
-    // formData.append("currency", state.currency);
-    // axios
-    //   .post(app.BACKEND_URL + "/services/", formData, setHeaders(token))
-    //   .then((res) => {
-    //     setTimeout(() => {
-    //       setIsSubmitting(false);
-    //       setShowModal(false);
-    //       toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
-    //       fetchData();
-    //     }, 1000);
-    //   })
-    //   .catch((error) => {
-    //     setTimeout(() => {
-    //       errorHandler(error);
-    //       setIsSubmitting(false);
-    //     }, 1000);
-    //   });
+    const description = draftToHtml(
+      convertToRaw(state.description.getCurrentContent())
+    );
+    if (description.length < 10) {
+      toastMessage(
+        TOAST_MESSAGE_TYPES.INFO,
+        "Description can not be less that 10 characters please!"
+      );
+      return;
+    }
+    setIsSubmitting(true);
+    axios
+      .post(
+        app.BACKEND_URL + "/services/req/",
+        { description, serviceId: selectedItem?.id },
+        setHeaders(token)
+      )
+      .then((res) => {
+        setTimeout(() => {
+          setIsSubmitting(false);
+          setShowModal(false);
+          toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
+        }, 1000);
+      })
+      .catch((error) => {
+        setTimeout(() => {
+          errorHandler(error);
+          setIsSubmitting(false);
+        }, 1000);
+      });
   };
 
   return (
@@ -74,7 +77,7 @@ function ViewMore({ showModal, setShowModal, selectedItem }: IEditProps) {
           backgroundSize: "100% 100%",
         }}
       >
-        <Modal.Header closeButton={!isSubmitting} style={{}}>
+        <Modal.Header closeButton={!isSubmitting}>
           <Modal.Title>View More</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -131,7 +134,9 @@ function ViewMore({ showModal, setShowModal, selectedItem }: IEditProps) {
                       communications & processing details
                     </small>
                   </p>
-                  <button className="common-btn w-100">Submit request</button>
+                  <button className="common-btn w-100" disabled={isSubmitting}>
+                    {isSubmitting && <Spinner size="sm" />} Submit request
+                  </button>
                 </div>
               </form>
             </Col>

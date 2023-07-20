@@ -46,6 +46,9 @@ const AskedQuestions = lazy(() => import("./views/seller/asked-questions"));
 const ShippingOptions = lazy(() => import("./views/seller/shipping-options"));
 const Bookings = lazy(() => import("./views/seller/bookings"));
 const SellerServices = lazy(() => import("./views/seller/services"));
+const RequestedServices = lazy(
+  () => import("./views/seller/requested-services")
+);
 
 //
 const Profile = lazy(() => import("./views/profile"));
@@ -177,6 +180,10 @@ const App = () => {
                   <Route
                     path="/dashboard/services"
                     element={<SellerServices />}
+                  />
+                  <Route
+                    path="/dashboard/reqservices"
+                    element={<RequestedServices />}
                   />
                   <Route
                     path="/dashboard/addproduct"

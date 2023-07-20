@@ -27,7 +27,7 @@ const SellerServices = () => {
   }, []);
   return (
     <div>
-      <h2> Afriseller services</h2>
+      <h2>Afriseller services</h2>
       {isLoading && services.length === 0 && (
         <Card>
           <CardTitle tag="h6" className="border-bottom p-3 mb-0"></CardTitle>

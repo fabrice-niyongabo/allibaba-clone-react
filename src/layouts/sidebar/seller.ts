@@ -10,6 +10,11 @@ export const sellerNavigation = [
     icon: "bi bi-layout-split",
   },
   {
+    title: "Requested services",
+    href: "/dashboard/reqservices",
+    icon: "bi bi-layout-split",
+  },
+  {
     title: "My Shop",
     href: "/dashboard/myshop",
     icon: "bi bi-layout-split",
