@@ -9,6 +9,7 @@ import { currencyFormatter, errorHandler, setHeaders } from "../../../helpers";
 import MiniLoader from "../../../layouts/loader/MiniLoader";
 import { IRequestedService } from "../../../interfaces";
 import ViewRequest from "./view-request";
+import Files from "./files";
 
 const RequestedServices = () => {
   const { token } = useSelector((state: RootState) => state.user);
@@ -17,6 +18,7 @@ const RequestedServices = () => {
 
   const [showEdit, setShowEdit] = useState(false);
   const [showViewRequest, setShowViewRequest] = useState(false);
+  const [showFiles, setShowFiles] = useState(false);
   const [selectedItem, setSelectedItem] = useState<
     IRequestedService | undefined
   >(undefined);
@@ -99,7 +101,7 @@ const RequestedServices = () => {
                               className="text-primary pointer"
                               onClick={() => {
                                 setSelectedItem(item);
-                                setShowEdit(true);
+                                setShowFiles(true);
                               }}
                             >
                               <i className="bi bi-file-earmark-check"></i> Files
@@ -115,6 +117,12 @@ const RequestedServices = () => {
           )}
         </CardBody>
       </Card>
+
+      <Files
+        selectedItem={selectedItem}
+        showModal={showFiles}
+        setShowModal={setShowFiles}
+      />
 
       <Edit
         selectedItem={selectedItem}
