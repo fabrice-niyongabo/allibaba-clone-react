@@ -52,6 +52,16 @@ export interface ICategory {
   subCategories: ISubCategory[];
 }
 
+export interface Iservice {
+  id: number;
+  name: string;
+  price: number;
+  currency: string;
+  description: string;
+  image: string;
+  isActive: boolean;
+}
+
 export interface ICountry {
   id: number;
   name: string;
@@ -127,6 +137,11 @@ export interface IMyshopReducer {
 export interface ICategoriesReducer {
   isLoading: boolean;
   categories: ICategory[];
+}
+
+export interface IServicesReducer {
+  isLoading: boolean;
+  services: Iservice[];
 }
 
 export interface IWishlistReducer {
