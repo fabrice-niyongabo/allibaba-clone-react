@@ -42,7 +42,7 @@ function ViewMore({ showModal, setShowModal, selectedItem }: IEditProps) {
     setIsSubmitting(true);
     axios
       .post(
-        app.BACKEND_URL + "/services/req/",
+        app.BACKEND_URL + "/reqservices/",
         { description, serviceId: selectedItem?.id },
         setHeaders(token)
       )
