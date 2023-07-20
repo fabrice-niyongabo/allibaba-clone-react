@@ -102,7 +102,7 @@ function Files({ showModal, setShowModal, selectedItem }: IEditProps) {
           <Modal.Body>
             <Row>
               <Col md={6}>
-                <h2>Uploade Files</h2> <hr />
+                <h2>Uploaded Files</h2> <hr />
                 {isLoading && files.length === 0 && <Loader />}
                 {files.map((item, index) => (
                   <div key={index} className="border p-2 mb-2">

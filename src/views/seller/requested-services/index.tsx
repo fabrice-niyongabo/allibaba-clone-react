@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Card, CardBody, CardTitle } from "reactstrap";
-import Edit from "./edit";
 import { RootState } from "../../../reducers";
 import { app } from "../../../constants";
 import { currencyFormatter, errorHandler, setHeaders } from "../../../helpers";
@@ -11,6 +10,7 @@ import Confirmation from "../../../controllers/confirmation";
 import FullPageLoader from "../../../components/full-page-loader";
 import { IRequestedService } from "../../../interfaces";
 import ReactHtmlParser from "react-html-parser";
+import Files from "./files";
 
 const RequestedServices = () => {
   const { token } = useSelector((state: RootState) => state.user);
@@ -106,7 +106,7 @@ const RequestedServices = () => {
                               setShowEdit(true);
                             }}
                           >
-                            <i className="bi bi-eye"></i> Documents
+                            <i className="bi bi-eye"></i> Files
                           </span>
                         )}
                         {item.status !== "APPROVED" && (
@@ -135,7 +135,7 @@ const RequestedServices = () => {
         callback={handleDelete}
         title="Do you want to cancel this request?"
       />
-      <Edit
+      <Files
         selectedItem={selectedItem}
         showModal={showEdit}
         setShowModal={setShowEdit}
