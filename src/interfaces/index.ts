@@ -28,6 +28,18 @@ export interface IUser {
   token: string;
 }
 
+export interface IRequestFile {
+  id: number;
+  serviceId: number;
+  requestId: number;
+  userId: number;
+  fileType: "Video" | "Image";
+  file: string;
+  comment: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface IShippingEstimation {
   id: number;
   userId: number;
