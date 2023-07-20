@@ -5,6 +5,11 @@ export const sellerNavigation = [
     icon: "bi bi-speedometer2",
   },
   {
+    title: "Afriseller services",
+    href: "/dashboard/services",
+    icon: "bi bi-layout-split",
+  },
+  {
     title: "My Shop",
     href: "/dashboard/myshop",
     icon: "bi bi-layout-split",
