@@ -1,17 +1,9 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { Spinner } from "reactstrap";
 import { RootState } from "../../../../reducers";
-import { app } from "../../../../constants";
-import {
-  currencyFormatter,
-  errorHandler,
-  setHeaders,
-  toastMessage,
-} from "../../../../helpers";
-import { IRequestedService, TOAST_MESSAGE_TYPES } from "../../../../interfaces";
+import { currencyFormatter } from "../../../../helpers";
+import { IRequestedService } from "../../../../interfaces";
 import FullPageLoader from "../../../../components/full-page-loader";
 import ReactHtmlParser from "react-html-parser";
 

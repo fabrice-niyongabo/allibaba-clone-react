@@ -88,6 +88,13 @@ export type VERIFICATION_ENUM =
   | "VERIFIED"
   | "APPROVED";
 
+export enum VERIFICATION_ENUM_ENUM {
+  "UNDER_REVIEW" = "UNDER_REVIEW",
+  "REJECTED" = "REJECTED",
+  "VERIFIED" = "VERIFIED",
+  "APPROVED" = "APPROVED",
+}
+
 export interface IBooking {
   id: number;
   userId: number;

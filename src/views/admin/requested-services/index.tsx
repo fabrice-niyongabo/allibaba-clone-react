@@ -20,7 +20,6 @@ const RequestedServices = () => {
 
   const [showEdit, setShowEdit] = useState(false);
   const [showViewRequest, setShowViewRequest] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
   const [selectedItem, setSelectedItem] = useState<
     IRequestedService | undefined
   >(undefined);
@@ -41,26 +40,6 @@ const RequestedServices = () => {
           setIsLoading(false);
         }, 1000);
       });
-  };
-
-  const handleDelete = () => {
-    if (selectedItem) {
-      setIsSubmitting(true);
-      axios
-        .delete(
-          app.BACKEND_URL + "/productcategories/" + selectedItem.id,
-          setHeaders(token)
-        )
-        .then((res) => {
-          setIsSubmitting(false);
-          setServices(services.filter((item) => item.id !== selectedItem.id));
-          setSelectedItem(undefined);
-        })
-        .catch((error) => {
-          errorHandler(error);
-          setIsSubmitting(false);
-        });
-    }
   };
 
   useEffect(() => {
@@ -144,6 +123,7 @@ const RequestedServices = () => {
         selectedItem={selectedItem}
         showModal={showEdit}
         setShowModal={setShowEdit}
+        fetchData={fetchServices}
       />
       <ViewRequest
         selectedItem={selectedItem}
