@@ -15,6 +15,17 @@ const LoggedInRedirection = () => {
   );
 };
 
+const AdminLoggedInRedirection = () => {
+  const url = new URL(window.location.href);
+  const pathValue = url.searchParams.get("redirect");
+
+  return pathValue && pathValue.trim().length > 1 ? (
+    <Navigate to={`/${pathValue}`} />
+  ) : (
+    <Navigate to="/dashboard/main" />
+  );
+};
+
 const UnProtectedRoute = ({ children }: { children: ReactNode }) => {
   const { token, role, apply, shopId } = useSelector(
     (state: RootState) => state.user as IUser
@@ -24,7 +35,7 @@ const UnProtectedRoute = ({ children }: { children: ReactNode }) => {
       {!token || token.trim() === "" ? (
         children
       ) : role === USER_ROLE_ENUM.ADMIN ? (
-        <Navigate to="/dashboard/main" />
+        <AdminLoggedInRedirection />
       ) : (
         <>
           {shopId === null && apply === true ? (

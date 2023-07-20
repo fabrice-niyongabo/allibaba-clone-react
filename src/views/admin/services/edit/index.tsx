@@ -16,6 +16,7 @@ const initilaState = {
   price: "",
   image: "",
   currency: "",
+  isActive: "true",
 };
 interface IEditProps {
   showModal: boolean;
@@ -125,6 +126,20 @@ function Edit({
                   setState({ ...state, description: e.target.value })
                 }
               />
+            </div>
+            <div className="form-group mb-2">
+              <label>Status</label>
+              <select
+                className="form-control"
+                required
+                value={state.isActive}
+                onChange={(e) =>
+                  setState({ ...state, isActive: e.target.value })
+                }
+              >
+                <option value={"true"}>Active</option>
+                <option value={"false"}>Disabled</option>
+              </select>
             </div>
           </Modal.Body>
           <Modal.Footer>

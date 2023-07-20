@@ -144,6 +144,7 @@ function LoginRegister() {
         dispatch(setUserNames(names));
         dispatch(setUserRole(role));
         dispatch(setUserShopId(shopId));
+        dispatch(setUserToken(token));
         toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
         setIsloading(false);
 
@@ -151,10 +152,8 @@ function LoginRegister() {
         const pathValue = url.searchParams.get("redirect");
         if (pathValue && pathValue.trim().length > 1) {
           navigate(`/${pathValue}`);
-          dispatch(setUserToken(token));
           return;
         }
-        dispatch(setUserToken(token));
         // if (role === USER_ROLE_ENUM.ADMIN) {
         //   navigate("/dashboard/main");
         //   return;
