@@ -50,32 +50,42 @@ const BookedProducts = () => {
           {isLoading && bookings.length === 0 ? (
             <Loader />
           ) : (
-            <Row>
-              {bookings.map((item, index) => (
-                <Col md={3} key={index}>
-                  <div className="wishlist-card-item shadow">
-                    <Link to={"/product/" + item.productId}>
-                      <ImageLoader
-                        src={
-                          (app.FILE_URL as string) +
-                          item.product?.images[0].image
-                        }
-                      />
-                    </Link>
-                    <p>{item.product?.name}</p>
-                    <button
-                      className="common-btn d-block"
-                      onClick={() => {
-                        setSelectedItem(item);
-                        setShowModal(true);
-                      }}
-                    >
-                      <i className="bi bi-eye"></i> View More
-                    </button>
-                  </div>
-                </Col>
-              ))}
-            </Row>
+            <div className="table-responsive">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Client's Email</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {bookings.map((item, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{item.product?.name}</td>
+                      <td>{item.quantity}</td>
+                      <td>{item.user.email}</td>
+                      <td>{new Date(item.createdAt).toLocaleDateString()}</td>
+                      <td>
+                        <button
+                          className="common-btn d-block"
+                          onClick={() => {
+                            setSelectedItem(item);
+                            setShowModal(true);
+                          }}
+                        >
+                          <i className="bi bi-eye"></i> View More
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           )}
         </CardBody>
       </Card>
