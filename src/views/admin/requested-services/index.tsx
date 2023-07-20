@@ -80,7 +80,7 @@ const RequestedServices = () => {
                           className="text-info pointer"
                           onClick={() => {
                             setSelectedItem(item);
-                            setShowEdit(true);
+                            setShowViewRequest(true);
                           }}
                         >
                           <i className="bi bi-eye"></i> Details
