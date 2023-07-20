@@ -10,6 +10,11 @@ export const adminNavigation = [
     icon: "bi bi-layout-split",
   },
   {
+    title: "Requested Services",
+    href: "/dashboard/main/reqservices",
+    icon: "bi bi-layout-split",
+  },
+  {
     title: "Countries",
     href: "/dashboard/main/countries",
     icon: "bi bi-layout-split",

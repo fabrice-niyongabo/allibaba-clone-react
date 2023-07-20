@@ -71,6 +71,7 @@ export interface IRequestedService {
   description: string;
   service: Iservice;
   status: VERIFICATION_ENUM;
+  user: IUser;
 }
 
 export interface ICountry {

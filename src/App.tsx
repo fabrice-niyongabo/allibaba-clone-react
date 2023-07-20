@@ -31,6 +31,9 @@ const AdminShops = lazy(() => import("./views/admin/shops"));
 const AdminMemberships = lazy(() => import("./views/admin/memberships"));
 const Countries = lazy(() => import("./views/admin/countries"));
 const Services = lazy(() => import("./views/admin/services"));
+const AdminRequestedServices = lazy(
+  () => import("./views/admin/requested-services")
+);
 
 const Apply = lazy(() => import("./views/apply"));
 const WishList = lazy(() => import("./views/wishlist"));
@@ -134,6 +137,10 @@ const App = () => {
                   element={<Categories />}
                 />
                 <Route path="/dashboard/main/services" element={<Services />} />
+                <Route
+                  path="/dashboard/main/reqservices"
+                  element={<AdminRequestedServices />}
+                />
                 <Route path="/dashboard/main/profile" element={<Profile />} />
                 <Route
                   path="/dashboard/main/category/:id"
