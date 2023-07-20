@@ -5,6 +5,11 @@ export const adminNavigation = [
     icon: "bi bi-speedometer2",
   },
   {
+    title: "Services",
+    href: "/dashboard/main/services",
+    icon: "bi bi-layout-split",
+  },
+  {
     title: "Countries",
     href: "/dashboard/main/countries",
     icon: "bi bi-layout-split",
