@@ -7,14 +7,11 @@ import { RootState } from "../../../reducers";
 import { app } from "../../../constants";
 import { currencyFormatter, errorHandler, setHeaders } from "../../../helpers";
 import MiniLoader from "../../../layouts/loader/MiniLoader";
-import Confirmation from "../../../controllers/confirmation";
-import FullPageLoader from "../../../components/full-page-loader";
 import { IRequestedService } from "../../../interfaces";
 import ViewRequest from "./view-request";
 
 const RequestedServices = () => {
   const { token } = useSelector((state: RootState) => state.user);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [services, setServices] = useState<IRequestedService[]>([]);
 
@@ -130,8 +127,6 @@ const RequestedServices = () => {
         showModal={showViewRequest}
         setShowModal={setShowViewRequest}
       />
-
-      <FullPageLoader open={isSubmitting} />
     </div>
   );
 };
