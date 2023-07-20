@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Card, CardBody, CardTitle, Col, Row, Spinner } from "reactstrap";
+import { useSelector } from "react-redux";
+import { Card, CardBody, CardTitle } from "reactstrap";
 import Edit from "./edit";
 import { RootState } from "../../../reducers";
 import { app } from "../../../constants";
@@ -9,7 +9,6 @@ import { currencyFormatter, errorHandler, setHeaders } from "../../../helpers";
 import MiniLoader from "../../../layouts/loader/MiniLoader";
 import Confirmation from "../../../controllers/confirmation";
 import FullPageLoader from "../../../components/full-page-loader";
-import { Link } from "react-router-dom";
 import { Iservice } from "../../../interfaces";
 import AddService from "./add-service";
 
@@ -97,6 +96,7 @@ const Services = () => {
                   <th>Name</th>
                   <th>Price</th>
                   <th>Description</th>
+                  <th>Status</th>
                   <th className="text-center">Action</th>
                 </thead>
                 <tbody style={{ borderTopWidth: 0 }}>
@@ -113,7 +113,9 @@ const Services = () => {
                       <td>
                         {currencyFormatter(item.price)} {item.currency}
                       </td>
-                      <td>
+                      <td>{item.description}</td>
+                      <td>{item.isActive ? "Active" : "Disabled"}</td>
+                      <td align="center">
                         <span
                           className="text-primary pointer"
                           onClick={() => {
@@ -122,8 +124,8 @@ const Services = () => {
                           }}
                         >
                           Edit
-                        </span>{" "}
-                        &nbsp;|&nbsp;
+                        </span>
+                        {/* &nbsp;|&nbsp;
                         <span
                           className="text-danger pointer"
                           onClick={() => {
@@ -132,7 +134,7 @@ const Services = () => {
                           }}
                         >
                           Delete
-                        </span>
+                        </span> */}
                       </td>
                     </tr>
                   ))}

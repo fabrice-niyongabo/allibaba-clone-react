@@ -5,11 +5,18 @@ import { useSelector } from "react-redux";
 import { Spinner } from "reactstrap";
 import { RootState } from "../../../../reducers";
 import { app } from "../../../../constants";
-import { errorHandler, toastMessage } from "../../../../helpers";
+import { errorHandler, setHeaders, toastMessage } from "../../../../helpers";
 import { TOAST_MESSAGE_TYPES } from "../../../../interfaces";
 import FullPageLoader from "../../../../components/full-page-loader";
+import { currencies } from "currencies.json";
 
-const initilaState = { name: "", icon: "" };
+const initilaState = {
+  name: "",
+  description: "",
+  price: "",
+  image: "",
+  currency: "",
+};
 interface IEditProps {
   showModal: boolean;
   setShowModal: any;
@@ -31,7 +38,7 @@ function Edit({
     e.preventDefault();
     setIsSubmitting(true);
     axios
-      .put(app.BACKEND_URL + "/productcategories/", { ...state, token })
+      .put(app.BACKEND_URL + "/services/", state, setHeaders(token))
       .then((res) => {
         setTimeout(() => {
           setIsSubmitting(false);
@@ -66,7 +73,7 @@ function Edit({
         <form onSubmit={handleSubmit}>
           <Modal.Body>
             <div className="form-group mb-2">
-              <label>Category Name</label>
+              <label>Name</label>
               <input
                 type="text"
                 className="form-control"
@@ -77,19 +84,47 @@ function Edit({
                 disabled={isSubmitting}
               />
             </div>
-            <div className="form-group my-2">
+            <div className="form-group mb-2">
+              <label>Price</label>
               <input
-                type="text"
-                placeholder="Enter icon name, ex: bi-house"
+                type="number"
+                className="form-control"
+                placeholder="Enter price"
+                required
+                onChange={(e) => setState({ ...state, price: e.target.value })}
+                value={state.price}
+                disabled={isSubmitting}
+              />
+            </div>
+            <div className="form-group mb-2">
+              <label>Currency</label>
+              <select
+                value={state.currency}
+                onChange={(e) =>
+                  setState({ ...state, currency: e.target.value })
+                }
+                required
+                className="form-select"
+              >
+                <option value="">Choose currency</option>
+                {currencies.map((item, index) => (
+                  <option key={index} value={item.code}>
+                    {item.code}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="form-group mb-2">
+              <label>Description</label>
+              <textarea
+                placeholder="Enter description"
                 className="form-control"
                 required
-                value={state.icon}
-                disabled={isSubmitting}
-                onChange={(e) => setState({ ...state, icon: e.target.value })}
+                value={state.description}
+                onChange={(e) =>
+                  setState({ ...state, description: e.target.value })
+                }
               />
-              <a target="_blank" href="https://icons.getbootstrap.com/">
-                <small>View icons list</small>
-              </a>
             </div>
           </Modal.Body>
           <Modal.Footer>
