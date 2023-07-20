@@ -10,7 +10,7 @@ import MiniLoader from "../../../layouts/loader/MiniLoader";
 import Confirmation from "../../../controllers/confirmation";
 import FullPageLoader from "../../../components/full-page-loader";
 import { IRequestedService } from "../../../interfaces";
-import ReactHtmlParser from "react-html-parser";
+import ViewRequest from "./view-request";
 
 const RequestedServices = () => {
   const { token } = useSelector((state: RootState) => state.user);
@@ -19,6 +19,7 @@ const RequestedServices = () => {
   const [services, setServices] = useState<IRequestedService[]>([]);
 
   const [showEdit, setShowEdit] = useState(false);
+  const [showViewRequest, setShowViewRequest] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [selectedItem, setSelectedItem] = useState<
     IRequestedService | undefined
@@ -97,6 +98,16 @@ const RequestedServices = () => {
                       <td valign="top">{item.status}</td>
                       <td align="center">
                         <span
+                          className="text-info pointer"
+                          onClick={() => {
+                            setSelectedItem(item);
+                            setShowEdit(true);
+                          }}
+                        >
+                          <i className="bi bi-eye"></i> Details
+                        </span>
+                        &nbsp;|&nbsp;
+                        <span
                           className="text-primary pointer"
                           onClick={() => {
                             setSelectedItem(item);
@@ -105,6 +116,20 @@ const RequestedServices = () => {
                         >
                           <i className="bi bi-pen"></i> Edit
                         </span>
+                        {item.status === "APPROVED" && (
+                          <>
+                            &nbsp;|&nbsp;
+                            <span
+                              className="text-primary pointer"
+                              onClick={() => {
+                                setSelectedItem(item);
+                                setShowEdit(true);
+                              }}
+                            >
+                              <i className="bi bi-file-earmark-check"></i> Files
+                            </span>
+                          </>
+                        )}
                       </td>
                     </tr>
                   ))}
@@ -114,16 +139,16 @@ const RequestedServices = () => {
           )}
         </CardBody>
       </Card>
-      <Confirmation
-        showAlert={showAlert}
-        setShowAlert={setShowAlert}
-        callback={handleDelete}
-        title="Do you want to cancel this request?"
-      />
+
       <Edit
         selectedItem={selectedItem}
         showModal={showEdit}
         setShowModal={setShowEdit}
+      />
+      <ViewRequest
+        selectedItem={selectedItem}
+        showModal={showViewRequest}
+        setShowModal={setShowViewRequest}
       />
 
       <FullPageLoader open={isSubmitting} />

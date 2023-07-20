@@ -28,7 +28,7 @@ interface IEditProps {
   setShowModal: any;
   selectedItem: IRequestedService | undefined;
 }
-function Edit({ showModal, setShowModal, selectedItem }: IEditProps) {
+function ViewRequest({ showModal, setShowModal, selectedItem }: IEditProps) {
   const { token } = useSelector((state: RootState) => state.user);
 
   const [state, setState] = useState(initilaState);
@@ -102,4 +102,4 @@ function Edit({ showModal, setShowModal, selectedItem }: IEditProps) {
   );
 }
 
-export default Edit;
+export default ViewRequest;
