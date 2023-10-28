@@ -13,6 +13,8 @@ import { useLoadBasicData } from "./helpers";
 
 const Dashboard = lazy(() => import("./views/admin/dashboard"));
 const Home = lazy(() => import("./views/home"));
+const Policy = lazy(() => import("./views/policy"));
+const Privacy = lazy(() => import("./views/privacy"));
 const Logout = lazy(() => import("./views/logout"));
 const LoginRegister = lazy(() => import("./views/login-register"));
 const Memberships = lazy(() => import("./views/memberships"));
@@ -74,6 +76,8 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/policy" element={<Policy />} />
+          <Route path="/privacy" element={<Privacy />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/memberships" element={<Memberships />} />
           <Route path="/start-selling" element={<StartSelling />} />
