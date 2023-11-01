@@ -7,6 +7,7 @@ import { fetchProducts } from "../actions/products";
 import { app } from "../constants";
 import { fetchCountries } from "../actions/countries";
 import { fetchBooking } from "../actions/bookings";
+import { fetchBanners } from "../actions/banners";
 
 //custom dispatcher hook
 export const useLoadBasicData = (): any => {
@@ -17,6 +18,7 @@ export const useLoadBasicData = (): any => {
     dispatch(fetchProducts());
     dispatch(fetchCountries());
     dispatch(fetchBooking());
+    dispatch(fetchBanners());
   };
 };
 

@@ -36,6 +36,7 @@ const Services = lazy(() => import("./views/admin/services"));
 const AdminRequestedServices = lazy(
   () => import("./views/admin/requested-services")
 );
+const Banners = lazy(() => import("./views/admin/banners"));
 
 const Apply = lazy(() => import("./views/apply"));
 const WishList = lazy(() => import("./views/wishlist"));
@@ -136,6 +137,7 @@ const App = () => {
             children={
               <>
                 <Route path="/dashboard/main" element={<Dashboard />} />
+                <Route path="/dashboard/main/banners" element={<Banners />} />
                 <Route
                   path="/dashboard/main/categories"
                   element={<Categories />}

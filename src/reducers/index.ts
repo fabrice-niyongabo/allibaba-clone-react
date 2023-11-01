@@ -10,6 +10,7 @@ import estimations from "./shippingEstimations";
 import wishlist from "./wishlist";
 import bookings from "./bookings";
 import services from "./services";
+import banners from "./banners";
 const rootReducer = combineReducers({
   user,
   myShop,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   wishlist,
   bookings,
   services,
+  banners,
 });
 
 export default rootReducer;

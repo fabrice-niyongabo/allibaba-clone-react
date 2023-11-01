@@ -28,6 +28,11 @@ export interface IUser {
   token: string;
 }
 
+export interface IBannersReducer {
+  banners: IBanner[];
+  isLoading: boolean;
+}
+
 export interface IRequestFile {
   id: number;
   serviceId: number;
@@ -38,6 +43,13 @@ export interface IRequestFile {
   comment: string;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface IBanner {
+  id: number;
+  url: string;
+  image: string;
+  isActive: boolean;
 }
 
 export interface IShippingEstimation {
