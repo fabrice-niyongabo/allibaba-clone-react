@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "../../assets/scss/header.scss";
 
 import userImage from "../../assets/images/user.png";
+import cartImage from "../../assets/images/cart.png";
 import downArrow from "../../assets/images/downarrow.png";
 import walletImage from "../../assets/images/wallet.png";
 import wishListImage from "../../assets/images/orders.png";
@@ -20,6 +21,7 @@ import { setCountry } from "../../actions/appReducer";
 
 function Header() {
   const dispatch = useDispatch();
+  const { cart } = useSelector((state: RootState) => state.cart);
   const { countries } = useSelector((state: RootState) => state.countries);
   const { country } = useSelector((state: RootState) => state.appReducer);
   const { categories } = useSelector((state: RootState) => state.categories);
@@ -199,6 +201,16 @@ function Header() {
                     <img alt="" src={walletImage} />
                     <span>Start Selling</span>
                   </div>
+                  <div
+                    className="icon-container cart"
+                    onClick={() => navigate("/cart")}
+                  >
+                    <img alt="" src={cartImage} />
+                    <span>Cart</span>
+                    {cart.length > 0 && (
+                      <div className="counter">{cart.length}</div>
+                    )}
+                  </div>
                 </>
               ) : (
                 <>
@@ -242,6 +254,16 @@ function Header() {
                       </div>
                     )
                   )}
+                  <div
+                    className="icon-container cart"
+                    onClick={() => navigate("/cart")}
+                  >
+                    <img alt="" src={cartImage} />
+                    <span>Cart</span>
+                    {cart.length > 0 && (
+                      <div className="counter">{cart.length}</div>
+                    )}
+                  </div>
                 </>
               )}
             </div>

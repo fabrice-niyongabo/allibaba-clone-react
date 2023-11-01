@@ -4,6 +4,22 @@ export enum TOAST_MESSAGE_TYPES {
   SUCCESS = "success",
 }
 
+export interface ICartReducer {
+  cart: ICartItem[];
+}
+
+export enum IPAYMENT_METHODS_ENUM {
+  CARD = "CARD",
+  MOMO = "MOMO",
+  MOMO_CODE = "MOMO_CODE",
+}
+
+export interface ICartItem {
+  productId: number;
+  price: number;
+  quantity: number;
+}
+
 export interface IAction {
   type: string;
   payload: any;
