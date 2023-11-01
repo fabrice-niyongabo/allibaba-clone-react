@@ -77,7 +77,7 @@ function MobileHeader() {
             <Link to="/">
               <div className="logo-containter">
                 <img src={logo} alt="Afriseller" />
-                <span>Afriseller</span>
+                <span>Afrisellers</span>
               </div>
             </Link>
           </div>

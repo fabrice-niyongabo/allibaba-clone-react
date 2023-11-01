@@ -32,6 +32,19 @@
         }
       }
     }
+    .cart-icon-container {
+      position: relative;
+      .cart-counter {
+        position: absolute;
+        top: 0;
+        right: -5px;
+        background-color: $orange;
+        color: $white;
+        padding: 2px 5px;
+        border-radius: 100%;
+        font-size: 10px;
+      }
+    }
     .location {
       @include flexCenter;
       padding: 5px 1rem;
@@ -304,6 +317,19 @@
       }
       span {
         font-size: 12px;
+      }
+    }
+    .icon-container.cart {
+      position: relative;
+      .counter {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        background-color: $orange;
+        color: $white;
+        border-radius: 100%;
+        font-size: 12px;
+        padding: 5px 10px;
       }
     }
   }

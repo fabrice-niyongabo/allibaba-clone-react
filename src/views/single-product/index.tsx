@@ -7,7 +7,7 @@ import ProductImages from "./product-images";
 import Supplier from "./supplier";
 import RelatedProducts from "./related-products";
 import ProductTabs from "./product-tabs";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   IProduct,
   PRICE_TYPE_ENUM,
@@ -33,10 +33,13 @@ import ShippingEstimations from "./shipping-estimations";
 import axios from "axios";
 import FullPageLoader from "../../components/full-page-loader";
 import Book from "./book";
+import { addCartItem } from "../../actions/cart";
+import { isMobile } from "react-device-detect";
 
 function SingleProduct() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { token } = useSelector((state: RootState) => state.user);
   const { products } = useSelector((state: RootState) => state.products);
   const { bookings } = useSelector((state: RootState) => state.bookings);
@@ -45,6 +48,7 @@ function SingleProduct() {
   const [isLoading, setIsLoading] = useState(false);
   const [showBookModal, setShowBookModal] = useState(false);
   const [isProductBooked, setIsProductBooked] = useState<boolean>(false);
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     let sub = true;
@@ -116,6 +120,34 @@ function SingleProduct() {
       );
     } else {
       setShowBookModal(true);
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (!product) return;
+    dispatch(
+      addCartItem({
+        price: product?.singlePrice,
+        productId: product?.pId,
+        quantity,
+      })
+    );
+    toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, product.name + " added to cart!");
+  };
+  const handleAdd = () => {
+    if (!product) return;
+    // if (quantity + 1 <= product?.quantity) {
+    setQuantity(quantity + 1);
+    // } else {
+    //   toastMessage(
+    //     TOAST_MESSAGE_TYPES.INFO,
+    //     "You have reached the total quantity available in the stock."
+    //   );
+    // }
+  };
+  const handleMinus = () => {
+    if (quantity - 1 >= 1) {
+      setQuantity(quantity - 1);
     }
   };
 
@@ -247,6 +279,52 @@ function SingleProduct() {
                         onClick={() => handleBook()}
                       >
                         Book Now
+                      </button>
+                    </div>
+                    <div className="mt-2">
+                      <div className="add-to-cart-container">
+                        <button
+                          className="btn btn-light"
+                          onClick={() => handleMinus()}
+                        >
+                          -
+                        </button>
+                        <span className="btn border">{quantity}</span>
+                        <button
+                          className="btn btn-light"
+                          onClick={() => handleAdd()}
+                        >
+                          +
+                        </button>
+                        {!isMobile && (
+                          <div className="main-btn">
+                            <button
+                              className="btn"
+                              onClick={() => handleAddToCart()}
+                            >
+                              Add To Cart
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                      {isMobile && (
+                        <div className="add-to-cart-container p-0">
+                          <div className="main-btn m-0">
+                            <button
+                              className="btn"
+                              onClick={() => handleAddToCart()}
+                            >
+                              Add To Cart
+                            </button>
+                          </div>
+                        </div>
+                      )}
+
+                      <button
+                        className="common-btn"
+                        onClick={() => handleAddToWishList()}
+                      >
+                        Add to wishlist
                       </button>
                     </div>
                     <p style={{ margin: 0, marginTop: 10 }}>

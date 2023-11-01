@@ -53,8 +53,7 @@ function Cart() {
   return (
     <>
       <Header />
-      <div className="shopin-container my-5 cart-main-container">
-        <div className="alert alert-info">The delivery is within 6 hours.</div>
+      <div className="afriseller-container my-5 cart-main-container">
         <h2 className="text-center">Cart</h2>
         <div className="table-responsive">
           <table className="table">
