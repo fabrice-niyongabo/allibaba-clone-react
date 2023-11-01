@@ -1,9 +1,8 @@
 import { useState } from "react";
 import "../../../assets/scss/homeWelcome.scss";
-import { Col, Container, Row } from "reactstrap";
+import { Col, Row } from "reactstrap";
 import Slider from "./slider";
 
-import cameraImage from "../../../assets/images/static/camera.png";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
 import { currencyFormatter, openUrlInNewTab } from "../../../helpers";

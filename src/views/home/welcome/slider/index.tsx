@@ -1,10 +1,17 @@
-import React from "react";
+import { useSelector } from "react-redux";
 import { Carousel } from "react-responsive-carousel";
-
-import slide1 from "../../../../assets/images/static/banner.jpg";
-import slide2 from "../../../../assets/images/static/banner2.jpg";
+import { RootState } from "../../../../reducers";
+import { app } from "../../../../constants";
+import { IBanner } from "../../../../interfaces";
+import { openUrlInNewTab } from "../../../../helpers";
 
 function Slider() {
+  const { banners } = useSelector((state: RootState) => state.banners);
+  const handleClick = (item: IBanner) => {
+    if (item.url.trim() !== "") {
+      openUrlInNewTab(item.url, false);
+    }
+  };
   return (
     <Carousel
       autoPlay={true}
@@ -14,12 +21,15 @@ function Slider() {
       swipeable={true}
       interval={5000}
     >
-      <div>
-        <img className="d-block w-100" src={slide1} alt="f slide" />
-      </div>
-      <div>
-        <img className="d-block w-100" src={slide2} alt="Second slide" />
-      </div>
+      {banners.map((item, index) => (
+        <div onClick={() => handleClick(item)} key={index}>
+          <img
+            className="d-block w-100"
+            src={app.FILE_URL + item.image}
+            alt="  slide"
+          />
+        </div>
+      ))}
     </Carousel>
   );
 }
