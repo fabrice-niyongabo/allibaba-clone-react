@@ -14,6 +14,46 @@ export enum IPAYMENT_METHODS_ENUM {
   MOMO_CODE = "MOMO_CODE",
 }
 
+export enum PAYMENT_STATUS_ENUM {
+  PENDING = "PENDING",
+  SUCCESS = "SUCCESS",
+  FAILED = "FAILED",
+}
+
+interface IFilters {
+  type: string;
+  value: string;
+}
+export interface ITableFilterConfig {
+  filters: IFilters[];
+  searchKeyword: string;
+}
+
+export enum DELIVERY_STATUS_ENUM {
+  WAITING = "WAITING",
+  PENDING = "PENDING",
+  DELIVERED = "DELIVERED",
+}
+export interface IOrder {
+  id: number;
+  userId: number;
+  refid: string;
+  shopsIdList: number[];
+  cartItems: ICartItem[];
+  cartTotalAmount: number;
+  deliveryFees: number;
+  deliveryAddress: string;
+  deliveryContactNumber: string;
+  deliveryDescription: string;
+  paymentMethod: IPAYMENT_METHODS_ENUM;
+  paymentPhoneNumber: string | null;
+  paymentStatus: STATUS_ENUM;
+  deliveryStatus: DELIVERY_STATUS_ENUM;
+  client?: IUser;
+  products?: IProduct[];
+  createdAt: string;
+}
+
 export interface ICartItem {
   productId: number;
   price: number;

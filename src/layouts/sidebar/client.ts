@@ -14,4 +14,9 @@ export const clientNavigation = [
     href: "/dashboard/booking",
     icon: "bi bi-layout-split",
   },
+  {
+    title: "My Orders",
+    href: "/dashboard/orders",
+    icon: "bi bi-card-text",
+  },
 ];

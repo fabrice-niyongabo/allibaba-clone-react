@@ -40,6 +40,11 @@ export const adminNavigation = [
     icon: "bi bi-card-text",
   },
   {
+    title: "Orders",
+    href: "/dashboard/main/orders",
+    icon: "bi bi-card-text",
+  },
+  {
     title: "Users",
     href: "/dashboard/main/users",
     icon: "bi bi-card-text",

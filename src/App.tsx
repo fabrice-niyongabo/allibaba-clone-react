@@ -24,6 +24,7 @@ const ProductCategory = lazy(() => import("./views/products-by-categories"));
 const Shop = lazy(() => import("./views/shop"));
 const Search = lazy(() => import("./views/search"));
 const Cart = lazy(() => import("./views/cart"));
+const Orders = lazy(() => import("./views/orders"));
 
 const Categories = lazy(() => import("./views/admin/categories"));
 const CategoryImage = lazy(() => import("./views/admin/category-image"));
@@ -38,6 +39,7 @@ const AdminRequestedServices = lazy(
   () => import("./views/admin/requested-services")
 );
 const Banners = lazy(() => import("./views/admin/banners"));
+const AdminOrders = lazy(() => import("./views/admin/orders"));
 
 const Apply = lazy(() => import("./views/apply"));
 const WishList = lazy(() => import("./views/wishlist"));
@@ -81,6 +83,7 @@ const App = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/policy" element={<Policy />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/dashboard/orders" element={<Orders />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/memberships" element={<Memberships />} />
           <Route path="/start-selling" element={<StartSelling />} />
@@ -139,6 +142,7 @@ const App = () => {
             children={
               <>
                 <Route path="/dashboard/main" element={<Dashboard />} />
+                <Route path="/dashboard/orders" element={<AdminOrders />} />
                 <Route path="/dashboard/main/banners" element={<Banners />} />
                 <Route
                   path="/dashboard/main/categories"
