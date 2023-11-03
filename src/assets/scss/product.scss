@@ -3,6 +3,7 @@
 .single-product-container {
   background-color: $white;
   padding: 2rem;
+
   a {
     text-decoration: none;
   }
@@ -135,6 +136,11 @@
       }
     }
   }
+
+  @media #{$media-mobile} {
+    margin: 0px;
+    padding: 1rem;
+  }
 }
 
 .single-product-tabs-container {
@@ -156,6 +162,10 @@
       background-color: $white;
       border: solid 1px $white;
       cursor: pointer;
+    }
+
+    @media #{$media-mobile} {
+      width: 100%;
     }
   }
   .tab.active {
@@ -217,6 +227,10 @@
         }
       }
     }
+  }
+
+  @media #{$media-mobile} {
+    padding: 0rem;
   }
 }
 
