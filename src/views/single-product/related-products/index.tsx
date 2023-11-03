@@ -8,11 +8,13 @@ import { RootState } from "../../../reducers";
 import { app } from "../../../constants";
 import { currencyFormatter, openUrlInNewTab } from "../../../helpers";
 import { isMobile } from "react-device-detect";
+import { useNavigate } from "react-router-dom";
 
 interface IRelatedProductsProps {
   product: IProduct;
 }
 function RelatedProducts({ product }: IRelatedProductsProps) {
+  const navigate = useNavigate();
   const { products } = useSelector((state: RootState) => state.products);
   const [relatedProducts, setRelatedProducts] = React.useState<IProduct[]>([]);
   React.useEffect(() => {
@@ -58,7 +60,11 @@ function RelatedProducts({ product }: IRelatedProductsProps) {
               <div
                 className="slider-item"
                 key={index}
-                onClick={() => openUrlInNewTab("/product/" + item.pId)}
+                onClick={() =>
+                  isMobile
+                    ? navigate("/product/" + item.pId)
+                    : openUrlInNewTab("/product/" + item.pId)
+                }
               >
                 <img
                   src={app.FILE_URL + item.images[0]?.image}

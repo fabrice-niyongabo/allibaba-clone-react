@@ -7,11 +7,13 @@ import { RootState } from "../../../../reducers";
 import { currencyFormatter, openUrlInNewTab } from "../../../../helpers";
 import { PRICE_TYPE_ENUM } from "../../../../interfaces";
 import { app } from "../../../../constants";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
   categoryId: number;
 }
 function Products({ categoryId }: IProps) {
+  const navigate = useNavigate();
   const { products } = useSelector((state: RootState) => state.products);
 
   return (
@@ -42,7 +44,11 @@ function Products({ categoryId }: IProps) {
             <div
               className="slider-item"
               key={index}
-              onClick={() => openUrlInNewTab("/product/" + item.pId)}
+              onClick={() =>
+                isMobile
+                  ? navigate("/product/" + item.pId)
+                  : openUrlInNewTab("/product/" + item.pId)
+              }
             >
               <img src={app.FILE_URL + item.images[0]?.image} alt={item.name} />
               <p title={item.name}>{item.name}</p>

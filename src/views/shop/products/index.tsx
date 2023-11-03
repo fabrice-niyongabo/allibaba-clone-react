@@ -8,11 +8,14 @@ import { RootState } from "../../../reducers";
 import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../constants";
 import { currencyFormatter, openUrlInNewTab } from "../../../helpers";
+import { useNavigate } from "react-router-dom";
+import { isMobile } from "react-device-detect";
 
 interface IProductsProps {
   shop: Ishop;
 }
 function Products(props: IProductsProps) {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState<number>(0);
   const [productsToShow, setProductsToShow] = useState<IProduct[]>([]);
   const { products } = useSelector((state: RootState) => state.products);
@@ -72,7 +75,11 @@ function Products(props: IProductsProps) {
               <Col md={3} sm={6} xs={6} className="mb-3" key={index}>
                 <div
                   className="product-item pointer"
-                  onClick={() => openUrlInNewTab("/product/" + item.pId, false)}
+                  onClick={() =>
+                    isMobile
+                      ? navigate("/product/" + item.pId)
+                      : openUrlInNewTab("/product/" + item.pId, false)
+                  }
                 >
                   <ImageLoader
                     src={app.FILE_URL + item.images[0]?.image}

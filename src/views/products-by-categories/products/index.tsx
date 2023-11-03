@@ -9,12 +9,15 @@ import MiniLoader from "../../../layouts/loader/MiniLoader";
 import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../constants";
 import { currencyFormatter, openUrlInNewTab } from "../../../helpers";
+import { useNavigate } from "react-router-dom";
+import { isMobile } from "react-device-detect";
 
 interface IProductsProps {
   category: ICategory;
   subCategoryId: any;
 }
 function Products({ category, subCategoryId }: IProductsProps) {
+  const navigate = useNavigate();
   const { products, isLoading } = useSelector(
     (state: RootState) => state.products
   );
@@ -58,7 +61,11 @@ function Products({ category, subCategoryId }: IProductsProps) {
           <Col md={2} sm={6} xs={6} className="mb-3 pointer" key={index}>
             <div
               className="product-item"
-              onClick={() => openUrlInNewTab("/product/" + item.pId)}
+              onClick={() =>
+                isMobile
+                  ? navigate("/product/" + item.pId)
+                  : openUrlInNewTab("/product/" + item.pId)
+              }
             >
               <ImageLoader
                 src={app.FILE_URL + item.images[0]?.image}

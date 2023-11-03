@@ -3,16 +3,17 @@ import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { useSelector } from "react-redux";
 import { RootState } from "../../reducers";
-import FullPageLoader from "../../components/full-page-loader";
 import "../../assets/scss/search.scss";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ImageLoader from "../../components/image-loader";
 import { app } from "../../constants";
 import { currencyFormatter, openUrlInNewTab } from "../../helpers";
 import { PRICE_TYPE_ENUM } from "../../interfaces";
 import { Col, Row } from "reactstrap";
+import { isMobile } from "react-device-detect";
 
 function Search() {
+  const navigate = useNavigate();
   const { searchType, keyword } = useParams();
   const productsReducer = useSelector((state: RootState) => state.products);
   const shopsReducer = useSelector((state: RootState) => state.shops);
@@ -42,7 +43,11 @@ function Search() {
                       <div
                         className="search-product pointer"
                         key={index}
-                        onClick={() => openUrlInNewTab("/product/" + item.pId)}
+                        onClick={() =>
+                          isMobile
+                            ? navigate("/product/" + item.pId)
+                            : openUrlInNewTab("/product/" + item.pId)
+                        }
                       >
                         <ImageLoader
                           src={app.FILE_URL + item.images[0]?.image}
@@ -101,7 +106,11 @@ function Search() {
                       <div
                         className="search-shop pointer"
                         key={index}
-                        onClick={() => openUrlInNewTab("/shops/" + item.shopId)}
+                        onClick={() =>
+                          isMobile
+                            ? navigate("/shops/" + item.shopId)
+                            : openUrlInNewTab("/shops/" + item.shopId)
+                        }
                       >
                         <ImageLoader src={app.FILE_URL + item.shopImage} />
                         <div className="div">

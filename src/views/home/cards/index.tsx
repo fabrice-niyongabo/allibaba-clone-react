@@ -7,7 +7,10 @@ import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../constants";
 import { PRICE_TYPE_ENUM } from "../../../interfaces";
 import { currencyFormatter, openUrlInNewTab } from "../../../helpers";
+import { useNavigate } from "react-router-dom";
+import { isMobile } from "react-device-detect";
 function Cards() {
+  const navigate = useNavigate();
   const { products } = useSelector((state: RootState) => state.products);
   return (
     <div className="afriseller-container home-cards-container">
@@ -24,7 +27,9 @@ function Cards() {
                     <div
                       className="product-container pointer"
                       onClick={() =>
-                        openUrlInNewTab("/category/" + item.categoryId)
+                        isMobile
+                          ? navigate("/category/" + item.categoryId)
+                          : openUrlInNewTab("/category/" + item.categoryId)
                       }
                     >
                       <ImageLoader
@@ -59,7 +64,9 @@ function Cards() {
                     <div
                       className="product-container pointer"
                       onClick={() =>
-                        openUrlInNewTab("/category/" + item.categoryId)
+                        isMobile
+                          ? navigate("/category/" + item.categoryId)
+                          : openUrlInNewTab("/category/" + item.categoryId)
                       }
                     >
                       <ImageLoader
@@ -94,7 +101,9 @@ function Cards() {
                     <div
                       className="product-container pointer"
                       onClick={() =>
-                        openUrlInNewTab("/category/" + item.categoryId)
+                        isMobile
+                          ? navigate("/category/" + item.categoryId)
+                          : openUrlInNewTab("/category/" + item.categoryId)
                       }
                     >
                       <ImageLoader
@@ -129,7 +138,9 @@ function Cards() {
                     <div
                       className="product-container pointer"
                       onClick={() =>
-                        openUrlInNewTab("/category/" + item.categoryId)
+                        isMobile
+                          ? navigate("/category/" + item.categoryId)
+                          : openUrlInNewTab("/category/" + item.categoryId)
                       }
                     >
                       <ImageLoader
@@ -164,7 +175,9 @@ function Cards() {
                     <div
                       className="product-container pointer"
                       onClick={() =>
-                        openUrlInNewTab("/category/" + item.categoryId)
+                        isMobile
+                          ? navigate("/category/" + item.categoryId)
+                          : openUrlInNewTab("/category/" + item.categoryId)
                       }
                     >
                       <ImageLoader
@@ -199,7 +212,9 @@ function Cards() {
                     <div
                       className="product-container pointer"
                       onClick={() =>
-                        openUrlInNewTab("/category/" + item.categoryId)
+                        isMobile
+                          ? navigate("/category/" + item.categoryId)
+                          : openUrlInNewTab("/category/" + item.categoryId)
                       }
                     >
                       <ImageLoader

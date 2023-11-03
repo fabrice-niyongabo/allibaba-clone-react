@@ -10,8 +10,10 @@ import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../constants";
 import { PRICE_TYPE_ENUM } from "../../../interfaces";
 import { isMobile } from "react-device-detect";
+import { useNavigate } from "react-router-dom";
 
 function Welcome() {
+  const navigate = useNavigate();
   const [homeHover, setHomeHover] = useState(false);
   const { categories } = useSelector((state: RootState) => state.categories);
   const { products } = useSelector((state: RootState) => state.products);
@@ -56,7 +58,9 @@ function Welcome() {
                             <h3
                               className="pointer"
                               onClick={() =>
-                                openUrlInNewTab("/category/" + item.id)
+                                isMobile
+                                  ? navigate("/category/" + item.id)
+                                  : openUrlInNewTab("/category/" + item.id)
                               }
                             >
                               {item.name}
@@ -66,9 +70,13 @@ function Welcome() {
                                 <li
                                   key={position}
                                   onClick={() =>
-                                    openUrlInNewTab(
-                                      "/category/" + item.id + "/" + it.id
-                                    )
+                                    isMobile
+                                      ? navigate(
+                                          "/category/" + item.id + "/" + it.id
+                                        )
+                                      : openUrlInNewTab(
+                                          "/category/" + item.id + "/" + it.id
+                                        )
                                   }
                                 >
                                   {it.name}
@@ -87,7 +95,11 @@ function Welcome() {
                     <li
                       key={position}
                       className="pointer"
-                      onClick={() => openUrlInNewTab("/category/" + item.id)}
+                      onClick={() =>
+                        isMobile
+                          ? navigate("/category/" + item.id)
+                          : openUrlInNewTab("/category/" + item.id)
+                      }
                     >
                       <i
                         className={`bi ${item.icon}`}
@@ -115,7 +127,11 @@ function Welcome() {
                   <li
                     className="pointer"
                     key={index}
-                    onClick={() => openUrlInNewTab("/product/" + item.pId)}
+                    onClick={() =>
+                      isMobile
+                        ? navigate("/product/" + item.pId)
+                        : openUrlInNewTab("/product/" + item.pId)
+                    }
                   >
                     <div>
                       <p>

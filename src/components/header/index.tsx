@@ -308,9 +308,19 @@ function Header() {
                                     <li
                                       key={position}
                                       onClick={() =>
-                                        openUrlInNewTab(
-                                          "/category/" + item.id + "/" + cat.id
-                                        )
+                                        isMobile
+                                          ? navigate(
+                                              "/category/" +
+                                                item.id +
+                                                "/" +
+                                                cat.id
+                                            )
+                                          : openUrlInNewTab(
+                                              "/category/" +
+                                                item.id +
+                                                "/" +
+                                                cat.id
+                                            )
                                       }
                                     >
                                       {cat.name}
@@ -364,7 +374,11 @@ function Header() {
                 .map((item, index) => (
                   <li
                     key={index}
-                    onClick={() => openUrlInNewTab("/category/" + item.id)}
+                    onClick={() =>
+                      isMobile
+                        ? navigate("/category/" + item.id)
+                        : openUrlInNewTab("/category/" + item.id)
+                    }
                   >
                     {item.name}
                   </li>

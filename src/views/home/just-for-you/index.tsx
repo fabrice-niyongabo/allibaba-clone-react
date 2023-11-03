@@ -6,7 +6,10 @@ import ImageLoader from "../../../components/image-loader";
 import { app } from "../../../constants";
 import { currencyFormatter, openUrlInNewTab } from "../../../helpers";
 import { PRICE_TYPE_ENUM } from "../../../interfaces";
+import { isMobile } from "react-device-detect";
+import { useNavigate } from "react-router-dom";
 function JustForYou() {
+  const navigate = useNavigate();
   const { products } = useSelector((state: RootState) => state.products);
   const { categories } = useSelector((state: RootState) => state.categories);
 
@@ -25,7 +28,11 @@ function JustForYou() {
           <Col md={2} key={position}>
             <div
               className="product-container pointer"
-              onClick={() => openUrlInNewTab("/product/" + item.pId)}
+              onClick={() =>
+                isMobile
+                  ? navigate("/product/" + item.pId)
+                  : openUrlInNewTab("/product/" + item.pId)
+              }
             >
               <ImageLoader
                 src={app.FILE_URL + item.images[0]?.image}
