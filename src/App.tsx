@@ -142,7 +142,10 @@ const App = () => {
             children={
               <>
                 <Route path="/dashboard/main" element={<Dashboard />} />
-                <Route path="/dashboard/orders" element={<AdminOrders />} />
+                <Route
+                  path="/dashboard/main/orders"
+                  element={<AdminOrders />}
+                />
                 <Route path="/dashboard/main/banners" element={<Banners />} />
                 <Route
                   path="/dashboard/main/categories"
