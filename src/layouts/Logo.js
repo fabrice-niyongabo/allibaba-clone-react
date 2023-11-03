@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo2.png";
 import { appColors } from "../constants";
+import { isMobile } from "react-device-detect";
 
 const Logo = () => {
   return (
@@ -20,16 +21,18 @@ const Logo = () => {
             height: 50,
           }}
         />
-        <h2
-          style={{
-            display: "inline-block",
-            margin: 0,
-            padding: 0,
-            color: appColors.ORANGE,
-          }}
-        >
-          Afriseller
-        </h2>
+        {!isMobile && (
+          <h2
+            style={{
+              display: "inline-block",
+              margin: 0,
+              padding: 0,
+              color: appColors.ORANGE,
+            }}
+          >
+            Afrisellers
+          </h2>
+        )}
       </div>
     </Link>
   );

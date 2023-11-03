@@ -84,7 +84,7 @@ const Header = () => {
               className="text-white"
               style={{ textTransform: "capitalize" }}
             >
-              Afriseller {role} dashboard
+              Afrisellers {role} dashboard
             </span>
           </NavItem>
         </Nav>

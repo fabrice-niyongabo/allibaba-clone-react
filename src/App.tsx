@@ -83,7 +83,6 @@ const App = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/policy" element={<Policy />} />
           <Route path="/privacy" element={<Privacy />} />
-          <Route path="/dashboard/orders" element={<Orders />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/memberships" element={<Memberships />} />
           <Route path="/start-selling" element={<StartSelling />} />
@@ -195,6 +194,7 @@ const App = () => {
               role === USER_ROLE_ENUM.SELLER ? (
                 <>
                   <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/dashboard/orders" element={<Orders />} />
                   <Route path="/dashboard/myshop" element={<MyShop />} />
                   <Route path="/dashboard/profile" element={<Profile />} />
                   <Route path="/dashboard/booking" element={<Bookings />} />
@@ -234,6 +234,7 @@ const App = () => {
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/dashboard/profile" element={<Profile />} />
                   <Route path="/dashboard/wishlist" element={<WishList />} />
+                  <Route path="/dashboard/orders" element={<Orders />} />
                   <Route
                     path="/dashboard/booking"
                     element={<BookedProducts />}
