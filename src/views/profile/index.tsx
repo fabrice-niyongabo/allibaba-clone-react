@@ -1,22 +1,15 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  CardTitle,
-  Col,
-  Row,
-  Spinner,
-} from "reactstrap";
+import { Card, CardBody, CardFooter, CardTitle, Col, Row } from "reactstrap";
 import { isValidPhoneNumber } from "react-phone-number-input/input";
 import FullPageLoader from "../../components/full-page-loader";
-import { TOAST_MESSAGE_TYPES } from "../../interfaces";
+import { TOAST_MESSAGE_TYPES, USER_ROLE_ENUM } from "../../interfaces";
 import { errorHandler, setHeaders, toastMessage } from "../../helpers";
 import { RootState } from "../../reducers";
 import PhoneInput from "react-phone-number-input";
 import { app } from "../../constants";
+import { Link } from "react-router-dom";
 
 const initialState = {
   email: "",
@@ -32,7 +25,7 @@ const Profile = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [state, setState] = useState(initialState);
   const [pwdState, setPwdState] = useState(initialPwdState);
-  const { email, names, phone, token } = useSelector(
+  const { email, names, phone, token, role } = useSelector(
     (state: RootState) => state.user
   );
   const handleSubmit = async (e: any) => {
@@ -223,6 +216,21 @@ const Profile = () => {
           </Card>
         </Col>
       </Row>
+      {role === USER_ROLE_ENUM.CLIENT ||
+        (role === USER_ROLE_ENUM.SELLER && (
+          <Card>
+            <CardBody>
+              <p className="text-danger">
+                <b>Danger zone</b>
+              </p>
+              <div className="alert alert-danger text-center">
+                <Link to={"/account/remove/step1"} className="text-danger">
+                  <small>Delete and disable your account</small>
+                </Link>
+              </div>
+            </CardBody>
+          </Card>
+        ))}
 
       <FullPageLoader open={isLoading} />
     </div>
