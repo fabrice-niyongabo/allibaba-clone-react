@@ -45,6 +45,8 @@ const Apply = lazy(() => import("./views/apply"));
 const WishList = lazy(() => import("./views/wishlist"));
 const BookedProducts = lazy(() => import("./views/booked-products"));
 
+const RemoveAccountInfo = lazy(() => import("./views/remove-account-info"));
+
 //seller
 const MyShop = lazy(() => import("./views/seller/my-shop"));
 const AddProduct = lazy(() => import("./views/seller/add-product"));
@@ -80,6 +82,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/account/remove" element={<RemoveAccountInfo />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/policy" element={<Policy />} />
           <Route path="/privacy" element={<Privacy />} />

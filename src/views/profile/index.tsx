@@ -216,21 +216,20 @@ const Profile = () => {
           </Card>
         </Col>
       </Row>
-      {role === USER_ROLE_ENUM.CLIENT ||
-        (role === USER_ROLE_ENUM.SELLER && (
-          <Card>
-            <CardBody>
-              <p className="text-danger">
-                <b>Danger zone</b>
-              </p>
-              <div className="alert alert-danger text-center">
-                <Link to={"/account/remove/step1"} className="text-danger">
-                  <small>Delete and disable your account</small>
-                </Link>
-              </div>
-            </CardBody>
-          </Card>
-        ))}
+      {(role === USER_ROLE_ENUM.CLIENT || role === USER_ROLE_ENUM.SELLER) && (
+        <Card>
+          <CardBody>
+            <p className="text-danger">
+              <b>Danger zone</b>
+            </p>
+            <div className="alert alert-danger text-center">
+              <Link to={"/account/remove"} className="text-danger">
+                <small>Delete and disable your account</small>
+              </Link>
+            </div>
+          </CardBody>
+        </Card>
+      )}
 
       <FullPageLoader open={isLoading} />
     </div>
