@@ -26,7 +26,7 @@ function RemoveAccount() {
     if (feedback.trim().length < 10) {
       toastMessage(
         TOAST_MESSAGE_TYPES.ERROR,
-        "Feedback can not be less that 10 characters"
+        "Feedback can not be less than 10 characters"
       );
       return;
     }
