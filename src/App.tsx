@@ -45,6 +45,7 @@ const Apply = lazy(() => import("./views/apply"));
 const WishList = lazy(() => import("./views/wishlist"));
 const BookedProducts = lazy(() => import("./views/booked-products"));
 
+const RemoveAccount = lazy(() => import("./views/remove-account"));
 const RemoveAccountInfo = lazy(() => import("./views/remove-account-info"));
 
 //seller
@@ -82,7 +83,6 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/account/remove" element={<RemoveAccountInfo />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/policy" element={<Policy />} />
           <Route path="/privacy" element={<Privacy />} />
@@ -92,6 +92,15 @@ const App = () => {
           <Route path="/product/:id" element={<SingleProduct />} />
           <Route path="/search/:searchType/:keyword" element={<Search />} />
           <Route path="/category/:categoryId" element={<ProductCategory />} />
+          <Route path="/account/remove" element={<RemoveAccountInfo />} />
+          <Route
+            path="/account/remove/confirm"
+            element={
+              <ProtectedRoute>
+                <RemoveAccount />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/category/:categoryId/:subCategoryId"
             element={<ProductCategory />}

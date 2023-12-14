@@ -8,7 +8,7 @@ function RemoveAccountInfo() {
     <>
       <Header />
       <div className="mt-5 afriseller-container">
-        <h3 className="text-center">Removing/deleting your user account</h3>
+        <h3 className="text-center">Remove/delete your user account</h3>
         <Card className="mt-5">
           <CardBody className="p-5">
             <div>
