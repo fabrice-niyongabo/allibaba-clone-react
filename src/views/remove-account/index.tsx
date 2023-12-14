@@ -50,7 +50,7 @@ function RemoveAccount() {
   const handleSubmit = () => {
     setIsLoading(true);
     axios
-      .post(app.BACKEND_URL + "users/delete", setHeaders(token))
+      .post(app.BACKEND_URL + "/users/delete", setHeaders(token))
       .then((res) => {
         setIsLoading(false);
         toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
