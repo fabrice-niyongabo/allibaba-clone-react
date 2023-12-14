@@ -13,9 +13,9 @@ import { useNavigate } from "react-router-dom";
 import { resetUser } from "../../actions/user";
 
 function RemoveAccount() {
+  const { token } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { token } = useSelector((state: RootState) => state.user);
   const [feedback, setFeedback] = useState("");
   const [email, setEmail] = useState("");
   const [acceptTems, setAcceptTerms] = useState(false);
@@ -50,12 +50,18 @@ function RemoveAccount() {
   const handleSubmit = () => {
     setIsLoading(true);
     axios
-      .post(app.BACKEND_URL + "/users/delete", setHeaders(token))
+      .post(
+        app.BACKEND_URL + "/users/delete",
+        { feedback, email },
+        setHeaders(token)
+      )
       .then((res) => {
         setIsLoading(false);
         toastMessage(TOAST_MESSAGE_TYPES.SUCCESS, res.data.msg);
         dispatch(resetUser());
-        navigate("/");
+        setTimeout(() => {
+          navigate("/");
+        }, 700);
       })
       .catch((error) => {
         setIsLoading(false);
