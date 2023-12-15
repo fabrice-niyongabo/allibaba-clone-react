@@ -207,7 +207,7 @@ function MobileHeader() {
                 <li>For Buyers</li>
                 <li>For New Users</li>
                 <li>For Suppliers</li>
-                <li>Support</li>
+                <li onClick={() => navigate("/support")}>Support</li>
               </ul>
             </li>
             <li>Shops</li>

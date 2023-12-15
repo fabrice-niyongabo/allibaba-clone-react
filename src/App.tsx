@@ -25,6 +25,7 @@ const Shop = lazy(() => import("./views/shop"));
 const Search = lazy(() => import("./views/search"));
 const Cart = lazy(() => import("./views/cart"));
 const Orders = lazy(() => import("./views/orders"));
+const Support = lazy(() => import("./views/support"));
 
 const Categories = lazy(() => import("./views/admin/categories"));
 const CategoryImage = lazy(() => import("./views/admin/category-image"));
@@ -86,6 +87,7 @@ const App = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/policy" element={<Policy />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/support" element={<Support />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/memberships" element={<Memberships />} />
           <Route path="/start-selling" element={<StartSelling />} />
